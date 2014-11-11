@@ -33,6 +33,15 @@ Public Class MonStore(Of TUser As ApplicationUser)
             user.Id = res.First.NoSeqClient
             user.UserName = res.First.EmailClient
             user.PasswordHash = res.First.MdpClient
+            user.NomClient = res.First.NomClient
+            user.PrenomClient = res.First.PrenomClient
+            user.NoTelephone = res.First.NoTelephone
+            user.NoCellulaire = res.First.NoCellulaire
+            user.AdresseClient = res.First.AdresseClient
+            user.AdresseSecondaireClient = res.First.AdresseSecondaireClient
+            user.CodePostal = res.First.CodePostal
+            user.NomEntreprise = res.First.NomEntreprise
+            user.CodeVille = res.First.CodeVille
         End If
 
         Return Task.FromResult(user)
@@ -48,19 +57,32 @@ Public Class MonStore(Of TUser As ApplicationUser)
             user.Id = res.First.NoSeqClient
             user.UserName = res.First.EmailClient
             user.PasswordHash = res.First.MdpClient
+            user.NomClient = res.First.NomClient
+            user.PrenomClient = res.First.PrenomClient
+            user.NoTelephone = res.First.NoTelephone
+            user.NoCellulaire = res.First.NoCellulaire
+            user.AdresseClient = res.First.AdresseClient
+            user.AdresseSecondaireClient = res.First.AdresseSecondaireClient
+            user.CodePostal = res.First.CodePostal
+            user.NomEntreprise = res.First.NomEntreprise
+            user.CodeVille = res.First.CodeVille
         End If
 
         Return Task.FromResult(user)
     End Function
 
     Public Function UpdateAsync(user As ApplicationUser) As Task Implements IUserStore(Of ApplicationUser, String).UpdateAsync
-        'Dim NewUser As ApplicationUser = Nothing
+        
+        Dim res = From tabClient In BD.tblClient
+                  Where tabClient.NoSeqClient = user.Id
+                  Select tabClient
 
-        'NewUser.Id = user.Id
-        'NewUser.UserName = user.UserName
-        'NewUser.PasswordHash = user.PasswordHash
+        If res.Count > 0 Then
+            res.ToList.First.MdpClient = user.PasswordHash
+            BD.SaveChanges()
+        End If
 
-
+        Return Task.FromResult(user)
     End Function
 #End Region
 
@@ -101,7 +123,18 @@ Public Class MonStore(Of TUser As ApplicationUser)
 
     Public Function SetPasswordHashAsync(user As ApplicationUser, passwordHash As String) As Task Implements IUserPasswordStore(Of ApplicationUser, String).SetPasswordHashAsync
         user.PasswordHash = passwordHash
-        Return Task.FromResult(True)
+
+        Dim res = From tabClient In BD.tblClient
+                  Where tabClient.NoSeqClient = user.Id
+                  Select tabClient
+
+        If res.Count > 0 Then
+            res.ToList.First.MdpClient = passwordHash
+            BD.SaveChanges()
+            Return Task.FromResult(True)
+        End If
+
+        Return Task.FromResult(False)
     End Function
 #End Region
 

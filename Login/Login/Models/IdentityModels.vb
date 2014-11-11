@@ -10,16 +10,97 @@ Imports System.Security.Claims
 Public Class ApplicationUser
     Inherits IdentityUser
 
-    Private NomClient As String
-    Private PrenomClient As String
-    Private NoTelephone As String
-    Private NoCellulaire As String
-    Private AdresseClient As String
-    Private AdresseSecondaireClient As String
-    Private CodePostal As String
-    Private NomEntreprise As String
-    Private CodeVille As String
+#Region "Property Client"
+    Private _NomClient As String
+    Public Property NomClient() As String
+        Get
+            Return _NomClient
+        End Get
+        Set(ByVal value As String)
+            _NomClient = value
+        End Set
+    End Property
 
+    Private _PrenomClient As String
+    Public Property PrenomClient() As String
+        Get
+            Return _PrenomClient
+        End Get
+        Set(ByVal value As String)
+            _PrenomClient = value
+        End Set
+    End Property
+
+    Private _NoTelephone As String
+    Public Property NoTelephone() As String
+        Get
+            Return _NoTelephone
+        End Get
+        Set(ByVal value As String)
+            _NoTelephone = value
+        End Set
+    End Property
+
+    Private _NoCellulaire As String
+    Public Property NoCellulaire() As String
+        Get
+            Return _NoCellulaire
+        End Get
+        Set(ByVal value As String)
+            _NoCellulaire = value
+        End Set
+    End Property
+
+    Private _AdresseClient As String
+    Public Property AdresseClient() As String
+        Get
+            Return _AdresseClient
+        End Get
+        Set(ByVal value As String)
+            _AdresseClient = value
+        End Set
+    End Property
+
+    Private _AdresseSecondaireClient As String
+    Public Property AdresseSecondaireClient() As String
+        Get
+            Return _AdresseSecondaireClient
+        End Get
+        Set(ByVal value As String)
+            _AdresseSecondaireClient = value
+        End Set
+    End Property
+
+    Private _CodePostal As String
+    Public Property CodePostal() As String
+        Get
+            Return _CodePostal
+        End Get
+        Set(ByVal value As String)
+            _CodePostal = value
+        End Set
+    End Property
+
+    Private _NomEntreprise As String
+    Public Property NomEntreprise() As String
+        Get
+            Return _NomEntreprise
+        End Get
+        Set(ByVal value As String)
+            _NomEntreprise = value
+        End Set
+    End Property
+
+    Private _CodeVille As String
+    Public Property CodeVille() As String
+        Get
+            Return _CodeVille
+        End Get
+        Set(ByVal value As String)
+            _CodeVille = value
+        End Set
+    End Property
+#End Region
 
     Public Function GenerateUserIdentityAsync(manager As ApplicationUserManager) As Task(Of ClaimsIdentity)
         Return Task.FromResult(GenerateUserIdentity(manager))

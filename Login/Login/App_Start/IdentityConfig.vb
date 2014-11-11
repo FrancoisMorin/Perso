@@ -14,17 +14,19 @@ Public Class ApplicationUserManager
     Public Overrides Function ChangePasswordAsync(userId As String, currentPassword As String, newPassword As String) As Task(Of IdentityResult)
         Dim user As ApplicationUser = Nothing
 
-        user = Store.FindByIdAsync(user.Id).Result
+        user = Store.FindByIdAsync(userId).Result
 
         If user IsNot Nothing Then
             If user.PasswordHash = currentPassword Then
                 user.PasswordHash = newPassword
-            End If
 
+                'Update la BD
+                Store.UpdateAsync(user)
+            End If
         End If
 
-
-        Return MyBase.ChangePasswordAsync(userId, currentPassword, newPassword)
+        Return Task.FromResult(New IdentityResult("Le mot de passe a été modifié."))
+        'Return MyBase.ChangePasswordAsync(userId, currentPassword, newPassword)
     End Function
     Public Overrides Function FindAsync(userName As String, password As String) As Task(Of ApplicationUser)
         Dim user As ApplicationUser
