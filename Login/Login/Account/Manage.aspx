@@ -16,51 +16,36 @@
     <div class="row">
         <div class="col-md-12">
 
-            <%--<section id="informationsForm">
-                <asp:PlaceHolder runat="server" ID="PlaceHolder2" Visible="false">
+            <section id="informationsForm">
+                <asp:PlaceHolder runat="server" ID="modifInfo" Visible="true">
                     <p>Vous êtes connecté en tant que <strong><%: User.Identity.GetUserName() %></strong>.</p>
                     <div class="form-horizontal">
-                        <h4>Changer la forme du mot de passe</h4>
+                        <h4>Modifier les informations du compte</h4>
                         <hr />
                         <asp:ValidationSummary runat="server" ShowModelStateErrors="true" CssClass="text-danger" />
                         <div class="form-group">
-                            <asp:Label runat="server" ID="Label1" AssociatedControlID="CurrentPassword" CssClass="col-md-2 control-label">Mot de passe actuel</asp:Label>
+                            <asp:Label runat="server" ID="Label1" AssociatedControlID="txtNom" CssClass="col-md-2 control-label">Nom</asp:Label>
                             <div class="col-md-10">
-                                <asp:TextBox runat="server" ID="TextBox3" TextMode="Password" CssClass="form-control" />
-                                <asp:RequiredFieldValidator runat="server" ControlToValidate="CurrentPassword"
-                                    CssClass="text-danger" ErrorMessage="Le champ confirmer le mot de passe est requis."
-                                    ValidationGroup="ChangePassword" />
+                                <asp:TextBox runat="server" ID="txtNom" CssClass="form-control" />
                             </div>
                         </div>
+                        <br />
                         <div class="form-group">
-                            <asp:Label runat="server" ID="Label2" AssociatedControlID="NewPassword" CssClass="col-md-2 control-label">Nouveau mot de passe</asp:Label>
+                            <asp:Label runat="server" ID="Label2" AssociatedControlID="NewPassword" CssClass="col-md-2 control-label">Prenom</asp:Label>
                             <div class="col-md-10">
-                                <asp:TextBox runat="server" ID="TextBox4" TextMode="Password" CssClass="form-control" />
-                                <asp:RequiredFieldValidator runat="server" ControlToValidate="NewPassword"
-                                    CssClass="text-danger" ErrorMessage="Le nouveau mot de passe est requis."
-                                    ValidationGroup="ChangePassword" />
+                                <asp:TextBox runat="server" ID="txtPrenom" CssClass="form-control" />
                             </div>
                         </div>
-                        <div class="form-group">
-                            <asp:Label runat="server" ID="Label3" AssociatedControlID="ConfirmNewPassword" CssClass="col-md-2 control-label">Confirmer le nouveau mot de passe</asp:Label>
-                            <div class="col-md-10">
-                                <asp:TextBox runat="server" ID="TextBox5" TextMode="Password" CssClass="form-control" />
-                                <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmNewPassword"
-                                    CssClass="text-danger" Display="Dynamic" ErrorMessage="La confirmation du nouveau mot de passe est requise."
-                                    ValidationGroup="ChangePassword" />
-                                <asp:CompareValidator runat="server" ControlToCompare="NewPassword" ControlToValidate="ConfirmNewPassword"
-                                    CssClass="text-danger" Display="Dynamic" ErrorMessage="Le nouveau mot de passe et le mot de passe de confirmation ne correspondent pas."
-                                    ValidationGroup="ChangePassword" />
-                            </div>
-                        </div>
+                        <br />
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <asp:Button runat="server" Text="Modifier le mot de passe" OnClick="ChangePassword_Click" CssClass="btn btn-default" ValidationGroup="ChangePassword" />
+                                <asp:Button ID="btnModifInfos" runat="server" Text="Modifier les infos" CssClass="btn btn-default" />
                             </div>
                         </div>
+                        <hr />
                     </div>
                 </asp:PlaceHolder>
-            </section>--%>
+            </section>
 
 
             <section id="passwordForm">
@@ -108,7 +93,6 @@
                 </asp:PlaceHolder>
 
                 <asp:PlaceHolder runat="server" ID="changePasswordHolder" Visible="false">
-                    <p>Vous êtes connecté en tant que <strong><%: User.Identity.GetUserName() %></strong>.</p>
                     <div class="form-horizontal">
                         <h4>Changer la forme du mot de passe</h4>
                         <hr />

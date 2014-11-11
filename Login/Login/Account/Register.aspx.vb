@@ -13,6 +13,8 @@ Partial Public Class Register
         Dim userName As String = Email.Text
         Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
         Dim user = New ApplicationUser() With {.UserName = userName, .Email = userName}
+        'Dim result = manager.CreateAsync(user)
+        'Dim result = manager.Create(user, Password.Text)
         Dim result = manager.Create(user, Password.Text)
         If result.Succeeded Then
             IdentityHelper.SignIn(manager, user, isPersistent:=False)

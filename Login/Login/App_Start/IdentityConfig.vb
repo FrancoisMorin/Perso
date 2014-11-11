@@ -43,6 +43,12 @@ Public Class ApplicationUserManager
         Return Task.FromResult(user)
     End Function
 
+    Public Overrides Function CreateAsync(user As ApplicationUser, password As String) As Task(Of IdentityResult)
+        user.PasswordHash = password
+        Store.CreateAsync(user)
+        Return Task.FromResult(New IdentityResult("True"))
+    End Function
+
     Public Shared Function Create(options As IdentityFactoryOptions(Of ApplicationUserManager), context As IOwinContext) As ApplicationUserManager
         Dim manager = New ApplicationUserManager(New MonStore(Of ApplicationUser)(context.[Get](Of ApplicationDbContext)()))
         ' Configurer la logique de validation pour les noms d'utilisateur

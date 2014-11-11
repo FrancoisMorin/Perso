@@ -16,7 +16,19 @@ Public Class MonStore(Of TUser As ApplicationUser)
 #Region "User"
 
     Public Function CreateAsync(user As ApplicationUser) As Task Implements IUserStore(Of ApplicationUser, String).CreateAsync
+        Dim Client As New tblClient
 
+        Client.NomClient = "ClientTest"
+        Client.PrenomClient = "ClientTest"
+        Client.NoTelephone = "123-Test"
+        Client.AdresseClient = "000 Rue Test"
+        Client.EmailClient = user.Email
+        Client.MdpClient = user.PasswordHash
+        BD.tblClient.Add(Client)
+        BD.SaveChanges()
+
+
+        Return Task.FromResult(True)
     End Function
 
     Public Function DeleteAsync(user As ApplicationUser) As Task Implements IUserStore(Of ApplicationUser, String).DeleteAsync
@@ -128,7 +140,7 @@ Public Class MonStore(Of TUser As ApplicationUser)
                   Where tabClient.NoSeqClient = user.Id
                   Select tabClient
 
-        If res.Count > 0 Then
+        If res.ToList.Count > 0 Then
             res.ToList.First.MdpClient = passwordHash
             BD.SaveChanges()
             Return Task.FromResult(True)

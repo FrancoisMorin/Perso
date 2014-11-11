@@ -34,4 +34,9 @@ Partial Public Class ResetPassword
 
         ErrorMessage.Text = "Une erreur s'est produite"
     End Sub
+
+    Sub ModifInfo()
+
+    End Sub
+
 End Class

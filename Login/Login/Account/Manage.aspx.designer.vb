@@ -23,6 +23,60 @@ Partial Public Class Manage
     Protected WithEvents SuccessMessagePlaceHolder As Global.System.Web.UI.WebControls.PlaceHolder
 
     '''<summary>
+    '''Contrôle modifInfo.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents modifInfo As Global.System.Web.UI.WebControls.PlaceHolder
+
+    '''<summary>
+    '''Contrôle Label1.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Contrôle txtNom.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents txtNom As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Contrôle Label2.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Contrôle txtPrenom.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents txtPrenom As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Contrôle btnModifInfos.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents btnModifInfos As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''Contrôle setPassword.
     '''</summary>
     '''<remarks>
