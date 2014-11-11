@@ -1,0 +1,2523 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="P2014_BD_GestionHotelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblCategorieFourniture">
+          <Key>
+            <PropertyRef Name="CodeCategorie" />
+          </Key>
+          <Property Name="CodeCategorie" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="NomCategorie" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCommande">
+          <Key>
+            <PropertyRef Name="NoCommande" />
+          </Key>
+          <Property Name="NoCommande" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateCommande" Type="date" Nullable="false" />
+          <Property Name="StatutCommande" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PrixTotal" Type="money" />
+          <Property Name="DateRecu" Type="date" />
+          <Property Name="CodeFournisseur" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NoEmploye" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFournisseur">
+          <Key>
+            <PropertyRef Name="CodeFournisseur" />
+          </Key>
+          <Property Name="CodeFournisseur" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NomFournisseur" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AdresseFournisseur" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="NomRepresentant" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PrenomRepresentant" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFourniture">
+          <Key>
+            <PropertyRef Name="CodeFourniture" />
+          </Key>
+          <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DescFourniture" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodeCategorie" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFournitureChambre">
+          <Key>
+            <PropertyRef Name="NoSeqChambre" />
+            <PropertyRef Name="CodeFourniture" />
+          </Key>
+          <Property Name="NoSeqChambre" Type="int" Nullable="false" />
+          <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="QuantiteChambre" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFournitureCommande">
+          <Key>
+            <PropertyRef Name="NoCommande" />
+            <PropertyRef Name="CodeFourniture" />
+          </Key>
+          <Property Name="NoCommande" Type="int" Nullable="false" />
+          <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="QuantiteCommande" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFournitureFournisseur">
+          <Key>
+            <PropertyRef Name="CodeFourniture" />
+            <PropertyRef Name="CodeFournisseur" />
+          </Key>
+          <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CodeFournisseur" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PrixFournitureFournisseur" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFournitureHotel">
+          <Key>
+            <PropertyRef Name="CodeHotel" />
+            <PropertyRef Name="CodeFourniture" />
+          </Key>
+          <Property Name="CodeHotel" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="QuantiteMin" Type="smallint" Nullable="false" />
+          <Property Name="QuantiteMax" Type="int" Nullable="false" />
+          <Property Name="QuantiteFournitureHotel" Type="int" />
+        </EntityType>
+        <EntityType Name="tblChiffreTravail">
+          <Key>
+            <PropertyRef Name="NoChiffreTravail" />
+          </Key>
+          <Property Name="NoChiffreTravail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateChiffre" Type="date" Nullable="false" />
+          <Property Name="HeureDebut" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="HeureFin" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="NoEmploye" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEmploye">
+          <Key>
+            <PropertyRef Name="NoEmploye" />
+          </Key>
+          <Property Name="NoEmploye" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomEmploye" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PrenomEmploye" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SexeEmploye" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="AdresseEmploye" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="TypeEmploi" Type="varchar" MaxLength="15" />
+          <Property Name="NoTelephoneEmploye" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="NasEmploye" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="DateNaissance" Type="date" Nullable="false" />
+          <Property Name="IdentifiantEmploye" Type="char" MaxLength="8" />
+          <Property Name="MdpEmploye" Type="char" MaxLength="8" />
+          <Property Name="NombreHeuresSemaines" Type="smallint" />
+          <Property Name="CodeHotel" Type="char" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="tblEntretienFournitureChambre">
+          <Key>
+            <PropertyRef Name="NoSeqEntretienChambre" />
+          </Key>
+          <Property Name="NoSeqEntretienChambre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EtatFourniture" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CommentaireFourniture" Type="varchar" MaxLength="300" />
+          <Property Name="DateDemande" Type="date" Nullable="false" />
+          <Property Name="DateEffectue" Type="date" />
+          <Property Name="StatutEntretien" Type="varchar" MaxLength="20" />
+          <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NoSeqChambre" Type="int" Nullable="false" />
+          <Property Name="NoEmploye" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEntretienFournitureSalle">
+          <Key>
+            <PropertyRef Name="NoSeqEntretienSalle" />
+          </Key>
+          <Property Name="NoSeqEntretienSalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EtatFourniture" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CommentaireFourniture" Type="varchar" MaxLength="300" />
+          <Property Name="DateDemande" Type="date" Nullable="false" />
+          <Property Name="DateEffectue" Type="date" />
+          <Property Name="StatutEntretien" Type="varchar" MaxLength="20" />
+          <Property Name="NoSeqReservSalle" Type="int" Nullable="false" />
+          <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CodeSalle" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="NoEmploye" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblChambre">
+          <Key>
+            <PropertyRef Name="NoSeqChambre" />
+          </Key>
+          <Property Name="NoSeqChambre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeChambre" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="EtageChambre" Type="smallint" Nullable="false" />
+          <Property Name="StatutChambre" Type="varchar" MaxLength="15" />
+          <Property Name="DescChambre" Type="text" />
+          <Property Name="TypeLit" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="NbLit" Type="tinyint" Nullable="false" />
+          <Property Name="CodeHotel" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="CodeTypeChambre" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblChambreReservationChambre">
+          <Key>
+            <PropertyRef Name="NoSeqChambre" />
+            <PropertyRef Name="NoSeqReservChambre" />
+          </Key>
+          <Property Name="NoSeqChambre" Type="int" Nullable="false" />
+          <Property Name="NoSeqReservChambre" Type="int" Nullable="false" />
+          <Property Name="NbPersonne" Type="smallint" Nullable="false" />
+          <Property Name="NomLocataire" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PrenomLocataire" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DateDebutReservation" Type="date" Nullable="false" />
+          <Property Name="DateFinReservation" Type="date" Nullable="false" />
+          <Property Name="StatutChambreReservChambre" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblClient">
+          <Key>
+            <PropertyRef Name="NoSeqClient" />
+          </Key>
+          <Property Name="NoSeqClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomClient" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PrenomClient" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NoTelephone" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="NoCellulaire" Type="varchar" MaxLength="14" />
+          <Property Name="AdresseClient" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="AdresseSecondaireClient" Type="varchar" MaxLength="30" />
+          <Property Name="EmailClient" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="MdpClient" Type="varchar" MaxLength="20" />
+          <Property Name="CodePostal" Type="char" MaxLength="6" />
+          <Property Name="NomEntreprise" Type="varchar" MaxLength="50" />
+          <Property Name="CodeVille" Type="char" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="tblFacture">
+          <Key>
+            <PropertyRef Name="NoSeqFacture" />
+          </Key>
+          <Property Name="NoSeqFacture" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MontantFacture" Type="money" />
+          <Property Name="TypeFacture" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NoSeqReservChambre" Type="int" Nullable="false" />
+          <Property Name="NoEmploye" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblForfait">
+          <Key>
+            <PropertyRef Name="CodeForfait" />
+          </Key>
+          <Property Name="CodeForfait" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NomForfait" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="PrixForfait" Type="money" Nullable="false" />
+          <Property Name="DescForfait" Type="text" Nullable="false" />
+          <Property Name="NbNuit" Type="tinyint" Nullable="false" />
+          <Property Name="DateDebut" Type="date" Nullable="false" />
+          <Property Name="DateFin" Type="date" Nullable="false" />
+          <Property Name="CodeTypeChambre" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblForfaitReservationChambre">
+          <Key>
+            <PropertyRef Name="NoSeqChambre" />
+            <PropertyRef Name="NoSeqReservChambre" />
+            <PropertyRef Name="CodeForfait" />
+          </Key>
+          <Property Name="NoSeqChambre" Type="int" Nullable="false" />
+          <Property Name="NoSeqReservChambre" Type="int" Nullable="false" />
+          <Property Name="CodeForfait" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFournitureReservationSalle">
+          <Key>
+            <PropertyRef Name="NoSeqReservSalle" />
+            <PropertyRef Name="CodeFourniture" />
+            <PropertyRef Name="CodeSalle" />
+          </Key>
+          <Property Name="NoSeqReservSalle" Type="int" Nullable="false" />
+          <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CodeSalle" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="QuantiteFourniture" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblHotel">
+          <Key>
+            <PropertyRef Name="CodeHotel" />
+          </Key>
+          <Property Name="CodeHotel" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="NomHotel" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="NbChambre" Type="smallint" Nullable="false" />
+          <Property Name="AdresseHotel" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NbEtoiles" Type="tinyint" Nullable="false" />
+          <Property Name="TypeService" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodePostal" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="NoTelephoneHotel" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="NoTelecopieurHotel" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="NoTelReservation" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="HeureLimiteDepart" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="HeureLimiteArrive" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="CodeVille" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPays">
+          <Key>
+            <PropertyRef Name="CodePays" />
+          </Key>
+          <Property Name="CodePays" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="NomPays" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPrixTypeChambre">
+          <Key>
+            <PropertyRef Name="NoSeqPrixTypeChambre" />
+          </Key>
+          <Property Name="NoSeqPrixTypeChambre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescPrixTypeChambre" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="PrixTypeChambre" Type="money" Nullable="false" />
+          <Property Name="DateDebutPrix" Type="date" Nullable="false" />
+          <Property Name="DateFinPrix" Type="date" Nullable="false" />
+          <Property Name="CodeTypeChambre" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="CodeHotel" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProvince">
+          <Key>
+            <PropertyRef Name="CodeProvince" />
+          </Key>
+          <Property Name="CodeProvince" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="NomProvince" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodePays" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblRabais">
+          <Key>
+            <PropertyRef Name="NoSeqRabais" />
+          </Key>
+          <Property Name="NoSeqRabais" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescRabais" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateDebutRabais" Type="date" Nullable="false" />
+          <Property Name="DateFinRabais" Type="date" Nullable="false" />
+          <Property Name="PourcentageRabais" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblReservationChambre">
+          <Key>
+            <PropertyRef Name="NoSeqReservChambre" />
+          </Key>
+          <Property Name="NoSeqReservChambre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatutReservChambre" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="PrixReservChambre" Type="money" />
+          <Property Name="ModePaiement" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="StatutPaiement" Type="varchar" MaxLength="10" />
+          <Property Name="NoCarteCredit" Type="varchar" MaxLength="16" />
+          <Property Name="DateExpirationCarteCredit" Type="char" MaxLength="4" />
+          <Property Name="TypeCarteCredit" Type="varchar" MaxLength="20" />
+          <Property Name="NomCarteCredit" Type="varchar" MaxLength="40" />
+          <Property Name="NoSeqClient" Type="int" Nullable="false" />
+          <Property Name="NoSeqRabais" Type="int" />
+        </EntityType>
+        <EntityType Name="tblReservationSalle">
+          <Key>
+            <PropertyRef Name="NoSeqReservSalle" />
+            <PropertyRef Name="CodeSalle" />
+          </Key>
+          <Property Name="NoSeqReservSalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateReservSalle" Type="date" Nullable="false" />
+          <Property Name="PrixReservSalle" Type="money" />
+          <Property Name="ModePaiement" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="StatutPaiement" Type="varchar" MaxLength="10" />
+          <Property Name="NbPersonne" Type="smallint" />
+          <Property Name="NoCarteCredit" Type="varchar" MaxLength="16" />
+          <Property Name="CodeSalle" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="NoSeqClient" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSalle">
+          <Key>
+            <PropertyRef Name="CodeSalle" />
+          </Key>
+          <Property Name="CodeSalle" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="NomSalle" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="TypeSalle" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="StatutSalle" Type="varchar" MaxLength="15" />
+          <Property Name="DetailSalle" Type="text" Nullable="false" />
+          <Property Name="NbPlacesAssis" Type="smallint" Nullable="false" />
+          <Property Name="NbPlacesDebout" Type="smallint" Nullable="false" />
+          <Property Name="CodeHotel" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTypeChambre">
+          <Key>
+            <PropertyRef Name="CodeTypeChambre" />
+          </Key>
+          <Property Name="CodeTypeChambre" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="NomTypeChambre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DescTypeChambre" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblVille">
+          <Key>
+            <PropertyRef Name="CodeVille" />
+          </Key>
+          <Property Name="CodeVille" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="NomVille" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodeProvince" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInventaire' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="VueInventaire">
+          <Key>
+            <PropertyRef Name="CodeHotel" />
+            <PropertyRef Name="CodeFourniture" />
+            <PropertyRef Name="DescFourniture" />
+            <PropertyRef Name="CodeCategorie" />
+            <PropertyRef Name="NomCategorie" />
+            <PropertyRef Name="PrixFournitureFournisseur" />
+            <PropertyRef Name="QuantiteMin" />
+            <PropertyRef Name="QuantiteMax" />
+            <PropertyRef Name="CodeFournisseur" />
+            <PropertyRef Name="NomFournisseur" />
+          </Key>
+          <Property Name="CodeHotel" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DescFourniture" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodeCategorie" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="NomCategorie" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="QuantiteFournitureHotel" Type="int" />
+          <Property Name="PrixFournitureFournisseur" Type="money" Nullable="false" />
+          <Property Name="QuantiteMin" Type="smallint" Nullable="false" />
+          <Property Name="QuantiteMax" Type="int" Nullable="false" />
+          <Property Name="CodeFournisseur" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NomFournisseur" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Chamb_ChambReservChamb_NoSeqReservChamb">
+          <End Role="tblChambre" Type="Self.tblChambre" Multiplicity="1" />
+          <End Role="tblChambreReservationChambre" Type="Self.tblChambreReservationChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblChambre">
+              <PropertyRef Name="NoSeqChambre" />
+            </Principal>
+            <Dependent Role="tblChambreReservationChambre">
+              <PropertyRef Name="NoSeqChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chamb_Four_CodFour">
+          <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="1" />
+          <End Role="tblFournitureChambre" Type="Self.tblFournitureChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFourniture">
+              <PropertyRef Name="CodeFourniture" />
+            </Principal>
+            <Dependent Role="tblFournitureChambre">
+              <PropertyRef Name="CodeFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chamb_Four_NoSeqChamb">
+          <End Role="tblChambre" Type="Self.tblChambre" Multiplicity="1" />
+          <End Role="tblFournitureChambre" Type="Self.tblFournitureChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblChambre">
+              <PropertyRef Name="NoSeqChambre" />
+            </Principal>
+            <Dependent Role="tblFournitureChambre">
+              <PropertyRef Name="NoSeqChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChambResChamb_NoChambNoRes">
+          <End Role="tblChambreReservationChambre" Type="Self.tblChambreReservationChambre" Multiplicity="1" />
+          <End Role="tblForfaitReservationChambre" Type="Self.tblForfaitReservationChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblChambreReservationChambre">
+              <PropertyRef Name="NoSeqChambre" />
+              <PropertyRef Name="NoSeqReservChambre" />
+            </Principal>
+            <Dependent Role="tblForfaitReservationChambre">
+              <PropertyRef Name="NoSeqChambre" />
+              <PropertyRef Name="NoSeqReservChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cli_ReservChamb_NoCli">
+          <End Role="tblClient" Type="Self.tblClient" Multiplicity="1" />
+          <End Role="tblReservationChambre" Type="Self.tblReservationChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClient">
+              <PropertyRef Name="NoSeqClient" />
+            </Principal>
+            <Dependent Role="tblReservationChambre">
+              <PropertyRef Name="NoSeqClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cli_ReservSalle_NoCli">
+          <End Role="tblClient" Type="Self.tblClient" Multiplicity="1" />
+          <End Role="tblReservationSalle" Type="Self.tblReservationSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClient">
+              <PropertyRef Name="NoSeqClient" />
+            </Principal>
+            <Dependent Role="tblReservationSalle">
+              <PropertyRef Name="NoSeqClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Com_FourCom_NoCom">
+          <End Role="tblCommande" Type="Self.tblCommande" Multiplicity="1" />
+          <End Role="tblFournitureCommande" Type="Self.tblFournitureCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCommande">
+              <PropertyRef Name="NoCommande" />
+            </Principal>
+            <Dependent Role="tblFournitureCommande">
+              <PropertyRef Name="NoCommande" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Emp_ChifHor_NoEmp">
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="1" />
+          <End Role="tblChiffreTravail" Type="Self.tblChiffreTravail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmploye">
+              <PropertyRef Name="NoEmploye" />
+            </Principal>
+            <Dependent Role="tblChiffreTravail">
+              <PropertyRef Name="NoEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Emp_Com_NoEmp">
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="1" />
+          <End Role="tblCommande" Type="Self.tblCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmploye">
+              <PropertyRef Name="NoEmploye" />
+            </Principal>
+            <Dependent Role="tblCommande">
+              <PropertyRef Name="NoEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Emp_EntFour_NoEmp">
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="1" />
+          <End Role="tblEntretienFournitureChambre" Type="Self.tblEntretienFournitureChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmploye">
+              <PropertyRef Name="NoEmploye" />
+            </Principal>
+            <Dependent Role="tblEntretienFournitureChambre">
+              <PropertyRef Name="NoEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_For_CodFor">
+          <End Role="tblForfait" Type="Self.tblForfait" Multiplicity="1" />
+          <End Role="tblForfaitReservationChambre" Type="Self.tblForfaitReservationChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblForfait">
+              <PropertyRef Name="CodeForfait" />
+            </Principal>
+            <Dependent Role="tblForfaitReservationChambre">
+              <PropertyRef Name="CodeForfait" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Four_Categ_CodeCateg">
+          <End Role="tblCategorieFourniture" Type="Self.tblCategorieFourniture" Multiplicity="1" />
+          <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCategorieFourniture">
+              <PropertyRef Name="CodeCategorie" />
+            </Principal>
+            <Dependent Role="tblFourniture">
+              <PropertyRef Name="CodeCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Four_CodFour">
+          <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="1" />
+          <End Role="tblFournitureReservationSalle" Type="Self.tblFournitureReservationSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFourniture">
+              <PropertyRef Name="CodeFourniture" />
+            </Principal>
+            <Dependent Role="tblFournitureReservationSalle">
+              <PropertyRef Name="CodeFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Four_Com_NoSeqFour">
+          <End Role="tblFournisseur" Type="Self.tblFournisseur" Multiplicity="1" />
+          <End Role="tblCommande" Type="Self.tblCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFournisseur">
+              <PropertyRef Name="CodeFournisseur" />
+            </Principal>
+            <Dependent Role="tblCommande">
+              <PropertyRef Name="CodeFournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Four_CourCom_NoSeqFournisseur">
+          <End Role="tblFournisseur" Type="Self.tblFournisseur" Multiplicity="1" />
+          <End Role="tblFournitureFournisseur" Type="Self.tblFournitureFournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFournisseur">
+              <PropertyRef Name="CodeFournisseur" />
+            </Principal>
+            <Dependent Role="tblFournitureFournisseur">
+              <PropertyRef Name="CodeFournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Four_EntFour_NoSeqFour">
+          <End Role="tblFournitureChambre" Type="Self.tblFournitureChambre" Multiplicity="1" />
+          <End Role="tblEntretienFournitureChambre" Type="Self.tblEntretienFournitureChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFournitureChambre">
+              <PropertyRef Name="NoSeqChambre" />
+              <PropertyRef Name="CodeFourniture" />
+            </Principal>
+            <Dependent Role="tblEntretienFournitureChambre">
+              <PropertyRef Name="NoSeqChambre" />
+              <PropertyRef Name="CodeFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Four_FourCom_NoSeqFour">
+          <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="1" />
+          <End Role="tblFournitureCommande" Type="Self.tblFournitureCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFourniture">
+              <PropertyRef Name="CodeFourniture" />
+            </Principal>
+            <Dependent Role="tblFournitureCommande">
+              <PropertyRef Name="CodeFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Four_FourFour_NoSeqFourniture">
+          <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="1" />
+          <End Role="tblFournitureFournisseur" Type="Self.tblFournitureFournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFourniture">
+              <PropertyRef Name="CodeFourniture" />
+            </Principal>
+            <Dependent Role="tblFournitureFournisseur">
+              <PropertyRef Name="CodeFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Four_FourHot_NoSeqFour">
+          <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="1" />
+          <End Role="tblFournitureHotel" Type="Self.tblFournitureHotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFourniture">
+              <PropertyRef Name="CodeFourniture" />
+            </Principal>
+            <Dependent Role="tblFournitureHotel">
+              <PropertyRef Name="CodeFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FourResSal_AYyylmao">
+          <End Role="tblFournitureReservationSalle" Type="Self.tblFournitureReservationSalle" Multiplicity="1" />
+          <End Role="tblEntretienFournitureSalle" Type="Self.tblEntretienFournitureSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFournitureReservationSalle">
+              <PropertyRef Name="NoSeqReservSalle" />
+              <PropertyRef Name="CodeFourniture" />
+              <PropertyRef Name="CodeSalle" />
+            </Principal>
+            <Dependent Role="tblEntretienFournitureSalle">
+              <PropertyRef Name="NoSeqReservSalle" />
+              <PropertyRef Name="CodeFourniture" />
+              <PropertyRef Name="CodeSalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FourResSal_NoEmp">
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="1" />
+          <End Role="tblEntretienFournitureSalle" Type="Self.tblEntretienFournitureSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmploye">
+              <PropertyRef Name="NoEmploye" />
+            </Principal>
+            <Dependent Role="tblEntretienFournitureSalle">
+              <PropertyRef Name="NoEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hot_Chamb_CodHot">
+          <End Role="tblHotel" Type="Self.tblHotel" Multiplicity="1" />
+          <End Role="tblChambre" Type="Self.tblChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHotel">
+              <PropertyRef Name="CodeHotel" />
+            </Principal>
+            <Dependent Role="tblChambre">
+              <PropertyRef Name="CodeHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hot_Emp_CodHot">
+          <End Role="tblHotel" Type="Self.tblHotel" Multiplicity="0..1" />
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHotel">
+              <PropertyRef Name="CodeHotel" />
+            </Principal>
+            <Dependent Role="tblEmploye">
+              <PropertyRef Name="CodeHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hot_FourHot_CodHot">
+          <End Role="tblHotel" Type="Self.tblHotel" Multiplicity="1" />
+          <End Role="tblFournitureHotel" Type="Self.tblFournitureHotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHotel">
+              <PropertyRef Name="CodeHotel" />
+            </Principal>
+            <Dependent Role="tblFournitureHotel">
+              <PropertyRef Name="CodeHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hot_PrTypChamb_CodHot">
+          <End Role="tblHotel" Type="Self.tblHotel" Multiplicity="1" />
+          <End Role="tblPrixTypeChambre" Type="Self.tblPrixTypeChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHotel">
+              <PropertyRef Name="CodeHotel" />
+            </Principal>
+            <Dependent Role="tblPrixTypeChambre">
+              <PropertyRef Name="CodeHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hot_Salle_CodHot">
+          <End Role="tblHotel" Type="Self.tblHotel" Multiplicity="1" />
+          <End Role="tblSalle" Type="Self.tblSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHotel">
+              <PropertyRef Name="CodeHotel" />
+            </Principal>
+            <Dependent Role="tblSalle">
+              <PropertyRef Name="CodeHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hot_TypChamb_CodTypeChamb">
+          <End Role="tblTypeChambre" Type="Self.tblTypeChambre" Multiplicity="1" />
+          <End Role="tblChambre" Type="Self.tblChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTypeChambre">
+              <PropertyRef Name="CodeTypeChambre" />
+            </Principal>
+            <Dependent Role="tblChambre">
+              <PropertyRef Name="CodeTypeChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pays_Prov_CodPays">
+          <End Role="tblPays" Type="Self.tblPays" Multiplicity="1" />
+          <End Role="tblProvince" Type="Self.tblProvince" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPays">
+              <PropertyRef Name="CodePays" />
+            </Principal>
+            <Dependent Role="tblProvince">
+              <PropertyRef Name="CodePays" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prov_Vill_CodProv">
+          <End Role="tblProvince" Type="Self.tblProvince" Multiplicity="1" />
+          <End Role="tblVille" Type="Self.tblVille" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProvince">
+              <PropertyRef Name="CodeProvince" />
+            </Principal>
+            <Dependent Role="tblVille">
+              <PropertyRef Name="CodeProvince" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rab_ReservChamb_NoRab">
+          <End Role="tblRabais" Type="Self.tblRabais" Multiplicity="0..1" />
+          <End Role="tblReservationChambre" Type="Self.tblReservationChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRabais">
+              <PropertyRef Name="NoSeqRabais" />
+            </Principal>
+            <Dependent Role="tblReservationChambre">
+              <PropertyRef Name="NoSeqRabais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservChamb_ChambReservChamb_NoSeqReservChamb">
+          <End Role="tblReservationChambre" Type="Self.tblReservationChambre" Multiplicity="1" />
+          <End Role="tblChambreReservationChambre" Type="Self.tblChambreReservationChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblReservationChambre">
+              <PropertyRef Name="NoSeqReservChambre" />
+            </Principal>
+            <Dependent Role="tblChambreReservationChambre">
+              <PropertyRef Name="NoSeqReservChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservChamb_Fact_NoSeqChamb">
+          <End Role="tblReservationChambre" Type="Self.tblReservationChambre" Multiplicity="1" />
+          <End Role="tblFacture" Type="Self.tblFacture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblReservationChambre">
+              <PropertyRef Name="NoSeqReservChambre" />
+            </Principal>
+            <Dependent Role="tblFacture">
+              <PropertyRef Name="NoSeqReservChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResSall_NoReservNoSall">
+          <End Role="tblReservationSalle" Type="Self.tblReservationSalle" Multiplicity="1" />
+          <End Role="tblFournitureReservationSalle" Type="Self.tblFournitureReservationSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblReservationSalle">
+              <PropertyRef Name="NoSeqReservSalle" />
+              <PropertyRef Name="CodeSalle" />
+            </Principal>
+            <Dependent Role="tblFournitureReservationSalle">
+              <PropertyRef Name="NoSeqReservSalle" />
+              <PropertyRef Name="CodeSalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Salle_ReservSalle_CodSalle">
+          <End Role="tblSalle" Type="Self.tblSalle" Multiplicity="1" />
+          <End Role="tblReservationSalle" Type="Self.tblReservationSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSalle">
+              <PropertyRef Name="CodeSalle" />
+            </Principal>
+            <Dependent Role="tblReservationSalle">
+              <PropertyRef Name="CodeSalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TypChamb_CodTypChamb">
+          <End Role="tblTypeChambre" Type="Self.tblTypeChambre" Multiplicity="1" />
+          <End Role="tblForfait" Type="Self.tblForfait" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTypeChambre">
+              <PropertyRef Name="CodeTypeChambre" />
+            </Principal>
+            <Dependent Role="tblForfait">
+              <PropertyRef Name="CodeTypeChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TypChamb_CodTypChamb2">
+          <End Role="tblTypeChambre" Type="Self.tblTypeChambre" Multiplicity="1" />
+          <End Role="tblPrixTypeChambre" Type="Self.tblPrixTypeChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTypeChambre">
+              <PropertyRef Name="CodeTypeChambre" />
+            </Principal>
+            <Dependent Role="tblPrixTypeChambre">
+              <PropertyRef Name="CodeTypeChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vil_CodVil">
+          <End Role="tblVille" Type="Self.tblVille" Multiplicity="0..1" />
+          <End Role="tblClient" Type="Self.tblClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVille">
+              <PropertyRef Name="CodeVille" />
+            </Principal>
+            <Dependent Role="tblClient">
+              <PropertyRef Name="CodeVille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vill_Hot_CodVill">
+          <End Role="tblVille" Type="Self.tblVille" Multiplicity="1" />
+          <End Role="tblHotel" Type="Self.tblHotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVille">
+              <PropertyRef Name="CodeVille" />
+            </Principal>
+            <Dependent Role="tblHotel">
+              <PropertyRef Name="CodeVille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="VerificationDispo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Reservation">
+          <Parameter Name="DateDebut" Type="date" Mode="In" />
+          <Parameter Name="DateFin" Type="date" Mode="In" />
+        </Function>
+        <EntityContainer Name="P2014_BD_GestionHotelModelStoreContainer">
+          <EntitySet Name="tblCategorieFourniture" EntityType="Self.tblCategorieFourniture" Schema="Approvisionnement" store:Type="Tables" />
+          <EntitySet Name="tblCommande" EntityType="Self.tblCommande" Schema="Approvisionnement" store:Type="Tables" />
+          <EntitySet Name="tblFournisseur" EntityType="Self.tblFournisseur" Schema="Approvisionnement" store:Type="Tables" />
+          <EntitySet Name="tblFourniture" EntityType="Self.tblFourniture" Schema="Approvisionnement" store:Type="Tables" />
+          <EntitySet Name="tblFournitureChambre" EntityType="Self.tblFournitureChambre" Schema="Approvisionnement" store:Type="Tables" />
+          <EntitySet Name="tblFournitureCommande" EntityType="Self.tblFournitureCommande" Schema="Approvisionnement" store:Type="Tables" />
+          <EntitySet Name="tblFournitureFournisseur" EntityType="Self.tblFournitureFournisseur" Schema="Approvisionnement" store:Type="Tables" />
+          <EntitySet Name="tblFournitureHotel" EntityType="Self.tblFournitureHotel" Schema="Approvisionnement" store:Type="Tables" />
+          <EntitySet Name="tblChiffreTravail" EntityType="Self.tblChiffreTravail" Schema="Personnel" store:Type="Tables" />
+          <EntitySet Name="tblEmploye" EntityType="Self.tblEmploye" Schema="Personnel" store:Type="Tables" />
+          <EntitySet Name="tblEntretienFournitureChambre" EntityType="Self.tblEntretienFournitureChambre" Schema="Personnel" store:Type="Tables" />
+          <EntitySet Name="tblEntretienFournitureSalle" EntityType="Self.tblEntretienFournitureSalle" Schema="Personnel" store:Type="Tables" />
+          <EntitySet Name="tblChambre" EntityType="Self.tblChambre" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblChambreReservationChambre" EntityType="Self.tblChambreReservationChambre" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblClient" EntityType="Self.tblClient" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblFacture" EntityType="Self.tblFacture" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblForfait" EntityType="Self.tblForfait" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblForfaitReservationChambre" EntityType="Self.tblForfaitReservationChambre" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblFournitureReservationSalle" EntityType="Self.tblFournitureReservationSalle" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblHotel" EntityType="Self.tblHotel" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblPays" EntityType="Self.tblPays" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblPrixTypeChambre" EntityType="Self.tblPrixTypeChambre" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblProvince" EntityType="Self.tblProvince" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblRabais" EntityType="Self.tblRabais" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblReservationChambre" EntityType="Self.tblReservationChambre" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblReservationSalle" EntityType="Self.tblReservationSalle" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblSalle" EntityType="Self.tblSalle" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblTypeChambre" EntityType="Self.tblTypeChambre" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblVille" EntityType="Self.tblVille" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="VueInventaire" EntityType="Self.VueInventaire" store:Type="Views" store:Schema="Approvisionnement">
+            <DefiningQuery>SELECT 
+    [VueInventaire].[CodeHotel] AS [CodeHotel], 
+    [VueInventaire].[CodeFourniture] AS [CodeFourniture], 
+    [VueInventaire].[DescFourniture] AS [DescFourniture], 
+    [VueInventaire].[CodeCategorie] AS [CodeCategorie], 
+    [VueInventaire].[NomCategorie] AS [NomCategorie], 
+    [VueInventaire].[QuantiteFournitureHotel] AS [QuantiteFournitureHotel], 
+    [VueInventaire].[PrixFournitureFournisseur] AS [PrixFournitureFournisseur], 
+    [VueInventaire].[QuantiteMin] AS [QuantiteMin], 
+    [VueInventaire].[QuantiteMax] AS [QuantiteMax], 
+    [VueInventaire].[CodeFournisseur] AS [CodeFournisseur], 
+    [VueInventaire].[NomFournisseur] AS [NomFournisseur]
+    FROM [Approvisionnement].[VueInventaire] AS [VueInventaire]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Chamb_ChambReservChamb_NoSeqReservChamb" Association="Self.FK_Chamb_ChambReservChamb_NoSeqReservChamb">
+            <End Role="tblChambre" EntitySet="tblChambre" />
+            <End Role="tblChambreReservationChambre" EntitySet="tblChambreReservationChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chamb_Four_CodFour" Association="Self.FK_Chamb_Four_CodFour">
+            <End Role="tblFourniture" EntitySet="tblFourniture" />
+            <End Role="tblFournitureChambre" EntitySet="tblFournitureChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chamb_Four_NoSeqChamb" Association="Self.FK_Chamb_Four_NoSeqChamb">
+            <End Role="tblChambre" EntitySet="tblChambre" />
+            <End Role="tblFournitureChambre" EntitySet="tblFournitureChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChambResChamb_NoChambNoRes" Association="Self.FK_ChambResChamb_NoChambNoRes">
+            <End Role="tblChambreReservationChambre" EntitySet="tblChambreReservationChambre" />
+            <End Role="tblForfaitReservationChambre" EntitySet="tblForfaitReservationChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cli_ReservChamb_NoCli" Association="Self.FK_Cli_ReservChamb_NoCli">
+            <End Role="tblClient" EntitySet="tblClient" />
+            <End Role="tblReservationChambre" EntitySet="tblReservationChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cli_ReservSalle_NoCli" Association="Self.FK_Cli_ReservSalle_NoCli">
+            <End Role="tblClient" EntitySet="tblClient" />
+            <End Role="tblReservationSalle" EntitySet="tblReservationSalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Com_FourCom_NoCom" Association="Self.FK_Com_FourCom_NoCom">
+            <End Role="tblCommande" EntitySet="tblCommande" />
+            <End Role="tblFournitureCommande" EntitySet="tblFournitureCommande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Emp_ChifHor_NoEmp" Association="Self.FK_Emp_ChifHor_NoEmp">
+            <End Role="tblEmploye" EntitySet="tblEmploye" />
+            <End Role="tblChiffreTravail" EntitySet="tblChiffreTravail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Emp_Com_NoEmp" Association="Self.FK_Emp_Com_NoEmp">
+            <End Role="tblEmploye" EntitySet="tblEmploye" />
+            <End Role="tblCommande" EntitySet="tblCommande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Emp_EntFour_NoEmp" Association="Self.FK_Emp_EntFour_NoEmp">
+            <End Role="tblEmploye" EntitySet="tblEmploye" />
+            <End Role="tblEntretienFournitureChambre" EntitySet="tblEntretienFournitureChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_For_CodFor" Association="Self.FK_For_CodFor">
+            <End Role="tblForfait" EntitySet="tblForfait" />
+            <End Role="tblForfaitReservationChambre" EntitySet="tblForfaitReservationChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Four_Categ_CodeCateg" Association="Self.FK_Four_Categ_CodeCateg">
+            <End Role="tblCategorieFourniture" EntitySet="tblCategorieFourniture" />
+            <End Role="tblFourniture" EntitySet="tblFourniture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Four_CodFour" Association="Self.FK_Four_CodFour">
+            <End Role="tblFourniture" EntitySet="tblFourniture" />
+            <End Role="tblFournitureReservationSalle" EntitySet="tblFournitureReservationSalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Four_Com_NoSeqFour" Association="Self.FK_Four_Com_NoSeqFour">
+            <End Role="tblFournisseur" EntitySet="tblFournisseur" />
+            <End Role="tblCommande" EntitySet="tblCommande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Four_CourCom_NoSeqFournisseur" Association="Self.FK_Four_CourCom_NoSeqFournisseur">
+            <End Role="tblFournisseur" EntitySet="tblFournisseur" />
+            <End Role="tblFournitureFournisseur" EntitySet="tblFournitureFournisseur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Four_EntFour_NoSeqFour" Association="Self.FK_Four_EntFour_NoSeqFour">
+            <End Role="tblFournitureChambre" EntitySet="tblFournitureChambre" />
+            <End Role="tblEntretienFournitureChambre" EntitySet="tblEntretienFournitureChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Four_FourCom_NoSeqFour" Association="Self.FK_Four_FourCom_NoSeqFour">
+            <End Role="tblFourniture" EntitySet="tblFourniture" />
+            <End Role="tblFournitureCommande" EntitySet="tblFournitureCommande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Four_FourFour_NoSeqFourniture" Association="Self.FK_Four_FourFour_NoSeqFourniture">
+            <End Role="tblFourniture" EntitySet="tblFourniture" />
+            <End Role="tblFournitureFournisseur" EntitySet="tblFournitureFournisseur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Four_FourHot_NoSeqFour" Association="Self.FK_Four_FourHot_NoSeqFour">
+            <End Role="tblFourniture" EntitySet="tblFourniture" />
+            <End Role="tblFournitureHotel" EntitySet="tblFournitureHotel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FourResSal_AYyylmao" Association="Self.FK_FourResSal_AYyylmao">
+            <End Role="tblFournitureReservationSalle" EntitySet="tblFournitureReservationSalle" />
+            <End Role="tblEntretienFournitureSalle" EntitySet="tblEntretienFournitureSalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FourResSal_NoEmp" Association="Self.FK_FourResSal_NoEmp">
+            <End Role="tblEmploye" EntitySet="tblEmploye" />
+            <End Role="tblEntretienFournitureSalle" EntitySet="tblEntretienFournitureSalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hot_Chamb_CodHot" Association="Self.FK_Hot_Chamb_CodHot">
+            <End Role="tblHotel" EntitySet="tblHotel" />
+            <End Role="tblChambre" EntitySet="tblChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hot_Emp_CodHot" Association="Self.FK_Hot_Emp_CodHot">
+            <End Role="tblHotel" EntitySet="tblHotel" />
+            <End Role="tblEmploye" EntitySet="tblEmploye" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hot_FourHot_CodHot" Association="Self.FK_Hot_FourHot_CodHot">
+            <End Role="tblHotel" EntitySet="tblHotel" />
+            <End Role="tblFournitureHotel" EntitySet="tblFournitureHotel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hot_PrTypChamb_CodHot" Association="Self.FK_Hot_PrTypChamb_CodHot">
+            <End Role="tblHotel" EntitySet="tblHotel" />
+            <End Role="tblPrixTypeChambre" EntitySet="tblPrixTypeChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hot_Salle_CodHot" Association="Self.FK_Hot_Salle_CodHot">
+            <End Role="tblHotel" EntitySet="tblHotel" />
+            <End Role="tblSalle" EntitySet="tblSalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hot_TypChamb_CodTypeChamb" Association="Self.FK_Hot_TypChamb_CodTypeChamb">
+            <End Role="tblTypeChambre" EntitySet="tblTypeChambre" />
+            <End Role="tblChambre" EntitySet="tblChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pays_Prov_CodPays" Association="Self.FK_Pays_Prov_CodPays">
+            <End Role="tblPays" EntitySet="tblPays" />
+            <End Role="tblProvince" EntitySet="tblProvince" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prov_Vill_CodProv" Association="Self.FK_Prov_Vill_CodProv">
+            <End Role="tblProvince" EntitySet="tblProvince" />
+            <End Role="tblVille" EntitySet="tblVille" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rab_ReservChamb_NoRab" Association="Self.FK_Rab_ReservChamb_NoRab">
+            <End Role="tblRabais" EntitySet="tblRabais" />
+            <End Role="tblReservationChambre" EntitySet="tblReservationChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservChamb_ChambReservChamb_NoSeqReservChamb" Association="Self.FK_ReservChamb_ChambReservChamb_NoSeqReservChamb">
+            <End Role="tblReservationChambre" EntitySet="tblReservationChambre" />
+            <End Role="tblChambreReservationChambre" EntitySet="tblChambreReservationChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservChamb_Fact_NoSeqChamb" Association="Self.FK_ReservChamb_Fact_NoSeqChamb">
+            <End Role="tblReservationChambre" EntitySet="tblReservationChambre" />
+            <End Role="tblFacture" EntitySet="tblFacture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResSall_NoReservNoSall" Association="Self.FK_ResSall_NoReservNoSall">
+            <End Role="tblReservationSalle" EntitySet="tblReservationSalle" />
+            <End Role="tblFournitureReservationSalle" EntitySet="tblFournitureReservationSalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Salle_ReservSalle_CodSalle" Association="Self.FK_Salle_ReservSalle_CodSalle">
+            <End Role="tblSalle" EntitySet="tblSalle" />
+            <End Role="tblReservationSalle" EntitySet="tblReservationSalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TypChamb_CodTypChamb" Association="Self.FK_TypChamb_CodTypChamb">
+            <End Role="tblTypeChambre" EntitySet="tblTypeChambre" />
+            <End Role="tblForfait" EntitySet="tblForfait" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TypChamb_CodTypChamb2" Association="Self.FK_TypChamb_CodTypChamb2">
+            <End Role="tblTypeChambre" EntitySet="tblTypeChambre" />
+            <End Role="tblPrixTypeChambre" EntitySet="tblPrixTypeChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vil_CodVil" Association="Self.FK_Vil_CodVil">
+            <End Role="tblVille" EntitySet="tblVille" />
+            <End Role="tblClient" EntitySet="tblClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vill_Hot_CodVill" Association="Self.FK_Vill_Hot_CodVill">
+            <End Role="tblVille" EntitySet="tblVille" />
+            <End Role="tblHotel" EntitySet="tblHotel" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="P2014_BD_GestionHotelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblCategorieFourniture">
+          <Key>
+            <PropertyRef Name="CodeCategorie" />
+          </Key>
+          <Property Name="CodeCategorie" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NomCategorie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblFourniture" Relationship="Self.FK_Four_Categ_CodeCateg" FromRole="tblCategorieFourniture" ToRole="tblFourniture" />
+        </EntityType>
+        <EntityType Name="tblCommande">
+          <Key>
+            <PropertyRef Name="NoCommande" />
+          </Key>
+          <Property Name="NoCommande" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateCommande" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StatutCommande" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrixTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DateRecu" Type="DateTime" Precision="0" />
+          <Property Name="CodeFournisseur" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NoEmploye" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblFournitureCommande" Relationship="Self.FK_Com_FourCom_NoCom" FromRole="tblCommande" ToRole="tblFournitureCommande" />
+          <NavigationProperty Name="tblEmploye" Relationship="Self.FK_Emp_Com_NoEmp" FromRole="tblCommande" ToRole="tblEmploye" />
+          <NavigationProperty Name="tblFournisseur" Relationship="Self.FK_Four_Com_NoSeqFour" FromRole="tblCommande" ToRole="tblFournisseur" />
+        </EntityType>
+        <EntityType Name="tblFournisseur">
+          <Key>
+            <PropertyRef Name="CodeFournisseur" />
+          </Key>
+          <Property Name="CodeFournisseur" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NomFournisseur" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AdresseFournisseur" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NomRepresentant" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrenomRepresentant" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblCommande" Relationship="Self.FK_Four_Com_NoSeqFour" FromRole="tblFournisseur" ToRole="tblCommande" />
+          <NavigationProperty Name="tblFournitureFournisseur" Relationship="Self.FK_Four_CourCom_NoSeqFournisseur" FromRole="tblFournisseur" ToRole="tblFournitureFournisseur" />
+        </EntityType>
+        <EntityType Name="tblFourniture">
+          <Key>
+            <PropertyRef Name="CodeFourniture" />
+          </Key>
+          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescFourniture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodeCategorie" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblCategorieFourniture" Relationship="Self.FK_Four_Categ_CodeCateg" FromRole="tblFourniture" ToRole="tblCategorieFourniture" />
+          <NavigationProperty Name="tblFournitureChambre" Relationship="Self.FK_Chamb_Four_CodFour" FromRole="tblFourniture" ToRole="tblFournitureChambre" />
+          <NavigationProperty Name="tblFournitureReservationSalle" Relationship="Self.FK_Four_CodFour" FromRole="tblFourniture" ToRole="tblFournitureReservationSalle" />
+          <NavigationProperty Name="tblFournitureCommande" Relationship="Self.FK_Four_FourCom_NoSeqFour" FromRole="tblFourniture" ToRole="tblFournitureCommande" />
+          <NavigationProperty Name="tblFournitureFournisseur" Relationship="Self.FK_Four_FourFour_NoSeqFourniture" FromRole="tblFourniture" ToRole="tblFournitureFournisseur" />
+          <NavigationProperty Name="tblFournitureHotel" Relationship="Self.FK_Four_FourHot_NoSeqFour" FromRole="tblFourniture" ToRole="tblFournitureHotel" />
+        </EntityType>
+        <EntityType Name="tblFournitureChambre">
+          <Key>
+            <PropertyRef Name="NoSeqChambre" />
+            <PropertyRef Name="CodeFourniture" />
+          </Key>
+          <Property Name="NoSeqChambre" Type="Int32" Nullable="false" />
+          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QuantiteChambre" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="tblFourniture" Relationship="Self.FK_Chamb_Four_CodFour" FromRole="tblFournitureChambre" ToRole="tblFourniture" />
+          <NavigationProperty Name="tblChambre" Relationship="Self.FK_Chamb_Four_NoSeqChamb" FromRole="tblFournitureChambre" ToRole="tblChambre" />
+          <NavigationProperty Name="tblEntretienFournitureChambre" Relationship="Self.FK_Four_EntFour_NoSeqFour" FromRole="tblFournitureChambre" ToRole="tblEntretienFournitureChambre" />
+        </EntityType>
+        <EntityType Name="tblFournitureCommande">
+          <Key>
+            <PropertyRef Name="NoCommande" />
+            <PropertyRef Name="CodeFourniture" />
+          </Key>
+          <Property Name="NoCommande" Type="Int32" Nullable="false" />
+          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QuantiteCommande" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblCommande" Relationship="Self.FK_Com_FourCom_NoCom" FromRole="tblFournitureCommande" ToRole="tblCommande" />
+          <NavigationProperty Name="tblFourniture" Relationship="Self.FK_Four_FourCom_NoSeqFour" FromRole="tblFournitureCommande" ToRole="tblFourniture" />
+        </EntityType>
+        <EntityType Name="tblFournitureFournisseur">
+          <Key>
+            <PropertyRef Name="CodeFourniture" />
+            <PropertyRef Name="CodeFournisseur" />
+          </Key>
+          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodeFournisseur" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrixFournitureFournisseur" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="tblFournisseur" Relationship="Self.FK_Four_CourCom_NoSeqFournisseur" FromRole="tblFournitureFournisseur" ToRole="tblFournisseur" />
+          <NavigationProperty Name="tblFourniture" Relationship="Self.FK_Four_FourFour_NoSeqFourniture" FromRole="tblFournitureFournisseur" ToRole="tblFourniture" />
+        </EntityType>
+        <EntityType Name="tblFournitureHotel">
+          <Key>
+            <PropertyRef Name="CodeHotel" />
+            <PropertyRef Name="CodeFourniture" />
+          </Key>
+          <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QuantiteMin" Type="Int16" Nullable="false" />
+          <Property Name="QuantiteMax" Type="Int32" Nullable="false" />
+          <Property Name="QuantiteFournitureHotel" Type="Int32" />
+          <NavigationProperty Name="tblFourniture" Relationship="Self.FK_Four_FourHot_NoSeqFour" FromRole="tblFournitureHotel" ToRole="tblFourniture" />
+          <NavigationProperty Name="tblHotel" Relationship="Self.FK_Hot_FourHot_CodHot" FromRole="tblFournitureHotel" ToRole="tblHotel" />
+        </EntityType>
+        <EntityType Name="tblChiffreTravail">
+          <Key>
+            <PropertyRef Name="NoChiffreTravail" />
+          </Key>
+          <Property Name="NoChiffreTravail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateChiffre" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HeureDebut" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="HeureFin" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NoEmploye" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblEmploye" Relationship="Self.FK_Emp_ChifHor_NoEmp" FromRole="tblChiffreTravail" ToRole="tblEmploye" />
+        </EntityType>
+        <EntityType Name="tblEmploye">
+          <Key>
+            <PropertyRef Name="NoEmploye" />
+          </Key>
+          <Property Name="NoEmploye" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomEmploye" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrenomEmploye" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SexeEmploye" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="AdresseEmploye" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TypeEmploi" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NoTelephoneEmploye" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NasEmploye" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DateNaissance" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdentifiantEmploye" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="MdpEmploye" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="NombreHeuresSemaines" Type="Int16" />
+          <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="tblCommande" Relationship="Self.FK_Emp_Com_NoEmp" FromRole="tblEmploye" ToRole="tblCommande" />
+          <NavigationProperty Name="tblChiffreTravail" Relationship="Self.FK_Emp_ChifHor_NoEmp" FromRole="tblEmploye" ToRole="tblChiffreTravail" />
+          <NavigationProperty Name="tblEntretienFournitureChambre" Relationship="Self.FK_Emp_EntFour_NoEmp" FromRole="tblEmploye" ToRole="tblEntretienFournitureChambre" />
+          <NavigationProperty Name="tblEntretienFournitureSalle" Relationship="Self.FK_FourResSal_NoEmp" FromRole="tblEmploye" ToRole="tblEntretienFournitureSalle" />
+          <NavigationProperty Name="tblHotel" Relationship="Self.FK_Hot_Emp_CodHot" FromRole="tblEmploye" ToRole="tblHotel" />
+        </EntityType>
+        <EntityType Name="tblEntretienFournitureChambre">
+          <Key>
+            <PropertyRef Name="NoSeqEntretienChambre" />
+          </Key>
+          <Property Name="NoSeqEntretienChambre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EtatFourniture" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CommentaireFourniture" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="DateDemande" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateEffectue" Type="DateTime" Precision="0" />
+          <Property Name="StatutEntretien" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NoSeqChambre" Type="Int32" Nullable="false" />
+          <Property Name="NoEmploye" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblFournitureChambre" Relationship="Self.FK_Four_EntFour_NoSeqFour" FromRole="tblEntretienFournitureChambre" ToRole="tblFournitureChambre" />
+          <NavigationProperty Name="tblEmploye" Relationship="Self.FK_Emp_EntFour_NoEmp" FromRole="tblEntretienFournitureChambre" ToRole="tblEmploye" />
+        </EntityType>
+        <EntityType Name="tblEntretienFournitureSalle">
+          <Key>
+            <PropertyRef Name="NoSeqEntretienSalle" />
+          </Key>
+          <Property Name="NoSeqEntretienSalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EtatFourniture" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CommentaireFourniture" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="DateDemande" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateEffectue" Type="DateTime" Precision="0" />
+          <Property Name="StatutEntretien" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NoSeqReservSalle" Type="Int32" Nullable="false" />
+          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodeSalle" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NoEmploye" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblEmploye" Relationship="Self.FK_FourResSal_NoEmp" FromRole="tblEntretienFournitureSalle" ToRole="tblEmploye" />
+          <NavigationProperty Name="tblFournitureReservationSalle" Relationship="Self.FK_FourResSal_AYyylmao" FromRole="tblEntretienFournitureSalle" ToRole="tblFournitureReservationSalle" />
+        </EntityType>
+        <EntityType Name="tblChambre">
+          <Key>
+            <PropertyRef Name="NoSeqChambre" />
+          </Key>
+          <Property Name="NoSeqChambre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeChambre" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="EtageChambre" Type="Int16" Nullable="false" />
+          <Property Name="StatutChambre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="DescChambre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TypeLit" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NbLit" Type="Byte" Nullable="false" />
+          <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CodeTypeChambre" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblFournitureChambre" Relationship="Self.FK_Chamb_Four_NoSeqChamb" FromRole="tblChambre" ToRole="tblFournitureChambre" />
+          <NavigationProperty Name="tblChambreReservationChambre" Relationship="Self.FK_Chamb_ChambReservChamb_NoSeqReservChamb" FromRole="tblChambre" ToRole="tblChambreReservationChambre" />
+          <NavigationProperty Name="tblHotel" Relationship="Self.FK_Hot_Chamb_CodHot" FromRole="tblChambre" ToRole="tblHotel" />
+          <NavigationProperty Name="tblTypeChambre" Relationship="Self.FK_Hot_TypChamb_CodTypeChamb" FromRole="tblChambre" ToRole="tblTypeChambre" />
+        </EntityType>
+        <EntityType Name="tblChambreReservationChambre">
+          <Key>
+            <PropertyRef Name="NoSeqChambre" />
+            <PropertyRef Name="NoSeqReservChambre" />
+          </Key>
+          <Property Name="NoSeqChambre" Type="Int32" Nullable="false" />
+          <Property Name="NoSeqReservChambre" Type="Int32" Nullable="false" />
+          <Property Name="NbPersonne" Type="Int16" Nullable="false" />
+          <Property Name="NomLocataire" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrenomLocataire" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateDebutReservation" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateFinReservation" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StatutChambreReservChambre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblChambre" Relationship="Self.FK_Chamb_ChambReservChamb_NoSeqReservChamb" FromRole="tblChambreReservationChambre" ToRole="tblChambre" />
+          <NavigationProperty Name="tblReservationChambre" Relationship="Self.FK_ReservChamb_ChambReservChamb_NoSeqReservChamb" FromRole="tblChambreReservationChambre" ToRole="tblReservationChambre" />
+          <NavigationProperty Name="tblForfait" Relationship="Self.tblForfaitReservationChambre" FromRole="tblChambreReservationChambre" ToRole="tblForfait" />
+        </EntityType>
+        <EntityType Name="tblClient">
+          <Key>
+            <PropertyRef Name="NoSeqClient" />
+          </Key>
+          <Property Name="NoSeqClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomClient" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrenomClient" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NoTelephone" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NoCellulaire" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="AdresseClient" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AdresseSecondaireClient" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EmailClient" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MdpClient" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CodePostal" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="NomEntreprise" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodeVille" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="tblReservationChambre" Relationship="Self.FK_Cli_ReservChamb_NoCli" FromRole="tblClient" ToRole="tblReservationChambre" />
+          <NavigationProperty Name="tblReservationSalle" Relationship="Self.FK_Cli_ReservSalle_NoCli" FromRole="tblClient" ToRole="tblReservationSalle" />
+          <NavigationProperty Name="tblVille" Relationship="Self.FK_Vil_CodVil" FromRole="tblClient" ToRole="tblVille" />
+        </EntityType>
+        <EntityType Name="tblFacture">
+          <Key>
+            <PropertyRef Name="NoSeqFacture" />
+          </Key>
+          <Property Name="NoSeqFacture" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MontantFacture" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TypeFacture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NoSeqReservChambre" Type="Int32" Nullable="false" />
+          <Property Name="NoEmploye" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblReservationChambre" Relationship="Self.FK_ReservChamb_Fact_NoSeqChamb" FromRole="tblFacture" ToRole="tblReservationChambre" />
+        </EntityType>
+        <EntityType Name="tblForfait">
+          <Key>
+            <PropertyRef Name="CodeForfait" />
+          </Key>
+          <Property Name="CodeForfait" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NomForfait" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrixForfait" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="DescForfait" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NbNuit" Type="Byte" Nullable="false" />
+          <Property Name="DateDebut" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateFin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CodeTypeChambre" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblTypeChambre" Relationship="Self.FK_TypChamb_CodTypChamb" FromRole="tblForfait" ToRole="tblTypeChambre" />
+          <NavigationProperty Name="tblChambreReservationChambre" Relationship="Self.tblForfaitReservationChambre" FromRole="tblForfait" ToRole="tblChambreReservationChambre" />
+        </EntityType>
+        <EntityType Name="tblFournitureReservationSalle">
+          <Key>
+            <PropertyRef Name="NoSeqReservSalle" />
+            <PropertyRef Name="CodeFourniture" />
+            <PropertyRef Name="CodeSalle" />
+          </Key>
+          <Property Name="NoSeqReservSalle" Type="Int32" Nullable="false" />
+          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodeSalle" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="QuantiteFourniture" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="tblFourniture" Relationship="Self.FK_Four_CodFour" FromRole="tblFournitureReservationSalle" ToRole="tblFourniture" />
+          <NavigationProperty Name="tblEntretienFournitureSalle" Relationship="Self.FK_FourResSal_AYyylmao" FromRole="tblFournitureReservationSalle" ToRole="tblEntretienFournitureSalle" />
+          <NavigationProperty Name="tblReservationSalle" Relationship="Self.FK_ResSall_NoReservNoSall" FromRole="tblFournitureReservationSalle" ToRole="tblReservationSalle" />
+        </EntityType>
+        <EntityType Name="tblHotel">
+          <Key>
+            <PropertyRef Name="CodeHotel" />
+          </Key>
+          <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NomHotel" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NbChambre" Type="Int16" Nullable="false" />
+          <Property Name="AdresseHotel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NbEtoiles" Type="Byte" Nullable="false" />
+          <Property Name="TypeService" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodePostal" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NoTelephoneHotel" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NoTelecopieurHotel" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NoTelReservation" Type="String" MaxLength="14" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="HeureLimiteDepart" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="HeureLimiteArrive" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CodeVille" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblFournitureHotel" Relationship="Self.FK_Hot_FourHot_CodHot" FromRole="tblHotel" ToRole="tblFournitureHotel" />
+          <NavigationProperty Name="tblEmploye" Relationship="Self.FK_Hot_Emp_CodHot" FromRole="tblHotel" ToRole="tblEmploye" />
+          <NavigationProperty Name="tblChambre" Relationship="Self.FK_Hot_Chamb_CodHot" FromRole="tblHotel" ToRole="tblChambre" />
+          <NavigationProperty Name="tblPrixTypeChambre" Relationship="Self.FK_Hot_PrTypChamb_CodHot" FromRole="tblHotel" ToRole="tblPrixTypeChambre" />
+          <NavigationProperty Name="tblSalle" Relationship="Self.FK_Hot_Salle_CodHot" FromRole="tblHotel" ToRole="tblSalle" />
+          <NavigationProperty Name="tblVille" Relationship="Self.FK_Vill_Hot_CodVill" FromRole="tblHotel" ToRole="tblVille" />
+        </EntityType>
+        <EntityType Name="tblPays">
+          <Key>
+            <PropertyRef Name="CodePays" />
+          </Key>
+          <Property Name="CodePays" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NomPays" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblProvince" Relationship="Self.FK_Pays_Prov_CodPays" FromRole="tblPays" ToRole="tblProvince" />
+        </EntityType>
+        <EntityType Name="tblPrixTypeChambre">
+          <Key>
+            <PropertyRef Name="NoSeqPrixTypeChambre" />
+          </Key>
+          <Property Name="NoSeqPrixTypeChambre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescPrixTypeChambre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrixTypeChambre" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="DateDebutPrix" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateFinPrix" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CodeTypeChambre" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblHotel" Relationship="Self.FK_Hot_PrTypChamb_CodHot" FromRole="tblPrixTypeChambre" ToRole="tblHotel" />
+          <NavigationProperty Name="tblTypeChambre" Relationship="Self.FK_TypChamb_CodTypChamb2" FromRole="tblPrixTypeChambre" ToRole="tblTypeChambre" />
+        </EntityType>
+        <EntityType Name="tblProvince">
+          <Key>
+            <PropertyRef Name="CodeProvince" />
+          </Key>
+          <Property Name="CodeProvince" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NomProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodePays" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblPays" Relationship="Self.FK_Pays_Prov_CodPays" FromRole="tblProvince" ToRole="tblPays" />
+          <NavigationProperty Name="tblVille" Relationship="Self.FK_Prov_Vill_CodProv" FromRole="tblProvince" ToRole="tblVille" />
+        </EntityType>
+        <EntityType Name="tblRabais">
+          <Key>
+            <PropertyRef Name="NoSeqRabais" />
+          </Key>
+          <Property Name="NoSeqRabais" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescRabais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateDebutRabais" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateFinRabais" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PourcentageRabais" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="tblReservationChambre" Relationship="Self.FK_Rab_ReservChamb_NoRab" FromRole="tblRabais" ToRole="tblReservationChambre" />
+        </EntityType>
+        <EntityType Name="tblReservationChambre">
+          <Key>
+            <PropertyRef Name="NoSeqReservChambre" />
+          </Key>
+          <Property Name="NoSeqReservChambre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatutReservChambre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrixReservChambre" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ModePaiement" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StatutPaiement" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NoCarteCredit" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="DateExpirationCarteCredit" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="TypeCarteCredit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NomCarteCredit" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="NoSeqClient" Type="Int32" Nullable="false" />
+          <Property Name="NoSeqRabais" Type="Int32" />
+          <NavigationProperty Name="tblChambreReservationChambre" Relationship="Self.FK_ReservChamb_ChambReservChamb_NoSeqReservChamb" FromRole="tblReservationChambre" ToRole="tblChambreReservationChambre" />
+          <NavigationProperty Name="tblClient" Relationship="Self.FK_Cli_ReservChamb_NoCli" FromRole="tblReservationChambre" ToRole="tblClient" />
+          <NavigationProperty Name="tblFacture" Relationship="Self.FK_ReservChamb_Fact_NoSeqChamb" FromRole="tblReservationChambre" ToRole="tblFacture" />
+          <NavigationProperty Name="tblRabais" Relationship="Self.FK_Rab_ReservChamb_NoRab" FromRole="tblReservationChambre" ToRole="tblRabais" />
+        </EntityType>
+        <EntityType Name="tblReservationSalle">
+          <Key>
+            <PropertyRef Name="NoSeqReservSalle" />
+            <PropertyRef Name="CodeSalle" />
+          </Key>
+          <Property Name="NoSeqReservSalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateReservSalle" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PrixReservSalle" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ModePaiement" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StatutPaiement" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NbPersonne" Type="Int16" />
+          <Property Name="NoCarteCredit" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="CodeSalle" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NoSeqClient" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblClient" Relationship="Self.FK_Cli_ReservSalle_NoCli" FromRole="tblReservationSalle" ToRole="tblClient" />
+          <NavigationProperty Name="tblFournitureReservationSalle" Relationship="Self.FK_ResSall_NoReservNoSall" FromRole="tblReservationSalle" ToRole="tblFournitureReservationSalle" />
+          <NavigationProperty Name="tblSalle" Relationship="Self.FK_Salle_ReservSalle_CodSalle" FromRole="tblReservationSalle" ToRole="tblSalle" />
+        </EntityType>
+        <EntityType Name="tblSalle">
+          <Key>
+            <PropertyRef Name="CodeSalle" />
+          </Key>
+          <Property Name="CodeSalle" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NomSalle" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TypeSalle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StatutSalle" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="DetailSalle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NbPlacesAssis" Type="Int16" Nullable="false" />
+          <Property Name="NbPlacesDebout" Type="Int16" Nullable="false" />
+          <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblHotel" Relationship="Self.FK_Hot_Salle_CodHot" FromRole="tblSalle" ToRole="tblHotel" />
+          <NavigationProperty Name="tblReservationSalle" Relationship="Self.FK_Salle_ReservSalle_CodSalle" FromRole="tblSalle" ToRole="tblReservationSalle" />
+        </EntityType>
+        <EntityType Name="tblTypeChambre">
+          <Key>
+            <PropertyRef Name="CodeTypeChambre" />
+          </Key>
+          <Property Name="CodeTypeChambre" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NomTypeChambre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescTypeChambre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblChambre" Relationship="Self.FK_Hot_TypChamb_CodTypeChamb" FromRole="tblTypeChambre" ToRole="tblChambre" />
+          <NavigationProperty Name="tblForfait" Relationship="Self.FK_TypChamb_CodTypChamb" FromRole="tblTypeChambre" ToRole="tblForfait" />
+          <NavigationProperty Name="tblPrixTypeChambre" Relationship="Self.FK_TypChamb_CodTypChamb2" FromRole="tblTypeChambre" ToRole="tblPrixTypeChambre" />
+        </EntityType>
+        <EntityType Name="tblVille">
+          <Key>
+            <PropertyRef Name="CodeVille" />
+          </Key>
+          <Property Name="CodeVille" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NomVille" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodeProvince" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblClient" Relationship="Self.FK_Vil_CodVil" FromRole="tblVille" ToRole="tblClient" />
+          <NavigationProperty Name="tblHotel" Relationship="Self.FK_Vill_Hot_CodVill" FromRole="tblVille" ToRole="tblHotel" />
+          <NavigationProperty Name="tblProvince" Relationship="Self.FK_Prov_Vill_CodProv" FromRole="tblVille" ToRole="tblProvince" />
+        </EntityType>
+        <EntityType Name="VueInventaire">
+          <Key>
+            <PropertyRef Name="CodeHotel" />
+            <PropertyRef Name="CodeFourniture" />
+            <PropertyRef Name="DescFourniture" />
+            <PropertyRef Name="CodeCategorie" />
+            <PropertyRef Name="NomCategorie" />
+            <PropertyRef Name="PrixFournitureFournisseur" />
+            <PropertyRef Name="QuantiteMin" />
+            <PropertyRef Name="QuantiteMax" />
+            <PropertyRef Name="CodeFournisseur" />
+            <PropertyRef Name="NomFournisseur" />
+          </Key>
+          <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescFourniture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodeCategorie" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NomCategorie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QuantiteFournitureHotel" Type="Int32" />
+          <Property Name="PrixFournitureFournisseur" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="QuantiteMin" Type="Int16" Nullable="false" />
+          <Property Name="QuantiteMax" Type="Int32" Nullable="false" />
+          <Property Name="CodeFournisseur" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NomFournisseur" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Four_Categ_CodeCateg">
+          <End Role="tblCategorieFourniture" Type="Self.tblCategorieFourniture" Multiplicity="1" />
+          <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCategorieFourniture">
+              <PropertyRef Name="CodeCategorie" />
+            </Principal>
+            <Dependent Role="tblFourniture">
+              <PropertyRef Name="CodeCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Com_FourCom_NoCom">
+          <End Role="tblCommande" Type="Self.tblCommande" Multiplicity="1" />
+          <End Role="tblFournitureCommande" Type="Self.tblFournitureCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCommande">
+              <PropertyRef Name="NoCommande" />
+            </Principal>
+            <Dependent Role="tblFournitureCommande">
+              <PropertyRef Name="NoCommande" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Emp_Com_NoEmp">
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="1" />
+          <End Role="tblCommande" Type="Self.tblCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmploye">
+              <PropertyRef Name="NoEmploye" />
+            </Principal>
+            <Dependent Role="tblCommande">
+              <PropertyRef Name="NoEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Four_Com_NoSeqFour">
+          <End Role="tblFournisseur" Type="Self.tblFournisseur" Multiplicity="1" />
+          <End Role="tblCommande" Type="Self.tblCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFournisseur">
+              <PropertyRef Name="CodeFournisseur" />
+            </Principal>
+            <Dependent Role="tblCommande">
+              <PropertyRef Name="CodeFournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Four_CourCom_NoSeqFournisseur">
+          <End Role="tblFournisseur" Type="Self.tblFournisseur" Multiplicity="1" />
+          <End Role="tblFournitureFournisseur" Type="Self.tblFournitureFournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFournisseur">
+              <PropertyRef Name="CodeFournisseur" />
+            </Principal>
+            <Dependent Role="tblFournitureFournisseur">
+              <PropertyRef Name="CodeFournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chamb_Four_CodFour">
+          <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="1" />
+          <End Role="tblFournitureChambre" Type="Self.tblFournitureChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFourniture">
+              <PropertyRef Name="CodeFourniture" />
+            </Principal>
+            <Dependent Role="tblFournitureChambre">
+              <PropertyRef Name="CodeFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Four_CodFour">
+          <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="1" />
+          <End Role="tblFournitureReservationSalle" Type="Self.tblFournitureReservationSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFourniture">
+              <PropertyRef Name="CodeFourniture" />
+            </Principal>
+            <Dependent Role="tblFournitureReservationSalle">
+              <PropertyRef Name="CodeFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Four_FourCom_NoSeqFour">
+          <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="1" />
+          <End Role="tblFournitureCommande" Type="Self.tblFournitureCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFourniture">
+              <PropertyRef Name="CodeFourniture" />
+            </Principal>
+            <Dependent Role="tblFournitureCommande">
+              <PropertyRef Name="CodeFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Four_FourFour_NoSeqFourniture">
+          <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="1" />
+          <End Role="tblFournitureFournisseur" Type="Self.tblFournitureFournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFourniture">
+              <PropertyRef Name="CodeFourniture" />
+            </Principal>
+            <Dependent Role="tblFournitureFournisseur">
+              <PropertyRef Name="CodeFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Four_FourHot_NoSeqFour">
+          <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="1" />
+          <End Role="tblFournitureHotel" Type="Self.tblFournitureHotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFourniture">
+              <PropertyRef Name="CodeFourniture" />
+            </Principal>
+            <Dependent Role="tblFournitureHotel">
+              <PropertyRef Name="CodeFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chamb_Four_NoSeqChamb">
+          <End Role="tblChambre" Type="Self.tblChambre" Multiplicity="1" />
+          <End Role="tblFournitureChambre" Type="Self.tblFournitureChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblChambre">
+              <PropertyRef Name="NoSeqChambre" />
+            </Principal>
+            <Dependent Role="tblFournitureChambre">
+              <PropertyRef Name="NoSeqChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Four_EntFour_NoSeqFour">
+          <End Role="tblFournitureChambre" Type="Self.tblFournitureChambre" Multiplicity="1" />
+          <End Role="tblEntretienFournitureChambre" Type="Self.tblEntretienFournitureChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFournitureChambre">
+              <PropertyRef Name="NoSeqChambre" />
+              <PropertyRef Name="CodeFourniture" />
+            </Principal>
+            <Dependent Role="tblEntretienFournitureChambre">
+              <PropertyRef Name="NoSeqChambre" />
+              <PropertyRef Name="CodeFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hot_FourHot_CodHot">
+          <End Role="tblHotel" Type="Self.tblHotel" Multiplicity="1" />
+          <End Role="tblFournitureHotel" Type="Self.tblFournitureHotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHotel">
+              <PropertyRef Name="CodeHotel" />
+            </Principal>
+            <Dependent Role="tblFournitureHotel">
+              <PropertyRef Name="CodeHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Emp_ChifHor_NoEmp">
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="1" />
+          <End Role="tblChiffreTravail" Type="Self.tblChiffreTravail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmploye">
+              <PropertyRef Name="NoEmploye" />
+            </Principal>
+            <Dependent Role="tblChiffreTravail">
+              <PropertyRef Name="NoEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Emp_EntFour_NoEmp">
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="1" />
+          <End Role="tblEntretienFournitureChambre" Type="Self.tblEntretienFournitureChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmploye">
+              <PropertyRef Name="NoEmploye" />
+            </Principal>
+            <Dependent Role="tblEntretienFournitureChambre">
+              <PropertyRef Name="NoEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FourResSal_NoEmp">
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="1" />
+          <End Role="tblEntretienFournitureSalle" Type="Self.tblEntretienFournitureSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmploye">
+              <PropertyRef Name="NoEmploye" />
+            </Principal>
+            <Dependent Role="tblEntretienFournitureSalle">
+              <PropertyRef Name="NoEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hot_Emp_CodHot">
+          <End Role="tblHotel" Type="Self.tblHotel" Multiplicity="0..1" />
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHotel">
+              <PropertyRef Name="CodeHotel" />
+            </Principal>
+            <Dependent Role="tblEmploye">
+              <PropertyRef Name="CodeHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FourResSal_AYyylmao">
+          <End Role="tblFournitureReservationSalle" Type="Self.tblFournitureReservationSalle" Multiplicity="1" />
+          <End Role="tblEntretienFournitureSalle" Type="Self.tblEntretienFournitureSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFournitureReservationSalle">
+              <PropertyRef Name="NoSeqReservSalle" />
+              <PropertyRef Name="CodeFourniture" />
+              <PropertyRef Name="CodeSalle" />
+            </Principal>
+            <Dependent Role="tblEntretienFournitureSalle">
+              <PropertyRef Name="NoSeqReservSalle" />
+              <PropertyRef Name="CodeFourniture" />
+              <PropertyRef Name="CodeSalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chamb_ChambReservChamb_NoSeqReservChamb">
+          <End Role="tblChambre" Type="Self.tblChambre" Multiplicity="1" />
+          <End Role="tblChambreReservationChambre" Type="Self.tblChambreReservationChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblChambre">
+              <PropertyRef Name="NoSeqChambre" />
+            </Principal>
+            <Dependent Role="tblChambreReservationChambre">
+              <PropertyRef Name="NoSeqChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hot_Chamb_CodHot">
+          <End Role="tblHotel" Type="Self.tblHotel" Multiplicity="1" />
+          <End Role="tblChambre" Type="Self.tblChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHotel">
+              <PropertyRef Name="CodeHotel" />
+            </Principal>
+            <Dependent Role="tblChambre">
+              <PropertyRef Name="CodeHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hot_TypChamb_CodTypeChamb">
+          <End Role="tblTypeChambre" Type="Self.tblTypeChambre" Multiplicity="1" />
+          <End Role="tblChambre" Type="Self.tblChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTypeChambre">
+              <PropertyRef Name="CodeTypeChambre" />
+            </Principal>
+            <Dependent Role="tblChambre">
+              <PropertyRef Name="CodeTypeChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservChamb_ChambReservChamb_NoSeqReservChamb">
+          <End Role="tblReservationChambre" Type="Self.tblReservationChambre" Multiplicity="1" />
+          <End Role="tblChambreReservationChambre" Type="Self.tblChambreReservationChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblReservationChambre">
+              <PropertyRef Name="NoSeqReservChambre" />
+            </Principal>
+            <Dependent Role="tblChambreReservationChambre">
+              <PropertyRef Name="NoSeqReservChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cli_ReservChamb_NoCli">
+          <End Role="tblClient" Type="Self.tblClient" Multiplicity="1" />
+          <End Role="tblReservationChambre" Type="Self.tblReservationChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClient">
+              <PropertyRef Name="NoSeqClient" />
+            </Principal>
+            <Dependent Role="tblReservationChambre">
+              <PropertyRef Name="NoSeqClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cli_ReservSalle_NoCli">
+          <End Role="tblClient" Type="Self.tblClient" Multiplicity="1" />
+          <End Role="tblReservationSalle" Type="Self.tblReservationSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClient">
+              <PropertyRef Name="NoSeqClient" />
+            </Principal>
+            <Dependent Role="tblReservationSalle">
+              <PropertyRef Name="NoSeqClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vil_CodVil">
+          <End Role="tblVille" Type="Self.tblVille" Multiplicity="0..1" />
+          <End Role="tblClient" Type="Self.tblClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVille">
+              <PropertyRef Name="CodeVille" />
+            </Principal>
+            <Dependent Role="tblClient">
+              <PropertyRef Name="CodeVille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservChamb_Fact_NoSeqChamb">
+          <End Role="tblReservationChambre" Type="Self.tblReservationChambre" Multiplicity="1" />
+          <End Role="tblFacture" Type="Self.tblFacture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblReservationChambre">
+              <PropertyRef Name="NoSeqReservChambre" />
+            </Principal>
+            <Dependent Role="tblFacture">
+              <PropertyRef Name="NoSeqReservChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TypChamb_CodTypChamb">
+          <End Role="tblTypeChambre" Type="Self.tblTypeChambre" Multiplicity="1" />
+          <End Role="tblForfait" Type="Self.tblForfait" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTypeChambre">
+              <PropertyRef Name="CodeTypeChambre" />
+            </Principal>
+            <Dependent Role="tblForfait">
+              <PropertyRef Name="CodeTypeChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResSall_NoReservNoSall">
+          <End Role="tblReservationSalle" Type="Self.tblReservationSalle" Multiplicity="1" />
+          <End Role="tblFournitureReservationSalle" Type="Self.tblFournitureReservationSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblReservationSalle">
+              <PropertyRef Name="NoSeqReservSalle" />
+              <PropertyRef Name="CodeSalle" />
+            </Principal>
+            <Dependent Role="tblFournitureReservationSalle">
+              <PropertyRef Name="NoSeqReservSalle" />
+              <PropertyRef Name="CodeSalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hot_PrTypChamb_CodHot">
+          <End Role="tblHotel" Type="Self.tblHotel" Multiplicity="1" />
+          <End Role="tblPrixTypeChambre" Type="Self.tblPrixTypeChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHotel">
+              <PropertyRef Name="CodeHotel" />
+            </Principal>
+            <Dependent Role="tblPrixTypeChambre">
+              <PropertyRef Name="CodeHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hot_Salle_CodHot">
+          <End Role="tblHotel" Type="Self.tblHotel" Multiplicity="1" />
+          <End Role="tblSalle" Type="Self.tblSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHotel">
+              <PropertyRef Name="CodeHotel" />
+            </Principal>
+            <Dependent Role="tblSalle">
+              <PropertyRef Name="CodeHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vill_Hot_CodVill">
+          <End Role="tblVille" Type="Self.tblVille" Multiplicity="1" />
+          <End Role="tblHotel" Type="Self.tblHotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVille">
+              <PropertyRef Name="CodeVille" />
+            </Principal>
+            <Dependent Role="tblHotel">
+              <PropertyRef Name="CodeVille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pays_Prov_CodPays">
+          <End Role="tblPays" Type="Self.tblPays" Multiplicity="1" />
+          <End Role="tblProvince" Type="Self.tblProvince" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPays">
+              <PropertyRef Name="CodePays" />
+            </Principal>
+            <Dependent Role="tblProvince">
+              <PropertyRef Name="CodePays" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TypChamb_CodTypChamb2">
+          <End Role="tblTypeChambre" Type="Self.tblTypeChambre" Multiplicity="1" />
+          <End Role="tblPrixTypeChambre" Type="Self.tblPrixTypeChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTypeChambre">
+              <PropertyRef Name="CodeTypeChambre" />
+            </Principal>
+            <Dependent Role="tblPrixTypeChambre">
+              <PropertyRef Name="CodeTypeChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prov_Vill_CodProv">
+          <End Role="tblProvince" Type="Self.tblProvince" Multiplicity="1" />
+          <End Role="tblVille" Type="Self.tblVille" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProvince">
+              <PropertyRef Name="CodeProvince" />
+            </Principal>
+            <Dependent Role="tblVille">
+              <PropertyRef Name="CodeProvince" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rab_ReservChamb_NoRab">
+          <End Role="tblRabais" Type="Self.tblRabais" Multiplicity="0..1" />
+          <End Role="tblReservationChambre" Type="Self.tblReservationChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRabais">
+              <PropertyRef Name="NoSeqRabais" />
+            </Principal>
+            <Dependent Role="tblReservationChambre">
+              <PropertyRef Name="NoSeqRabais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Salle_ReservSalle_CodSalle">
+          <End Role="tblSalle" Type="Self.tblSalle" Multiplicity="1" />
+          <End Role="tblReservationSalle" Type="Self.tblReservationSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSalle">
+              <PropertyRef Name="CodeSalle" />
+            </Principal>
+            <Dependent Role="tblReservationSalle">
+              <PropertyRef Name="CodeSalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tblForfaitReservationChambre">
+          <End Role="tblChambreReservationChambre" Type="Self.tblChambreReservationChambre" Multiplicity="*" />
+          <End Role="tblForfait" Type="Self.tblForfait" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="P2014_BD_GestionHotelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblCategorieFourniture" EntityType="Self.tblCategorieFourniture" />
+          <EntitySet Name="tblCommande" EntityType="Self.tblCommande" />
+          <EntitySet Name="tblFournisseur" EntityType="Self.tblFournisseur" />
+          <EntitySet Name="tblFourniture" EntityType="Self.tblFourniture" />
+          <EntitySet Name="tblFournitureChambre" EntityType="Self.tblFournitureChambre" />
+          <EntitySet Name="tblFournitureCommande" EntityType="Self.tblFournitureCommande" />
+          <EntitySet Name="tblFournitureFournisseur" EntityType="Self.tblFournitureFournisseur" />
+          <EntitySet Name="tblFournitureHotel" EntityType="Self.tblFournitureHotel" />
+          <EntitySet Name="tblChiffreTravail" EntityType="Self.tblChiffreTravail" />
+          <EntitySet Name="tblEmploye" EntityType="Self.tblEmploye" />
+          <EntitySet Name="tblEntretienFournitureChambre" EntityType="Self.tblEntretienFournitureChambre" />
+          <EntitySet Name="tblEntretienFournitureSalle" EntityType="Self.tblEntretienFournitureSalle" />
+          <EntitySet Name="tblChambre" EntityType="Self.tblChambre" />
+          <EntitySet Name="tblChambreReservationChambre" EntityType="Self.tblChambreReservationChambre" />
+          <EntitySet Name="tblClient" EntityType="Self.tblClient" />
+          <EntitySet Name="tblFacture" EntityType="Self.tblFacture" />
+          <EntitySet Name="tblForfait" EntityType="Self.tblForfait" />
+          <EntitySet Name="tblFournitureReservationSalle" EntityType="Self.tblFournitureReservationSalle" />
+          <EntitySet Name="tblHotel" EntityType="Self.tblHotel" />
+          <EntitySet Name="tblPays" EntityType="Self.tblPays" />
+          <EntitySet Name="tblPrixTypeChambre" EntityType="Self.tblPrixTypeChambre" />
+          <EntitySet Name="tblProvince" EntityType="Self.tblProvince" />
+          <EntitySet Name="tblRabais" EntityType="Self.tblRabais" />
+          <EntitySet Name="tblReservationChambre" EntityType="Self.tblReservationChambre" />
+          <EntitySet Name="tblReservationSalle" EntityType="Self.tblReservationSalle" />
+          <EntitySet Name="tblSalle" EntityType="Self.tblSalle" />
+          <EntitySet Name="tblTypeChambre" EntityType="Self.tblTypeChambre" />
+          <EntitySet Name="tblVille" EntityType="Self.tblVille" />
+          <EntitySet Name="VueInventaire" EntityType="Self.VueInventaire" />
+          <AssociationSet Name="FK_Four_Categ_CodeCateg" Association="Self.FK_Four_Categ_CodeCateg">
+            <End Role="tblCategorieFourniture" EntitySet="tblCategorieFourniture" />
+            <End Role="tblFourniture" EntitySet="tblFourniture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Com_FourCom_NoCom" Association="Self.FK_Com_FourCom_NoCom">
+            <End Role="tblCommande" EntitySet="tblCommande" />
+            <End Role="tblFournitureCommande" EntitySet="tblFournitureCommande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Emp_Com_NoEmp" Association="Self.FK_Emp_Com_NoEmp">
+            <End Role="tblEmploye" EntitySet="tblEmploye" />
+            <End Role="tblCommande" EntitySet="tblCommande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Four_Com_NoSeqFour" Association="Self.FK_Four_Com_NoSeqFour">
+            <End Role="tblFournisseur" EntitySet="tblFournisseur" />
+            <End Role="tblCommande" EntitySet="tblCommande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Four_CourCom_NoSeqFournisseur" Association="Self.FK_Four_CourCom_NoSeqFournisseur">
+            <End Role="tblFournisseur" EntitySet="tblFournisseur" />
+            <End Role="tblFournitureFournisseur" EntitySet="tblFournitureFournisseur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chamb_Four_CodFour" Association="Self.FK_Chamb_Four_CodFour">
+            <End Role="tblFourniture" EntitySet="tblFourniture" />
+            <End Role="tblFournitureChambre" EntitySet="tblFournitureChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Four_CodFour" Association="Self.FK_Four_CodFour">
+            <End Role="tblFourniture" EntitySet="tblFourniture" />
+            <End Role="tblFournitureReservationSalle" EntitySet="tblFournitureReservationSalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Four_FourCom_NoSeqFour" Association="Self.FK_Four_FourCom_NoSeqFour">
+            <End Role="tblFourniture" EntitySet="tblFourniture" />
+            <End Role="tblFournitureCommande" EntitySet="tblFournitureCommande" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Four_FourFour_NoSeqFourniture" Association="Self.FK_Four_FourFour_NoSeqFourniture">
+            <End Role="tblFourniture" EntitySet="tblFourniture" />
+            <End Role="tblFournitureFournisseur" EntitySet="tblFournitureFournisseur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Four_FourHot_NoSeqFour" Association="Self.FK_Four_FourHot_NoSeqFour">
+            <End Role="tblFourniture" EntitySet="tblFourniture" />
+            <End Role="tblFournitureHotel" EntitySet="tblFournitureHotel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chamb_Four_NoSeqChamb" Association="Self.FK_Chamb_Four_NoSeqChamb">
+            <End Role="tblChambre" EntitySet="tblChambre" />
+            <End Role="tblFournitureChambre" EntitySet="tblFournitureChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Four_EntFour_NoSeqFour" Association="Self.FK_Four_EntFour_NoSeqFour">
+            <End Role="tblFournitureChambre" EntitySet="tblFournitureChambre" />
+            <End Role="tblEntretienFournitureChambre" EntitySet="tblEntretienFournitureChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hot_FourHot_CodHot" Association="Self.FK_Hot_FourHot_CodHot">
+            <End Role="tblHotel" EntitySet="tblHotel" />
+            <End Role="tblFournitureHotel" EntitySet="tblFournitureHotel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Emp_ChifHor_NoEmp" Association="Self.FK_Emp_ChifHor_NoEmp">
+            <End Role="tblEmploye" EntitySet="tblEmploye" />
+            <End Role="tblChiffreTravail" EntitySet="tblChiffreTravail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Emp_EntFour_NoEmp" Association="Self.FK_Emp_EntFour_NoEmp">
+            <End Role="tblEmploye" EntitySet="tblEmploye" />
+            <End Role="tblEntretienFournitureChambre" EntitySet="tblEntretienFournitureChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FourResSal_NoEmp" Association="Self.FK_FourResSal_NoEmp">
+            <End Role="tblEmploye" EntitySet="tblEmploye" />
+            <End Role="tblEntretienFournitureSalle" EntitySet="tblEntretienFournitureSalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hot_Emp_CodHot" Association="Self.FK_Hot_Emp_CodHot">
+            <End Role="tblHotel" EntitySet="tblHotel" />
+            <End Role="tblEmploye" EntitySet="tblEmploye" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FourResSal_AYyylmao" Association="Self.FK_FourResSal_AYyylmao">
+            <End Role="tblFournitureReservationSalle" EntitySet="tblFournitureReservationSalle" />
+            <End Role="tblEntretienFournitureSalle" EntitySet="tblEntretienFournitureSalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chamb_ChambReservChamb_NoSeqReservChamb" Association="Self.FK_Chamb_ChambReservChamb_NoSeqReservChamb">
+            <End Role="tblChambre" EntitySet="tblChambre" />
+            <End Role="tblChambreReservationChambre" EntitySet="tblChambreReservationChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hot_Chamb_CodHot" Association="Self.FK_Hot_Chamb_CodHot">
+            <End Role="tblHotel" EntitySet="tblHotel" />
+            <End Role="tblChambre" EntitySet="tblChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hot_TypChamb_CodTypeChamb" Association="Self.FK_Hot_TypChamb_CodTypeChamb">
+            <End Role="tblTypeChambre" EntitySet="tblTypeChambre" />
+            <End Role="tblChambre" EntitySet="tblChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservChamb_ChambReservChamb_NoSeqReservChamb" Association="Self.FK_ReservChamb_ChambReservChamb_NoSeqReservChamb">
+            <End Role="tblReservationChambre" EntitySet="tblReservationChambre" />
+            <End Role="tblChambreReservationChambre" EntitySet="tblChambreReservationChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cli_ReservChamb_NoCli" Association="Self.FK_Cli_ReservChamb_NoCli">
+            <End Role="tblClient" EntitySet="tblClient" />
+            <End Role="tblReservationChambre" EntitySet="tblReservationChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cli_ReservSalle_NoCli" Association="Self.FK_Cli_ReservSalle_NoCli">
+            <End Role="tblClient" EntitySet="tblClient" />
+            <End Role="tblReservationSalle" EntitySet="tblReservationSalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vil_CodVil" Association="Self.FK_Vil_CodVil">
+            <End Role="tblVille" EntitySet="tblVille" />
+            <End Role="tblClient" EntitySet="tblClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservChamb_Fact_NoSeqChamb" Association="Self.FK_ReservChamb_Fact_NoSeqChamb">
+            <End Role="tblReservationChambre" EntitySet="tblReservationChambre" />
+            <End Role="tblFacture" EntitySet="tblFacture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TypChamb_CodTypChamb" Association="Self.FK_TypChamb_CodTypChamb">
+            <End Role="tblTypeChambre" EntitySet="tblTypeChambre" />
+            <End Role="tblForfait" EntitySet="tblForfait" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResSall_NoReservNoSall" Association="Self.FK_ResSall_NoReservNoSall">
+            <End Role="tblReservationSalle" EntitySet="tblReservationSalle" />
+            <End Role="tblFournitureReservationSalle" EntitySet="tblFournitureReservationSalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hot_PrTypChamb_CodHot" Association="Self.FK_Hot_PrTypChamb_CodHot">
+            <End Role="tblHotel" EntitySet="tblHotel" />
+            <End Role="tblPrixTypeChambre" EntitySet="tblPrixTypeChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hot_Salle_CodHot" Association="Self.FK_Hot_Salle_CodHot">
+            <End Role="tblHotel" EntitySet="tblHotel" />
+            <End Role="tblSalle" EntitySet="tblSalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vill_Hot_CodVill" Association="Self.FK_Vill_Hot_CodVill">
+            <End Role="tblVille" EntitySet="tblVille" />
+            <End Role="tblHotel" EntitySet="tblHotel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pays_Prov_CodPays" Association="Self.FK_Pays_Prov_CodPays">
+            <End Role="tblPays" EntitySet="tblPays" />
+            <End Role="tblProvince" EntitySet="tblProvince" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TypChamb_CodTypChamb2" Association="Self.FK_TypChamb_CodTypChamb2">
+            <End Role="tblTypeChambre" EntitySet="tblTypeChambre" />
+            <End Role="tblPrixTypeChambre" EntitySet="tblPrixTypeChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prov_Vill_CodProv" Association="Self.FK_Prov_Vill_CodProv">
+            <End Role="tblProvince" EntitySet="tblProvince" />
+            <End Role="tblVille" EntitySet="tblVille" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rab_ReservChamb_NoRab" Association="Self.FK_Rab_ReservChamb_NoRab">
+            <End Role="tblRabais" EntitySet="tblRabais" />
+            <End Role="tblReservationChambre" EntitySet="tblReservationChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Salle_ReservSalle_CodSalle" Association="Self.FK_Salle_ReservSalle_CodSalle">
+            <End Role="tblSalle" EntitySet="tblSalle" />
+            <End Role="tblReservationSalle" EntitySet="tblReservationSalle" />
+          </AssociationSet>
+          <AssociationSet Name="tblForfaitReservationChambre" Association="Self.tblForfaitReservationChambre">
+            <End Role="tblChambreReservationChambre" EntitySet="tblChambreReservationChambre" />
+            <End Role="tblForfait" EntitySet="tblForfait" />
+          </AssociationSet>
+          <FunctionImport Name="VerificationDispo" ReturnType="Collection(P2014_BD_GestionHotelModel.VerificationDispo_Result)">
+            <Parameter Name="DateDebut" Mode="In" Type="DateTime" />
+            <Parameter Name="DateFin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="VerificationDispo_Result">
+          <Property Type="Int32" Name="NoSeqChambre" Nullable="false" />
+          <Property Type="String" Name="CodeChambre" Nullable="false" MaxLength="4" />
+          <Property Type="Int16" Name="EtageChambre" Nullable="false" />
+          <Property Type="String" Name="StatutChambre" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="DescChambre" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="TypeLit" Nullable="false" MaxLength="30" />
+          <Property Type="Byte" Name="NbLit" Nullable="false" />
+          <Property Type="String" Name="CodeHotel" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="CodeTypeChambre" Nullable="false" MaxLength="3" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="P2014_BD_GestionHotelModelStoreContainer" CdmEntityContainer="P2014_BD_GestionHotelEntities">
+          <EntitySetMapping Name="tblCategorieFourniture">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblCategorieFourniture">
+              <MappingFragment StoreEntitySet="tblCategorieFourniture">
+                <ScalarProperty Name="CodeCategorie" ColumnName="CodeCategorie" />
+                <ScalarProperty Name="NomCategorie" ColumnName="NomCategorie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCommande">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblCommande">
+              <MappingFragment StoreEntitySet="tblCommande">
+                <ScalarProperty Name="NoCommande" ColumnName="NoCommande" />
+                <ScalarProperty Name="DateCommande" ColumnName="DateCommande" />
+                <ScalarProperty Name="StatutCommande" ColumnName="StatutCommande" />
+                <ScalarProperty Name="PrixTotal" ColumnName="PrixTotal" />
+                <ScalarProperty Name="DateRecu" ColumnName="DateRecu" />
+                <ScalarProperty Name="CodeFournisseur" ColumnName="CodeFournisseur" />
+                <ScalarProperty Name="NoEmploye" ColumnName="NoEmploye" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFournisseur">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblFournisseur">
+              <MappingFragment StoreEntitySet="tblFournisseur">
+                <ScalarProperty Name="CodeFournisseur" ColumnName="CodeFournisseur" />
+                <ScalarProperty Name="NomFournisseur" ColumnName="NomFournisseur" />
+                <ScalarProperty Name="AdresseFournisseur" ColumnName="AdresseFournisseur" />
+                <ScalarProperty Name="NomRepresentant" ColumnName="NomRepresentant" />
+                <ScalarProperty Name="PrenomRepresentant" ColumnName="PrenomRepresentant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFourniture">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblFourniture">
+              <MappingFragment StoreEntitySet="tblFourniture">
+                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
+                <ScalarProperty Name="DescFourniture" ColumnName="DescFourniture" />
+                <ScalarProperty Name="CodeCategorie" ColumnName="CodeCategorie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFournitureChambre">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblFournitureChambre">
+              <MappingFragment StoreEntitySet="tblFournitureChambre">
+                <ScalarProperty Name="NoSeqChambre" ColumnName="NoSeqChambre" />
+                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
+                <ScalarProperty Name="QuantiteChambre" ColumnName="QuantiteChambre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFournitureCommande">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblFournitureCommande">
+              <MappingFragment StoreEntitySet="tblFournitureCommande">
+                <ScalarProperty Name="NoCommande" ColumnName="NoCommande" />
+                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
+                <ScalarProperty Name="QuantiteCommande" ColumnName="QuantiteCommande" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFournitureFournisseur">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblFournitureFournisseur">
+              <MappingFragment StoreEntitySet="tblFournitureFournisseur">
+                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
+                <ScalarProperty Name="CodeFournisseur" ColumnName="CodeFournisseur" />
+                <ScalarProperty Name="PrixFournitureFournisseur" ColumnName="PrixFournitureFournisseur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFournitureHotel">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblFournitureHotel">
+              <MappingFragment StoreEntitySet="tblFournitureHotel">
+                <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
+                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
+                <ScalarProperty Name="QuantiteMin" ColumnName="QuantiteMin" />
+                <ScalarProperty Name="QuantiteMax" ColumnName="QuantiteMax" />
+                <ScalarProperty Name="QuantiteFournitureHotel" ColumnName="QuantiteFournitureHotel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblChiffreTravail">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblChiffreTravail">
+              <MappingFragment StoreEntitySet="tblChiffreTravail">
+                <ScalarProperty Name="NoChiffreTravail" ColumnName="NoChiffreTravail" />
+                <ScalarProperty Name="DateChiffre" ColumnName="DateChiffre" />
+                <ScalarProperty Name="HeureDebut" ColumnName="HeureDebut" />
+                <ScalarProperty Name="HeureFin" ColumnName="HeureFin" />
+                <ScalarProperty Name="NoEmploye" ColumnName="NoEmploye" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmploye">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblEmploye">
+              <MappingFragment StoreEntitySet="tblEmploye">
+                <ScalarProperty Name="NoEmploye" ColumnName="NoEmploye" />
+                <ScalarProperty Name="NomEmploye" ColumnName="NomEmploye" />
+                <ScalarProperty Name="PrenomEmploye" ColumnName="PrenomEmploye" />
+                <ScalarProperty Name="SexeEmploye" ColumnName="SexeEmploye" />
+                <ScalarProperty Name="AdresseEmploye" ColumnName="AdresseEmploye" />
+                <ScalarProperty Name="TypeEmploi" ColumnName="TypeEmploi" />
+                <ScalarProperty Name="NoTelephoneEmploye" ColumnName="NoTelephoneEmploye" />
+                <ScalarProperty Name="NasEmploye" ColumnName="NasEmploye" />
+                <ScalarProperty Name="DateNaissance" ColumnName="DateNaissance" />
+                <ScalarProperty Name="IdentifiantEmploye" ColumnName="IdentifiantEmploye" />
+                <ScalarProperty Name="MdpEmploye" ColumnName="MdpEmploye" />
+                <ScalarProperty Name="NombreHeuresSemaines" ColumnName="NombreHeuresSemaines" />
+                <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEntretienFournitureChambre">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblEntretienFournitureChambre">
+              <MappingFragment StoreEntitySet="tblEntretienFournitureChambre">
+                <ScalarProperty Name="NoSeqEntretienChambre" ColumnName="NoSeqEntretienChambre" />
+                <ScalarProperty Name="EtatFourniture" ColumnName="EtatFourniture" />
+                <ScalarProperty Name="CommentaireFourniture" ColumnName="CommentaireFourniture" />
+                <ScalarProperty Name="DateDemande" ColumnName="DateDemande" />
+                <ScalarProperty Name="DateEffectue" ColumnName="DateEffectue" />
+                <ScalarProperty Name="StatutEntretien" ColumnName="StatutEntretien" />
+                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
+                <ScalarProperty Name="NoSeqChambre" ColumnName="NoSeqChambre" />
+                <ScalarProperty Name="NoEmploye" ColumnName="NoEmploye" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEntretienFournitureSalle">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblEntretienFournitureSalle">
+              <MappingFragment StoreEntitySet="tblEntretienFournitureSalle">
+                <ScalarProperty Name="NoSeqEntretienSalle" ColumnName="NoSeqEntretienSalle" />
+                <ScalarProperty Name="EtatFourniture" ColumnName="EtatFourniture" />
+                <ScalarProperty Name="CommentaireFourniture" ColumnName="CommentaireFourniture" />
+                <ScalarProperty Name="DateDemande" ColumnName="DateDemande" />
+                <ScalarProperty Name="DateEffectue" ColumnName="DateEffectue" />
+                <ScalarProperty Name="StatutEntretien" ColumnName="StatutEntretien" />
+                <ScalarProperty Name="NoSeqReservSalle" ColumnName="NoSeqReservSalle" />
+                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
+                <ScalarProperty Name="CodeSalle" ColumnName="CodeSalle" />
+                <ScalarProperty Name="NoEmploye" ColumnName="NoEmploye" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblChambre">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblChambre">
+              <MappingFragment StoreEntitySet="tblChambre">
+                <ScalarProperty Name="NoSeqChambre" ColumnName="NoSeqChambre" />
+                <ScalarProperty Name="CodeChambre" ColumnName="CodeChambre" />
+                <ScalarProperty Name="EtageChambre" ColumnName="EtageChambre" />
+                <ScalarProperty Name="StatutChambre" ColumnName="StatutChambre" />
+                <ScalarProperty Name="DescChambre" ColumnName="DescChambre" />
+                <ScalarProperty Name="TypeLit" ColumnName="TypeLit" />
+                <ScalarProperty Name="NbLit" ColumnName="NbLit" />
+                <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
+                <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblChambreReservationChambre">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblChambreReservationChambre">
+              <MappingFragment StoreEntitySet="tblChambreReservationChambre">
+                <ScalarProperty Name="NoSeqChambre" ColumnName="NoSeqChambre" />
+                <ScalarProperty Name="NoSeqReservChambre" ColumnName="NoSeqReservChambre" />
+                <ScalarProperty Name="NbPersonne" ColumnName="NbPersonne" />
+                <ScalarProperty Name="NomLocataire" ColumnName="NomLocataire" />
+                <ScalarProperty Name="PrenomLocataire" ColumnName="PrenomLocataire" />
+                <ScalarProperty Name="DateDebutReservation" ColumnName="DateDebutReservation" />
+                <ScalarProperty Name="DateFinReservation" ColumnName="DateFinReservation" />
+                <ScalarProperty Name="StatutChambreReservChambre" ColumnName="StatutChambreReservChambre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblClient">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblClient">
+              <MappingFragment StoreEntitySet="tblClient">
+                <ScalarProperty Name="NoSeqClient" ColumnName="NoSeqClient" />
+                <ScalarProperty Name="NomClient" ColumnName="NomClient" />
+                <ScalarProperty Name="PrenomClient" ColumnName="PrenomClient" />
+                <ScalarProperty Name="NoTelephone" ColumnName="NoTelephone" />
+                <ScalarProperty Name="NoCellulaire" ColumnName="NoCellulaire" />
+                <ScalarProperty Name="AdresseClient" ColumnName="AdresseClient" />
+                <ScalarProperty Name="AdresseSecondaireClient" ColumnName="AdresseSecondaireClient" />
+                <ScalarProperty Name="EmailClient" ColumnName="EmailClient" />
+                <ScalarProperty Name="MdpClient" ColumnName="MdpClient" />
+                <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+                <ScalarProperty Name="NomEntreprise" ColumnName="NomEntreprise" />
+                <ScalarProperty Name="CodeVille" ColumnName="CodeVille" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFacture">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblFacture">
+              <MappingFragment StoreEntitySet="tblFacture">
+                <ScalarProperty Name="NoSeqFacture" ColumnName="NoSeqFacture" />
+                <ScalarProperty Name="MontantFacture" ColumnName="MontantFacture" />
+                <ScalarProperty Name="TypeFacture" ColumnName="TypeFacture" />
+                <ScalarProperty Name="NoSeqReservChambre" ColumnName="NoSeqReservChambre" />
+                <ScalarProperty Name="NoEmploye" ColumnName="NoEmploye" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblForfait">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblForfait">
+              <MappingFragment StoreEntitySet="tblForfait">
+                <ScalarProperty Name="CodeForfait" ColumnName="CodeForfait" />
+                <ScalarProperty Name="NomForfait" ColumnName="NomForfait" />
+                <ScalarProperty Name="PrixForfait" ColumnName="PrixForfait" />
+                <ScalarProperty Name="DescForfait" ColumnName="DescForfait" />
+                <ScalarProperty Name="NbNuit" ColumnName="NbNuit" />
+                <ScalarProperty Name="DateDebut" ColumnName="DateDebut" />
+                <ScalarProperty Name="DateFin" ColumnName="DateFin" />
+                <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFournitureReservationSalle">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblFournitureReservationSalle">
+              <MappingFragment StoreEntitySet="tblFournitureReservationSalle">
+                <ScalarProperty Name="NoSeqReservSalle" ColumnName="NoSeqReservSalle" />
+                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
+                <ScalarProperty Name="CodeSalle" ColumnName="CodeSalle" />
+                <ScalarProperty Name="QuantiteFourniture" ColumnName="QuantiteFourniture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHotel">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblHotel">
+              <MappingFragment StoreEntitySet="tblHotel">
+                <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
+                <ScalarProperty Name="NomHotel" ColumnName="NomHotel" />
+                <ScalarProperty Name="NbChambre" ColumnName="NbChambre" />
+                <ScalarProperty Name="AdresseHotel" ColumnName="AdresseHotel" />
+                <ScalarProperty Name="NbEtoiles" ColumnName="NbEtoiles" />
+                <ScalarProperty Name="TypeService" ColumnName="TypeService" />
+                <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+                <ScalarProperty Name="NoTelephoneHotel" ColumnName="NoTelephoneHotel" />
+                <ScalarProperty Name="NoTelecopieurHotel" ColumnName="NoTelecopieurHotel" />
+                <ScalarProperty Name="NoTelReservation" ColumnName="NoTelReservation" />
+                <ScalarProperty Name="HeureLimiteDepart" ColumnName="HeureLimiteDepart" />
+                <ScalarProperty Name="HeureLimiteArrive" ColumnName="HeureLimiteArrive" />
+                <ScalarProperty Name="CodeVille" ColumnName="CodeVille" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPays">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblPays">
+              <MappingFragment StoreEntitySet="tblPays">
+                <ScalarProperty Name="CodePays" ColumnName="CodePays" />
+                <ScalarProperty Name="NomPays" ColumnName="NomPays" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPrixTypeChambre">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblPrixTypeChambre">
+              <MappingFragment StoreEntitySet="tblPrixTypeChambre">
+                <ScalarProperty Name="NoSeqPrixTypeChambre" ColumnName="NoSeqPrixTypeChambre" />
+                <ScalarProperty Name="DescPrixTypeChambre" ColumnName="DescPrixTypeChambre" />
+                <ScalarProperty Name="PrixTypeChambre" ColumnName="PrixTypeChambre" />
+                <ScalarProperty Name="DateDebutPrix" ColumnName="DateDebutPrix" />
+                <ScalarProperty Name="DateFinPrix" ColumnName="DateFinPrix" />
+                <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
+                <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProvince">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblProvince">
+              <MappingFragment StoreEntitySet="tblProvince">
+                <ScalarProperty Name="CodeProvince" ColumnName="CodeProvince" />
+                <ScalarProperty Name="NomProvince" ColumnName="NomProvince" />
+                <ScalarProperty Name="CodePays" ColumnName="CodePays" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRabais">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblRabais">
+              <MappingFragment StoreEntitySet="tblRabais">
+                <ScalarProperty Name="NoSeqRabais" ColumnName="NoSeqRabais" />
+                <ScalarProperty Name="DescRabais" ColumnName="DescRabais" />
+                <ScalarProperty Name="DateDebutRabais" ColumnName="DateDebutRabais" />
+                <ScalarProperty Name="DateFinRabais" ColumnName="DateFinRabais" />
+                <ScalarProperty Name="PourcentageRabais" ColumnName="PourcentageRabais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblReservationChambre">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblReservationChambre">
+              <MappingFragment StoreEntitySet="tblReservationChambre">
+                <ScalarProperty Name="NoSeqReservChambre" ColumnName="NoSeqReservChambre" />
+                <ScalarProperty Name="StatutReservChambre" ColumnName="StatutReservChambre" />
+                <ScalarProperty Name="PrixReservChambre" ColumnName="PrixReservChambre" />
+                <ScalarProperty Name="ModePaiement" ColumnName="ModePaiement" />
+                <ScalarProperty Name="StatutPaiement" ColumnName="StatutPaiement" />
+                <ScalarProperty Name="NoCarteCredit" ColumnName="NoCarteCredit" />
+                <ScalarProperty Name="DateExpirationCarteCredit" ColumnName="DateExpirationCarteCredit" />
+                <ScalarProperty Name="TypeCarteCredit" ColumnName="TypeCarteCredit" />
+                <ScalarProperty Name="NomCarteCredit" ColumnName="NomCarteCredit" />
+                <ScalarProperty Name="NoSeqClient" ColumnName="NoSeqClient" />
+                <ScalarProperty Name="NoSeqRabais" ColumnName="NoSeqRabais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblReservationSalle">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblReservationSalle">
+              <MappingFragment StoreEntitySet="tblReservationSalle">
+                <ScalarProperty Name="NoSeqReservSalle" ColumnName="NoSeqReservSalle" />
+                <ScalarProperty Name="DateReservSalle" ColumnName="DateReservSalle" />
+                <ScalarProperty Name="PrixReservSalle" ColumnName="PrixReservSalle" />
+                <ScalarProperty Name="ModePaiement" ColumnName="ModePaiement" />
+                <ScalarProperty Name="StatutPaiement" ColumnName="StatutPaiement" />
+                <ScalarProperty Name="NbPersonne" ColumnName="NbPersonne" />
+                <ScalarProperty Name="NoCarteCredit" ColumnName="NoCarteCredit" />
+                <ScalarProperty Name="CodeSalle" ColumnName="CodeSalle" />
+                <ScalarProperty Name="NoSeqClient" ColumnName="NoSeqClient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSalle">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblSalle">
+              <MappingFragment StoreEntitySet="tblSalle">
+                <ScalarProperty Name="CodeSalle" ColumnName="CodeSalle" />
+                <ScalarProperty Name="NomSalle" ColumnName="NomSalle" />
+                <ScalarProperty Name="TypeSalle" ColumnName="TypeSalle" />
+                <ScalarProperty Name="StatutSalle" ColumnName="StatutSalle" />
+                <ScalarProperty Name="DetailSalle" ColumnName="DetailSalle" />
+                <ScalarProperty Name="NbPlacesAssis" ColumnName="NbPlacesAssis" />
+                <ScalarProperty Name="NbPlacesDebout" ColumnName="NbPlacesDebout" />
+                <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTypeChambre">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblTypeChambre">
+              <MappingFragment StoreEntitySet="tblTypeChambre">
+                <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
+                <ScalarProperty Name="NomTypeChambre" ColumnName="NomTypeChambre" />
+                <ScalarProperty Name="DescTypeChambre" ColumnName="DescTypeChambre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVille">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblVille">
+              <MappingFragment StoreEntitySet="tblVille">
+                <ScalarProperty Name="CodeVille" ColumnName="CodeVille" />
+                <ScalarProperty Name="NomVille" ColumnName="NomVille" />
+                <ScalarProperty Name="CodeProvince" ColumnName="CodeProvince" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VueInventaire">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.VueInventaire">
+              <MappingFragment StoreEntitySet="VueInventaire">
+                <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
+                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
+                <ScalarProperty Name="DescFourniture" ColumnName="DescFourniture" />
+                <ScalarProperty Name="CodeCategorie" ColumnName="CodeCategorie" />
+                <ScalarProperty Name="NomCategorie" ColumnName="NomCategorie" />
+                <ScalarProperty Name="QuantiteFournitureHotel" ColumnName="QuantiteFournitureHotel" />
+                <ScalarProperty Name="PrixFournitureFournisseur" ColumnName="PrixFournitureFournisseur" />
+                <ScalarProperty Name="QuantiteMin" ColumnName="QuantiteMin" />
+                <ScalarProperty Name="QuantiteMax" ColumnName="QuantiteMax" />
+                <ScalarProperty Name="CodeFournisseur" ColumnName="CodeFournisseur" />
+                <ScalarProperty Name="NomFournisseur" ColumnName="NomFournisseur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="tblForfaitReservationChambre" TypeName="P2014_BD_GestionHotelModel.tblForfaitReservationChambre" StoreEntitySet="tblForfaitReservationChambre">
+            <EndProperty Name="tblChambreReservationChambre">
+              <ScalarProperty Name="NoSeqChambre" ColumnName="NoSeqChambre" />
+              <ScalarProperty Name="NoSeqReservChambre" ColumnName="NoSeqReservChambre" />
+            </EndProperty>
+            <EndProperty Name="tblForfait">
+              <ScalarProperty Name="CodeForfait" ColumnName="CodeForfait" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="VerificationDispo" FunctionName="P2014_BD_GestionHotelModel.Store.VerificationDispo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="P2014_BD_GestionHotelModel.VerificationDispo_Result">
+                <ScalarProperty Name="NoSeqChambre" ColumnName="NoSeqChambre" />
+                <ScalarProperty Name="CodeChambre" ColumnName="CodeChambre" />
+                <ScalarProperty Name="EtageChambre" ColumnName="EtageChambre" />
+                <ScalarProperty Name="StatutChambre" ColumnName="StatutChambre" />
+                <ScalarProperty Name="DescChambre" ColumnName="DescChambre" />
+                <ScalarProperty Name="TypeLit" ColumnName="TypeLit" />
+                <ScalarProperty Name="NbLit" ColumnName="NbLit" />
+                <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
+                <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

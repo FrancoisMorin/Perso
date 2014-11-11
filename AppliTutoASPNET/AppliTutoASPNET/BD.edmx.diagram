@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0ff30d6e10024624b5ed6ee3b78a9ce8" Name="Diagram1">
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblCategorieFourniture" Width="1.5" PointX="12.75" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblCommande" Width="1.5" PointX="15" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblFournisseur" Width="1.5" PointX="12.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblFourniture" Width="1.5" PointX="15" PointY="32.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblFournitureChambre" Width="1.5" PointX="12" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblFournitureCommande" Width="1.5" PointX="20.25" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblFournitureFournisseur" Width="1.5" PointX="17.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblFournitureHotel" Width="1.5" PointX="12.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblChiffreTravail" Width="1.5" PointX="12" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblEmploye" Width="1.5" PointX="9.75" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblEntretienFournitureChambre" Width="1.5" PointX="15" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblEntretienFournitureSalle" Width="1.5" PointX="19.5" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblChambre" Width="1.5" PointX="9.75" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblChambreReservationChambre" Width="1.5" PointX="18" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblClient" Width="1.5" PointX="7.5" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblFacture" Width="1.5" PointX="12" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblForfait" Width="1.5" PointX="20.25" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblFournitureReservationSalle" Width="1.5" PointX="17.25" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblHotel" Width="1.5" PointX="7.5" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblPays" Width="1.5" PointX="0.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblPrixTypeChambre" Width="1.5" PointX="14.75" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblProvince" Width="1.5" PointX="3" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblRabais" Width="1.5" PointX="7.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblReservationChambre" Width="1.5" PointX="9.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblReservationSalle" Width="1.5" PointX="12" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblSalle" Width="1.5" PointX="9.75" PointY="34.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblTypeChambre" Width="1.5" PointX="7.5" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblVille" Width="1.5" PointX="5.25" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.VueInventaire" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Four_Categ_CodeCateg" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Com_FourCom_NoCom" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Emp_Com_NoEmp" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Four_Com_NoSeqFour" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Four_CourCom_NoSeqFournisseur" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Chamb_Four_CodFour" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Four_CodFour" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Four_FourCom_NoSeqFour" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Four_FourFour_NoSeqFourniture" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Four_FourHot_NoSeqFour" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Chamb_Four_NoSeqChamb" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Four_EntFour_NoSeqFour" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Hot_FourHot_CodHot" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Emp_ChifHor_NoEmp" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Emp_EntFour_NoEmp" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_FourResSal_NoEmp" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Hot_Emp_CodHot" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_FourResSal_AYyylmao" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Chamb_ChambReservChamb_NoSeqReservChamb" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Hot_Chamb_CodHot" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Hot_TypChamb_CodTypeChamb" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_ReservChamb_ChambReservChamb_NoSeqReservChamb" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Cli_ReservChamb_NoCli" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Cli_ReservSalle_NoCli" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Vil_CodVil" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_ReservChamb_Fact_NoSeqChamb" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_TypChamb_CodTypChamb" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_ResSall_NoReservNoSall" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Hot_PrTypChamb_CodHot" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Hot_Salle_CodHot" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Vill_Hot_CodVill" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Pays_Prov_CodPays" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_TypChamb_CodTypChamb2" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Prov_Vill_CodProv" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Rab_ReservChamb_NoRab" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Salle_ReservSalle_CodSalle" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BD_GestionHotelModel.tblForfaitReservationChambre" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
