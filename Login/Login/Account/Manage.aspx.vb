@@ -33,6 +33,8 @@ Partial Public Class Manage
     End Function
 
     Protected Sub Page_Load() Handles Me.Load
+
+        
         If Not IsPostBack Then
             ' Déterminer les sections à afficher
             Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
@@ -43,6 +45,19 @@ Partial Public Class Manage
                 changePasswordHolder.Visible = False
             End If
             CanRemoveExternalLogins = manager.GetLogins(User.Identity.GetUserId()).Count() > 1
+
+            'Afficher info client
+            Dim usr = manager.FindById(User.Identity.GetUserId())
+
+            txtNom.Text = usr.NomClient
+            txtPrenom.Text = usr.PrenomClient
+            txtNoTelephone.Text = usr.NoTelephone
+            txtCellulaire.Text = usr.NoCellulaire
+            txtAdresse1.Text = usr.AdresseClient
+            txtAdresse2.Text = usr.AdresseSecondaireClient
+            txtEmail.Text = usr.UserName
+
+
 
             ' Afficher le message de réussite
             Dim message = Request.QueryString("m")
@@ -105,5 +120,28 @@ Partial Public Class Manage
         For Each [error] As String In result.Errors
             ModelState.AddModelError("", [error])
         Next
+    End Sub
+
+    Private Sub btnModifInfos_Click(sender As Object, e As EventArgs) Handles btnModifInfos.Click
+        Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
+        Dim usr = manager.FindById(User.Identity.GetUserId())
+
+
+        usr.NomClient = txtNom.Text
+        usr.PrenomClient = txtPrenom.Text
+        usr.NoTelephone = txtNoTelephone.Text
+        usr.NoCellulaire = txtCellulaire.Text
+        usr.AdresseClient = txtAdresse1.Text
+        usr.AdresseSecondaireClient = txtAdresse2.Text
+        usr.UserName = txtEmail.Text
+
+        Dim result As IdentityResult = manager.UpdateAsync(usr).Result
+        If result.Succeeded Then
+            Response.Redirect("~/Account/Manage?m=ModifSucces")
+        Else
+            AddErrors(result)
+        End If
+
+
     End Sub
 End Class

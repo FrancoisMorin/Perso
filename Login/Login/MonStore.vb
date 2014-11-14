@@ -18,10 +18,14 @@ Public Class MonStore(Of TUser As ApplicationUser)
     Public Function CreateAsync(user As ApplicationUser) As Task Implements IUserStore(Of ApplicationUser, String).CreateAsync
         Dim Client As New tblClient
 
-        Client.NomClient = "ClientTest"
-        Client.PrenomClient = "ClientTest"
-        Client.NoTelephone = "123-Test"
-        Client.AdresseClient = "000 Rue Test"
+        Client.NomClient = user.NomClient
+        Client.PrenomClient = user.PrenomClient
+        Client.NoTelephone = user.PrenomClient
+        Client.NoCellulaire = user.NoCellulaire
+        Client.AdresseClient = user.AdresseClient
+        Client.AdresseSecondaireClient = user.AdresseSecondaireClient
+        Client.CodePostal = user.CodePostal.Trim
+        Client.CodeVille = "FRE"
         Client.EmailClient = user.Email
         Client.MdpClient = user.PasswordHash
         BD.tblClient.Add(Client)
@@ -91,6 +95,15 @@ Public Class MonStore(Of TUser As ApplicationUser)
 
         If res.Count > 0 Then
             res.ToList.First.MdpClient = user.PasswordHash
+
+            res.ToList.First.NomClient = user.NomClient
+            res.ToList.First.PrenomClient = user.PrenomClient
+            res.ToList.First.NoTelephone = user.NoTelephone
+            res.ToList.First.NoCellulaire = user.NoCellulaire
+            res.ToList.First.AdresseClient = user.AdresseClient
+            res.ToList.First.AdresseSecondaireClient = user.AdresseSecondaireClient
+            res.ToList.First.EmailClient = user.UserName
+
             BD.SaveChanges()
         End If
 
@@ -110,7 +123,7 @@ Public Class MonStore(Of TUser As ApplicationUser)
     Public Function GetLoginsAsync(user As ApplicationUser) As Task(Of IList(Of UserLoginInfo)) Implements IUserLoginStore(Of ApplicationUser, String).GetLoginsAsync
         Dim l As New List(Of UserLoginInfo)
 
-        l.Add(New UserLoginInfo("moi", "123"))
+        l.Add(New UserLoginInfo("Nouvotel", "123"))
 
         Return Task.FromResult(DirectCast(l, IList(Of UserLoginInfo)))
     End Function

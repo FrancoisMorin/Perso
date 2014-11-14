@@ -23,20 +23,75 @@
                         <h4>Modifier les informations du compte</h4>
                         <hr />
                         <asp:ValidationSummary runat="server" ShowModelStateErrors="true" CssClass="text-danger" />
+
+                        <%--Nom--%>
                         <div class="form-group">
                             <asp:Label runat="server" ID="Label1" AssociatedControlID="txtNom" CssClass="col-md-2 control-label">Nom</asp:Label>
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="txtNom" CssClass="form-control" />
+                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNom"
+                                CssClass="text-danger" ErrorMessage="Le champ de nom est obligatoire." />
                             </div>
                         </div>
-                        <br />
+
+                        <%--Prenom--%>
                         <div class="form-group">
-                            <asp:Label runat="server" ID="Label2" AssociatedControlID="NewPassword" CssClass="col-md-2 control-label">Prenom</asp:Label>
+                            <asp:Label runat="server" ID="Label2" AssociatedControlID="txtPrenom" CssClass="col-md-2 control-label">Prenom</asp:Label>
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="txtPrenom" CssClass="form-control" />
+                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPrenom"
+                                CssClass="text-danger" ErrorMessage="Le champ de prénom est obligatoire." />
+                            </div>
+                        </div>
+
+                        <%--Telephone--%>
+                         <div class="form-group">
+                            <asp:Label runat="server" ID="Label3" AssociatedControlID="txtNoTelephone" CssClass="col-md-2 control-label">Numéro de téléphone</asp:Label>
+                            <div class="col-md-10">
+                                <asp:TextBox runat="server" ID="txtNoTelephone" CssClass="form-control" />
+                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNom"
+                                CssClass="text-danger" ErrorMessage="Le champ de numéro de téléphone est obligatoire." />
+                            </div>
+                        </div>
+
+                        <%--Cellulaire--%>
+                         <div class="form-group">
+                            <asp:Label runat="server" ID="Label4" AssociatedControlID="txtCellulaire" CssClass="col-md-2 control-label">Numéro de cellulaire</asp:Label>
+                            <div class="col-md-10">
+                                <asp:TextBox runat="server" ID="txtCellulaire" CssClass="form-control" />
                             </div>
                         </div>
                         <br />
+
+                        <%--Adresse1--%>
+                        <div class="form-group">
+                            <asp:Label runat="server" ID="Label5" AssociatedControlID="txtAdresse1" CssClass="col-md-2 control-label">Adresse 1</asp:Label>
+                            <div class="col-md-10">
+                                <asp:TextBox runat="server" ID="txtAdresse1" CssClass="form-control" />
+                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtAdresse1"
+                                CssClass="text-danger" ErrorMessage="Le champ d'adresse est obligatoire." />
+                            </div>
+                        </div>
+
+                        <%--Adresse2--%>
+                        <div class="form-group">
+                            <asp:Label runat="server" ID="Label6" AssociatedControlID="txtAdresse2" CssClass="col-md-2 control-label">Adresse 2</asp:Label>
+                            <div class="col-md-10">
+                                <asp:TextBox runat="server" ID="txtAdresse2" CssClass="form-control" />
+                            </div>
+                        </div>
+                        <br />
+
+                        <%--Email--%>
+                        <div class="form-group">
+                            <asp:Label runat="server" ID="Label7" AssociatedControlID="txtEmail" CssClass="col-md-2 control-label">Email</asp:Label>
+                            <div class="col-md-10">
+                                <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" />
+                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEmail"
+                                CssClass="text-danger" ErrorMessage="Le champ d'email est obligatoire." />
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
                                 <asp:Button ID="btnModifInfos" runat="server" Text="Modifier les infos" CssClass="btn btn-default" />
@@ -136,7 +191,7 @@
                 </asp:PlaceHolder>
             </section>
 
-            <section id="externalLoginsForm">
+            <section id="externalLoginsForm" hidden="hidden">
 
                 <asp:ListView runat="server"
                     ItemType="Microsoft.AspNet.Identity.UserLoginInfo"

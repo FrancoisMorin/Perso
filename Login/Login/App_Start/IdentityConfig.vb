@@ -11,6 +11,12 @@ Public Class ApplicationUserManager
         MyBase.New(store)
     End Sub
 
+    Public Overrides Function UpdateAsync(user As ApplicationUser) As Task(Of IdentityResult)
+        Store.UpdateAsync(user)
+
+        Return Task.FromResult(New IdentityResult("Les informations ont été modifiées."))
+    End Function
+
     Public Overrides Function ChangePasswordAsync(userId As String, currentPassword As String, newPassword As String) As Task(Of IdentityResult)
         Dim user As ApplicationUser = Nothing
 
@@ -19,7 +25,6 @@ Public Class ApplicationUserManager
         If user IsNot Nothing Then
             If user.PasswordHash = currentPassword Then
                 user.PasswordHash = newPassword
-
                 'Update la BD
                 Store.UpdateAsync(user)
             End If
