@@ -1,9 +1,16 @@
-﻿Public Class RechercheChambre
+﻿Imports System.Threading
+
+Public Class RechercheChambre
     Inherits System.Web.UI.Page
+
     Dim DateDebutSelection As Date
     Dim DateFinSelection As Date
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If (IsPostBack) Then
+            'ResultatRecherche.Visible = True
+
+        End If
 
     End Sub
 
@@ -24,8 +31,25 @@
     End Sub
 
     Sub ClickStuff()
-        ResultatRecherche.Visible = True
 
+        ProgressBar.Visible = True
+
+        Attend()
+
+        Dim test As New ClasseGestion
+
+        Dim Date1 As Date = "01/01/2014"
+        Dim Date2 As Date = "02/01/2014"
+
+        ListeHotel.DataSource = test.RechercheHotel(Date1, Date2)
+        ListeHotel.DataBind()
+        ProgressBar.Visible = False
+        ResultatRecherche.Visible = True
     End Sub
+
+    Sub Attend()
+        Thread.Sleep(10000)
+    End Sub
+
 
 End Class

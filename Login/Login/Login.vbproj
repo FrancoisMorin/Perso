@@ -189,6 +189,16 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Images\borddeplage.jpg" />
     <Content Include="Images\bar.jpg" />
+    <Content Include="Images\PhotoHotel\HotelNFN.jpg" />
+    <Content Include="Images\PhotoHotel\HotelNGN.jpg" />
+    <Content Include="Images\PhotoHotel\HotelNMD.jpg" />
+    <Content Include="Images\PhotoHotel\HotelNML.jpg" />
+    <Content Include="Images\PhotoHotel\HotelNMO.jpg" />
+    <Content Include="Images\PhotoHotel\HotelNQC.jpg" />
+    <Content Include="Images\PhotoHotel\HotelNRK.jpg" />
+    <Content Include="Images\PhotoHotel\HotelNSG.jpg" />
+    <Content Include="Images\PhotoHotel\HotelNSH.jpg" />
+    <Content Include="Images\PhotoHotel\HotelNTR.jpg" />
     <Content Include="Images\piscine.jpg" />
     <Content Include="RechercheChambre.aspx" />
     <Content Include="Temp\darkly\bootstrap.css" />
@@ -443,6 +453,7 @@
     <Compile Include="App_Start\VueInventaire.vb">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
+    <Compile Include="ClasseGestion.vb" />
     <Compile Include="Contact.aspx.designer.vb">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>

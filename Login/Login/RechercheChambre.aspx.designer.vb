@@ -50,6 +50,33 @@ Partial Public Class RechercheChambre
     Protected WithEvents btnRecherche As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
+    '''Contrôle ProgressBar.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents ProgressBar As Global.System.Web.UI.WebControls.PlaceHolder
+
+    '''<summary>
+    '''Contrôle ResultatRecherche.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents ResultatRecherche As Global.System.Web.UI.WebControls.PlaceHolder
+
+    '''<summary>
+    '''Contrôle ListeHotel.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents ListeHotel As Global.System.Web.UI.WebControls.ListView
+
+    '''<summary>
     '''Contrôle HotelEDS.
     '''</summary>
     '''<remarks>
@@ -57,4 +84,13 @@ Partial Public Class RechercheChambre
     '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents HotelEDS As Global.System.Web.UI.WebControls.EntityDataSource
+
+    '''<summary>
+    '''Contrôle ChambreEDS.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents ChambreEDS As Global.System.Web.UI.WebControls.EntityDataSource
 End Class
