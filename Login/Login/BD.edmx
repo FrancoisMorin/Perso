@@ -80,6 +80,15 @@
           <Property Name="QuantiteMax" Type="int" Nullable="false" />
           <Property Name="QuantiteFournitureHotel" Type="int" />
         </EntityType>
+        <EntityType Name="tblMessage">
+          <Key>
+            <PropertyRef Name="NoSeq" />
+          </Key>
+          <Property Name="NoSeq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DateM" Type="date" Nullable="false" />
+          <Property Name="MessageM" Type="text" Nullable="false" />
+        </EntityType>
         <EntityType Name="tblChiffreTravail">
           <Key>
             <PropertyRef Name="NoChiffreTravail" />
@@ -834,6 +843,9 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="PrixTypeChambreHotel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Reservation">
+          <Parameter Name="CodeHotel" Type="char" Mode="In" />
+        </Function>
         <Function Name="VerificationDispo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Reservation">
           <Parameter Name="DateDebut" Type="date" Mode="In" />
           <Parameter Name="DateFin" Type="date" Mode="In" />
@@ -847,6 +859,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <EntitySet Name="tblFournitureCommande" EntityType="Self.tblFournitureCommande" Schema="Approvisionnement" store:Type="Tables" />
           <EntitySet Name="tblFournitureFournisseur" EntityType="Self.tblFournitureFournisseur" Schema="Approvisionnement" store:Type="Tables" />
           <EntitySet Name="tblFournitureHotel" EntityType="Self.tblFournitureHotel" Schema="Approvisionnement" store:Type="Tables" />
+          <EntitySet Name="tblMessage" EntityType="Self.tblMessage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblChiffreTravail" EntityType="Self.tblChiffreTravail" Schema="Personnel" store:Type="Tables" />
           <EntitySet Name="tblEmploye" EntityType="Self.tblEmploye" Schema="Personnel" store:Type="Tables" />
           <EntitySet Name="tblEntretienFournitureChambre" EntityType="Self.tblEntretienFournitureChambre" Schema="Personnel" store:Type="Tables" />
@@ -1136,6 +1149,15 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <Property Name="QuantiteFournitureHotel" Type="Int32" />
           <NavigationProperty Name="tblFourniture" Relationship="Self.FK_Four_FourHot_NoSeqFour" FromRole="tblFournitureHotel" ToRole="tblFourniture" />
           <NavigationProperty Name="tblHotel" Relationship="Self.FK_Hot_FourHot_CodHot" FromRole="tblFournitureHotel" ToRole="tblHotel" />
+        </EntityType>
+        <EntityType Name="tblMessage">
+          <Key>
+            <PropertyRef Name="NoSeq" />
+          </Key>
+          <Property Name="NoSeq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateM" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MessageM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="tblChiffreTravail">
           <Key>
@@ -1919,6 +1941,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <EntitySet Name="tblFournitureCommande" EntityType="Self.tblFournitureCommande" />
           <EntitySet Name="tblFournitureFournisseur" EntityType="Self.tblFournitureFournisseur" />
           <EntitySet Name="tblFournitureHotel" EntityType="Self.tblFournitureHotel" />
+          <EntitySet Name="tblMessage" EntityType="Self.tblMessage" />
           <EntitySet Name="tblChiffreTravail" EntityType="Self.tblChiffreTravail" />
           <EntitySet Name="tblEmploye" EntityType="Self.tblEmploye" />
           <EntitySet Name="tblEntretienFournitureChambre" EntityType="Self.tblEntretienFournitureChambre" />
@@ -2088,11 +2111,20 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             <End Role="tblChambreReservationChambre" EntitySet="tblChambreReservationChambre" />
             <End Role="tblForfait" EntitySet="tblForfait" />
           </AssociationSet>
+          <FunctionImport Name="PrixTypeChambreHotel" ReturnType="Collection(P2014_BD_GestionHotelModel.PrixTypeChambreHotel_Result)">
+            <Parameter Name="CodeHotel" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="VerificationDispo" ReturnType="Collection(P2014_BD_GestionHotelModel.VerificationDispo_Result)">
             <Parameter Name="DateDebut" Mode="In" Type="DateTime" />
             <Parameter Name="DateFin" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="PrixTypeChambreHotel_Result">
+          <Property Type="String" Name="CodeTypeChambre" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="NomTypeChambre" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="DescTypeChambre" Nullable="false" MaxLength="200" />
+          <Property Type="Decimal" Name="PrixTypeChambre" Nullable="false" Precision="19" />
+        </ComplexType>
         <ComplexType Name="VerificationDispo_Result">
           <Property Type="Int32" Name="NoSeqChambre" Nullable="false" />
           <Property Type="String" Name="CodeChambre" Nullable="false" MaxLength="4" />
@@ -2186,6 +2218,16 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
                 <ScalarProperty Name="QuantiteMin" ColumnName="QuantiteMin" />
                 <ScalarProperty Name="QuantiteMax" ColumnName="QuantiteMax" />
                 <ScalarProperty Name="QuantiteFournitureHotel" ColumnName="QuantiteFournitureHotel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMessage">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblMessage">
+              <MappingFragment StoreEntitySet="tblMessage">
+                <ScalarProperty Name="NoSeq" ColumnName="NoSeq" />
+                <ScalarProperty Name="Titre" ColumnName="Titre" />
+                <ScalarProperty Name="DateM" ColumnName="DateM" />
+                <ScalarProperty Name="MessageM" ColumnName="MessageM" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2482,6 +2524,16 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
               <ScalarProperty Name="CodeForfait" ColumnName="CodeForfait" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="PrixTypeChambreHotel" FunctionName="P2014_BD_GestionHotelModel.Store.PrixTypeChambreHotel">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="P2014_BD_GestionHotelModel.PrixTypeChambreHotel_Result">
+                <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
+                <ScalarProperty Name="NomTypeChambre" ColumnName="NomTypeChambre" />
+                <ScalarProperty Name="DescTypeChambre" ColumnName="DescTypeChambre" />
+                <ScalarProperty Name="PrixTypeChambre" ColumnName="PrixTypeChambre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="VerificationDispo" FunctionName="P2014_BD_GestionHotelModel.Store.VerificationDispo">
             <ResultMapping>
               <ComplexTypeMapping TypeName="P2014_BD_GestionHotelModel.VerificationDispo_Result">

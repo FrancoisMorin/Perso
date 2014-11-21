@@ -1,24 +1,44 @@
-﻿Public Class RechercheChambre
+﻿Public Class Reservation
     Inherits System.Web.UI.Page
-
+    Dim Maliste As List(Of PrixTypeChambreHotel_Result)
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        If (IsPostBack) Then
-            'ResultatRecherche.Visible = True
 
+        If (Not IsPostBack) Then
+
+            Try
+                Dim CodeHotel As String = Request.QueryString("ID")
+
+                Dim BD As New P2014_BD_GestionHotelEntities
+
+                Dim MonNomHotel As String
+
+                Dim res = (From tabHotel In BD.tblHotel
+                               Where tabHotel.CodeHotel = CodeHotel
+                               Select tabHotel).ToList.First
+
+                MonNomHotel = res.NomHotel
+                TitreNomHotel.Text = MonNomHotel
+
+                Dim res2 = From tabTypeChambre In BD.PrixTypeChambreHotel(CodeHotel)
+                          Select tabTypeChambre
+
+
+                ListeTypeChambre.DataSource = res2
+                ListeTypeChambre.DataBind()
+            Catch ex As Exception
+                Response.Redirect("~/RechercheChambre.aspx")
+            End Try
         End If
+    End Sub
+
+    Sub ClickStuff(ByVal sender As Object, ByVal e As System.EventArgs)
+        
 
     End Sub
 
-    Sub ClickStuff()
-        Dim test As New ClasseGestion
-
-        Dim Date1 As Date = "01/01/2014"
-        Dim Date2 As Date = "02/01/2014"
-
-        ListeHotel.DataSource = test.RechercheHotel(Date1, Date2)
-        ListeHotel.DataBind()
-
-        ResultatRecherche.Visible = True
+    Protected Sub DropDownList1_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Dim u = CType(sender, DropDownList)
+        Dim code = u.Attributes("SorteChambre")
     End Sub
 
     Private Sub CalendrierDebut_DayRender(sender As Object, e As DayRenderEventArgs) Handles CalendrierDebut.DayRender

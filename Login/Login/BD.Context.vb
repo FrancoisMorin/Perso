@@ -32,6 +32,7 @@ Partial Public Class P2014_BD_GestionHotelEntities
     Public Overridable Property tblFournitureCommande() As DbSet(Of tblFournitureCommande)
     Public Overridable Property tblFournitureFournisseur() As DbSet(Of tblFournitureFournisseur)
     Public Overridable Property tblFournitureHotel() As DbSet(Of tblFournitureHotel)
+    Public Overridable Property tblMessage() As DbSet(Of tblMessage)
     Public Overridable Property tblChiffreTravail() As DbSet(Of tblChiffreTravail)
     Public Overridable Property tblEmploye() As DbSet(Of tblEmploye)
     Public Overridable Property tblEntretienFournitureChambre() As DbSet(Of tblEntretienFournitureChambre)
@@ -53,6 +54,12 @@ Partial Public Class P2014_BD_GestionHotelEntities
     Public Overridable Property tblTypeChambre() As DbSet(Of tblTypeChambre)
     Public Overridable Property tblVille() As DbSet(Of tblVille)
     Public Overridable Property VueInventaire() As DbSet(Of VueInventaire)
+
+    Public Overridable Function PrixTypeChambreHotel(codeHotel As String) As ObjectResult(Of PrixTypeChambreHotel_Result)
+        Dim codeHotelParameter As ObjectParameter = If(codeHotel IsNot Nothing, New ObjectParameter("CodeHotel", codeHotel), New ObjectParameter("CodeHotel", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of PrixTypeChambreHotel_Result)("PrixTypeChambreHotel", codeHotelParameter)
+    End Function
 
     Public Overridable Function VerificationDispo(dateDebut As Nullable(Of Date), dateFin As Nullable(Of Date)) As ObjectResult(Of VerificationDispo_Result)
         Dim dateDebutParameter As ObjectParameter = If(dateDebut.HasValue, New ObjectParameter("DateDebut", dateDebut), New ObjectParameter("DateDebut", GetType(Date)))

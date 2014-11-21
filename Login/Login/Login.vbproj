@@ -184,11 +184,34 @@
     <Content Include="Account\ResetPassword.aspx" />
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Contact.aspx" />
+    <EntityDeploy Include="BD.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BD.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="BD.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BD.edmx</DependentUpon>
+      <LastGenOutput>BD.Context.vb</LastGenOutput>
+    </Content>
+    <Content Include="BD.edmx.diagram">
+      <DependentUpon>BD.edmx</DependentUpon>
+    </Content>
+    <Content Include="BD.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BD.edmx</DependentUpon>
+      <LastGenOutput>BD.vb</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Images\borddeplage.jpg" />
-    <Content Include="Images\bar.jpg" />
+    <Content Include="Images\TypeChambre\ChambreLUX.jpg" />
+    <Content Include="Images\TypeChambre\ChambreSTD.jpg" />
+    <Content Include="Images\TypeChambre\ChambreSUI.jpg" />
+    <Content Include="Reservation.aspx" />
+    <Content Include="Temp\spacelab\bootstrap.css" />
+    <Content Include="Temp\spacelab\bootstrap.min.css" />
+    <Content Include="Images\Slider\borddeplage.jpg" />
+    <Content Include="Images\Slider\bar.jpg" />
     <Content Include="Images\PhotoHotel\HotelNFN.jpg" />
     <Content Include="Images\PhotoHotel\HotelNGN.jpg" />
     <Content Include="Images\PhotoHotel\HotelNMD.jpg" />
@@ -199,7 +222,7 @@
     <Content Include="Images\PhotoHotel\HotelNSG.jpg" />
     <Content Include="Images\PhotoHotel\HotelNSH.jpg" />
     <Content Include="Images\PhotoHotel\HotelNTR.jpg" />
-    <Content Include="Images\piscine.jpg" />
+    <Content Include="Images\Slider\piscine.jpg" />
     <Content Include="RechercheChambre.aspx" />
     <Content Include="Temp\darkly\bootstrap.css" />
     <Content Include="Temp\darkly\bootstrap.min.css" />
@@ -215,23 +238,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
-    <EntityDeploy Include="App_Start\BD.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BD.Designer.vb</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="App_Start\BD.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BD.edmx</DependentUpon>
-      <LastGenOutput>BD.Context.vb</LastGenOutput>
-    </Content>
-    <Content Include="App_Start\BD.edmx.diagram">
-      <DependentUpon>BD.edmx</DependentUpon>
-    </Content>
-    <Content Include="App_Start\BD.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BD.edmx</DependentUpon>
-      <LastGenOutput>BD.vb</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -337,21 +343,6 @@
       <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Start\BD.Context.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BD.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\BD.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BD.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\BD.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\IdentityConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
@@ -363,94 +354,19 @@
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="App_Start\Startup.Auth.vb" />
-    <Compile Include="App_Start\tblCategorieFourniture.vb">
-      <DependentUpon>BD.tt</DependentUpon>
+    <Compile Include="BD.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="App_Start\tblChambre.vb">
-      <DependentUpon>BD.tt</DependentUpon>
+    <Compile Include="BD.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD.edmx</DependentUpon>
     </Compile>
-    <Compile Include="App_Start\tblChambreReservationChambre.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblChiffreTravail.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblClient.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblCommande.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblEmploye.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblEntretienFournitureChambre.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblEntretienFournitureSalle.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblFacture.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblForfait.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblFournisseur.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblFourniture.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblFournitureChambre.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblFournitureCommande.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblFournitureFournisseur.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblFournitureHotel.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblFournitureReservationSalle.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblHotel.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblPays.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblPrixTypeChambre.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblProvince.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblRabais.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblReservationChambre.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblReservationSalle.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblSalle.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblTypeChambre.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\tblVille.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\VerificationDispo_Result.vb">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App_Start\VueInventaire.vb">
+    <Compile Include="BD.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="ClasseGestion.vb" />
@@ -492,11 +408,21 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PrixTypeChambreHotel_Result.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
     <Compile Include="RechercheChambre.aspx.designer.vb">
       <DependentUpon>RechercheChambre.aspx</DependentUpon>
     </Compile>
     <Compile Include="RechercheChambre.aspx.vb">
       <DependentUpon>RechercheChambre.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Reservation.aspx.designer.vb">
+      <DependentUpon>Reservation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reservation.aspx.vb">
+      <DependentUpon>Reservation.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Site.Master.designer.vb">
@@ -507,6 +433,96 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Startup.vb" />
+    <Compile Include="tblCategorieFourniture.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblChambre.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblChambreReservationChambre.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblChiffreTravail.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblClient.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblCommande.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEmploye.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEntretienFournitureChambre.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEntretienFournitureSalle.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFacture.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblForfait.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFournisseur.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFourniture.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFournitureChambre.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFournitureCommande.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFournitureFournisseur.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFournitureHotel.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFournitureReservationSalle.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblHotel.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMessage.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPays.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPrixTypeChambre.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProvince.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblRabais.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblReservationChambre.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblReservationSalle.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblSalle.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblTypeChambre.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblVille.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VerificationDispo_Result.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.vb">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -520,6 +536,9 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.vb">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="VueInventaire.vb">
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -546,7 +565,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Temp\spacelab\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

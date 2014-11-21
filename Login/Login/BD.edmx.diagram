@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="26824e08dbc946ac98d4fd15c0e599dd" Name="Diagram1">
+      <Diagram DiagramId="ae98830fd7f1458a837adf6d1fe3f7c1" Name="Diagram1">
         <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblCategorieFourniture" Width="1.5" PointX="12.75" PointY="33.875" IsExpanded="true" />
         <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblCommande" Width="1.5" PointX="15" PointY="22.375" IsExpanded="true" />
         <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblFournisseur" Width="1.5" PointX="12.75" PointY="10.625" IsExpanded="true" />
@@ -13,6 +13,7 @@
         <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblFournitureCommande" Width="1.5" PointX="20.25" PointY="22.75" IsExpanded="true" />
         <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblFournitureFournisseur" Width="1.5" PointX="17.25" PointY="17.375" IsExpanded="true" />
         <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblFournitureHotel" Width="1.5" PointX="12.75" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblMessage" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblChiffreTravail" Width="1.5" PointX="12" PointY="26.375" IsExpanded="true" />
         <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblEmploye" Width="1.5" PointX="9.75" PointY="21.5" IsExpanded="true" />
         <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblEntretienFournitureChambre" Width="1.5" PointX="15" PointY="18.25" IsExpanded="true" />
@@ -33,7 +34,7 @@
         <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblSalle" Width="1.5" PointX="9.75" PointY="34.5" IsExpanded="true" />
         <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblTypeChambre" Width="1.5" PointX="7.5" PointY="27.375" IsExpanded="true" />
         <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.tblVille" Width="1.5" PointX="5.25" PointY="19.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.VueInventaire" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BD_GestionHotelModel.VueInventaire" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Four_Categ_CodeCateg" ManuallyRouted="false" />
         <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Com_FourCom_NoCom" ManuallyRouted="false" />
         <AssociationConnector Association="P2014_BD_GestionHotelModel.FK_Emp_Com_NoEmp" ManuallyRouted="false" />
