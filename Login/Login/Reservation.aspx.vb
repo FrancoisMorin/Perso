@@ -1,6 +1,22 @@
-﻿Public Class Reservation
+﻿Imports Microsoft.AspNet.Identity
+Imports Microsoft.AspNet.Identity.EntityFramework
+Imports Microsoft.AspNet.Identity.Owin
+Imports Owin
+Public Class Reservation
     Inherits System.Web.UI.Page
-    Dim Maliste As List(Of PrixTypeChambreHotel_Result)
+
+    Dim ClasseGes As ClasseGestion
+
+    Private Sub Reservation_PreLoad(sender As Object, e As EventArgs) Handles Me.PreLoad
+        If User.Identity.IsAuthenticated Then
+            'Le user est connecté, passe à la réservation
+        Else
+            Response.Redirect("~/Account/Login.aspx")
+            'bo tit poput javascrip
+            'Redirect vers login / inscription
+        End If
+    End Sub
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
         If (Not IsPostBack) Then
@@ -28,17 +44,18 @@
             Catch ex As Exception
                 Response.Redirect("~/RechercheChambre.aspx")
             End Try
+        Else
+            ClasseGes = New ClasseGestion
         End If
-    End Sub
-
-    Sub ClickStuff(ByVal sender As Object, ByVal e As System.EventArgs)
-        
 
     End Sub
 
     Protected Sub DropDownList1_SelectedIndexChanged(sender As Object, e As EventArgs)
         Dim u = CType(sender, DropDownList)
         Dim code = u.Attributes("SorteChambre")
+
+        ClasseGes.AjoutDetailReservation(code, u.Text)
+        u.Enabled = False
     End Sub
 
     Private Sub CalendrierDebut_DayRender(sender As Object, e As DayRenderEventArgs) Handles CalendrierDebut.DayRender
@@ -95,5 +112,22 @@
             CalendrierFin.Visible = False
             btnExpandCalendarFin.Text = "+"
         End If
+    End Sub
+
+    Private Sub btnCalculer_Click(sender As Object, e As EventArgs) Handles btnCalculer.Click
+        DetailReservation.Visible = True
+
+        Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
+        Dim appUser = manager.FindById(User.Identity.GetUserId)
+
+        Dim DateDebut As String = CalendrierDebut.SelectedDate.ToString("yyyy-MM-dd")
+        Dim Datefin As String = CalendrierFin.SelectedDate.ToString("yyyy-MM-dd")
+
+        Dim CodeHotel As String = Request.QueryString("ID")
+
+        ClasseGes.CreerReservation(appUser, cmbTypeCarte.Text, txtNoCarteCredit.Text, txtDateExpiration.Text, txtNomDetenteurCarte.Text)
+        ClasseGes.FaireReservationTypeChambre(CodeHotel, DateDebut, Datefin)
+        ClasseGes.EnregistrerChambresReservation()
+
     End Sub
 End Class

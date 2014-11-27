@@ -50,8 +50,18 @@ Public Class ApplicationUserManager
 
     Public Overrides Function CreateAsync(user As ApplicationUser, password As String) As Task(Of IdentityResult)
         user.PasswordHash = password
-        Store.CreateAsync(user)
-        Return Task.FromResult(New IdentityResult("True"))
+
+        Dim MonResult As New IdentityResult
+
+        Try
+            Store.CreateAsync(user)
+
+            MonResult = IdentityResult.Success
+            Return Task.FromResult(MonResult)
+        Catch ex As Exception
+            Return Task.FromResult(New IdentityResult("Erreur lors de la création du compte."))
+        End Try
+
     End Function
 
     Public Shared Function Create(options As IdentityFactoryOptions(Of ApplicationUserManager), context As IOwinContext) As ApplicationUserManager

@@ -41,6 +41,15 @@ Partial Public Class Register
     Protected WithEvents Password As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Contrôle RegularExpressionValidator1.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator1 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
     '''Contrôle ConfirmPassword.
     '''</summary>
     '''<remarks>
@@ -84,6 +93,33 @@ Partial Public Class Register
     '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents txtNoCellulaire As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Contrôle cmbPays.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents cmbPays As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Contrôle cmbProvince.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents cmbProvince As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Contrôle cmbVille.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents cmbVille As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Contrôle txtAdresse1.

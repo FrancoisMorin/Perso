@@ -204,6 +204,12 @@
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Images\Accueil\AccueilChambre.jpg" />
+    <Content Include="Images\Accueil\AccueilHotel.jpg" />
+    <Content Include="Images\Accueil\AccueilLobby.jpg" />
+    <Content Include="Images\Slider\chaise.jpg" />
+    <Content Include="Images\Slider\granderoue.jpg" />
+    <Content Include="Images\Slider\pewpew.jpg" />
     <Content Include="Images\TypeChambre\ChambreLUX.jpg" />
     <Content Include="Images\TypeChambre\ChambreSTD.jpg" />
     <Content Include="Images\TypeChambre\ChambreSUI.jpg" />

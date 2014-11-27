@@ -9,16 +9,43 @@
 
     End Sub
 
-    Sub ClickStuff()
-        Dim test As New ClasseGestion
+    Sub Clear()
+        txtDateDebut.Text = "Sélectionnez une date de début..."
+        txtDateFin.Text = "Sélectionnez une date de fin..."
+        txtVilleRecherche.Text = ""
+        ResultatRecherche.Visible = False
+        CalendrierDebut.SelectedDate = Nothing
+        CalendrierFin.SelectedDate = Nothing
+        btnExpandCalendarFin.Enabled = False
+        CalendrierDebut.Visible = False
+        btnExpandCalendarDebut.Text = "+"
+        CalendrierFin.Visible = False
+        btnExpandCalendarFin.Text = "+"
+    End Sub
 
-        Dim Date1 As Date = "01/01/2014"
-        Dim Date2 As Date = "02/01/2014"
 
-        ListeHotel.DataSource = test.RechercheHotel(Date1, Date2)
-        ListeHotel.DataBind()
+    Sub RechercheHotel()
+        Dim maClasse As New ClasseGestion
 
-        ResultatRecherche.Visible = True
+        If txtDateDebut.Text <> "Sélectionnez une date de début..." Then
+            Dim Date1 As Date = CalendrierDebut.SelectedDate.ToShortDateString
+
+            If txtDateFin.Text <> "Sélectionnez une date de fin..." Then
+                Dim Date2 As Date = CalendrierFin.SelectedDate.ToShortDateString
+
+                ListeHotel.DataSource = maClasse.RechercheHotel(Date1, Date2, txtVilleRecherche.Text)
+                ListeHotel.DataBind()
+
+                ResultatRecherche.Visible = True
+            Else
+                ResultatRecherche.Visible = False
+                System.Web.UI.ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "AlertBox", "alert('Vous devez entrer une date de début et une date de fin pour effectuer la recherche.');", True)
+            End If
+        Else
+            ResultatRecherche.Visible = False
+            System.Web.UI.ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "AlertBox", "alert('Vous devez entrer une date de début et une date de fin pour effectuer la recherche.');", True)
+        End If
+
     End Sub
 
     Private Sub CalendrierDebut_DayRender(sender As Object, e As DayRenderEventArgs) Handles CalendrierDebut.DayRender
@@ -38,7 +65,7 @@
     Private Sub CalendrierDebut_SelectionChanged(sender As Object, e As EventArgs) Handles CalendrierDebut.SelectionChanged
         If CalendrierDebut.SelectedDate >= CalendrierFin.SelectedDate Then
             CalendrierFin.SelectedDate = Nothing
-            txtDateFin.Text = "Sélectionnez un date de fin..."
+            txtDateFin.Text = "Sélectionnez une date de fin..."
         End If
 
         txtDateDebut.Text = CalendrierDebut.SelectedDate.ToString("dd/MM/yyyy")
@@ -76,4 +103,5 @@
             btnExpandCalendarFin.Text = "+"
         End If
     End Sub
+
 End Class

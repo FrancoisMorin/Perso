@@ -9,9 +9,9 @@
         <div class="col-md-8">
             <section id="loginForm">
                 <div class="form-horizontal">
-                    <h4>Connectez-vous à l'aide d'un compte local.</h4>
+                    <h4>Connectez-vous à votre compte en ligne.</h4>
                     <hr />
-                      <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
+                    <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                         <p class="text-danger">
                             <asp:Literal runat="server" ID="FailureText" />
                         </p>
@@ -58,7 +58,15 @@
 
         <div class="col-md-4">
             <section id="socialLoginForm">
-                <uc:OpenAuthProviders runat="server" ID="OpenAuthLogin" />
+                <h4>Inscrivez-vous dès aujourd'hui</h4>
+                <hr />
+                <p>
+                    Utiliser votre compte en ligne pour
+                   réserver une chambre en quelques clics.
+                    Si vous avez déjà réservé dans l'un
+                    de nos hôtel, vous pouvez utiliser votre
+                    compte client qui existe déjà.     
+                </p>
             </section>
         </div>
     </div>

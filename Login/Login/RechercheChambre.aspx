@@ -59,13 +59,14 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <asp:TextBox runat="server" ID="txtVilleRecherche" CssClass="form-control" Text="Entrez le nom de ville..." />
+                        <asp:Label ID="Label1" runat="server" AssociatedControlID="txtVilleRecherche" Text="Entrez un nom de ville"/>
+                        <asp:TextBox runat="server" ID="txtVilleRecherche" CssClass="form-control" Text=""/>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <asp:Button runat="server" ID="btnClear" Text="Effacer" CssClass="btn btn-sm btn-warning" />
+                        <asp:Button runat="server" ID="btnClear" OnClick="Clear" Text="Effacer" CssClass="btn btn-sm btn-warning" />
                     </div>
                 </div>
             </div>
@@ -73,7 +74,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <asp:Button ID="btnRecherche" runat="server" OnClick="ClickStuff" Text="Recherche" CssClass="btn btn-default" />
+                        <asp:Button ID="btnRecherche" runat="server" OnClick="RechercheHotel" Text="Recherche" CssClass="btn btn-default" />
                     </div>
                 </div>
             </div>

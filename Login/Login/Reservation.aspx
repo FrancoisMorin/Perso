@@ -23,26 +23,33 @@
 
                 </LayoutTemplate>
                 <ItemTemplate>
-                    <div class="col-md-3">
-                        <asp:Image ID="ImageTypeChambre" runat="server" ImageUrl='<%# String.Format("~\Images\TypeChambre\Chambre{0}.jpg", Eval("CodeTypeChambre"))%>' Width="200" Height="120" BorderStyle="None" />
-                        <br />
-                        <p>
-                            <h5 style="font-weight: bold;"><%# Eval("NomTypeChambre")%></h5>
-                            Prix: <%# Eval("PrixTypeChambre", "{0:c}")%>  / Nuit
-                        </p>
-                        <div class="btn-group" style="padding-bottom:2%">
-                            <asp:DropDownList CssClass="btn btn-default dropdown-toggle" SorteChambre='<%# Eval("CodeTypeChambre")%>' runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="true">
-                                <asp:ListItem Text="0" Selected="True"></asp:ListItem>
-                                <asp:ListItem Text="1"></asp:ListItem>
-                                <asp:ListItem Text="2"></asp:ListItem>
-                                <asp:ListItem Text="3"></asp:ListItem>
-                                <asp:ListItem Text="4"></asp:ListItem>
-                                <asp:ListItem Text="5"></asp:ListItem>
-                            </asp:DropDownList>
-                            
-                        </div>
-                        
-                    </div>
+                    <asp:UpdatePanel ID="MonUpdatePanel" runat="server">
+                        <ContentTemplate>
+                            <div class="col-md-3">
+                                <asp:Image ID="ImageTypeChambre" runat="server" ImageUrl='<%# String.Format("~\Images\TypeChambre\Chambre{0}.jpg", Eval("CodeTypeChambre"))%>' Width="200" Height="120" BorderStyle="None" />
+                                <br />
+                                <p>
+                                    <h5 style="font-weight: bold;"><%# Eval("NomTypeChambre")%></h5>
+                                    Prix: <%# Eval("PrixTypeChambre", "{0:c}")%>  / Nuit
+                                </p>
+                                <div class="btn-group" style="padding-bottom: 2%">
+                                    <asp:DropDownList CssClass="btn btn-default dropdown-toggle" SorteChambre='<%# Eval("CodeTypeChambre")%>' runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="false">
+                                        <asp:ListItem Text="0" Selected="True"></asp:ListItem>
+                                        <asp:ListItem Text="1"></asp:ListItem>
+                                        <asp:ListItem Text="2"></asp:ListItem>
+                                        <asp:ListItem Text="3"></asp:ListItem>
+                                        <asp:ListItem Text="4"></asp:ListItem>
+                                        <asp:ListItem Text="5"></asp:ListItem>
+                                    </asp:DropDownList>
+
+                                </div>
+
+                            </div>
+                        </ContentTemplate>
+
+                    </asp:UpdatePanel>
+
+
                 </ItemTemplate>
 
             </asp:ListView>
@@ -103,38 +110,105 @@
 
             <div class="row">
                 <div class="col-md-4">
-
                     <fieldset class="form-horizontal">
                         <legend>Informations</legend>
-
                         <p>Vous êtes connecté en tant que <strong><%: User.Identity.GetUserName() %></strong>.</p>
                         <hr />
                         <div class="form-group">
-
-
                             <asp:Label runat="server" ID="Label1" AssociatedControlID="cmbTypeCarte" CssClass="col-md-4">Type de carte</asp:Label>
-
                             <div class="col-md-10">
-
-
                                 <asp:DropDownList ID="cmbTypeCarte" runat="server" CssClass="btn btn-default dropdown-toggle">
                                     <asp:ListItem Text="Visa" />
                                     <asp:ListItem Text="MasterCard" />
                                     <asp:ListItem Text="American Express" />
                                 </asp:DropDownList>
                             </div>
-
                         </div>
 
                         <div class="form-group">
-                            <div class="col-lg-10 col-lg-offset-2">
-                                <button class="btn btn-default">Cancel</button>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="col-md-10">
+                                <asp:Label runat="server" ID="Label2" AssociatedControlID="cmbTypeCarte" CssClass="control-label">Numéro carte de crédit</asp:Label>
+                                <asp:TextBox runat="server" ID="txtNoCarteCredit" CssClass="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <asp:Label runat="server" ID="Label3" AssociatedControlID="cmbTypeCarte" CssClass="control-label">Date d'expiration (mm/aa)</asp:Label>
+                                <asp:TextBox runat="server" ID="txtDateExpiration" CssClass="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <asp:Label runat="server" ID="Label4" AssociatedControlID="txtNomDetenteurCarte" CssClass="control-label">Nom détenteur</asp:Label>
+                                <asp:TextBox runat="server" ID="txtNomDetenteurCarte" CssClass="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-10">
+                                <asp:Button ID="btnCalculer" runat="server" Text="Calculer" CssClass="btn btn-primary" />
                             </div>
                         </div>
 
                     </fieldset>
                 </div>
+
+                <asp:PlaceHolder ID="DetailReservation" runat="server" Visible="false">
+                    <div class="col-md-8">
+
+                        <div class="alert alert-info">
+
+                            <fieldset class="form-horizontal">
+                                <legend>Détails de la réservation</legend>
+
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <asp:Label runat="server" ID="Label5" CssClass="control-label"><strong>Date debut :</strong> 25 novembre 2014</asp:Label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <asp:Label runat="server" ID="Label6" CssClass="control-label"><strong>Date fin :</strong> 28 novembre 2014</asp:Label>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <asp:Label runat="server" ID="Label7" CssClass="control-label"><strong>Prix :</strong> 500.00$</asp:Label>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <p>
+                                            <strong>Un email vous sera envoyé avec toutes les informations de votre réservation.</strong>
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-8">
+                                        <asp:Label runat="server" ID="Label8" AssociatedControlID="btnConfirmer" CssClass="control-label"><strong>Voulez-vous confirmer cette réservation ?</strong></asp:Label>
+                                        <asp:Button ID="btnConfirmer" runat="server" Text="Confirmer" CssClass="form-control btn btn-primary" Width="50%" />
+                                    </div>
+
+                                </div>
+                            </fieldset>
+
+                        </div>
+
+
+                    </div>
+                </asp:PlaceHolder>
+
+
+
             </div>
         </div>
     </div>

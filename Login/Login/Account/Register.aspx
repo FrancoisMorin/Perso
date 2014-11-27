@@ -20,14 +20,20 @@
                     CssClass="text-danger" ErrorMessage="Le champ d’adresse de messagerie est obligatoire." />
             </div>
         </div>
+        
+        <%-- Champ mot de passe --%>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">Mot de passe</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
-                    CssClass="text-danger" ErrorMessage="Le champ mot de passe est requis." />
+                    CssClass="text-danger" Display="Dynamic" ErrorMessage="Le champ mot de passe est requis." />
+                <asp:RegularExpressionValidator CssClass="text-danger" Display="Dynamic" ID="RegularExpressionValidator1" runat="server" ErrorMessage="Le mot de passe doit contenir au moins 8 caractères, un nombre et un caractère spécial." ControlToValidate="Password" ValidationExpression="^.*(?=.{8,})(?=.*[\d])(?=.*[\W]).*$">       
+                </asp:RegularExpressionValidator>
             </div>
         </div>
+
+        <%-- Champ validation --%>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-2 control-label">Confirmer le mot de passe </asp:Label>
             <div class="col-md-10">
@@ -39,6 +45,8 @@
             </div>
         </div>
         <hr />
+
+        <%-- Champ Nom --%>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtNom" CssClass="col-md-2 control-label">Nom</asp:Label>
             <div class="col-md-10">
@@ -48,6 +56,7 @@
             </div>
         </div>
 
+        <%-- Champ Prenom --%>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtPrenom" CssClass="col-md-2 control-label">Prenom</asp:Label>
             <div class="col-md-10">
@@ -57,6 +66,7 @@
             </div>
         </div>
 
+        <%-- Champ NoTelephone --%>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtNoTelephone" CssClass="col-md-2 control-label">Numéro de téléphone</asp:Label>
             <div class="col-md-10">
@@ -66,6 +76,7 @@
             </div>
         </div>
 
+        <%-- Champ NoCellulaire --%>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtNoCellulaire" CssClass="col-md-2 control-label">Numéro de cellulaire</asp:Label>
             <div class="col-md-10">
@@ -73,6 +84,41 @@
             </div>
         </div>
         <br />
+
+        <%--ComboBox Pays--%>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="cmbPays" CssClass="col-md-2 control-label">Pays</asp:Label>
+            <div class="col-md-3">
+                <asp:DropDownList runat="server" ID="cmbPays" AutoPostBack="true" CssClass="btn btn-default dropdown-toggle"/>
+                <br />
+            </div>
+        </div>
+
+        <br />
+
+        <%--ComboBox Province--%>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="cmbProvince" CssClass="col-md-2 control-label">Province</asp:Label>
+            <div class="col-md-3">
+                <asp:DropDownList runat="server" ID="cmbProvince" AutoPostBack="true" CssClass="btn btn-default dropdown-toggle"/>
+                <br />
+            </div>
+        </div>
+
+        <br />
+
+        <%--ComboBox Ville--%>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="cmbVille" CssClass="col-md-2 control-label">Ville</asp:Label>
+            <div class="col-md-3">
+                <asp:DropDownList runat="server" ID="cmbVille" AutoPostBack="true" CssClass="btn btn-default dropdown-toggle"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="cmbVille"
+                    CssClass="text-danger" ErrorMessage="Vous devez choisir une ville." />
+                <br />
+            </div>
+        </div>
+
+        <%-- Champ Adresse1 --%>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtAdresse1" CssClass="col-md-2 control-label">Adresse 1</asp:Label>
             <div class="col-md-10">
@@ -82,6 +128,7 @@
             </div>
         </div>
 
+        <%-- Champ Adresse2 --%>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtAdresse2" CssClass="col-md-2 control-label">Adresse 2</asp:Label>
             <div class="col-md-10">
@@ -89,6 +136,8 @@
             </div>
         </div>
         <br />
+
+        <%-- Champ CodePostal --%>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtCodePostal" CssClass="col-md-2 control-label">Code postal</asp:Label>
             <div class="col-md-10">
@@ -98,6 +147,7 @@
             </div>
         </div>
 
+        <%-- Champ NomEntreprise --%>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtNomEntreprise" CssClass="col-md-2 control-label">Nom entreprise</asp:Label>
             <div class="col-md-10">

@@ -86,6 +86,15 @@ Partial Public Class RechercheChambre
     Protected WithEvents CalendrierFin As Global.System.Web.UI.WebControls.Calendar
 
     '''<summary>
+    '''Contrôle Label1.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Contrôle txtVilleRecherche.
     '''</summary>
     '''<remarks>

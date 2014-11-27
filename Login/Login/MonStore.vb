@@ -16,23 +16,26 @@ Public Class MonStore(Of TUser As ApplicationUser)
 #Region "User"
 
     Public Function CreateAsync(user As ApplicationUser) As Task Implements IUserStore(Of ApplicationUser, String).CreateAsync
+
         Dim Client As New tblClient
+
+        Dim fuckyou As String = user.CodePostal
 
         Client.NomClient = user.NomClient
         Client.PrenomClient = user.PrenomClient
-        Client.NoTelephone = user.PrenomClient
+        Client.NoTelephone = user.NoTelephone
         Client.NoCellulaire = user.NoCellulaire
         Client.AdresseClient = user.AdresseClient
         Client.AdresseSecondaireClient = user.AdresseSecondaireClient
-        Client.CodePostal = user.CodePostal.Trim
-        Client.CodeVille = "FRE"
+        Client.CodePostal = fuckyou.Replace(" ", "")
+        Client.CodeVille = user.CodeVille
         Client.EmailClient = user.Email
         Client.MdpClient = user.PasswordHash
         BD.tblClient.Add(Client)
+
         BD.SaveChanges()
 
-
-        Return Task.FromResult(True)
+            Return Task.FromResult(True)
     End Function
 
     Public Function DeleteAsync(user As ApplicationUser) As Task Implements IUserStore(Of ApplicationUser, String).DeleteAsync
@@ -66,6 +69,7 @@ Public Class MonStore(Of TUser As ApplicationUser)
     Public Function FindByNameAsync(userName As String) As Task(Of ApplicationUser) Implements IUserStore(Of ApplicationUser, String).FindByNameAsync
         Dim user As ApplicationUser = Nothing
 
+        'Dim res = From el In BD.tblClient Select el
         Dim res = From el In BD.tblClient Where el.EmailClient = userName Select el
 
         If res.Count > 0 Then
