@@ -239,6 +239,15 @@ Partial Public Class Manage
     Protected WithEvents NewPassword As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Contrôle RegularExpressionValidator1.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator1 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
     '''Contrôle ConfirmNewPasswordLabel.
     '''</summary>
     '''<remarks>

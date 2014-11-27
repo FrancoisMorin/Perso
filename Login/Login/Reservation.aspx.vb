@@ -115,19 +115,39 @@ Public Class Reservation
     End Sub
 
     Private Sub btnCalculer_Click(sender As Object, e As EventArgs) Handles btnCalculer.Click
-        DetailReservation.Visible = True
+
+        Dim txtDebut As String = txtDateDebut.Text
+        Dim txtFin As String = txtDateFin.Text
+        Dim TypeCarte As String = cmbTypeCarte.SelectedValue.ToString
+        Dim NoCarte As String = txtNoCarteCredit.Text
+        Dim DateExp As String = txtDateExpiration.Text
+        Dim NomDetenteur As String = txtNomDetenteurCarte.Text
+
+        Dim DateDebut As String = ""
+        Dim DateFin As String = ""
+
+        If txtDebut <> "Sélectionnez une date de début..." And txtDateFin.Text <> "Sélectionnez une date de fin..." Then
+            DateDebut = CalendrierDebut.SelectedDate.ToString("yyyy-MM-dd")
+            DateFin = CalendrierFin.SelectedDate.ToString("yyyy-MM-dd")
+        Else
+            'Les dates n'ont pas été selectionné.
+            '[Message d'erreur]
+        End If
+
 
         Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
         Dim appUser = manager.FindById(User.Identity.GetUserId)
 
-        Dim DateDebut As String = CalendrierDebut.SelectedDate.ToString("yyyy-MM-dd")
-        Dim Datefin As String = CalendrierFin.SelectedDate.ToString("yyyy-MM-dd")
-
         Dim CodeHotel As String = Request.QueryString("ID")
 
+        'Créer tblReservationChambre
         ClasseGes.CreerReservation(appUser, cmbTypeCarte.Text, txtNoCarteCredit.Text, txtDateExpiration.Text, txtNomDetenteurCarte.Text)
-        ClasseGes.FaireReservationTypeChambre(CodeHotel, DateDebut, Datefin)
+        'Créer les tbChambresRéservationChambre
+        ClasseGes.FaireReservationTypeChambre(CodeHotel, DateDebut, DateFin)
+        'Fou tout ça dans la bd
         ClasseGes.EnregistrerChambresReservation()
+
+        DetailReservation.Visible = True
 
     End Sub
 End Class

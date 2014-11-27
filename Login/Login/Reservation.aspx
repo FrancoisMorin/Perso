@@ -20,7 +20,6 @@
                         <asp:PlaceHolder runat="server" ID="itemPlaceHolder" />
                     </div>
 
-
                 </LayoutTemplate>
                 <ItemTemplate>
                     <asp:UpdatePanel ID="MonUpdatePanel" runat="server">
@@ -108,109 +107,116 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-4">
-                    <fieldset class="form-horizontal">
-                        <legend>Informations</legend>
-                        <p>Vous êtes connecté en tant que <strong><%: User.Identity.GetUserName() %></strong>.</p>
-                        <hr />
-                        <div class="form-group">
-                            <asp:Label runat="server" ID="Label1" AssociatedControlID="cmbTypeCarte" CssClass="col-md-4">Type de carte</asp:Label>
-                            <div class="col-md-10">
-                                <asp:DropDownList ID="cmbTypeCarte" runat="server" CssClass="btn btn-default dropdown-toggle">
-                                    <asp:ListItem Text="Visa" />
-                                    <asp:ListItem Text="MasterCard" />
-                                    <asp:ListItem Text="American Express" />
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <asp:Label runat="server" ID="Label2" AssociatedControlID="cmbTypeCarte" CssClass="control-label">Numéro carte de crédit</asp:Label>
-                                <asp:TextBox runat="server" ID="txtNoCarteCredit" CssClass="form-control" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <asp:Label runat="server" ID="Label3" AssociatedControlID="cmbTypeCarte" CssClass="control-label">Date d'expiration (mm/aa)</asp:Label>
-                                <asp:TextBox runat="server" ID="txtDateExpiration" CssClass="form-control" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <asp:Label runat="server" ID="Label4" AssociatedControlID="txtNomDetenteurCarte" CssClass="control-label">Nom détenteur</asp:Label>
-                                <asp:TextBox runat="server" ID="txtNomDetenteurCarte" CssClass="form-control" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-lg-10">
-                                <asp:Button ID="btnCalculer" runat="server" Text="Calculer" CssClass="btn btn-primary" />
-                            </div>
-                        </div>
-
-                    </fieldset>
-                </div>
-
-                <asp:PlaceHolder ID="DetailReservation" runat="server" Visible="false">
-                    <div class="col-md-8">
-
-                        <div class="alert alert-info">
-
-                            <fieldset class="form-horizontal">
-                                <legend>Détails de la réservation</legend>
-
-                                <div class="form-group">
-                                    <div class="col-md-4">
-                                        <asp:Label runat="server" ID="Label5" CssClass="control-label"><strong>Date debut :</strong> 25 novembre 2014</asp:Label>
-                                    </div>
+            <section id="info">
+                <div class="row">
+                    <div class="col-md-4">
+                        <fieldset class="form-horizontal">
+                            <legend>Informations</legend>
+                            <p>Vous êtes connecté en tant que <strong><%: User.Identity.GetUserName() %></strong>.</p>
+                            <hr />
+                            <div class="form-group">
+                                <asp:Label runat="server" ID="Label1" AssociatedControlID="cmbTypeCarte" CssClass="col-md-4">Type de carte</asp:Label>
+                                <div class="col-md-10">
+                                    <asp:DropDownList ID="cmbTypeCarte" runat="server" CssClass="btn btn-default dropdown-toggle">
+                                        <asp:ListItem Text="Visa" />
+                                        <asp:ListItem Text="MasterCard" />
+                                        <asp:ListItem Text="American Express" />
+                                    </asp:DropDownList>
                                 </div>
+                            </div>
 
-                                <div class="form-group">
-                                    <div class="col-md-4">
-                                        <asp:Label runat="server" ID="Label6" CssClass="control-label"><strong>Date fin :</strong> 28 novembre 2014</asp:Label>
-                                    </div>
-
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <asp:Label runat="server" ID="Label2" AssociatedControlID="cmbTypeCarte" CssClass="control-label">Numéro carte de crédit</asp:Label>
+                                    <asp:TextBox runat="server" ID="txtNoCarteCredit" CssClass="form-control" />
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNoCarteCredit"
+                                        CssClass="text-danger" Display="Dynamic" ErrorMessage="Le champ de numéro de carte de crédit est obligatoire." />
                                 </div>
+                            </div>
 
-                                <div class="form-group">
-                                    <div class="col-md-4">
-                                        <asp:Label runat="server" ID="Label7" CssClass="control-label"><strong>Prix :</strong> 500.00$</asp:Label>
-                                    </div>
-
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <asp:Label runat="server" ID="Label3" AssociatedControlID="cmbTypeCarte" CssClass="control-label">Date d'expiration (mm/aa)</asp:Label>
+                                    <asp:TextBox runat="server" ID="txtDateExpiration" CssClass="form-control" />
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDateExpiration"
+                                        CssClass="text-danger" Display="Dynamic" ErrorMessage="Le champ de date d'expiration est obligatoire." />
                                 </div>
+                            </div>
 
-                                <div class="form-group">
-                                    <div class="col-md-10">
-                                        <p>
-                                            <strong>Un email vous sera envoyé avec toutes les informations de votre réservation.</strong>
-                                        </p>
-                                    </div>
-
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <asp:Label runat="server" ID="Label4" AssociatedControlID="txtNomDetenteurCarte" CssClass="control-label">Nom détenteur</asp:Label>
+                                    <asp:TextBox runat="server" ID="txtNomDetenteurCarte" CssClass="form-control" />
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNomDetenteurCarte"
+                                        CssClass="text-danger" Display="dynamic" ErrorMessage="Le champ du nom du dédententeur est obligatoire." />
                                 </div>
+                            </div>
 
-                                <div class="form-group">
-                                    <div class="col-lg-8">
-                                        <asp:Label runat="server" ID="Label8" AssociatedControlID="btnConfirmer" CssClass="control-label"><strong>Voulez-vous confirmer cette réservation ?</strong></asp:Label>
-                                        <asp:Button ID="btnConfirmer" runat="server" Text="Confirmer" CssClass="form-control btn btn-primary" Width="50%" />
-                                    </div>
-
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <asp:Button ID="btnCalculer" runat="server" Text="Calculer" CssClass="btn btn-primary" />
                                 </div>
-                            </fieldset>
+                            </div>
 
-                        </div>
-
-
+                        </fieldset>
                     </div>
-                </asp:PlaceHolder>
+
+                    <asp:PlaceHolder ID="DetailReservation" runat="server" Visible="false">
+                        <div class="col-md-8">
+
+                            <div class="alert alert-info">
+
+                                <fieldset class="form-horizontal">
+                                    <legend>Détails de la réservation</legend>
+
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            <asp:Label runat="server" ID="Label5" CssClass="control-label"><strong>Date debut :</strong> 25 novembre 2014</asp:Label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            <asp:Label runat="server" ID="Label6" CssClass="control-label"><strong>Date fin :</strong> 28 novembre 2014</asp:Label>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            <asp:Label runat="server" ID="Label7" CssClass="control-label"><strong>Prix :</strong> 500.00$</asp:Label>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-10">
+                                            <p>
+                                                <strong>Un email vous sera envoyé avec toutes les informations de votre réservation.</strong>
+                                            </p>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-lg-8">
+                                            <asp:Label runat="server" ID="Label8" AssociatedControlID="btnConfirmer" CssClass="control-label"><strong>Voulez-vous confirmer cette réservation ?</strong></asp:Label>
+                                            <asp:Button ID="btnConfirmer" runat="server" Text="Confirmer" CssClass="form-control btn btn-primary" Width="50%" />
+                                        </div>
+
+                                    </div>
+                                </fieldset>
+
+                            </div>
 
 
+                        </div>
+                    </asp:PlaceHolder>
 
-            </div>
+                </div>
+            </section>
+
+
         </div>
     </div>
-
 </asp:Content>

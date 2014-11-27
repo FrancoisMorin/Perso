@@ -9,7 +9,7 @@
 
     <div>
         <asp:PlaceHolder runat="server" ID="SuccessMessagePlaceHolder" Visible="false" ViewStateMode="Disabled">
-            <p class="text-success"><%: SuccessMessage %></p>
+            <p class="text-danger"><%: SuccessMessage %></p>
         </asp:PlaceHolder>
     </div>
 
@@ -30,7 +30,7 @@
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="txtNom" CssClass="form-control" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNom"
-                                CssClass="text-danger" ErrorMessage="Le champ de nom est obligatoire." />
+                                    CssClass="text-danger" ErrorMessage="Le champ de nom est obligatoire." />
                             </div>
                         </div>
 
@@ -40,22 +40,22 @@
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="txtPrenom" CssClass="form-control" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPrenom"
-                                CssClass="text-danger" ErrorMessage="Le champ de prénom est obligatoire." />
+                                    CssClass="text-danger" ErrorMessage="Le champ de prénom est obligatoire." />
                             </div>
                         </div>
 
                         <%--Telephone--%>
-                         <div class="form-group">
+                        <div class="form-group">
                             <asp:Label runat="server" ID="Label3" AssociatedControlID="txtNoTelephone" CssClass="col-md-2 control-label">Numéro de téléphone</asp:Label>
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="txtNoTelephone" CssClass="form-control" />
-                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNom"
-                                CssClass="text-danger" ErrorMessage="Le champ de numéro de téléphone est obligatoire." />
+                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNoTelephone"
+                                    CssClass="text-danger" ErrorMessage="Le champ de numéro de téléphone est obligatoire." />
                             </div>
                         </div>
 
                         <%--Cellulaire--%>
-                         <div class="form-group">
+                        <div class="form-group">
                             <asp:Label runat="server" ID="Label4" AssociatedControlID="txtCellulaire" CssClass="col-md-2 control-label">Numéro de cellulaire</asp:Label>
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="txtCellulaire" CssClass="form-control" />
@@ -69,7 +69,7 @@
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="txtAdresse1" CssClass="form-control" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtAdresse1"
-                                CssClass="text-danger" ErrorMessage="Le champ d'adresse est obligatoire." />
+                                    CssClass="text-danger" ErrorMessage="Le champ d'adresse est obligatoire." />
                             </div>
                         </div>
 
@@ -88,7 +88,7 @@
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEmail"
-                                CssClass="text-danger" ErrorMessage="Le champ d'email est obligatoire." />
+                                    CssClass="text-danger" ErrorMessage="Le champ d'email est obligatoire." />
                             </div>
                         </div>
 
@@ -157,7 +157,7 @@
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="CurrentPassword" TextMode="Password" CssClass="form-control" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="CurrentPassword"
-                                    CssClass="text-danger" ErrorMessage="Le champ confirmer le mot de passe est requis."
+                                    CssClass="text-danger" ErrorMessage="Le champ de mot de passe est requis."
                                     ValidationGroup="ChangePassword" />
                             </div>
                         </div>
@@ -166,8 +166,9 @@
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="NewPassword" TextMode="Password" CssClass="form-control" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="NewPassword"
-                                    CssClass="text-danger" ErrorMessage="Le nouveau mot de passe est requis."
+                                    CssClass="text-danger" Display="Dynamic" ErrorMessage="Le nouveau mot de passe est requis."
                                     ValidationGroup="ChangePassword" />
+                                <asp:RegularExpressionValidator CssClass="text-danger" Display="Dynamic" ID="RegularExpressionValidator1" runat="server" ErrorMessage="Le mot de passe doit contenir au moins 8 caractères, un nombre et un caractère spécial." ControlToValidate="NewPassword" ValidationExpression="^.*(?=.{8,})(?=.*[\d])(?=.*[\W]).*$"/>       
                             </div>
                         </div>
                         <div class="form-group">
@@ -184,14 +185,14 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <asp:Button runat="server" Text="Modifier le mot de passe" OnClick="ChangePassword_Click" CssClass="btn btn-default" ValidationGroup="ChangePassword" />
+                                <asp:Button runat="server" Text="Modifier le mot de passe" OnClick="ChangePassword_Click" CssClass="btn btn-default" CausesValidation="true"/>
                             </div>
                         </div>
                     </div>
                 </asp:PlaceHolder>
             </section>
 
-            <section id="externalLoginsForm" hidden="hidden">
+            <%--<section id="externalLoginsForm" hidden="hidden">
 
                 <asp:ListView runat="server"
                     ItemType="Microsoft.AspNet.Identity.UserLoginInfo"
@@ -218,8 +219,8 @@
                     </ItemTemplate>
                 </asp:ListView>
 
-                <uc:openauthproviders runat="server" returnurl="~/Account/Manage" />
-            </section>
+                <uc:OpenAuthProviders runat="server" ReturnUrl="~/Account/Manage" />
+            </section>--%>
         </div>
     </div>
 </asp:Content>

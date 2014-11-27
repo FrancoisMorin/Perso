@@ -27,6 +27,9 @@ Public Class ApplicationUserManager
                 user.PasswordHash = newPassword
                 'Update la BD
                 Store.UpdateAsync(user)
+            Else
+                'Le dude a pas écrit le bon mot de passe actuel.
+                Return Task.FromResult(New IdentityResult("Mot de passe actuel incorrect."))
             End If
         End If
 

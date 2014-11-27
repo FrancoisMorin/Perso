@@ -57,14 +57,12 @@ Partial Public Class Manage
             txtAdresse2.Text = usr.AdresseSecondaireClient
             txtEmail.Text = usr.UserName
 
-
-
             ' Afficher le message de réussite
             Dim message = Request.QueryString("m")
             If message IsNot Nothing Then
                 ' Enlever la chaîne de requête de l'action
                 Form.Action = ResolveUrl("~/Account/Manage")
-                SuccessMessage = If(message = "ChangePwdSuccess", "Votre mot de passe a été modifié.", If(message = "SetPwdSuccess", "Votre mot de passe a été défini.", If(message = "RemoveLoginSuccess", "Le compte a été supprimé.", [String].Empty)))
+                SuccessMessage = If(message = "ChangePwdSuccess", "Votre mot de passe a été modifié.", If(message = "ModifFail", "Cette adresse de mssagerie est déjà utilisée.", If(message = "SetPwdSuccess", "Votre mot de passe a été défini.", If(message = "RemoveLoginSuccess", "Le compte a été supprimé.", [String].Empty))))
                 SuccessMessagePlaceHolder.Visible = Not [String].IsNullOrEmpty(SuccessMessage)
             End If
         End If
@@ -126,14 +124,26 @@ Partial Public Class Manage
         Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
         Dim usr = manager.FindById(User.Identity.GetUserId())
 
-
         usr.NomClient = txtNom.Text
         usr.PrenomClient = txtPrenom.Text
         usr.NoTelephone = txtNoTelephone.Text
         usr.NoCellulaire = txtCellulaire.Text
         usr.AdresseClient = txtAdresse1.Text
         usr.AdresseSecondaireClient = txtAdresse2.Text
-        usr.UserName = txtEmail.Text
+
+        'Si le gars veut changer son email, faut vérifier si l'email existe déjà parce que on veut garder l'email client unique.
+        If usr.UserName <> txtEmail.Text Then
+            Dim BD As New P2014_BD_GestionHotelEntities
+            Dim res = From tabClient In BD.tblClient
+                      Where tabClient.EmailClient = txtEmail.Text
+                      Select tabClient
+
+            If res.Count > 0 Then
+                Response.Redirect("~/Account/Manage?m=ModifFail")
+            Else
+                usr.UserName = txtEmail.Text
+            End If
+        End If
 
         Dim result As IdentityResult = manager.UpdateAsync(usr).Result
         If result.Succeeded Then
@@ -141,7 +151,5 @@ Partial Public Class Manage
         Else
             AddErrors(result)
         End If
-
-
     End Sub
 End Class

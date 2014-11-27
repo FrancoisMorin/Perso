@@ -14,8 +14,6 @@ Partial Public Class Register
     Dim ProvinceSelection As tblProvince
     Dim VilleSelection As tblVille
 
-
-
     Private Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         If (Not IsPostBack) Then
 
