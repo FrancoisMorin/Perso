@@ -23,6 +23,15 @@ Partial Public Class Reservation
     Protected WithEvents TitreNomHotel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''Contrôle MessagePlaceHolder.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents MessagePlaceHolder As Global.System.Web.UI.WebControls.PlaceHolder
+
+    '''<summary>
     '''Contrôle ListeTypeChambre.
     '''</summary>
     '''<remarks>

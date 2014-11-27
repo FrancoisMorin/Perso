@@ -10,6 +10,14 @@
         <asp:Label ID="TitreNomHotel" runat="server" />
     </h4>
 
+
+    <asp:PlaceHolder runat="server" ID="MessagePlaceHolder" Visible="false">
+        <div class="alert alert-danger">
+            <p class="text-danger"><strong><%: MonMessage%></strong></p>
+        </div>
+    </asp:PlaceHolder>
+
+
     <div class="panel panel-default">
         <div class="panel-heading">Choisissez votre/vos type(s) de chambre</div>
         <div class="panel-body">
@@ -129,8 +137,6 @@
                                 <div class="col-md-10">
                                     <asp:Label runat="server" ID="Label2" AssociatedControlID="cmbTypeCarte" CssClass="control-label">Numéro carte de crédit</asp:Label>
                                     <asp:TextBox runat="server" ID="txtNoCarteCredit" CssClass="form-control" />
-                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNoCarteCredit"
-                                        CssClass="text-danger" Display="Dynamic" ErrorMessage="Le champ de numéro de carte de crédit est obligatoire." />
                                 </div>
                             </div>
 
@@ -138,8 +144,6 @@
                                 <div class="col-md-10">
                                     <asp:Label runat="server" ID="Label3" AssociatedControlID="cmbTypeCarte" CssClass="control-label">Date d'expiration (mm/aa)</asp:Label>
                                     <asp:TextBox runat="server" ID="txtDateExpiration" CssClass="form-control" />
-                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtDateExpiration"
-                                        CssClass="text-danger" Display="Dynamic" ErrorMessage="Le champ de date d'expiration est obligatoire." />
                                 </div>
                             </div>
 
@@ -147,8 +151,6 @@
                                 <div class="col-md-10">
                                     <asp:Label runat="server" ID="Label4" AssociatedControlID="txtNomDetenteurCarte" CssClass="control-label">Nom détenteur</asp:Label>
                                     <asp:TextBox runat="server" ID="txtNomDetenteurCarte" CssClass="form-control" />
-                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNomDetenteurCarte"
-                                        CssClass="text-danger" Display="dynamic" ErrorMessage="Le champ du nom du dédententeur est obligatoire." />
                                 </div>
                             </div>
 

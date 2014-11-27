@@ -80,6 +80,20 @@
     End Function
 
     Public Function FaireReservationTypeChambre(ByRef _CodeHotel As String, ByRef _DateDebut As Date, ByRef _DateFin As Date) As Boolean
+
+        Dim NbChambre As Integer = 0
+        'Regarde si il y a eu au moins une chambre de choisi.
+        For Each Detail As DetailsReservation In ListeDetailsReservation
+            NbChambre += Detail.NombreChambre
+        Next
+        'Si aucune chambre n'a été selectionné, message d'erreur.
+        If NbChambre = 0 Then
+            BD.tblReservationChambre.Remove(MaReservation)
+            BD.SaveChanges()
+            Return False
+        End If
+
+
         Dim CodeHotel As String = _CodeHotel
 
         'Prend la liste des chambres disponibles
@@ -159,13 +173,26 @@
 
     Public Function EnregistrerChambresReservation() As Boolean
 
-        For Each Chambre As tblChambreReservationChambre In ListeChambreReservation
-            BD.tblChambreReservationChambre.Add(Chambre)
-            BD.SaveChanges()
-        Next
+        Dim PrixReservation As Double = 0
+
+        Try
+            For Each Chambre As tblChambreReservationChambre In ListeChambreReservation
+
+                PrixReservation += (From tabPrixChambre In BD.tblPrixTypeChambre
+                                   Where tabPrixChambre.CodeTypeChambre = Chambre.NoSeqChambre And (Chambre.DateDebutReservation > tabPrixChambre.DateDebutPrix And Chambre.DateFinReservation < tabPrixChambre.DateFinPrix) And tabPrixChambre.CodeHotel = Chambre.tblChambre.CodeHotel
+                                   Select tabPrixChambre).ToList.First.PrixTypeChambre
+
+                BD.tblChambreReservationChambre.Add(Chambre)
+                BD.SaveChanges()
+            Next
+            MaReservation.PrixReservChambre = PrixReservation
+            Return True
+        Catch ex As Exception
+            Return False
+        End Try
+
 
         Return True
     End Function
-
 
 End Class
