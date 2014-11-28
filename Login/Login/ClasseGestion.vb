@@ -65,7 +65,12 @@
         'Si oui, ajuste le nombre de chambre.
         For Each Detail As DetailsReservation In ListeDetailsReservation
             If Detail.TypeChambre = _CodeTypeChambre Then
-                Detail.NombreChambre = _NbChambre
+                ListeDetailsReservation.Remove(Detail)
+
+                Dim NewDetail2 As New DetailsReservation
+                NewDetail2.TypeChambre = _CodeTypeChambre
+                NewDetail2.NombreChambre = _NbChambre
+                ListeDetailsReservation.Add(NewDetail2)
                 Return True
             End If
         Next
@@ -101,8 +106,9 @@
                   Where tabChambre.CodeHotel = CodeHotel
                   Select tabChambre
 
-
         ListeChambreDispo = res.ToList
+
+
 
         Dim i As Integer = 0
 
@@ -111,12 +117,12 @@
             i = 0
             For Each Chambre As VerificationDispo_Result In ListeChambreDispo
 
+                'Si on a réservé le nombre de chambres (du type de chambre) qu'on voulait, sors du for.
                 If i = Detail.NombreChambre Then
                     Exit For
                 End If
 
                 If Chambre.CodeTypeChambre = Detail.TypeChambre Then
-
                     Dim ChambreReservation As New tblChambreReservationChambre
                     ChambreReservation.NoSeqChambre = Chambre.NoSeqChambre
                     ChambreReservation.NoSeqReservChambre = MaReservation.NoSeqReservChambre
@@ -142,6 +148,8 @@
         'Si le nombre de chambre de la liste de disponible est plus petit que le nombre qu'il voulait,
         'Ça veut dire qu'il n'y a pas asser de chambre dispo.
         If ListeChambreReservation.Count < CompteurChambre Then
+            BD.tblReservationChambre.Remove(MaReservation)
+            BD.SaveChanges()
             Return False
         End If
 
@@ -171,21 +179,32 @@
 
     End Function
 
-    Public Function EnregistrerChambresReservation() As Boolean
+    Public Function EnregistrerChambresReservation(ByRef _DateDebut As Date, ByRef _DateFin As Date) As Boolean
 
         Dim PrixReservation As Double = 0
 
         Try
             For Each Chambre As tblChambreReservationChambre In ListeChambreReservation
 
-                PrixReservation += (From tabPrixChambre In BD.tblPrixTypeChambre
-                                   Where tabPrixChambre.CodeTypeChambre = Chambre.NoSeqChambre And (Chambre.DateDebutReservation > tabPrixChambre.DateDebutPrix And Chambre.DateFinReservation < tabPrixChambre.DateFinPrix) And tabPrixChambre.CodeHotel = Chambre.tblChambre.CodeHotel
-                                   Select tabPrixChambre).ToList.First.PrixTypeChambre
+                Dim MaChambre As New tblChambre
+
+                MaChambre = (From tabChambre In BD.tblChambre
+                            Where tabChambre.NoSeqChambre = Chambre.NoSeqChambre).ToList.First
+
+                Dim MonPrix = From tabPrixChambre In BD.tblPrixTypeChambre
+                              Where tabPrixChambre.CodeTypeChambre = MaChambre.CodeTypeChambre And (Chambre.DateDebutReservation > tabPrixChambre.DateDebutPrix And Chambre.DateFinReservation < tabPrixChambre.DateFinPrix) And tabPrixChambre.CodeHotel = MaChambre.CodeHotel
+                              Select tabPrixChambre.PrixTypeChambre
+
+                PrixReservation = PrixReservation + MonPrix.ToList.First
 
                 BD.tblChambreReservationChambre.Add(Chambre)
                 BD.SaveChanges()
             Next
-            MaReservation.PrixReservChambre = PrixReservation
+
+            'Maintenant qu'on a le prix total, multiplier par le nombre de nuits et l'ajouter à la réservation.
+            Dim NbNuit As Integer = _DateFin.Subtract(_DateDebut).TotalDays
+            MaReservation.PrixReservChambre = PrixReservation * NbNuit
+            BD.SaveChanges()
             Return True
         Catch ex As Exception
             Return False

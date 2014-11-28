@@ -203,31 +203,112 @@ Partial Public Class Reservation
     Protected WithEvents DetailReservation As Global.System.Web.UI.WebControls.PlaceHolder
 
     '''<summary>
-    '''Contrôle Label5.
+    '''Contrôle MonLabel1.
     '''</summary>
     '''<remarks>
     '''Champ généré automatiquement.
     '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
-    Protected WithEvents Label5 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents MonLabel1 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Contrôle Label6.
+    '''Contrôle lblDateDebut.
     '''</summary>
     '''<remarks>
     '''Champ généré automatiquement.
     '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
-    Protected WithEvents Label6 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lblDateDebut As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Contrôle Label7.
+    '''Contrôle MonLabel2.
     '''</summary>
     '''<remarks>
     '''Champ généré automatiquement.
     '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
-    Protected WithEvents Label7 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents MonLabel2 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Contrôle lblDateFin.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents lblDateFin As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Contrôle MonLabel3.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents MonLabel3 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Contrôle lblNomReserv.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents lblNomReserv As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Contrôle MonLabel4.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents MonLabel4 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Contrôle lblPrixTotal.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents lblPrixTotal As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Contrôle MonLabel5.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents MonLabel5 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Contrôle lblTypeCarte.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents lblTypeCarte As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Contrôle MonLabel6.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents MonLabel6 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Contrôle lblNoCarte.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents lblNoCarte As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Contrôle Label8.
@@ -246,4 +327,13 @@ Partial Public Class Reservation
     '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents btnConfirmer As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Contrôle btnAnnuler.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents btnAnnuler As Global.System.Web.UI.WebControls.Button
 End Class

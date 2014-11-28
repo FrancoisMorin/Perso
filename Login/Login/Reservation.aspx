@@ -163,7 +163,7 @@
                         </fieldset>
                     </div>
 
-                    <asp:PlaceHolder ID="DetailReservation" runat="server" Visible="false">
+                    <asp:PlaceHolder ID="DetailReservation" runat="server" Visible="true">
                         <div class="col-md-8">
 
                             <div class="alert alert-info">
@@ -173,22 +173,38 @@
 
                                     <div class="form-group">
                                         <div class="col-md-4">
-                                            <asp:Label runat="server" ID="Label5" CssClass="control-label"><strong>Date debut :</strong> 25 novembre 2014</asp:Label>
+                                            <asp:Label runat="server" ID="MonLabel1" CssClass="control-label"><strong>Date d'arrivé : </strong><asp:Label ID="lblDateDebut" runat="server" CssClass="control-label"/></asp:Label>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="col-md-4">
-                                            <asp:Label runat="server" ID="Label6" CssClass="control-label"><strong>Date fin :</strong> 28 novembre 2014</asp:Label>
+                                            <asp:Label runat="server" ID="MonLabel2" CssClass="control-label"><strong>Date de départ : </strong><asp:Label runat="server" ID="lblDateFin" CssClass="control-label"/></asp:Label>
                                         </div>
+                                    </div>
 
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <asp:Label runat="server" ID="MonLabel3" CssClass="control-label"><strong>Réservation au nom de : </strong><asp:Label runat="server" ID="lblNomReserv" CssClass="control-label"/></asp:Label>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="col-md-4">
-                                            <asp:Label runat="server" ID="Label7" CssClass="control-label"><strong>Prix :</strong> 500.00$</asp:Label>
+                                            <asp:Label runat="server" ID="MonLabel4" CssClass="control-label"><strong>Prix total : </strong><asp:Label runat="server" ID="lblPrixTotal" CssClass="control-label" /></asp:Label>
                                         </div>
+                                    </div>
 
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            <asp:Label runat="server" ID="MonLabel5" CssClass="control-label"><strong>Type carte : </strong><asp:Label runat="server" ID="lblTypeCarte" CssClass="control-label" /></asp:Label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <asp:Label runat="server" ID="MonLabel6" CssClass="control-label"><strong>Numéro carte de crédit : </strong><asp:Label runat="server" ID="lblNoCarte" CssClass="control-label" /></asp:Label>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
@@ -201,11 +217,11 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="col-lg-8">
+                                        <div class="col-md-4">
                                             <asp:Label runat="server" ID="Label8" AssociatedControlID="btnConfirmer" CssClass="control-label"><strong>Voulez-vous confirmer cette réservation ?</strong></asp:Label>
-                                            <asp:Button ID="btnConfirmer" runat="server" Text="Confirmer" CssClass="form-control btn btn-primary" Width="50%" />
+                                            <asp:Button ID="btnConfirmer" runat="server" Text="Confirmer" CssClass="form-control btn btn-primary"/>         
+                                            <asp:Button ID="btnAnnuler" runat="server" Text="Annuler" CssClass="form-control btn btn-default"/>
                                         </div>
-
                                     </div>
                                 </fieldset>
 

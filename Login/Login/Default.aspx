@@ -12,7 +12,7 @@
             $('.banner').unslider({
 
                 speed: 500,
-                delay: 500000,
+                delay: 5000,
                 complete: function () { },
                 keys: true,
                 dots: true,
@@ -25,27 +25,27 @@
         <ul>
             <li style="background-image: url('Images/Slider/borddeplage.jpg');">
                 <div class="backgrounddivh1">
-                    <h1>Texte</h1>
+                    <h1>Nouvotel</h1>
                 </div>
             </li>
             <li style="background-image: url('Images/Slider/piscine.jpg');">
                 <div class="backgrounddivh1">
-                    <h1>Texte</h1>
+                    <h1>Nouvotel</h1>
                 </div>
             </li>
             <li style="background-image: url('Images/Slider/chaise.jpg');">
                 <div class="backgrounddivh1">
-                    <h1>Texte</h1>
+                    <h1>Nouvotel</h1>
                 </div>
             </li>
             <li style="background-image: url('Images/Slider/pewpew.jpg');">
                 <div class="backgrounddivh1">
-                    <h1>Texte</h1>
+                    <h1>Nouvotel</h1>
                 </div>
             </li>
             <li style="background-image: url('Images/Slider/granderoue.jpg');">
                 <div class="backgrounddivh1">
-                    <h1>Texte</h1>
+                    <h1>Nouvotel</h1>
                 </div>
             </li>
         </ul>
@@ -71,9 +71,9 @@
         </div>
         <div class="col-md-offset-1 col-md-3">
             <asp:Image ID="Image2" runat="server" ImageUrl="~\Images\Accueil\AccueilChambre.jpg" Width="300" Height="144" BorderStyle="None" />
-            <h2>Consultez nos forfaits</h2>
+            <h2>Visitez nos chambre</h2>
             <p>
-                Vous trouverez facilement le forfait qui convient pour votre séjour dans nos hôtels.
+                Découvrez l'ameublement, les types de lits et les services offerts aux chambres, et ce, dans tout nos hôtels.
             </p>
             <p>
                 <a class="btn btn-default" href="#">En savoir plus &raquo;</a>
@@ -82,7 +82,7 @@
 
         <div class="col-md-offset-1 col-md-3">
             <asp:Image ID="Image3" runat="server" ImageUrl="~\Images\Accueil\AccueilLobby.jpg" Width="300" Height="144" BorderStyle="None" />
-            <h2>Réservez une chambre</h2>
+            <h2>Réservez dès aujourd'hui</h2>
             <p>
                 Réservez une chambre en ligne ou par téléphone. Disponible à toute heure 7 jours sur 7.
             </p>

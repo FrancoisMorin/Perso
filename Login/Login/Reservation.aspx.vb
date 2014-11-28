@@ -59,7 +59,7 @@ Public Class Reservation
             Dim Message = Request.QueryString("m")
             If Message IsNot Nothing Then
                 ' Enlever la chaîne de requête de l'action
-                MonMessage = If(Message = "EmptyFields", "Certain champs sont manquant.", If(Message = "NoDates", "Vous n'avez pas spécifié une date de début ou une date de fin.", If(Message = "NoChambre", "Vous n'avez pas choisi de chambre.", If(Message = "ErreurReserv", "Une erreur s'est produite dans la réservation.", If(Message = "ErreurChambre", "Une erreur s'est produite lors de l'enregistrement des chambre.", [String].Empty)))))
+                MonMessage = If(Message = "EmptyFields", "Certain champs sont manquant.", If(Message = "NoDates", "Vous n'avez pas spécifié une date de début ou une date de fin.", If(Message = "NoChambre", "Il n'y a pas asser de chambres disponible pour la plage de dates sélectionnée.", If(Message = "ErreurReserv", "Une erreur s'est produite dans la réservation.", If(Message = "NoSelect", "Vous n'avez pas sélectionné de chambre(s).", If(Message = "ErreurChambre", "Une erreur s'est produite lors de l'enregistrement des chambre.", [String].Empty))))))
                 If MonMessage <> "" Then
                     MessagePlaceHolder.Visible = True
                 Else
@@ -76,13 +76,13 @@ Public Class Reservation
         Dim u = CType(sender, DropDownList)
         Dim code = u.Attributes("SorteChambre")
 
-        If Session("MesReservations") Then
+        'Si la variable a déjà été créée, récupère là.
+        If Session("MesReservations") IsNot Nothing Then
             ClasseGes = Session("MesReservations")
         End If
 
         ClasseGes.AjoutDetailReservation(code, u.Text)
         Session("MesReservations") = ClasseGes
-        u.Enabled = False
     End Sub
 
     Private Sub CalendrierDebut_DayRender(sender As Object, e As DayRenderEventArgs) Handles CalendrierDebut.DayRender
@@ -174,13 +174,19 @@ Public Class Reservation
 
         Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
         Dim appUser = manager.FindById(User.Identity.GetUserId)
-
         Dim CodeHotel As String = Request.QueryString("ID")
+
+        'Récupère la variable de session
+        ClasseGes = Session("MesReservations")
+
+        'Si ClasseGes est a Nothing, aucune chambre n'a été selectionné.
+        If ClasseGes Is Nothing Then
+            Dim TempCodeHotel As String = Request.QueryString("ID")
+            Response.Redirect("~/Reservation?m=NoSelect&ID=" + TempCodeHotel)
+        End If
 
         'Créer tblReservationChambre
         Dim result As Boolean
-
-        ClasseGes = Session("MesReservations")
         result = ClasseGes.CreerReservation(appUser, cmbTypeCarte.Text, txtNoCarteCredit.Text, txtDateExpiration.Text, txtNomDetenteurCarte.Text)
         If Not result Then
             Dim TempCodeHotel As String = Request.QueryString("ID")
@@ -195,13 +201,50 @@ Public Class Reservation
         End If
 
         'Fou tout ça dans la bd
-        result = ClasseGes.EnregistrerChambresReservation()
+        result = ClasseGes.EnregistrerChambresReservation(DateDebut, DateFin)
         If Not result Then
             Dim TempCodeHotel As String = Request.QueryString("ID")
             Response.Redirect("~/Reservation?m=ErreurChambre&ID=" + TempCodeHotel)
         End If
 
+        Session("MesReservation") = ClasseGes
+
+        'Affiche le panel de confirmation
         DetailReservation.Visible = True
+        ConfirmerReservation()
+    End Sub
+
+    Sub ConfirmerReservation()
+        'Récupère la classe
+        ClasseGes = Session("MesReservation")
+
+        'Disable tous les controles, sauf les bouton Confirm/Cancel
+        MessagePlaceHolder.Visible = False
+        ListeTypeChambre.Enabled = False
+        cmbTypeCarte.Enabled = False
+        btnExpandCalendarDebut.Enabled = False
+        btnExpandCalendarFin.Enabled = False
+        txtNoCarteCredit.Enabled = False
+        txtDateExpiration.Enabled = False
+        txtNomDetenteurCarte.Enabled = False
+        btnCalculer.Enabled = False
+
+        'Afficher les info de la réservation.
+        Dim Reserv As New tblReservationChambre
+        Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
+        Dim appUser = manager.FindById(User.Identity.GetUserId)
+        Reserv = ClasseGes.MaReservation
+
+        lblDateDebut.Text = Reserv.tblChambreReservationChambre.First.DateDebutReservation.ToShortDateString
+        lblDateFin.Text = Reserv.tblChambreReservationChambre.First.DateFinReservation.ToShortDateString
+        lblNomReserv.Text = appUser.PrenomClient + " " + appUser.NomClient
+        Dim Prix As Double = Reserv.PrixReservChambre
+        lblPrixTotal.Text = Math.Round(Prix).ToString + " $"
+        lblTypeCarte.Text = Reserv.TypeCarteCredit
+        lblNoCarte.Text = Reserv.NoCarteCredit
+
+        'Si le client confirme, mail-to + redirect page de congratulation?
+        'Si le client refuse, supprime la réservation de la bd + redirect accueil?
     End Sub
 
 End Class
