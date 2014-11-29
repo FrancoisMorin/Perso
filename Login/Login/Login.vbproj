@@ -213,6 +213,7 @@
     <Content Include="Images\TypeChambre\ChambreLUX.jpg" />
     <Content Include="Images\TypeChambre\ChambreSTD.jpg" />
     <Content Include="Images\TypeChambre\ChambreSUI.jpg" />
+    <Content Include="PostReservation.aspx" />
     <Content Include="Reservation.aspx" />
     <Content Include="Temp\spacelab\bootstrap.css" />
     <Content Include="Temp\spacelab\bootstrap.min.css" />
@@ -413,6 +414,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="PostReservation.aspx.designer.vb">
+      <DependentUpon>PostReservation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PostReservation.aspx.vb">
+      <DependentUpon>PostReservation.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="PrixTypeChambreHotel_Result.vb">
       <DependentUpon>BD.tt</DependentUpon>

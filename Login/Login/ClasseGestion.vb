@@ -2,6 +2,7 @@
     Dim BD As P2014_BD_GestionHotelEntities
 
     Public MaReservation As tblReservationChambre
+    Public MonClient As tblClient
 
     Dim ListeDetailsReservation As List(Of DetailsReservation)
 
@@ -165,10 +166,16 @@
             MaReservation.NoCarteCredit = _NoCarteCredit
             MaReservation.DateExpirationCarteCredit = _DateExpiration
             MaReservation.NomCarteCredit = _NomDetenteur
-            MaReservation.NoSeqClient = _MonUser.Id
             MaReservation.ModePaiement = "Carte credit"
             MaReservation.StatutPaiement = "Non payé"
             MaReservation.StatutReservChambre = "En attente"
+
+            'Si le user n'est pas connecté, il faut utiliser le client qui vient d'être créée
+            If _MonUser Is Nothing Then
+                MaReservation.NoSeqClient = MonClient.NoSeqClient
+            Else
+                MaReservation.NoSeqClient = _MonUser.Id
+            End If
 
             BD.tblReservationChambre.Add(MaReservation)
             BD.SaveChanges()
@@ -210,6 +217,40 @@
             Return False
         End Try
 
+
+        Return True
+    End Function
+
+    Function EnregistrerClient(ByRef _Nom As String, ByRef _Prenom As String, ByRef _NoTelephone As String, ByRef _Email As String, ByRef _Adresse As String, ByRef _CodeVille As String) As Boolean
+        If _Nom = "" Or _Prenom = "" Or _NoTelephone = "" Or _Email = "" Or _Adresse = "" Or _CodeVille = "" Then
+            'Les infos de bases nécessaires n'ont pas toutes été remplies.
+            Return False
+        End If
+
+        Try
+            'Crée le client
+            MonClient = New tblClient
+            'Rempli les info nécessaire
+            MonClient.NomClient = _Nom
+            MonClient.PrenomClient = _Prenom
+            MonClient.NoTelephone = _NoTelephone
+            MonClient.EmailClient = _Email
+            MonClient.AdresseClient = _Adresse
+            MonClient.CodeVille = _CodeVille
+
+            'On veut garder la réservation simple, donc les informations non-obligatoires seront vide.
+            MonClient.NoCellulaire = ""
+            MonClient.AdresseSecondaireClient = ""
+            MonClient.MdpClient = ""
+            MonClient.CodePostal = ""
+            MonClient.NomEntreprise = ""
+
+            BD.tblClient.Add(MonClient)
+            BD.SaveChanges()
+        Catch ex As Exception
+            'Des champs ne sont pas valide
+            Return False
+        End Try
 
         Return True
     End Function

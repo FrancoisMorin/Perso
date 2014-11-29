@@ -99,11 +99,11 @@
                         <asp:Image ID="Image1" runat="server" ImageUrl='<%# String.Format("~\Images\PhotoHotel\Hotel{0}.jpg", Eval("CodeHotel"))%>' Width="200" Height="120" BorderStyle="None" />
                         <br />
                         <p>
-                            Nombre chambre : <%# Eval("NbChambre")%>
+                            <strong>Nombre chambre : </strong><%# Eval("NbChambre")%>
                             <br />
-                            Nombre étoiles : <%# Eval("NbEtoiles")%>
+                            <strong>Nombre étoiles : </strong><%# Eval("NbEtoiles")%>
                             <br />
-                            Type Service : <%# Eval("TypeService")%>
+                            <strong>Type Service : </strong><%# Eval("TypeService")%>
                             <br />
                         </p>
                     </a>

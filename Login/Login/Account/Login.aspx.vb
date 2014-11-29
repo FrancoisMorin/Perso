@@ -25,7 +25,7 @@ Partial Public Class Login
             Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
             Dim user As ApplicationUser = manager.Find(Email.Text, Password.Text)
             If user IsNot Nothing Then
-                IdentityHelper.SignIn(manager, user, RememberMe.Checked)
+                IdentityHelper.SignIn(manager, user, False)
                 IdentityHelper.RedirectToReturnUrl(Request.QueryString("ReturnUrl"), Response)
             Else
                 FailureText.Text = "Nom d'utilisateur ou mot de passe incorrect."

@@ -7,6 +7,11 @@ Public Class Reservation
 
     Dim ClasseGes As ClasseGestion
 
+    Dim MaBD As New P2014_BD_GestionHotelEntities
+    Dim PaysSelection As tblPays
+    Dim ProvinceSelection As tblProvince
+    Dim VilleSelection As tblVille
+
     Private _MonMessage As String
     Protected Property MonMessage() As String
         Get
@@ -18,18 +23,61 @@ Public Class Reservation
     End Property
 
     Private Sub Reservation_PreLoad(sender As Object, e As EventArgs) Handles Me.PreLoad
-        If User.Identity.IsAuthenticated Then
-            'Le user est connecté, passe à la réservation
-        Else
-            Response.Redirect("~/Account/Login.aspx")
-            'bo tit poput javascrip
-            'Redirect vers login / inscription
-        End If
+        'If User.Identity.IsAuthenticated Then
+        '    'Le user est connecté, passe à la réservation
+        'Else
+        '    Response.Redirect("~/Account/Login.aspx")
+        '    'bo tit poput javascrip
+        '    'Redirect vers login / inscription
+        'End If
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
         If (Not IsPostBack) Then
+            Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
+            Dim appUser = manager.FindById(User.Identity.GetUserId)
+
+            If appUser Is Nothing Then
+                MonPanelClient.Visible = True
+            Else
+                MonPanelClient.Visible = False
+            End If
+
+
+            'Remplir les combobox. Par défaut sur canada, quebec, montreal
+            VilleSelection = (From tabVille In MaBD.tblVille
+                             Where tabVille.CodeVille = "MRL"
+                             Select tabVille).ToList.First
+
+            ProvinceSelection = (From tabProvince In MaBD.tblProvince
+                                Where tabProvince.CodeProvince = VilleSelection.CodeProvince
+                                Select tabProvince).ToList.First
+
+            PaysSelection = (From tabPays In MaBD.tblPays
+                            Where tabPays.CodePays = ProvinceSelection.CodePays
+                            Select tabPays).ToList.First
+
+            cmbPays.DataSource = (From tabPays In MaBD.tblPays
+                                      Select tabPays).ToList
+
+            cmbPays.DataValueField = "CodePays"
+            cmbPays.DataTextField = "NomPays"
+            cmbPays.DataBind()
+
+            cmbProvince.DataValueField = "CodeProvince"
+            cmbProvince.DataTextField = "NomProvince"
+            cmbProvince.DataBind()
+
+            cmbVille.DataValueField = "CodeVille"
+            cmbVille.DataTextField = "NomVille"
+            cmbVille.DataBind()
+
+            cmbPays.SelectedValue = PaysSelection.CodePays
+            FiltrerPays()
+            FiltrerProvinces()
+            FiltrerVilles()
+
             MessagePlaceHolder.Visible = False
             Try
                 Dim CodeHotel As String = Request.QueryString("ID")
@@ -59,7 +107,7 @@ Public Class Reservation
             Dim Message = Request.QueryString("m")
             If Message IsNot Nothing Then
                 ' Enlever la chaîne de requête de l'action
-                MonMessage = If(Message = "EmptyFields", "Certain champs sont manquant.", If(Message = "NoDates", "Vous n'avez pas spécifié une date de début ou une date de fin.", If(Message = "NoChambre", "Il n'y a pas asser de chambres disponible pour la plage de dates sélectionnée.", If(Message = "ErreurReserv", "Une erreur s'est produite dans la réservation.", If(Message = "NoSelect", "Vous n'avez pas sélectionné de chambre(s).", If(Message = "ErreurChambre", "Une erreur s'est produite lors de l'enregistrement des chambre.", [String].Empty))))))
+                MonMessage = If(Message = "EmptyFields", "Certain champs sont manquant.", If(Message = "NoDates", "Vous n'avez pas spécifié une date de début ou une date de fin.", If(Message = "NoChambre", "Il n'y a pas asser de chambres disponible pour la plage de dates sélectionnée.", If(Message = "ErreurReserv", "Une erreur s'est produite dans la réservation.", If(Message = "NoSelect", "Vous n'avez pas sélectionné de chambre(s).", If(Message = "ErreurClient", "Les informations clients sont incomplètes ou invalides.", If(Message = "ErreurChambre", "Une erreur s'est produite lors de l'enregistrement des chambre.", [String].Empty)))))))
                 If MonMessage <> "" Then
                     MessagePlaceHolder.Visible = True
                 Else
@@ -85,8 +133,33 @@ Public Class Reservation
         Session("MesReservations") = ClasseGes
     End Sub
 
+#Region "Event_Combobox"
+    Protected Sub cmbPays_SelectedIndexChanged(sender As Object, e As EventArgs)
+        FiltrerPays()
+    End Sub
+
+    Protected Sub cmbProvince_SelectedIndexChanged(sender As Object, e As EventArgs)
+        FiltrerVilles()
+    End Sub
+
+    Protected Sub cmbVille_SelectedIndexChanged(sender As Object, e As EventArgs)
+        VilleSelection = (From tabVille In MaBD.tblVille
+                         Where tabVille.CodeVille = cmbVille.SelectedValue
+                         Select tabVille).ToList.First
+    End Sub
+#End Region
+
+#Region "ControlsCalendrier"
     Private Sub CalendrierDebut_DayRender(sender As Object, e As DayRenderEventArgs) Handles CalendrierDebut.DayRender
         If e.Day.Date.ToShortDateString() <= DateTime.Now.ToShortDateString Then
+            e.Cell.BackColor = System.Drawing.ColorTranslator.FromHtml("#EBEBEB")
+            e.Day.IsSelectable = False
+        End If
+
+        Dim DateDans2Ans As Date = DateTime.Now
+        DateDans2Ans = DateDans2Ans.AddYears(2)
+
+        If e.Day.Date.ToShortDateString >= DateDans2Ans Then
             e.Cell.BackColor = System.Drawing.ColorTranslator.FromHtml("#EBEBEB")
             e.Day.IsSelectable = False
         End If
@@ -94,6 +167,14 @@ Public Class Reservation
 
     Private Sub CalendrierFin_DayRender(sender As Object, e As DayRenderEventArgs) Handles CalendrierFin.DayRender
         If e.Day.Date.ToShortDateString() <= CalendrierDebut.SelectedDate.ToShortDateString Then
+            e.Cell.BackColor = System.Drawing.ColorTranslator.FromHtml("#EBEBEB")
+            e.Day.IsSelectable = False
+        End If
+
+        Dim DateDans2Ans As Date = DateTime.Now
+        DateDans2Ans = DateDans2Ans.AddYears(2)
+
+        If e.Day.Date.ToShortDateString >= DateDans2Ans Then
             e.Cell.BackColor = System.Drawing.ColorTranslator.FromHtml("#EBEBEB")
             e.Day.IsSelectable = False
         End If
@@ -141,7 +222,31 @@ Public Class Reservation
         End If
     End Sub
 
+#End Region
+
     Private Sub btnCalculer_Click(sender As Object, e As EventArgs) Handles btnCalculer.Click
+        Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
+        Dim appUser = manager.FindById(User.Identity.GetUserId)
+        'Récupère la variable de session
+        ClasseGes = Session("MesReservations")
+
+        If appUser Is Nothing Then
+            'Vérifie les champs du client et crée le client
+            Dim NomClient As String = txtNom.Text
+            Dim PrenomClient As String = txtPrenom.Text
+            Dim NoTelephone As String = txtNoTelephone.Text
+            Dim Email As String = txtEmail.Text
+            Dim Adresse As String = txtAdresse.Text
+            Dim CodeVille As String = cmbVille.SelectedValue.ToString()
+
+            Dim MonResult As Boolean
+            MonResult = ClasseGes.EnregistrerClient(NomClient, PrenomClient, NoTelephone, Email, Adresse, CodeVille)
+            If Not MonResult Then
+                Dim TempCodeHotel As String = Request.QueryString("ID")
+                Response.Redirect("~/Reservation?m=ErreurClient&ID=" + TempCodeHotel)
+            End If
+        End If
+
 
         Dim txtDebut As String = txtDateDebut.Text
         Dim txtFin As String = txtDateFin.Text
@@ -172,12 +277,7 @@ Public Class Reservation
 
         End If
 
-        Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
-        Dim appUser = manager.FindById(User.Identity.GetUserId)
         Dim CodeHotel As String = Request.QueryString("ID")
-
-        'Récupère la variable de session
-        ClasseGes = Session("MesReservations")
 
         'Si ClasseGes est a Nothing, aucune chambre n'a été selectionné.
         If ClasseGes Is Nothing Then
@@ -219,6 +319,7 @@ Public Class Reservation
         ClasseGes = Session("MesReservation")
 
         'Disable tous les controles, sauf les bouton Confirm/Cancel
+        MonPanelClient.Enabled = False
         MessagePlaceHolder.Visible = False
         ListeTypeChambre.Enabled = False
         cmbTypeCarte.Enabled = False
@@ -237,14 +338,103 @@ Public Class Reservation
 
         lblDateDebut.Text = Reserv.tblChambreReservationChambre.First.DateDebutReservation.ToShortDateString
         lblDateFin.Text = Reserv.tblChambreReservationChambre.First.DateFinReservation.ToShortDateString
-        lblNomReserv.Text = appUser.PrenomClient + " " + appUser.NomClient
+
+        If appUser Is Nothing Then
+            lblNomReserv.Text = ClasseGes.MonClient.PrenomClient + " " + ClasseGes.MonClient.NomClient
+        Else
+            lblNomReserv.Text = appUser.PrenomClient + " " + appUser.NomClient
+        End If
+
+
+
         Dim Prix As Double = Reserv.PrixReservChambre
         lblPrixTotal.Text = Math.Round(Prix).ToString + " $"
         lblTypeCarte.Text = Reserv.TypeCarteCredit
         lblNoCarte.Text = Reserv.NoCarteCredit
 
-        'Si le client confirme, mail-to + redirect page de congratulation?
-        'Si le client refuse, supprime la réservation de la bd + redirect accueil?
     End Sub
+
+    Sub Confirm()
+        'Si le client confirme, mail-to + redirect page de congratulation?
+        ClasseGes = Session("MaReservation")
+
+        Session("MonCodeHotel") = ClasseGes.MaReservation.tblChambreReservationChambre.First.tblChambre.CodeHotel
+
+        Response.Redirect("~/PostReservation.aspx")
+    End Sub
+
+    Sub Annuler()
+        'Si le client refuse, supprime la réservation de la bd + redirect accueil?
+        ClasseGes = Session("MaReservation")
+
+        Dim MaBD As New P2014_BD_GestionHotelEntities
+
+        'Supprimer toutes les chambres de la réservation
+        For Each Chambre As tblChambreReservationChambre In ClasseGes.MaReservation.tblChambreReservationChambre
+            MaBD.tblChambreReservationChambre.Remove(Chambre)
+        Next
+        'Supprimer la réservation
+        MaBD.tblReservationChambre.Remove(ClasseGes.MaReservation)
+        MaBD.SaveChanges()
+
+        Response.Redirect("~/Accueil.aspx")
+    End Sub
+
+    Protected Sub btnAnnuler_Click(sender As Object, e As EventArgs)
+        Annuler()
+    End Sub
+
+    Protected Sub btnConfirmer_Click(sender As Object, e As EventArgs)
+        Confirm()
+    End Sub
+
+#Region "MethodesVille"
+    Sub FiltrerPays()
+        PaysSelection = (From tabPays In MaBD.tblPays
+                       Where tabPays.CodePays = cmbPays.SelectedValue
+                       Select tabPays).ToList.First
+
+        FiltrerProvinces()
+    End Sub
+
+    Sub FiltrerProvinces()
+        Dim resProvinces = From tabProvince In MaBD.tblProvince
+                           Where tabProvince.CodePays = PaysSelection.CodePays
+                           Select tabProvince
+
+        ProvinceSelection = resProvinces.ToList.First
+        cmbProvince.DataSource = resProvinces.ToList
+        cmbProvince.DataBind()
+        cmbProvince.SelectedValue = resProvinces.ToList.First.CodeProvince
+        FiltrerVilles()
+    End Sub
+
+    Sub FiltrerVilles()
+        If cmbProvince.SelectedValue Is Nothing Then
+            Dim resVille = From tabVille In MaBD.tblVille
+                           Where tabVille.CodeProvince = ProvinceSelection.CodeProvince
+                           Select tabVille
+
+            cmbVille.DataSource = resVille.ToList
+            cmbProvince.DataBind()
+            VilleSelection = resVille.ToList.First
+            cmbVille.SelectedValue = resVille.ToList.First.CodeVille
+        Else
+            ProvinceSelection = (From tabProvince In MaBD.tblProvince
+                                Where tabProvince.CodeProvince = cmbProvince.SelectedValue
+                                Select tabProvince).ToList.First
+
+            Dim resVille = From tabVille In MaBD.tblVille
+                           Where tabVille.CodeProvince = ProvinceSelection.CodeProvince
+                           Select tabVille
+
+            cmbVille.DataSource = resVille.ToList
+            cmbVille.DataBind()
+            VilleSelection = resVille.ToList.First
+            cmbVille.SelectedValue = resVille.ToList.First.CodeVille
+        End If
+
+    End Sub
+#End Region
 
 End Class

@@ -10,13 +10,11 @@
         <asp:Label ID="TitreNomHotel" runat="server" />
     </h4>
 
-
     <asp:PlaceHolder runat="server" ID="MessagePlaceHolder" Visible="false">
         <div class="alert alert-danger">
             <p class="text-danger"><strong><%: MonMessage%></strong></p>
         </div>
     </asp:PlaceHolder>
-
 
     <div class="panel panel-default">
         <div class="panel-heading">Choisissez votre/vos type(s) de chambre</div>
@@ -38,6 +36,8 @@
                                 <p>
                                     <h5 style="font-weight: bold;"><%# Eval("NomTypeChambre")%></h5>
                                     Prix: <%# Eval("PrixTypeChambre", "{0:c}")%>  / Nuit
+                                    <br />
+                                    <strong>Nombre de chambre(s) :</strong>
                                 </p>
                                 <div class="btn-group" style="padding-bottom: 2%">
                                     <asp:DropDownList CssClass="btn btn-default dropdown-toggle" SorteChambre='<%# Eval("CodeTypeChambre")%>' runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="false">
@@ -48,20 +48,112 @@
                                         <asp:ListItem Text="4"></asp:ListItem>
                                         <asp:ListItem Text="5"></asp:ListItem>
                                     </asp:DropDownList>
-
                                 </div>
-
                             </div>
                         </ContentTemplate>
-
                     </asp:UpdatePanel>
-
-
                 </ItemTemplate>
-
             </asp:ListView>
         </div>
     </div>
+
+
+    <asp:Panel ID="MonPanelClient" runat="server" Visible="false">
+        <asp:PlaceHolder runat="server" ID="MonPlaceHolder" Visible="true">
+            <div class="panel panel-default">
+                <div class="panel-heading">Coordonnées client</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="alert alert-info">
+                                <p><strong>Astuce : </strong>Créez un compte en ligne pour effectuer vos réservations encore plus rapidement !</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-9">
+                        <fieldset class="form-horizontal">
+                            <legend>Informations</legend>
+                        </fieldset>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-horizontal">
+                                <%-- Champ Nom --%>
+                                <div class="form-group">
+                                    <asp:Label runat="server" ID="Label5" AssociatedControlID="txtNom" CssClass="col-md-3 control-label">Nom</asp:Label>
+                                    <div class="col-md-6">
+                                        <asp:TextBox runat="server" ID="txtNom" CssClass="form-control" />
+                                    </div>
+                                </div>
+
+                                <%--Champ Prenom --%>
+                                <div class="form-group">
+                                    <asp:Label runat="server" ID="Label6" AssociatedControlID="txtPrenom" CssClass="col-md-3 control-label">Prénom</asp:Label>
+                                    <div class="col-md-6">
+                                        <asp:TextBox runat="server" ID="txtPrenom" CssClass="form-control" />
+                                    </div>
+                                </div>
+
+                                <%-- Champ NoTelephone --%>
+                                <div class="form-group">
+                                    <asp:Label runat="server" ID="Label7" AssociatedControlID="txtNoTelephone" CssClass="col-md-3 control-label">Numéro de téléphone</asp:Label>
+                                    <div class="col-md-6">
+                                        <asp:TextBox runat="server" ID="txtNoTelephone" CssClass="form-control" />
+                                    </div>
+                                </div>
+
+                                <%-- Champ Email --%>
+                                <div class="form-group">
+                                    <asp:Label runat="server" ID="Label8" AssociatedControlID="txtEmail" CssClass="col-md-3 control-label">Email</asp:Label>
+                                    <div class="col-md-6">
+                                        <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="form-horizontal">
+                                <%-- Champ Adresse --%>
+                                <div class="form-group">
+                                    <asp:Label runat="server" ID="Label9" AssociatedControlID="txtEmail" CssClass="col-md-2 control-label">Adresse</asp:Label>
+                                    <div class="col-md-10">
+                                        <asp:TextBox runat="server" ID="txtAdresse" CssClass="form-control" />
+                                    </div>
+                                </div>
+
+                                <%--ComboBox Pays--%>
+                                <div class="form-group">
+                                    <asp:Label runat="server" AssociatedControlID="cmbVille" CssClass="col-md-2 control-label">Pays</asp:Label>
+                                    <div class="col-md-3">
+                                        <asp:DropDownList runat="server" ID="cmbPays" OnSelectedIndexChanged="cmbPays_SelectedIndexChanged" AutoPostBack="true" CssClass="btn btn-default dropdown-toggle" />
+                                    </div>
+                                </div>
+
+                                <%--ComboBox Province--%>
+                                <div class="form-group">
+                                    <asp:Label runat="server" AssociatedControlID="cmbProvince" CssClass="col-md-2 control-label">Province</asp:Label>
+                                    <div class="col-md-3">
+                                        <asp:DropDownList runat="server" ID="cmbProvince" OnSelectedIndexChanged="cmbProvince_SelectedIndexChanged" AutoPostBack="true" CssClass="btn btn-default dropdown-toggle" />
+                                    </div>
+                                </div>
+
+                                <%--ComboBox Ville--%>
+                                <div class="form-group">
+                                    <asp:Label runat="server" AssociatedControlID="cmbVille" CssClass="col-md-2 control-label">Ville</asp:Label>
+                                    <div class="col-md-3">
+                                        <asp:DropDownList runat="server" ID="cmbVille" OnSelectedIndexChanged="cmbVille_SelectedIndexChanged" AutoPostBack="true" CssClass="btn btn-default dropdown-toggle" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </asp:PlaceHolder>
+    </asp:Panel>
 
     <div class="panel panel-default">
         <div class="panel-heading">Détails du séjour</div>
@@ -119,9 +211,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         <fieldset class="form-horizontal">
-                            <legend>Informations</legend>
-                            <p>Vous êtes connecté en tant que <strong><%: User.Identity.GetUserName() %></strong>.</p>
-                            <hr />
+                            <legend>Informations de carte de crédit</legend>
+
                             <div class="form-group">
                                 <asp:Label runat="server" ID="Label1" AssociatedControlID="cmbTypeCarte" CssClass="col-md-4">Type de carte</asp:Label>
                                 <div class="col-md-10">
@@ -163,78 +254,73 @@
                         </fieldset>
                     </div>
 
-                    <asp:PlaceHolder ID="DetailReservation" runat="server" Visible="true">
+                    <asp:PlaceHolder ID="DetailReservation" runat="server" Visible="false">
                         <div class="col-md-8">
-
-                            <div class="alert alert-info">
-
-                                <fieldset class="form-horizontal">
+                            <div class="alert alert-info form-horizontal">
+                                <fieldset>
                                     <legend>Détails de la réservation</legend>
-
-                                    <div class="form-group">
-                                        <div class="col-md-4">
-                                            <asp:Label runat="server" ID="MonLabel1" CssClass="control-label"><strong>Date d'arrivé : </strong><asp:Label ID="lblDateDebut" runat="server" CssClass="control-label"/></asp:Label>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-4">
-                                            <asp:Label runat="server" ID="MonLabel2" CssClass="control-label"><strong>Date de départ : </strong><asp:Label runat="server" ID="lblDateFin" CssClass="control-label"/></asp:Label>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-6">
-                                            <asp:Label runat="server" ID="MonLabel3" CssClass="control-label"><strong>Réservation au nom de : </strong><asp:Label runat="server" ID="lblNomReserv" CssClass="control-label"/></asp:Label>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-4">
-                                            <asp:Label runat="server" ID="MonLabel4" CssClass="control-label"><strong>Prix total : </strong><asp:Label runat="server" ID="lblPrixTotal" CssClass="control-label" /></asp:Label>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-4">
-                                            <asp:Label runat="server" ID="MonLabel5" CssClass="control-label"><strong>Type carte : </strong><asp:Label runat="server" ID="lblTypeCarte" CssClass="control-label" /></asp:Label>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-6">
-                                            <asp:Label runat="server" ID="MonLabel6" CssClass="control-label"><strong>Numéro carte de crédit : </strong><asp:Label runat="server" ID="lblNoCarte" CssClass="control-label" /></asp:Label>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-10">
-                                            <p>
-                                                <strong>Un email vous sera envoyé avec toutes les informations de votre réservation.</strong>
-                                            </p>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-4">
-                                            <asp:Label runat="server" ID="Label8" AssociatedControlID="btnConfirmer" CssClass="control-label"><strong>Voulez-vous confirmer cette réservation ?</strong></asp:Label>
-                                            <asp:Button ID="btnConfirmer" runat="server" Text="Confirmer" CssClass="form-control btn btn-primary"/>         
-                                            <asp:Button ID="btnAnnuler" runat="server" Text="Annuler" CssClass="form-control btn btn-default"/>
-                                        </div>
-                                    </div>
                                 </fieldset>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <asp:Label runat="server" ID="MonLabel1" CssClass="control-label"><strong>Date d'arrivé : </strong>
+                                            <asp:Label ID="lblDateDebut" runat="server" CssClass="control-label" /></asp:Label>
+                                    </div>
+                                </div>
 
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <asp:Label runat="server" ID="MonLabel2" CssClass="control-label"><strong>Date de départ : </strong>
+                                            <asp:Label runat="server" ID="lblDateFin" CssClass="control-label" /></asp:Label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <asp:Label runat="server" ID="MonLabel3" CssClass="control-label"><strong>Réservation au nom de : </strong>
+                                            <asp:Label runat="server" ID="lblNomReserv" CssClass="control-label" /></asp:Label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <asp:Label runat="server" ID="MonLabel4" CssClass="control-label"><strong>Prix total : </strong>
+                                            <asp:Label runat="server" ID="lblPrixTotal" CssClass="control-label" /></asp:Label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <asp:Label runat="server" ID="MonLabel5" CssClass="control-label"><strong>Type carte : </strong>
+                                            <asp:Label runat="server" ID="lblTypeCarte" CssClass="control-label" /></asp:Label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <asp:Label runat="server" ID="MonLabel6" CssClass="control-label"><strong>Numéro carte de crédit : </strong>
+                                            <asp:Label runat="server" ID="lblNoCarte" CssClass="control-label" /></asp:Label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <p>
+                                            <strong>Un email vous sera envoyé avec toutes les informations de votre réservation.</strong>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <asp:Button ID="btnAnnuler" runat="server" OnClick="btnAnnuler_Click" Text="Annuler" CssClass="btn btn-default monbtnspecial" />
+                                        <asp:Button ID="btnConfirmer" runat="server" OnClick="btnConfirmer_Click" Text="Confirmer" CssClass="btn btn-primary" />
+                                    </div>
+                                </div>
                             </div>
-
-
                         </div>
                     </asp:PlaceHolder>
-
                 </div>
             </section>
-
-
         </div>
     </div>
 </asp:Content>

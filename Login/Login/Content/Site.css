@@ -1,4 +1,8 @@
-﻿.banner {
+﻿.monbtnspecial{
+    margin-right: 1%;
+}
+
+.banner {
     position: relative;
     width: 100%;
     overflow: auto;
