@@ -12,9 +12,9 @@
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
                             <div class="form-group">
-                                <div class="input-group">
-                                    <span class="btn-group btn-group-justified">
-                                        <asp:TextBox Enabled="false" ID="txtDateDebut" runat="server" CssClass="form-control" Text="Sélectionnez une date de début..." />
+                                <div class="col-md-10 input-group">
+                                    <asp:TextBox Enabled="false" ID="txtDateDebut" runat="server" CssClass="form-control" Width="99%" Text="Sélectionnez une date de début..." />
+                                    <span class="input-group-btn" style="float: left;">
                                         <asp:Button ID="btnExpandCalendarDebut" CssClass="btn btn-success" runat="server" Text="+" Width="30px" />
                                     </span>
                                 </div>
@@ -35,9 +35,9 @@
                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                         <ContentTemplate>
                             <div class="form-group">
-                                <div class="input-group">
-                                    <span class="btn-group btn-group-justified">
-                                        <asp:TextBox Enabled="false" ID="txtDateFin" runat="server" CssClass="form-control" Text="Sélectionnez une date de fin..." />
+                                <div class="col-md-10 input-group">
+                                    <asp:TextBox Enabled="false" ID="txtDateFin" runat="server" CssClass="form-control" Width="99%" Text="Sélectionnez une date de fin..." />
+                                    <span class="input-group-btn" style="float: left;">
                                         <asp:Button ID="btnExpandCalendarFin" Enabled="false" CssClass="btn btn-success disabled" runat="server" Text="+" Width="30px" />
                                     </span>
                                 </div>
@@ -74,7 +74,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <asp:Button ID="btnRecherche" runat="server" OnClick="RechercheHotel" Text="Recherche" CssClass="btn btn-default" />
+                        <asp:Button ID="btnRecherche" runat="server" OnClick="RechercheHotel" Text="Filtrer" CssClass="btn btn-default" />
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@
     </div>
 
     <section id="result">
-        <asp:PlaceHolder runat="server" ID="ResultatRecherche" Visible="false">
+        <asp:PlaceHolder runat="server" ID="ResultatRecherche" Visible="true">
             <asp:ListView ID="ListeHotel" runat="server">
                 <LayoutTemplate>
                     <div class="list-group">

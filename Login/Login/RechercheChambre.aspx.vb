@@ -2,9 +2,16 @@
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        If (IsPostBack) Then
-            'ResultatRecherche.Visible = True
+        If (Not IsPostBack) Then
+            Dim BD As New P2014_BD_GestionHotelEntities
 
+            Dim res = From tabHotel In BD.tblHotel
+                          Select tabHotel
+
+            ListeHotel.DataSource = res.ToList
+            ListeHotel.DataBind()
+
+            ResultatRecherche.Visible = True
         End If
 
     End Sub
@@ -13,7 +20,6 @@
         txtDateDebut.Text = "Sélectionnez une date de début..."
         txtDateFin.Text = "Sélectionnez une date de fin..."
         txtVilleRecherche.Text = ""
-        ResultatRecherche.Visible = False
         CalendrierDebut.SelectedDate = Nothing
         CalendrierFin.SelectedDate = Nothing
         btnExpandCalendarFin.Enabled = False
@@ -21,30 +27,46 @@
         btnExpandCalendarDebut.Text = "+"
         CalendrierFin.Visible = False
         btnExpandCalendarFin.Text = "+"
-    End Sub
 
+        Dim BD As New P2014_BD_GestionHotelEntities
+
+        Dim res = From tabHotel In BD.tblHotel
+                      Select tabHotel
+
+        ListeHotel.DataSource = res.ToList
+        ListeHotel.DataBind()
+    End Sub
 
     Sub RechercheHotel()
         Dim maClasse As New ClasseGestion
+        Dim BD As New P2014_BD_GestionHotelEntities
 
-        If txtDateDebut.Text <> "Sélectionnez une date de début..." Then
-            Dim Date1 As Date = CalendrierDebut.SelectedDate.ToShortDateString
+        If txtVilleRecherche.Text <> "" Then
+            Dim res = From tabHotel In BD.tblHotel
+                      Join tabVille In BD.tblVille On tabHotel.CodeVille Equals tabVille.CodeVille
+                      Where tabVille.NomVille.StartsWith(txtVilleRecherche.Text)
+                      Select tabHotel
 
-            If txtDateFin.Text <> "Sélectionnez une date de fin..." Then
-                Dim Date2 As Date = CalendrierFin.SelectedDate.ToShortDateString
-
-                ListeHotel.DataSource = maClasse.RechercheHotel(Date1, Date2, txtVilleRecherche.Text)
-                ListeHotel.DataBind()
-
-                ResultatRecherche.Visible = True
-            Else
-                ResultatRecherche.Visible = False
-                System.Web.UI.ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "AlertBox", "alert('Vous devez entrer une date de début et une date de fin pour effectuer la recherche.');", True)
-            End If
-        Else
-            ResultatRecherche.Visible = False
-            System.Web.UI.ScriptManager.RegisterClientScriptBlock(Me, Me.GetType(), "AlertBox", "alert('Vous devez entrer une date de début et une date de fin pour effectuer la recherche.');", True)
+            ListeHotel.DataSource = res.ToList
+            ListeHotel.DataBind()
         End If
+
+        If (txtDateDebut.Text <> "Sélectionnez une date de début...") And (txtDateFin.Text <> "Sélectionnez une date de fin...") Then
+            Dim Date1 As Date = CalendrierDebut.SelectedDate.ToShortDateString
+            Dim Date2 As Date = CalendrierFin.SelectedDate.ToShortDateString
+
+            ListeHotel.DataSource = maClasse.RechercheHotel(Date1, Date2, txtVilleRecherche.Text)
+            ListeHotel.DataBind()
+        End If
+
+        If (txtVilleRecherche.Text = "") And (txtDateDebut.Text = "Sélectionnez une date de début...") And (txtDateFin.Text = "Sélectionnez une date de fin...") Then
+            Dim res = From tabHotel In BD.tblHotel
+                      Select tabHotel
+
+            ListeHotel.DataSource = res.ToList
+            ListeHotel.DataBind()
+        End If
+
 
     End Sub
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Reservation.aspx.vb" Inherits="Login.Reservation" %>
+﻿<%@ Page Title="" Language="vb" MaintainScrollPositionOnPostback="true" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Reservation.aspx.vb" Inherits="Login.Reservation" %>
 
 <%@ Import Namespace="Microsoft.AspNet.Identity" %>
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
@@ -31,7 +31,7 @@
                     <asp:UpdatePanel ID="MonUpdatePanel" runat="server">
                         <ContentTemplate>
                             <div class="col-md-3">
-                                <asp:Image ID="ImageTypeChambre" runat="server" ImageUrl='<%# String.Format("~\Images\TypeChambre\Chambre{0}.jpg", Eval("CodeTypeChambre"))%>' Width="200" Height="120" BorderStyle="None" />
+                                <asp:Image ID="ImageTypeChambre" runat="server" ImageUrl='<%# String.Format("~\Images\TypeChambre\{0}\Chambre{0}.jpg", Eval("CodeTypeChambre"))%>' Width="200" Height="120" BorderStyle="None" />
                                 <br />
                                 <p>
                                     <h5 style="font-weight: bold;"><%# Eval("NomTypeChambre")%></h5>
@@ -247,7 +247,7 @@
 
                             <div class="form-group">
                                 <div class="col-lg-10">
-                                    <asp:Button ID="btnCalculer" runat="server" Text="Calculer" CssClass="btn btn-primary" />
+                                    <asp:Button ID="btnCalculer" runat="server" Text="Soumettre" CssClass="btn btn-primary" />
                                 </div>
                             </div>
 

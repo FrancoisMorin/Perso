@@ -201,18 +201,56 @@
       <DependentUpon>BD.edmx</DependentUpon>
       <LastGenOutput>BD.vb</LastGenOutput>
     </Content>
+    <Content Include="Images\JumboBack.jpg" />
+    <Content Include="Images\TypeChambre\LUX\ChambreLUX.jpg" />
+    <Content Include="Images\TypeChambre\LUX\DoucheLUX.jpg" />
+    <Content Include="Images\TypeChambre\LUX\Lit2LUX.jpg" />
+    <Content Include="Images\TypeChambre\LUX\Lit3LUX.jpg" />
+    <Content Include="Images\TypeChambre\LUX\Lit4LUX.jpg" />
+    <Content Include="Images\TypeChambre\LUX\LitLUX.jpg" />
+    <Content Include="Images\TypeChambre\SUI\BainSUI.jpg" />
+    <Content Include="Images\TypeChambre\SUI\ChambreSUI.jpg" />
+    <Content Include="Images\TypeChambre\SUI\EvierSUI.jpg" />
+    <Content Include="Images\TypeChambre\SUI\FireplaceSUI.jpg" />
+    <Content Include="Images\TypeChambre\SUI\LitSUI.jpg" />
+    <Content Include="Images\TypeChambre\SUI\WalkInSUI.jpg" />
+    <Content Include="img\ChambreSTD.jpg" />
+    <Content Include="img\demopage\.DS_Store" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\lightbox.css" />
     <Content Include="Images\Accueil\AccueilChambre.jpg" />
     <Content Include="Images\Accueil\AccueilHotel.jpg" />
     <Content Include="Images\Accueil\AccueilLobby.jpg" />
     <Content Include="Images\Slider\chaise.jpg" />
     <Content Include="Images\Slider\granderoue.jpg" />
     <Content Include="Images\Slider\pewpew.jpg" />
-    <Content Include="Images\TypeChambre\ChambreLUX.jpg" />
-    <Content Include="Images\TypeChambre\ChambreSTD.jpg" />
-    <Content Include="Images\TypeChambre\ChambreSUI.jpg" />
+    <Content Include="Images\TypeChambre\STD\BainSTD.jpg" />
+    <Content Include="Images\TypeChambre\STD\ChambreSTD.jpg" />
+    <Content Include="Images\TypeChambre\STD\DoucheSTD.jpg" />
+    <Content Include="Images\TypeChambre\STD\EvierSTD.jpg" />
+    <Content Include="Images\TypeChambre\STD\Lit2STD.jpg" />
+    <Content Include="Images\TypeChambre\STD\LitSTD.jpg" />
+    <Content Include="img\close.png" />
+    <Content Include="img\demopage\favicon.png" />
+    <Content Include="img\demopage\image-1.jpg" />
+    <Content Include="img\demopage\image-2.jpg" />
+    <Content Include="img\demopage\image-3.jpg" />
+    <Content Include="img\demopage\image-4.jpg" />
+    <Content Include="img\demopage\image-5.jpg" />
+    <Content Include="img\demopage\image-6.jpg" />
+    <Content Include="img\demopage\thumb-1.jpg" />
+    <Content Include="img\demopage\thumb-2.jpg" />
+    <Content Include="img\demopage\thumb-3.jpg" />
+    <Content Include="img\demopage\thumb-4.jpg" />
+    <Content Include="img\demopage\thumb-5.jpg" />
+    <Content Include="img\demopage\thumb-6.jpg" />
+    <Content Include="img\loading.gif" />
+    <Content Include="img\next.png" />
+    <Content Include="img\prev.png" />
+    <Content Include="RechercheSalle.aspx" />
+    <Content Include="Scripts\lightbox.min.js" />
     <Content Include="PostReservation.aspx" />
     <Content Include="Reservation.aspx" />
     <Content Include="Temp\spacelab\bootstrap.css" />
@@ -275,6 +313,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="TypesChambre.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <None Include="Project_Readme.html" />
@@ -432,6 +471,13 @@
       <DependentUpon>RechercheChambre.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="RechercheSalle.aspx.designer.vb">
+      <DependentUpon>RechercheSalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RechercheSalle.aspx.vb">
+      <DependentUpon>RechercheSalle.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Reservation.aspx.designer.vb">
       <DependentUpon>Reservation.aspx</DependentUpon>
     </Compile>
@@ -534,6 +580,13 @@
     <Compile Include="tblVille.vb">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
+    <Compile Include="TypesChambre.aspx.designer.vb">
+      <DependentUpon>TypesChambre.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TypesChambre.aspx.vb">
+      <DependentUpon>TypesChambre.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="VerificationDispo_Result.vb">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
@@ -579,6 +632,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="obj\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

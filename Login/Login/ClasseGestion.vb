@@ -46,9 +46,9 @@
             Else
                 Try
                     NewHotel = (From tabHotel In BD.tblHotel
-                                                        Join tabVille In BD.tblVille On tabHotel.CodeVille Equals tabVille.CodeVille
-                                                       Where tabHotel.CodeHotel = CodeHotel
-                                                       Select tabHotel).ToList.First
+                                Join tabVille In BD.tblVille On tabHotel.CodeVille Equals tabVille.CodeVille
+                                Where tabHotel.CodeHotel = CodeHotel
+                                Select tabHotel).ToList.First
 
                     ListeHotel.Add(NewHotel)
                 Catch ex As Exception

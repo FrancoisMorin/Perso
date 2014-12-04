@@ -66,7 +66,7 @@
                 La chaîne d'hôtels Nouvotel offre de nombreuses destinations de rêve dans différent hôtels à travers le Canada.
             </p>
             <p>
-                <a class="btn btn-default" href="#">En savoir plus &raquo;</a>
+                <a class="btn btn-default" href="RechercheChambre.aspx">En savoir plus &raquo;</a>
             </p>
         </div>
         <div class="col-md-offset-1 col-md-3">
@@ -76,7 +76,7 @@
                 Découvrez l'ameublement, les types de lits et les services offerts aux chambres, et ce, dans tout nos hôtels.
             </p>
             <p>
-                <a class="btn btn-default" href="#">En savoir plus &raquo;</a>
+                <a class="btn btn-default" href="TypesChambre.aspx">En savoir plus &raquo;</a>
             </p>
         </div>
 
@@ -87,7 +87,7 @@
                 Réservez une chambre en ligne ou par téléphone. Disponible à toute heure 7 jours sur 7.
             </p>
             <p>
-                <a class="btn btn-default" href="#">En savoir plus &raquo;</a>
+                <a class="btn btn-default" href="Contact.aspx">En savoir plus &raquo;</a>
             </p>
         </div>
     </div>

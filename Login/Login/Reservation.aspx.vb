@@ -133,7 +133,7 @@ Public Class Reservation
         Session("MesReservations") = ClasseGes
     End Sub
 
-#Region "Event_Combobox"
+#Region "Event_Combobox_Ville"
     Protected Sub cmbPays_SelectedIndexChanged(sender As Object, e As EventArgs)
         FiltrerPays()
     End Sub
@@ -230,6 +230,13 @@ Public Class Reservation
         'Récupère la variable de session
         ClasseGes = Session("MesReservations")
 
+        'Si la variable est vide dès le départ, les combobox de chambre n'ont pas été changé
+        If ClasseGes Is Nothing Then
+            Dim TempCodeHotel As String = Request.QueryString("ID")
+            Response.Redirect("~/Reservation?m=NoSelect&ID=" + TempCodeHotel)
+        End If
+
+        'Vérifie si la réservation se fait avec un compte client
         If appUser Is Nothing Then
             'Vérifie les champs du client et crée le client
             Dim NomClient As String = txtNom.Text

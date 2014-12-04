@@ -2,6 +2,34 @@
     margin-right: 1%;
 }
 
+.gradient{
+  background: -webkit-linear-gradient(left, #D9EDF7 , white); 
+  background: -o-linear-gradient(right, #D9EDF7 , white); 
+  background: -moz-linear-gradient(right, #D9EDF7 , white);
+  background: linear-gradient(to right, #D9EDF7 , white); 
+}
+
+.backgradient{
+    background: -webkit-gradient(linear, left top, left bottom, from(#EBEBEB), to(#FFFFFF));
+}
+
+
+/* Solve problem on a non-solid background */
+.clickimage:hover { 
+  outline: 3px solid #DD4814; 
+} 
+
+/* Solve problem where border size changes on hover */
+.clickimage { 
+  border: 1px solid #DD4814; 
+} 
+
+.clickimage:hover { 
+  outline: 2px solid #DD4814; 
+} 
+
+
+
 .banner {
     position: relative;
     width: 100%;
