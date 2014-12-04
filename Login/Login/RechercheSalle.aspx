@@ -17,7 +17,7 @@
 
                     <div class="col-md-5">
                         <div class="form-group">
-                            <asp:Label ID="Label1" runat="server" AssociatedControlID="txtHotelRecherche" Text="Entrez un nom de ville" />
+                            <asp:Label ID="Label1" runat="server" AssociatedControlID="txtHotelRecherche" Text="Entrez un nom d'hôtel" />
                             <div class="col-md-8 input-group">
                                 <asp:TextBox runat="server" ID="txtHotelRecherche" CssClass="form-control" Width="80%" Text="" />
                                 <span class="input-group-btn" style="float: left;">
@@ -27,7 +27,6 @@
                         </div>
                     </div>
                     
-
                     <div class="col-md-5">                  
                         <div class="form-group">
                             <asp:Label ID="Label2" runat="server" AssociatedControlID="txtVilleRecherche" Text="Entrez un nom de ville" />
@@ -37,10 +36,18 @@
                                     <asp:Button runat="server" ID="btnRechercheVille" Text="Recherche" CssClass="btn btn-success" />
                                 </span>
                             </div>
+                        </div>                    
+                    </div>      
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <div class="form-group">
+                            <asp:Button ID="btnClear" CssClass="btn btn-warning btn-sm" runat="server" Text="Effacer" />
                         </div>
-                          
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

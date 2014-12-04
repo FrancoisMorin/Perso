@@ -41,13 +41,22 @@ Partial Public Class RechercheSalle
     Protected WithEvents btnRechercheHotel As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Contrôle MonLabel.
+    '''Contrôle Label2.
     '''</summary>
     '''<remarks>
     '''Champ généré automatiquement.
     '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
-    Protected WithEvents MonLabel As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Contrôle txtVilleRecherche.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents txtVilleRecherche As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Contrôle btnRechercheVille.
@@ -57,6 +66,15 @@ Partial Public Class RechercheSalle
     '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents btnRechercheVille As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Contrôle btnClear.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents btnClear As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Contrôle ResultatRecherche.
