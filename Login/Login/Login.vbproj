@@ -183,7 +183,6 @@
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Account\ResetPassword.aspx" />
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
-    <Content Include="Contact.aspx" />
     <EntityDeploy Include="BD.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BD.Designer.vb</LastGenOutput>
@@ -201,7 +200,31 @@
       <DependentUpon>BD.edmx</DependentUpon>
       <LastGenOutput>BD.vb</LastGenOutput>
     </Content>
+    <Content Include="Contact.aspx" />
+    <Content Include="Images\About\HotelAbout.jpg" />
+    <Content Include="Images\About\HotelFire.jpg" />
+    <Content Include="Images\About\HotelPerson.jpg" />
     <Content Include="Images\JumboBack.jpg" />
+    <Content Include="Images\Salles\SalleALB.jpg" />
+    <Content Include="Images\Salles\SalleALR.jpg" />
+    <Content Include="Images\Salles\SalleANA.jpg" />
+    <Content Include="Images\Salles\SalleANM.jpg" />
+    <Content Include="Images\Salles\SalleANP.jpg" />
+    <Content Include="Images\Salles\SalleANT.jpg" />
+    <Content Include="Images\Salles\SalleBRM.jpg" />
+    <Content Include="Images\Salles\SalleEDB.jpg" />
+    <Content Include="Images\Salles\SalleFEC.jpg" />
+    <Content Include="Images\Salles\SalleFRB.jpg" />
+    <Content Include="Images\Salles\SalleGIG.jpg" />
+    <Content Include="Images\Salles\SalleHYQ.JPG" />
+    <Content Include="Images\Salles\SalleJED.jpg" />
+    <Content Include="Images\Salles\SalleMAD.jpg" />
+    <Content Include="Images\Salles\SalleMAO.jpg" />
+    <Content Include="Images\Salles\SallePim.jpg" />
+    <Content Include="Images\Salles\SallePIP.jpg" />
+    <Content Include="Images\Salles\SalleSAD.jpg" />
+    <Content Include="Images\Salles\SalleSAF.jpg" />
+    <Content Include="Images\Salles\SalleSAS.jpg" />
     <Content Include="Images\TypeChambre\LUX\ChambreLUX.jpg" />
     <Content Include="Images\TypeChambre\LUX\DoucheLUX.jpg" />
     <Content Include="Images\TypeChambre\LUX\Lit2LUX.jpg" />
@@ -249,6 +272,7 @@
     <Content Include="img\loading.gif" />
     <Content Include="img\next.png" />
     <Content Include="img\prev.png" />
+    <Content Include="Localisation.aspx" />
     <Content Include="RechercheSalle.aspx" />
     <Content Include="Scripts\lightbox.min.js" />
     <Content Include="PostReservation.aspx" />
@@ -326,6 +350,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About.aspx.vb">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Account\Confirm.aspx.designer.vb">
       <DependentUpon>Confirm.aspx</DependentUpon>
     </Compile>
@@ -392,13 +420,6 @@
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\IdentityConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
-    <Compile Include="About.aspx.designer.vb">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="About.aspx.vb">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
     <Compile Include="App_Start\Startup.Auth.vb" />
     <Compile Include="BD.Context.vb">
       <AutoGen>True</AutoGen>
@@ -432,6 +453,13 @@
     </Compile>
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Localisation.aspx.designer.vb">
+      <DependentUpon>Localisation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Localisation.aspx.vb">
+      <DependentUpon>Localisation.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Models\IdentityModels.vb" />
     <Compile Include="MonStore.vb" />

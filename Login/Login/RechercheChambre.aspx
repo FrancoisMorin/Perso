@@ -93,19 +93,44 @@
                     </div>
                 </LayoutTemplate>
                 <ItemTemplate>
-                    <a href="Reservation.aspx?ID=<%# Eval("CodeHotel") %>" class="list-group-item">
-                        <span class="badge" style="margin-top: 25px;">Réserver dans cet hôtel</span>
-                        <h3 class="list-group=item-heading"><%# Eval("NomHotel")%></h3>
-                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# String.Format("~\Images\PhotoHotel\Hotel{0}.jpg", Eval("CodeHotel"))%>' Width="200" Height="120" BorderStyle="None" />
-                        <br />
-                        <p>
-                            <strong>Nombre chambre : </strong><%# Eval("NbChambre")%>
-                            <br />
-                            <strong>Nombre étoiles : </strong><%# Eval("NbEtoiles")%>
-                            <br />
-                            <strong>Type Service : </strong><%# Eval("TypeService")%>
-                            <br />
-                        </p>
+                    <div class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h3 class="list-group=item-heading"><%# Eval("NomHotel")%></h3>
+                                <asp:Image ID="Image1" runat="server" ImageUrl='<%# String.Format("~\Images\PhotoHotel\Hotel{0}.jpg", Eval("CodeHotel"))%>' Width="200" Height="120" BorderStyle="None" />
+                            </div>
+                            <div class="col-md-4" style="padding-top: 1%;">
+                                <fieldset><legend>Informations</legend></fieldset>
+                                <div class="col-md-10">
+                                    <ul>
+                                        <li><strong>Nombre de chambres: </strong><%# Eval("NbChambre")%></li>
+                                        <li><strong>Nombre d'étoiles: </strong><%# Eval("NbEtoiles")%></li>
+                                        <li><strong>Services: </strong><%# Eval("TypeService")%></li>
+                                    </ul>
+                                </div>                                
+                            </div>
+
+                            <div class="col-md-4" style="padding-top: 1%;">
+                                <fieldset><legend>Pour nous rejoindre</legend></fieldset>
+                                <div class="col-md-10">
+                                    <ul>
+                                        <li><strong>No. téléphone: </strong><%# Eval("NoTelephoneHotel")%></li>
+                                        <li><strong>No. télécopieur: </strong><%# Eval("NoTelecopieurHotel")%></li>
+                                    </ul>
+                                </div>   
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <a href="Reservation.aspx?ID=<%# Eval("CodeHotel") %>" class="btn btn-success">Réserver &raquo;</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                        
+
                     </a>
                 </ItemTemplate>
             </asp:ListView>

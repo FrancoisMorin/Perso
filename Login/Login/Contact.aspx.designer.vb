@@ -12,4 +12,13 @@ Option Explicit On
 
 
 Partial Public Class Contact
+
+    '''<summary>
+    '''Contrôle ListeHotel.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents ListeHotel As Global.System.Web.UI.WebControls.ListView
 End Class

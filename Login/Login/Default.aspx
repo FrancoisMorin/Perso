@@ -25,27 +25,27 @@
         <ul>
             <li style="background-image: url('Images/Slider/borddeplage.jpg');">
                 <div class="backgrounddivh1">
-                    <h1>Nouvotel</h1>
+                    <h1>Nouvhôtel</h1>
                 </div>
             </li>
             <li style="background-image: url('Images/Slider/piscine.jpg');">
                 <div class="backgrounddivh1">
-                    <h1>Nouvotel</h1>
+                    <h1>Nouvhôtel</h1>
                 </div>
             </li>
             <li style="background-image: url('Images/Slider/chaise.jpg');">
                 <div class="backgrounddivh1">
-                    <h1>Nouvotel</h1>
+                    <h1>Nouvhôtel</h1>
                 </div>
             </li>
             <li style="background-image: url('Images/Slider/pewpew.jpg');">
                 <div class="backgrounddivh1">
-                    <h1>Nouvotel</h1>
+                    <h1>Nouvhôtel</h1>
                 </div>
             </li>
             <li style="background-image: url('Images/Slider/granderoue.jpg');">
                 <div class="backgrounddivh1">
-                    <h1>Nouvotel</h1>
+                    <h1>Nouvhôtel</h1>
                 </div>
             </li>
         </ul>
@@ -63,7 +63,7 @@
 
             <h2>Découvrez nos hôtels</h2>
             <p>
-                La chaîne d'hôtels Nouvotel offre de nombreuses destinations de rêve dans différent hôtels à travers le Canada.
+                La chaîne d'hôtels Nouvhôtel offre de nombreuses destinations de rêve dans différent hôtels à travers le Canada.
             </p>
             <p>
                 <a class="btn btn-default" href="RechercheChambre.aspx">En savoir plus &raquo;</a>
