@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="TypesChambre.aspx.vb" Inherits="Login.TypesChambre" %>
+﻿<%@ Page Title="Types de chambre" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="TypesChambre.aspx.vb" Inherits="Login.TypesChambre" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -7,12 +7,10 @@
     <link href="Content/lightbox.css" rel="stylesheet" />
 
     <div class="jumbotron backgradient">
-        <h1>Nos types de chambre</h1>
+        <h2><strong>Nos types de chambre</strong></h2>
         <p>Trouvez le type de chambre qui convient le mieux pour votre séjour. Nos type de chambre sont standard dans tous nos hôtels ce qui vous permettra d'avoir la même expérience partout.</p>
         <p><a href="RechercheChambre.aspx" class="btn btn-primary btn-lg">Réserver &raquo;</a></p>
     </div>
-
-    <br />
 
     <%-- Panel Chambre Standard --%>
     <div class="panel panel-default">

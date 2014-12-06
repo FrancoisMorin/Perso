@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Localisation.aspx.vb" Inherits="Login.Localisation" %>
+﻿<%@ Page Title="Localisation" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Localisation.aspx.vb" Inherits="Login.Localisation" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 

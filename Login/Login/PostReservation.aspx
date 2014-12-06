@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="PostReservation.aspx.vb" Inherits="Login.PostReservation" %>
+﻿<%@ Page Title="Félicitation" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="PostReservation.aspx.vb" Inherits="Login.PostReservation" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Votre réservation a été correctement enregistrée pour l'hotel X.</h2>

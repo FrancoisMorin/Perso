@@ -44,11 +44,22 @@
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
+        
     End Sub
 
     Protected Sub Unnamed_LoggingOut(sender As Object, e As LoginCancelEventArgs)
         Context.GetOwinContext().Authentication.SignOut()
     End Sub
 
+    Private Sub Page_PreRender(sender As Object, e As EventArgs) Handles Me.PreRender
+        Try
+            Dim BD As New P2014_BD_GestionHotelEntities
+            Dim res = From i In BD.tblHotel
+                      Select i
+
+            Dim x = res.ToList
+        Catch ex As Exception
+            Response.Redirect("PageErreur.aspx")
+        End Try
+    End Sub
 End Class

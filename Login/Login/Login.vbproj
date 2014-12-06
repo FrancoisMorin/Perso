@@ -204,6 +204,7 @@
     <Content Include="Images\About\HotelAbout.jpg" />
     <Content Include="Images\About\HotelFire.jpg" />
     <Content Include="Images\About\HotelPerson.jpg" />
+    <Content Include="Images\icone_Hotel.ico" />
     <Content Include="Images\JumboBack.jpg" />
     <Content Include="Images\Salles\SalleALB.jpg" />
     <Content Include="Images\Salles\SalleALR.jpg" />
@@ -273,6 +274,7 @@
     <Content Include="img\next.png" />
     <Content Include="img\prev.png" />
     <Content Include="Localisation.aspx" />
+    <Content Include="PageErreur.aspx" />
     <Content Include="RechercheSalle.aspx" />
     <Content Include="Scripts\lightbox.min.js" />
     <Content Include="PostReservation.aspx" />
@@ -481,6 +483,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="PageErreur.aspx.designer.vb">
+      <DependentUpon>PageErreur.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageErreur.aspx.vb">
+      <DependentUpon>PageErreur.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="PostReservation.aspx.designer.vb">
       <DependentUpon>PostReservation.aspx</DependentUpon>

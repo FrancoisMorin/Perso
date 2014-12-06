@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.vb" Inherits="Login._Default" %>
+﻿<%@ Page Title="Accueil" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.vb" Inherits="Login._Default" %>
 
 <asp:Content style="width: 100%;" runat="server" ContentPlaceHolderID="slidercontent">
     <script src="//code.jquery.com/jquery-latest.min.js"></script>
@@ -96,7 +96,7 @@
         <div class="jumbotron">
             <h2>S'inscrire</h2>
             <p>
-                Réserver une chambre en ligne n'a jamais été aussi facile ! Créer un compte en quelques clics et commencez à planifier votre voyage.
+                Réserver une chambre en ligne n'a jamais été aussi facile ! Créer un compte en quelques clics et commencez à planifier votre prochain séjour.
             </p>
             <p>
                 <a class="btn btn-primary btn-lg" href="~\Account\Register.aspx">En savoir plus &raquo;</a>

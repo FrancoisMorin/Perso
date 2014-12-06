@@ -352,8 +352,6 @@ Public Class Reservation
             lblNomReserv.Text = appUser.PrenomClient + " " + appUser.NomClient
         End If
 
-
-
         Dim Prix As Double = Reserv.PrixReservChambre
         lblPrixTotal.Text = Math.Round(Prix).ToString + " $"
         lblTypeCarte.Text = Reserv.TypeCarteCredit
@@ -363,7 +361,7 @@ Public Class Reservation
 
     Sub Confirm()
         'Si le client confirme, mail-to + redirect page de congratulation?
-        ClasseGes = Session("MaReservation")
+        ClasseGes = Session("MesReservation")
 
         Session("MonCodeHotel") = ClasseGes.MaReservation.tblChambreReservationChambre.First.tblChambre.CodeHotel
 
