@@ -255,4 +255,14 @@
         Return True
     End Function
 
+    Public Sub AnnulerReservation()
+        'Supprimer les ChambresReservationChambre
+        For Each ChambreReserv As tblChambreReservationChambre In ListeChambreReservation
+            BD.tblChambreReservationChambre.Remove(ChambreReserv)
+        Next
+        'Supprimer la réservation
+        BD.tblReservationChambre.Remove(MaReservation)
+        BD.SaveChanges()
+    End Sub
+
 End Class

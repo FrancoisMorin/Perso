@@ -125,12 +125,12 @@ Public Class Reservation
         Dim code = u.Attributes("SorteChambre")
 
         'Si la variable a déjà été créée, récupère là.
-        If Session("MesReservations") IsNot Nothing Then
-            ClasseGes = Session("MesReservations")
+        If Session("MesReservation") IsNot Nothing Then
+            ClasseGes = Session("MesReservation")
         End If
 
         ClasseGes.AjoutDetailReservation(code, u.Text)
-        Session("MesReservations") = ClasseGes
+        Session("MesReservation") = ClasseGes
     End Sub
 
 #Region "Event_Combobox_Ville"
@@ -228,7 +228,7 @@ Public Class Reservation
         Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
         Dim appUser = manager.FindById(User.Identity.GetUserId)
         'Récupère la variable de session
-        ClasseGes = Session("MesReservations")
+        ClasseGes = Session("MesReservation")
 
         'Si la variable est vide dès le départ, les combobox de chambre n'ont pas été changé
         If ClasseGes Is Nothing Then
@@ -254,7 +254,7 @@ Public Class Reservation
             End If
         End If
 
-
+        'Récupere les infos de la réservation
         Dim txtDebut As String = txtDateDebut.Text
         Dim txtFin As String = txtDateFin.Text
         Dim TypeCarte As String = cmbTypeCarte.SelectedValue.ToString
@@ -280,8 +280,6 @@ Public Class Reservation
         If NoCarte = "" Or DateExp = "" Or NomDetenteur = "" Then
             Dim TempCodeHotel As String = Request.QueryString("ID")
             Response.Redirect("~/Reservation?m=EmptyFields&ID=" + TempCodeHotel)
-        Else
-
         End If
 
         Dim CodeHotel As String = Request.QueryString("ID")
@@ -369,20 +367,25 @@ Public Class Reservation
     End Sub
 
     Sub Annuler()
-        'Si le client refuse, supprime la réservation de la bd + redirect accueil?
-        ClasseGes = Session("MaReservation")
+        'Si le client refuse, supprime la réservation de la bd + redirect accueil
+        ClasseGes = Session("MesReservation")
 
         Dim MaBD As New P2014_BD_GestionHotelEntities
 
-        'Supprimer toutes les chambres de la réservation
-        For Each Chambre As tblChambreReservationChambre In ClasseGes.MaReservation.tblChambreReservationChambre
-            MaBD.tblChambreReservationChambre.Remove(Chambre)
-        Next
-        'Supprimer la réservation
-        MaBD.tblReservationChambre.Remove(ClasseGes.MaReservation)
-        MaBD.SaveChanges()
+        ClasseGes.AnnulerReservation()
 
-        Response.Redirect("~/Accueil.aspx")
+
+        ''Supprimer toutes les chambres de la réservation
+        'For Each Chambre As tblChambreReservationChambre In ClasseGes.MaReservation.tblChambreReservationChambre
+        '    MaBD.tblChambreReservationChambre.Remove(Chambre)
+        'Next
+        ''Supprimer la réservation
+        'MaBD.tblReservationChambre.Remove(ClasseGes.MaReservation)
+        'MaBD.SaveChanges()
+
+        Session("MesReservation") = Nothing
+
+        Response.Redirect("~/Default.aspx")
     End Sub
 
     Protected Sub btnAnnuler_Click(sender As Object, e As EventArgs)

@@ -35,7 +35,7 @@
                                 <br />
                                 <p>
                                     <h5 style="font-weight: bold;"><%# Eval("NomTypeChambre")%></h5>
-                                    Prix: <%# Eval("PrixTypeChambre", "{0:c}")%>  / Nuit
+                                    <strong>Prix moyen: </strong><%# Eval("PrixTypeChambre", "{0:c}")%>  / Nuit
                                     <br />
                                     <strong>Nombre de chambre(s) :</strong>
                                 </p>
