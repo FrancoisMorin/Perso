@@ -106,17 +106,17 @@
                         </a>
                         <div class="well" id="panel" style="display: none;">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="overflow:hidden;">
                                     <a href="Images/TypeChambre/STD/ChambreSTD.jpg" data-lightbox="Standard" data-title="Lit standard">
                                         <asp:Image ID="Image1" runat="server" ImageUrl="~\Images\TypeChambre\STD\ChambreSTD.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="overflow:hidden;">
                                     <a href="Images/TypeChambre/STD/LitSTD.jpg" data-lightbox="Standard" data-title="2 lits standard">
                                         <asp:Image ID="Image2" runat="server" ImageUrl="~\Images\TypeChambre\STD\LitSTD.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="overflow:hidden;">
                                     <a href="Images/TypeChambre/STD/Lit2STD.jpg" data-lightbox="Standard" data-title="Lit standard">
                                         <asp:Image ID="Image3" runat="server" ImageUrl="~\Images\TypeChambre\STD\Lit2STD.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>
@@ -124,17 +124,17 @@
                             </div>
                             <br />
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="overflow:hidden;">
                                     <a href="Images/TypeChambre/STD/EvierSTD.jpg" data-lightbox="Standard" data-title="Évier standard">
                                         <asp:Image ID="Image4" runat="server" ImageUrl="~\Images\TypeChambre\STD\EvierSTD.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="overflow:hidden;">
                                     <a href="Images/TypeChambre/STD/DoucheSTD.jpg" data-lightbox="Standard" data-title="Douche standard">
                                         <asp:Image ID="Image5" runat="server" ImageUrl="~\Images\TypeChambre\STD\DoucheSTD.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="overflow:hidden;">
                                     <a href="Images/TypeChambre/STD/BainSTD.jpg" data-lightbox="Standard" data-title="Bain standard">
                                         <asp:Image ID="Image6" runat="server" ImageUrl="~\Images\TypeChambre\STD\BainSTD.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>
@@ -246,17 +246,17 @@
                         </a>
                         <div class="well" id="panel1" style="display: none;">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="overflow:hidden;">
                                     <a href="Images/TypeChambre/LUX/ChambreLUX.jpg" data-lightbox="Deluxe" data-title="Lit deluxe">
                                         <asp:Image ID="Image7" runat="server" ImageUrl="~\Images\TypeChambre\LUX\ChambreLUX.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="overflow:hidden;">
                                     <a href="Images/TypeChambre/LUX/LitLUX.jpg" data-lightbox="Deluxe" data-title="2 lits deluxe">
                                         <asp:Image ID="Image8" runat="server" ImageUrl="~\Images\TypeChambre\LUX\LitLUX.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="overflow:hidden;">
                                     <a href="Images/TypeChambre/LUX/Lit2LUX.jpg" data-lightbox="Deluxe" data-title="Lit deluxe">
                                         <asp:Image ID="Image9" runat="server" ImageUrl="~\Images\TypeChambre\LUX\Lit2LUX.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>
@@ -264,17 +264,17 @@
                             </div>
                             <br />
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="overflow:hidden;">
                                     <a href="Images/TypeChambre/LUX/Lit3LUX.jpg" data-lightbox="Deluxe" data-title="Lit deluxe">
                                         <asp:Image ID="Image10" runat="server" ImageUrl="~\Images\TypeChambre\LUX\Lit3LUX.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="overflow:hidden;">
                                     <a href="Images/TypeChambre/LUX/Lit4LUX.jpg" data-lightbox="Deluxe" data-title="Lit deluxe">
                                         <asp:Image ID="Image11" runat="server" ImageUrl="~\Images\TypeChambre\LUX\Lit4LUX.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="overflow:hidden;">
                                     <a href="Images/TypeChambre/LUX/DoucheLUX.jpg" data-lightbox="Deluxe" data-title="Douche deluxe">
                                         <asp:Image ID="Image12" runat="server" ImageUrl="~\Images\TypeChambre\LUX\DoucheLUX.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>
@@ -390,17 +390,17 @@
                         </a>
                         <div class="well" id="panel2" style="display: none;">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="overflow:hidden;">
                                     <a href="Images/TypeChambre/SUI/ChambreSUI.jpg" data-lightbox="Suite" data-title="Lit suite">
                                         <asp:Image ID="Image13" runat="server" ImageUrl="~\Images\TypeChambre\SUI\ChambreSUI.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="overflow:hidden;">
                                     <a href="Images/TypeChambre/SUI/LitSUI.jpg" data-lightbox="Suite" data-title="2 lits suite">
                                         <asp:Image ID="Image14" runat="server" ImageUrl="~\Images\TypeChambre\SUI\LitSUI.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="overflow:hidden;">
                                     <a href="Images/TypeChambre/SUI/FireplaceSUI.jpg" data-lightbox="Suite" data-title="Salon suite">
                                         <asp:Image ID="Image15" runat="server" ImageUrl="~\Images\TypeChambre\SUI\FireplaceSUI.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>
@@ -408,17 +408,17 @@
                             </div>
                             <br />
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="overflow:hidden;">
                                     <a href="Images/TypeChambre/SUI/WalkInSUI.jpg" data-lightbox="Suite" data-title="Walk-in suite">
                                         <asp:Image ID="Image16" runat="server" ImageUrl="~\Images\TypeChambre\SUI\WalkInSUI.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="overflow:hidden;">
                                     <a href="Images/TypeChambre/SUI/EvierSUI.jpg" data-lightbox="Suite" data-title="Évier suite">
                                         <asp:Image ID="Image17" runat="server" ImageUrl="~\Images\TypeChambre\SUI\EvierSUI.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="overflow:hidden;">
                                     <a href="Images/TypeChambre/SUI/BainSUI.jpg" data-lightbox="Suite" data-title="Bain suite">
                                         <asp:Image ID="Image18" runat="server" ImageUrl="~\Images\TypeChambre\SUI\BainSUI.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>

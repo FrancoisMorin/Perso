@@ -183,24 +183,9 @@
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Account\ResetPassword.aspx" />
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
-    <EntityDeploy Include="BD.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BD.Designer.vb</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="BD.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BD.edmx</DependentUpon>
-      <LastGenOutput>BD.Context.vb</LastGenOutput>
-    </Content>
-    <Content Include="BD.edmx.diagram">
-      <DependentUpon>BD.edmx</DependentUpon>
-    </Content>
-    <Content Include="BD.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BD.edmx</DependentUpon>
-      <LastGenOutput>BD.vb</LastGenOutput>
-    </Content>
     <Content Include="Contact.aspx" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Forfait.aspx" />
     <Content Include="Images\About\HotelAbout.jpg" />
     <Content Include="Images\About\HotelFire.jpg" />
     <Content Include="Images\About\HotelPerson.jpg" />
@@ -226,6 +211,14 @@
     <Content Include="Images\Salles\SalleSAD.jpg" />
     <Content Include="Images\Salles\SalleSAF.jpg" />
     <Content Include="Images\Salles\SalleSAS.jpg" />
+    <Content Include="Images\SliderForfait\Forfaitforact.jpg" />
+    <Content Include="Images\SliderForfait\Forfaitfordej.jpg" />
+    <Content Include="Images\SliderForfait\Forfaitforest.jpg" />
+    <Content Include="Images\SliderForfait\Forfaitforhiv.jpg" />
+    <Content Include="Images\SliderForfait\Forfaitforkay.jpg" />
+    <Content Include="Images\SliderForfait\Forfaitforsai.jpg" />
+    <Content Include="Images\SliderForfait\Forfaitforski.jpg" />
+    <Content Include="Images\SliderForfait\Forfaitfortou.jpg" />
     <Content Include="Images\TypeChambre\LUX\ChambreLUX.jpg" />
     <Content Include="Images\TypeChambre\LUX\DoucheLUX.jpg" />
     <Content Include="Images\TypeChambre\LUX\Lit2LUX.jpg" />
@@ -240,9 +233,26 @@
     <Content Include="Images\TypeChambre\SUI\WalkInSUI.jpg" />
     <Content Include="img\ChambreSTD.jpg" />
     <Content Include="img\demopage\.DS_Store" />
+    <EntityDeploy Include="BD.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BD.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="BD.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BD.edmx</DependentUpon>
+      <LastGenOutput>BD.Context.vb</LastGenOutput>
+    </Content>
+    <Content Include="BD.edmx.diagram">
+      <DependentUpon>BD.edmx</DependentUpon>
+    </Content>
+    <Content Include="BD.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BD.edmx</DependentUpon>
+      <LastGenOutput>BD.vb</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Temp\united\bootstrap.css" />
+    <Content Include="Temp\united\bootstrap.min.css" />
     <Content Include="Content\lightbox.css" />
     <Content Include="Images\Accueil\AccueilChambre.jpg" />
     <Content Include="Images\Accueil\AccueilHotel.jpg" />
@@ -276,6 +286,7 @@
     <Content Include="Localisation.aspx" />
     <Content Include="PageErreur.aspx" />
     <Content Include="RechercheSalle.aspx" />
+    <Content Include="ReservationForfait.aspx" />
     <Content Include="Scripts\lightbox.min.js" />
     <Content Include="PostReservation.aspx" />
     <Content Include="Reservation.aspx" />
@@ -453,6 +464,13 @@
     <Compile Include="Default.aspx.designer.vb">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Forfait.aspx.designer.vb">
+      <DependentUpon>Forfait.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forfait.aspx.vb">
+      <DependentUpon>Forfait.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -520,6 +538,13 @@
     </Compile>
     <Compile Include="Reservation.aspx.vb">
       <DependentUpon>Reservation.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="ReservationForfait.aspx.designer.vb">
+      <DependentUpon>ReservationForfait.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReservationForfait.aspx.vb">
+      <DependentUpon>ReservationForfait.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Site.Master.designer.vb">

@@ -109,8 +109,6 @@
 
         ListeChambreDispo = res.ToList
 
-
-
         Dim i As Integer = 0
 
         'Pour chaque type de chambre, cherche si y en
@@ -263,6 +261,79 @@
         'Supprimer la réservation
         BD.tblReservationChambre.Remove(MaReservation)
         BD.SaveChanges()
+    End Sub
+
+    Public Function EnregistrerChambresForfait(ByRef _DateDebut As Date, ByRef _DateFin As Date, ByRef _CodeHotel As String, ByRef _MonForfait As tblForfait) As Boolean
+        'Créer la liste de ChambreRéservationChambre
+
+        Dim TypeChambre As String = _MonForfait.CodeTypeChambre
+        Dim CodeHotel As String = _CodeHotel
+
+        'Prend la liste des chambres disponibles
+        Dim res = From tabChambre In BD.VerificationDispo(_DateDebut, _DateFin)
+                  Where tabChambre.CodeHotel = CodeHotel And tabChambre.CodeTypeChambre = TypeChambre
+                  Select tabChambre
+
+        ListeChambreDispo = res.ToList
+
+        'Pour l'instant c'est dit que un forfait est une réservation 
+        'd'UNE seule chambre avec des activité. On garde la possibilité
+        'd'avoir plusieurs chambres dans un forfait plus tard.
+        Dim NbChambre As Integer = 1
+        Dim Compteur As Integer = 0
+
+        For Each Chambre As VerificationDispo_Result In ListeChambreDispo
+
+            If Compteur = NbChambre Then
+                Exit For
+            End If
+
+            Dim ChambreReservation As New tblChambreReservationChambre
+            ChambreReservation.NoSeqChambre = Chambre.NoSeqChambre
+            ChambreReservation.NoSeqReservChambre = MaReservation.NoSeqReservChambre
+            ChambreReservation.NbPersonne = "1"
+            ChambreReservation.NomLocataire = "Temp"
+            ChambreReservation.PrenomLocataire = "Temp"
+            ChambreReservation.DateDebutReservation = _DateDebut
+            ChambreReservation.DateFinReservation = _DateFin
+            ChambreReservation.StatutChambreReservChambre = "Temp"
+            ChambreReservation.tblForfait.Add(_MonForfait)
+
+            ListeChambreReservation.Add(ChambreReservation)
+            Compteur = Compteur + 1
+        Next
+
+        'Vérification du nombre de chambre disponible trouvé
+        'Encore, pas trop important ici mais on garde pour plus tard.
+        If ListeChambreReservation.Count < NbChambre Then
+            BD.tblReservationChambre.Remove(MaReservation)
+            BD.SaveChanges()
+            Return False
+        End If
+
+        'Fixe le prix de la réservation
+        Dim MaChambre As tblChambreReservationChambre = ListeChambreReservation.First
+        BD.tblChambreReservationChambre.Add(MaChambre)
+        BD.SaveChanges()
+        MaReservation.PrixReservChambre = _MonForfait.PrixForfait
+
+        'Enregistrer()
+        Try
+            BD.SaveChanges()
+
+        Catch ex As Exception
+            Return False
+        End Try
+
+        Return True
+    End Function
+
+    Sub Enregistrer()
+        'Enregistre les ChambreReservationChambre dans la BD
+        For Each MaChambre As tblChambreReservationChambre In ListeChambreReservation
+            BD.tblChambreReservationChambre.Add(MaChambre)
+            BD.SaveChanges()
+        Next
     End Sub
 
 End Class

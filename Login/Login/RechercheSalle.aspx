@@ -79,7 +79,7 @@
                                     </LayoutTemplate>
                                     <ItemTemplate>
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-4" style="overflow:hidden;">
                                                 <a href="<%# String.Format("Images/Salles/Salle{0}.jpg", Eval("CodeSalle"))%>" data-lightbox="Salle" data-title='<%# Eval("NomSalle")%>'>
                                                     <asp:Image ID="Image1" runat="server" ImageUrl='<%# String.Format("~\Images\Salles\Salle{0}.jpg", Eval("CodeSalle"))%>' CssClass="clickimage" Width="300" Height="220" BorderStyle="None" />
                                                 </a>

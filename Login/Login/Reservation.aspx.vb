@@ -374,15 +374,6 @@ Public Class Reservation
 
         ClasseGes.AnnulerReservation()
 
-
-        ''Supprimer toutes les chambres de la réservation
-        'For Each Chambre As tblChambreReservationChambre In ClasseGes.MaReservation.tblChambreReservationChambre
-        '    MaBD.tblChambreReservationChambre.Remove(Chambre)
-        'Next
-        ''Supprimer la réservation
-        'MaBD.tblReservationChambre.Remove(ClasseGes.MaReservation)
-        'MaBD.SaveChanges()
-
         Session("MesReservation") = Nothing
 
         Response.Redirect("~/Default.aspx")
@@ -396,7 +387,7 @@ Public Class Reservation
         Confirm()
     End Sub
 
-#Region "MethodesVille"
+#Region "ProceduresVille"
     Sub FiltrerPays()
         PaysSelection = (From tabPays In MaBD.tblPays
                        Where tabPays.CodePays = cmbPays.SelectedValue

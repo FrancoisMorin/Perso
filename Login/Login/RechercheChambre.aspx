@@ -128,9 +128,6 @@
 
                         </div>
                     </div>
-
-                        
-
                     </a>
                 </ItemTemplate>
             </asp:ListView>

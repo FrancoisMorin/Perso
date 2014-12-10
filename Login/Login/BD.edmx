@@ -112,9 +112,10 @@
           <Property Name="NoTelephoneEmploye" Type="varchar" MaxLength="14" Nullable="false" />
           <Property Name="NasEmploye" Type="char" MaxLength="11" Nullable="false" />
           <Property Name="DateNaissance" Type="date" Nullable="false" />
-          <Property Name="IdentifiantEmploye" Type="char" MaxLength="8" />
-          <Property Name="MdpEmploye" Type="char" MaxLength="8" />
+          <Property Name="IdentifiantEmploye" Type="varchar" MaxLength="10" />
+          <Property Name="MdpEmploye" Type="varchar" MaxLength="10" />
           <Property Name="NombreHeuresSemaines" Type="smallint" />
+          <Property Name="DatePremierCo" Type="date" />
           <Property Name="CodeHotel" Type="char" MaxLength="3" />
         </EntityType>
         <EntityType Name="tblEntretienFournitureChambre">
@@ -241,6 +242,7 @@
           </Key>
           <Property Name="CodeHotel" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="NomHotel" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="DescHotel" Type="varchar" MaxLength="400" />
           <Property Name="NbChambre" Type="smallint" Nullable="false" />
           <Property Name="AdresseHotel" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="NbEtoiles" Type="tinyint" Nullable="false" />
@@ -1183,9 +1185,10 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <Property Name="NoTelephoneEmploye" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NasEmploye" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="DateNaissance" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="IdentifiantEmploye" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
-          <Property Name="MdpEmploye" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="IdentifiantEmploye" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MdpEmploye" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="NombreHeuresSemaines" Type="Int16" />
+          <Property Name="DatePremierCo" Type="DateTime" Precision="0" />
           <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="tblCommande" Relationship="Self.FK_Emp_Com_NoEmp" FromRole="tblEmploye" ToRole="tblCommande" />
           <NavigationProperty Name="tblChiffreTravail" Relationship="Self.FK_Emp_ChifHor_NoEmp" FromRole="tblEmploye" ToRole="tblChiffreTravail" />
@@ -1327,6 +1330,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           </Key>
           <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="NomHotel" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescHotel" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
           <Property Name="NbChambre" Type="Int16" Nullable="false" />
           <Property Name="AdresseHotel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NbEtoiles" Type="Byte" Nullable="false" />
@@ -2257,6 +2261,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
                 <ScalarProperty Name="IdentifiantEmploye" ColumnName="IdentifiantEmploye" />
                 <ScalarProperty Name="MdpEmploye" ColumnName="MdpEmploye" />
                 <ScalarProperty Name="NombreHeuresSemaines" ColumnName="NombreHeuresSemaines" />
+                <ScalarProperty Name="DatePremierCo" ColumnName="DatePremierCo" />
                 <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2379,6 +2384,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
               <MappingFragment StoreEntitySet="tblHotel">
                 <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
                 <ScalarProperty Name="NomHotel" ColumnName="NomHotel" />
+                <ScalarProperty Name="DescHotel" ColumnName="DescHotel" />
                 <ScalarProperty Name="NbChambre" ColumnName="NbChambre" />
                 <ScalarProperty Name="AdresseHotel" ColumnName="AdresseHotel" />
                 <ScalarProperty Name="NbEtoiles" ColumnName="NbEtoiles" />

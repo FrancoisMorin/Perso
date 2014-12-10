@@ -23,6 +23,7 @@ Partial Public Class tblEmploye
     Public Property IdentifiantEmploye As String
     Public Property MdpEmploye As String
     Public Property NombreHeuresSemaines As Nullable(Of Short)
+    Public Property DatePremierCo As Nullable(Of Date)
     Public Property CodeHotel As String
 
     Public Overridable Property tblCommande As ICollection(Of tblCommande) = New HashSet(Of tblCommande)

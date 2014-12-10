@@ -13,6 +13,7 @@ Imports System.Collections.Generic
 Partial Public Class tblHotel
     Public Property CodeHotel As String
     Public Property NomHotel As String
+    Public Property DescHotel As String
     Public Property NbChambre As Short
     Public Property AdresseHotel As String
     Public Property NbEtoiles As Byte

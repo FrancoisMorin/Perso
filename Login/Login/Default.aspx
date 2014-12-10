@@ -25,22 +25,22 @@
         <ul>
             <li style="background-image: url('Images/Slider/borddeplage.jpg');">
                 <div class="backgrounddivh1">
-                    <h1>Nouvhôtel</h1>
+                    <h1 style="padding-left:2%;">Nouvhôtel</h1>
                 </div>
             </li>
             <li style="background-image: url('Images/Slider/piscine.jpg');">
                 <div class="backgrounddivh1">
-                    <h1>Nouvhôtel</h1>
+                    <h1 style="padding-left:2%;">Nouvhôtel</h1>
                 </div>
             </li>
             <li style="background-image: url('Images/Slider/chaise.jpg');">
                 <div class="backgrounddivh1">
-                    <h1>Nouvhôtel</h1>
+                    <h1 style="padding-left:2%;">Nouvhôtel</h1>
                 </div>
             </li>
             <li style="background-image: url('Images/Slider/pewpew.jpg');">
                 <div class="backgrounddivh1">
-                    <h1>Nouvhôtel</h1>
+                    <h1 style="padding-left:2%;">Nouvhôtel</h1>
                 </div>
             </li>
             <li style="background-image: url('Images/Slider/granderoue.jpg');">
