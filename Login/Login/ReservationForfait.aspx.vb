@@ -106,6 +106,18 @@ Public Class ReservationForfait
             FiltrerPays()
             FiltrerProvinces()
             FiltrerVilles()
+
+            'Affichage de message d'erreur
+            Dim Message = Request.QueryString("m")
+            If Message IsNot Nothing Then
+                ' Enlever la chaîne de requête de l'action
+                MonMessage = If(Message = "EmptyFields", "Les champs d'informations de carte de crédit sont manquants.", If(Message = "NoDates", "Vous n'avez pas spécifié une date de début.", If(Message = "NoChambre", "Il n'y a pas asser de chambres disponible pour la plage de dates sélectionnée.", If(Message = "ErreurReserv", "Une erreur s'est produite dans la réservation.", If(Message = "NoSelect", "Vous n'avez pas sélectionné de chambre(s).", If(Message = "ErreurClient", "Les informations clients sont incomplètes ou invalides.", If(Message = "ErreurChambre", "Une erreur s'est produite lors de l'enregistrement des chambre.", [String].Empty)))))))
+                If MonMessage <> "" Then
+                    MessagePlaceHolder.Visible = True
+                Else
+                    MessagePlaceHolder.Visible = False
+                End If
+            End If
         End If
     End Sub
 
@@ -235,10 +247,10 @@ Public Class ReservationForfait
     End Sub
 #End Region
 
-
     Sub ConfirmerReservation()
 
-        Dim ClasseGes As ClasseGestion = Session("MaReservation")
+        Dim ClasseGes As ClasseGestion
+        ClasseGes = Session("MaReservation")
 
         'Disable tous les controles, sauf les bouton Confirm/Cancel
         MonPanelClient.Enabled = False
@@ -250,6 +262,56 @@ Public Class ReservationForfait
         txtDateExpiration.Enabled = False
         txtNomDetenteurCarte.Enabled = False
         btnCalculer.Enabled = False
+
+        'Rempli les controles du modal
+        'Afficher les info de la réservation.
+        Dim Reserv As New tblReservationChambre
+        Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
+        Dim appUser = manager.FindById(User.Identity.GetUserId)
+        Reserv = ClasseGes.MaReservation
+
+        lblDateDebut.Text = Reserv.tblChambreReservationChambre.First.DateDebutReservation.ToShortDateString
+        lblDateFin.Text = Reserv.tblChambreReservationChambre.First.DateFinReservation.ToShortDateString
+
+        If appUser Is Nothing Then
+            lblNomReserv.Text = ClasseGes.MonClient.PrenomClient + " " + ClasseGes.MonClient.NomClient
+        Else
+            lblNomReserv.Text = appUser.PrenomClient + " " + appUser.NomClient
+        End If
+
+        Dim Prix As Double = Reserv.PrixReservChambre
+        lblPrixTotal.Text = Math.Round(Prix).ToString + " $"
+        lblTypeCarte.Text = Reserv.TypeCarteCredit
+
+        'Cacher les 4 premier caractères du No. de carte de crédit
+        lblNoCarte.Text = Reserv.NoCarteCredit
+
+        'Affc=iche le modal de confirmation
+        Page.ClientScript.RegisterStartupScript(Me.GetType, "Show", "$(document).ready(function() {$('#myModal').modal('show');});", True)
+    End Sub
+
+    Sub Confirm()
+        Dim ClasseGes As ClasseGestion
+        'Si le client confirme, mail-to + redirect page de congratulation?
+        ClasseGes = Session("MaReservation")
+
+        'Session("MonCodeHotel") = ClasseGes.MaReservation.tblChambreReservationChambre.First.tblChambre.CodeHotel
+
+        Response.Redirect("~/PostReservation.aspx")
+    End Sub
+
+    Sub Annuler()
+        Dim ClasseGes As ClasseGestion
+        'Si le client refuse, supprime la réservation de la bd + redirect accueil
+        ClasseGes = Session("MaReservation")
+
+        Dim MaBD As New P2014_BD_GestionHotelEntities
+
+        ClasseGes.AnnulerReservation()
+
+        Session("MaReservation") = Nothing
+
+        Response.Redirect("~/Default.aspx")
     End Sub
 
     Protected Sub btnCalculer_Click(sender As Object, e As EventArgs)
@@ -270,8 +332,8 @@ Public Class ReservationForfait
             Dim MonResult As Boolean
             MonResult = ClasseGes.EnregistrerClient(NomClient, PrenomClient, NoTelephone, Email, Adresse, CodeVille)
             If Not MonResult Then
-                Dim TempCodeHotel As String = Request.QueryString("ID")
-                Response.Redirect("~/Reservation?m=ErreurClient&ID=" + TempCodeHotel)
+                Dim TempCodeForfait As String = Request.QueryString("ID")
+                Response.Redirect("~/ReservationForfait?m=ErreurClient&ID=" + TempCodeForfait)
             End If
         End If
 
@@ -292,39 +354,39 @@ Public Class ReservationForfait
             DateFin = CalendrierFin.SelectedDate.ToString("yyyy-MM-dd")
         Else
             'Les dates n'ont pas été selectionné.
-            Dim TempCodeHotel As String = Request.QueryString("ID")
-            Response.Redirect("~/Reservation?m=NoDates&ID=" + TempCodeHotel)
+            Dim TempCodeForfait As String = Request.QueryString("ID")
+            Response.Redirect("~/ReservationForfait?m=NoDates&ID=" + TempCodeForfait)
         End If
 
         'Valide si les champs ont été rempli
         'On peut pas utiliser les asp:Validator à cause des update panels.
         If NoCarte = "" Or DateExp = "" Or NomDetenteur = "" Then
-            Dim TempCodeHotel As String = Request.QueryString("ID")
-            Response.Redirect("~/Reservation?m=EmptyFields&ID=" + TempCodeHotel)
+            Dim TempCodeForfait As String = Request.QueryString("ID")
+            Response.Redirect("~/ReservationForfait?m=EmptyFields&ID=" + TempCodeForfait)
         End If
 
         Dim CodeHotel As String = cmbHotel.SelectedValue
 
         'La réservation se fait avec seulement 1 chambre d'un type.
-        'C'est donc beaucoup plus simple, mais on peut pas réutiliser tous les
+        'C'est donc beaucoup plus simple, mais on peut pas réutiliser les
         'fonctions de ClasseGes qui existent déjà :(
 
         'Créer tblReservationChambre
         Dim result As Boolean
         result = ClasseGes.CreerReservation(appUser, cmbTypeCarte.Text, txtNoCarteCredit.Text, txtDateExpiration.Text, txtNomDetenteurCarte.Text)
         If Not result Then
-            Dim TempCodeHotel As String = Request.QueryString("ID")
-            Response.Redirect("~/Reservation?m=ErreurReserv&ID=" + TempCodeHotel)
+            Dim TempCodeForfait As String = Request.QueryString("ID")
+            Response.Redirect("~/ReservationForfait?m=ErreurReserv&ID=" + TempCodeForfait)
         End If
 
         'Enregistre les chambres et liaison au forfait
         result = ClasseGes.EnregistrerChambresForfait(DateDebut, DateFin, CodeHotel, ForfaitSelection)
         If Not result Then
-            Dim TempCodeHotel As String = Request.QueryString("ID")
-            Response.Redirect("~/Reservation?m=ErreurReserv&ID=" + TempCodeHotel)
+            Dim TempCodeForfait As String = Request.QueryString("ID")
+            Response.Redirect("~/Reservation?m=ErreurReserv&ID=" + TempCodeForfait)
         End If
 
-        Session("MaReservation") = ClasseGes.MaReservation
+        Session("MaReservation") = ClasseGes
 
         'Affiche le panel de confirmation
         'DetailReservation.Visible = True

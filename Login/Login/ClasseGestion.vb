@@ -264,9 +264,15 @@
     End Sub
 
     Public Function EnregistrerChambresForfait(ByRef _DateDebut As Date, ByRef _DateFin As Date, ByRef _CodeHotel As String, ByRef _MonForfait As tblForfait) As Boolean
+        Dim MonForfait As tblForfait = _MonForfait
+
+        Dim Forfait = (From tabForfait In BD.tblForfait
+                     Where tabForfait.CodeForfait = MonForfait.CodeForfait
+                     Select tabForfait).ToList.First
+
         'Créer la liste de ChambreRéservationChambre
 
-        Dim TypeChambre As String = _MonForfait.CodeTypeChambre
+        Dim TypeChambre As String = MonForfait.CodeTypeChambre
         Dim CodeHotel As String = _CodeHotel
 
         'Prend la liste des chambres disponibles
@@ -297,7 +303,7 @@
             ChambreReservation.DateDebutReservation = _DateDebut
             ChambreReservation.DateFinReservation = _DateFin
             ChambreReservation.StatutChambreReservChambre = "Temp"
-            ChambreReservation.tblForfait.Add(_MonForfait)
+            ChambreReservation.tblForfait.Add(Forfait)
 
             ListeChambreReservation.Add(ChambreReservation)
             Compteur = Compteur + 1
@@ -312,15 +318,15 @@
         End If
 
         'Fixe le prix de la réservation
-        Dim MaChambre As tblChambreReservationChambre = ListeChambreReservation.First
-        BD.tblChambreReservationChambre.Add(MaChambre)
-        BD.SaveChanges()
-        MaReservation.PrixReservChambre = _MonForfait.PrixForfait
+        MaReservation.PrixReservChambre = Forfait.PrixForfait
 
-        'Enregistrer()
+        'Entre les chambres dans la BD
+        For Each Chambre As tblChambreReservationChambre In ListeChambreReservation
+            BD.tblChambreReservationChambre.Add(Chambre)
+        Next
+
         Try
             BD.SaveChanges()
-
         Catch ex As Exception
             Return False
         End Try

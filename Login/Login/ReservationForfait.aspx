@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Réservation forfait" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="ReservationForfait.aspx.vb" Inherits="Login.ReservationForfait" %>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <br />
+    <h2>Réservation avec forfait</h2>
     <asp:PlaceHolder runat="server" ID="MessagePlaceHolder" Visible="false">
         <div class="alert alert-danger">
             <p class="text-danger"><strong><%: MonMessage%></strong></p>
@@ -56,8 +56,8 @@
                 </div>
                 <div class="modal-footer">
                     <div class="form-group">
-                        <asp:Button ID="btnAnnuler" runat="server" Text="Annuler" CssClass="btn btn-default monbtnspecial" />
-                        <asp:Button ID="btnConfirmer" runat="server" Text="Confirmer" CssClass="btn btn-primary" />
+                        <asp:Button ID="btnAnnuler" runat="server" Text="Annuler" OnClick="Annuler" CssClass="btn btn-default monbtnspecial" />
+                        <asp:Button ID="btnConfirmer" runat="server" Text="Confirmer" OnClick="Confirm" CssClass="btn btn-primary" />
                     </div>
                 </div>
             </div>
@@ -298,7 +298,7 @@
 
                                 <div class="form-group">
                                     <div class="col-lg-10">
-                                        <asp:Button ID="btnCalculer" runat="server" OnClick="btnCalculer_Click" Text="Soumettre" CssClass="btn btn-primary" data-toggle="modal" data-target="#myModal" />
+                                        <asp:Button ID="btnCalculer" runat="server" OnClick="btnCalculer_Click" Text="Soumettre" CssClass="btn btn-primary" />
                                     </div>
                                 </div>
 
