@@ -70,8 +70,7 @@
                 <div class="panel-heading">Détails forfait</div>
                 <div class="panel-body">
 
-                    <h3>
-                        <asp:Label ID="LabelNomForfait" runat="server" Text="NomForfait" /></h3>
+                    <h3><asp:Label ID="LabelNomForfait" runat="server" Text="NomForfait" /></h3>
 
                     <div class="row">
                         <div class="col-md-7">
@@ -257,7 +256,6 @@
                     </div>
                 </div>
 
-
                 <section id="info">
                     <div class="row">
                         <div class="col-md-4">
@@ -284,7 +282,7 @@
 
                                 <div class="form-group">
                                     <div class="col-md-10">
-                                        <asp:Label runat="server" ID="Label3" AssociatedControlID="cmbTypeCarte" CssClass="control-label">Date d'expiration (mm/aa)</asp:Label>
+                                        <asp:Label runat="server" ID="Label3" AssociatedControlID="cmbTypeCarte" CssClass="control-label">Date d'expiration (MMAA)</asp:Label>
                                         <asp:TextBox runat="server" ID="txtDateExpiration" CssClass="form-control" />
                                     </div>
                                 </div>
@@ -298,78 +296,12 @@
 
                                 <div class="form-group">
                                     <div class="col-lg-10">
-                                        <asp:Button ID="btnCalculer" runat="server" OnClick="btnCalculer_Click" Text="Soumettre" CssClass="btn btn-primary" />
+                                        <asp:Button ID="btnCalculer" runat="server" OnClick="btnCalculer_Click" Text="Soumettre" CssClass="btn btn-primary"/>
                                     </div>
                                 </div>
 
                             </fieldset>
                         </div>
-
-                        <%--<asp:PlaceHolder ID="DetailReservation" runat="server" Visible="false">
-                        <div class="col-md-8">
-                            <div class="alert alert-info form-horizontal">
-                                <fieldset>
-                                    <legend>Détails de la réservation</legend>
-                                </fieldset>
-                                <div class="form-group">
-                                    <div class="col-md-4">
-                                        <asp:Label runat="server" ID="MonLabel1" CssClass="control-label"><strong>Date d'arrivé : </strong>
-                                            <asp:Label ID="lblDateDebut" runat="server" CssClass="control-label" /></asp:Label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-md-4">
-                                        <asp:Label runat="server" ID="MonLabel2" CssClass="control-label"><strong>Date de départ : </strong>
-                                            <asp:Label runat="server" ID="lblDateFin" CssClass="control-label" /></asp:Label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <asp:Label runat="server" ID="MonLabel3" CssClass="control-label"><strong>Réservation au nom de : </strong>
-                                            <asp:Label runat="server" ID="lblNomReserv" CssClass="control-label" /></asp:Label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-md-4">
-                                        <asp:Label runat="server" ID="MonLabel4" CssClass="control-label"><strong>Prix total : </strong>
-                                            <asp:Label runat="server" ID="lblPrixTotal" CssClass="control-label" /></asp:Label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-md-4">
-                                        <asp:Label runat="server" ID="MonLabel5" CssClass="control-label"><strong>Type carte : </strong>
-                                            <asp:Label runat="server" ID="lblTypeCarte" CssClass="control-label" /></asp:Label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <asp:Label runat="server" ID="MonLabel6" CssClass="control-label"><strong>Numéro carte de crédit : </strong>
-                                            <asp:Label runat="server" ID="lblNoCarte" CssClass="control-label" /></asp:Label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-md-10">
-                                        <p>
-                                            <strong>Un email vous sera envoyé avec toutes les informations de votre réservation.</strong>
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-md-4">
-                                        <asp:Button ID="btnAnnuler" runat="server" Text="Annuler" CssClass="btn btn-default monbtnspecial" />
-                                        <asp:Button ID="btnConfirmer" runat="server" Text="Confirmer" CssClass="btn btn-primary" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </asp:PlaceHolder>--%>
                     </div>
                 </section>
             </div>

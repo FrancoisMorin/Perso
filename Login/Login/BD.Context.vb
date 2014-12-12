@@ -55,6 +55,14 @@ Partial Public Class P2014_BD_GestionHotelEntities
     Public Overridable Property tblVille() As DbSet(Of tblVille)
     Public Overridable Property VueInventaire() As DbSet(Of VueInventaire)
 
+    Public Overridable Function RemplacerFourniture(codeHotel As String, codeFourniture As String) As Integer
+        Dim codeHotelParameter As ObjectParameter = If(codeHotel IsNot Nothing, New ObjectParameter("CodeHotel", codeHotel), New ObjectParameter("CodeHotel", GetType(String)))
+
+        Dim codeFournitureParameter As ObjectParameter = If(codeFourniture IsNot Nothing, New ObjectParameter("CodeFourniture", codeFourniture), New ObjectParameter("CodeFourniture", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("RemplacerFourniture", codeHotelParameter, codeFournitureParameter)
+    End Function
+
     Public Overridable Function PrixTypeChambreHotel(codeHotel As String) As ObjectResult(Of PrixTypeChambreHotel_Result)
         Dim codeHotelParameter As ObjectParameter = If(codeHotel IsNot Nothing, New ObjectParameter("CodeHotel", codeHotel), New ObjectParameter("CodeHotel", GetType(String)))
 

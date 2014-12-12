@@ -184,6 +184,7 @@
     <Content Include="Account\ResetPassword.aspx" />
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="Images\banner-confetti.png" />
     <Content Include="Temp\Yeti\bootstrap.css" />
     <Content Include="Forfait.aspx" />
     <Content Include="Images\About\HotelAbout.jpg" />

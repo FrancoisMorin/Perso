@@ -18,4 +18,7 @@
         End Try
     End Sub
 
+    Private Sub PostReservation_PreInit(sender As Object, e As EventArgs) Handles Me.PreInit
+        
+    End Sub
 End Class

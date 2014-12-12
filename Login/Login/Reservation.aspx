@@ -16,6 +16,62 @@
         </div>
     </asp:PlaceHolder>
 
+        <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Confirmer la réservation</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <asp:Label runat="server" ID="Label10" CssClass="control-label"><strong>Date d'arrivé : </strong>
+                            <asp:Label ID="lblDateDebut" runat="server" CssClass="control-label" /></asp:Label>
+                    </div>
+
+                    <div class="form-group">
+                        <asp:Label runat="server" ID="Label12" CssClass="control-label"><strong>Date de départ : </strong>
+                            <asp:Label runat="server" ID="lblDateFin" CssClass="control-label" /></asp:Label>
+                    </div>
+
+                    <div class="form-group">
+                        <asp:Label runat="server" ID="Label14" CssClass="control-label"><strong>Réservation au nom de : </strong>
+                            <asp:Label runat="server" ID="lblNomReserv" CssClass="control-label" /></asp:Label>
+                    </div>
+
+                    <div class="form-group">
+                        <asp:Label runat="server" ID="Label16" CssClass="control-label"><strong>Prix total : </strong>
+                            <asp:Label runat="server" ID="lblPrixTotal" CssClass="control-label" /></asp:Label>
+                    </div>
+
+                    <div class="form-group">
+                        <asp:Label runat="server" ID="Label18" CssClass="control-label"><strong>Type carte : </strong>
+                            <asp:Label runat="server" ID="lblTypeCarte" CssClass="control-label" /></asp:Label>
+                    </div>
+
+                    <div class="form-group">
+                        <asp:Label runat="server" ID="Label20" CssClass="control-label"><strong>Numéro carte de crédit : </strong>
+                            <asp:Label runat="server" ID="lblNoCarte" CssClass="control-label" /></asp:Label>
+                    </div>
+
+                    <div class="form-group">
+                        <p>
+                            <strong>Un email vous sera envoyé avec toutes les informations de votre réservation.</strong>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <asp:Button ID="Button1" runat="server" Text="Annuler" OnClick="Annuler" CssClass="btn btn-default monbtnspecial" />
+                        <asp:Button ID="Button2" runat="server" Text="Confirmer" OnClick="Confirm" CssClass="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="panel panel-default">
         <div class="panel-heading">Choisissez votre/vos type(s) de chambre</div>
         <div class="panel-body">
@@ -233,7 +289,7 @@
 
                             <div class="form-group">
                                 <div class="col-md-10">
-                                    <asp:Label runat="server" ID="Label3" AssociatedControlID="cmbTypeCarte" CssClass="control-label">Date d'expiration (mm/aa)</asp:Label>
+                                    <asp:Label runat="server" ID="Label3" AssociatedControlID="cmbTypeCarte" CssClass="control-label">Date d'expiration (mmaa)</asp:Label>
                                     <asp:TextBox runat="server" ID="txtDateExpiration" CssClass="form-control" />
                                 </div>
                             </div>
@@ -253,6 +309,8 @@
 
                         </fieldset>
                     </div>
+
+                    <%--
 
                     <asp:PlaceHolder ID="DetailReservation" runat="server" Visible="false">
                         <div class="col-md-8">
@@ -319,6 +377,7 @@
                             </div>
                         </div>
                     </asp:PlaceHolder>
+                    --%>
                 </div>
             </section>
         </div>

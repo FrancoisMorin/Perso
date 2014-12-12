@@ -315,7 +315,6 @@ Public Class Reservation
         Session("MesReservation") = ClasseGes
 
         'Affiche le panel de confirmation
-        DetailReservation.Visible = True
         ConfirmerReservation()
     End Sub
 
@@ -335,6 +334,7 @@ Public Class Reservation
         txtNomDetenteurCarte.Enabled = False
         btnCalculer.Enabled = False
 
+        'Rempli les controles du modal
         'Afficher les info de la réservation.
         Dim Reserv As New tblReservationChambre
         Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
@@ -355,6 +355,9 @@ Public Class Reservation
         lblTypeCarte.Text = Reserv.TypeCarteCredit
         lblNoCarte.Text = Reserv.NoCarteCredit
 
+
+        'Affc=iche le modal de confirmation
+        Page.ClientScript.RegisterStartupScript(Me.GetType, "Show", "$(document).ready(function() {$('#myModal').modal('show');});", True)
     End Sub
 
     Sub Confirm()

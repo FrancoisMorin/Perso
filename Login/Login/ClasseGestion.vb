@@ -161,8 +161,26 @@
         Try
             MaReservation = New tblReservationChambre
             MaReservation.TypeCarteCredit = _TypeCarte
-            MaReservation.NoCarteCredit = _NoCarteCredit
-            MaReservation.DateExpirationCarteCredit = _DateExpiration
+
+            'Valider le numéro de carte de crédit
+            _NoCarteCredit.Trim(" ")
+            Dim regex As Regex = New Regex("^\d{15,16}")
+            Dim match As Match = regex.Match(_NoCarteCredit)
+            If match.Success Then
+                MaReservation.NoCarteCredit = _NoCarteCredit
+            Else
+                Return False
+            End If
+
+            'Valider date expiration
+            Dim regex2 As Regex = New Regex("\b\d\d\d\d\b")
+            Dim match2 As Match = regex2.Match(_DateExpiration)
+            If match2.Success Then
+                MaReservation.DateExpirationCarteCredit = _DateExpiration
+            Else
+                Return False
+            End If
+
             MaReservation.NomCarteCredit = _NomDetenteur
             MaReservation.ModePaiement = "Carte credit"
             MaReservation.StatutPaiement = "Non payé"
@@ -226,14 +244,35 @@
         End If
 
         Try
+            BD = New P2014_BD_GestionHotelEntities
             'Crée le client
             MonClient = New tblClient
             'Rempli les info nécessaire
             MonClient.NomClient = _Nom
             MonClient.PrenomClient = _Prenom
-            MonClient.NoTelephone = _NoTelephone
-            MonClient.EmailClient = _Email
-            MonClient.AdresseClient = _Adresse
+
+            _NoTelephone.TrimEnd(" ")
+            _NoTelephone.TrimStart(" ")
+            'Valider le No.Telephone
+            Dim regex As Regex = New Regex("\b\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})\b")
+            Dim match As Match = regex.Match(_NoTelephone)
+            If match.Success Then
+                MonClient.NoTelephone = _NoTelephone
+            Else
+                Return False
+            End If
+
+            _Email.Trim(" ")
+            'Valider le email
+            Dim regex2 As Regex = New Regex("\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*")
+            Dim match2 As Match = regex2.Match(_Email)
+            If match2.Success Then
+                MonClient.EmailClient = _Email
+            Else
+                Return False
+            End If
+
+            MonClient.AdresseClient = _Adresse.Trim(" ")
             MonClient.CodeVille = _CodeVille
 
             'On veut garder la réservation simple, donc les informations non-obligatoires seront vide.

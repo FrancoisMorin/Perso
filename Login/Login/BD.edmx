@@ -845,6 +845,10 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="RemplacerFourniture" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Approvisionnement">
+          <Parameter Name="CodeHotel" Type="char" Mode="In" />
+          <Parameter Name="CodeFourniture" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="PrixTypeChambreHotel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Reservation">
           <Parameter Name="CodeHotel" Type="char" Mode="In" />
         </Function>
@@ -2115,6 +2119,10 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             <End Role="tblChambreReservationChambre" EntitySet="tblChambreReservationChambre" />
             <End Role="tblForfait" EntitySet="tblForfait" />
           </AssociationSet>
+          <FunctionImport Name="RemplacerFourniture">
+            <Parameter Name="CodeHotel" Mode="In" Type="String" />
+            <Parameter Name="CodeFourniture" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="PrixTypeChambreHotel" ReturnType="Collection(P2014_BD_GestionHotelModel.PrixTypeChambreHotel_Result)">
             <Parameter Name="CodeHotel" Mode="In" Type="String" />
           </FunctionImport>
@@ -2530,6 +2538,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
               <ScalarProperty Name="CodeForfait" ColumnName="CodeForfait" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="RemplacerFourniture" FunctionName="P2014_BD_GestionHotelModel.Store.RemplacerFourniture" />
           <FunctionImportMapping FunctionImportName="PrixTypeChambreHotel" FunctionName="P2014_BD_GestionHotelModel.Store.PrixTypeChambreHotel">
             <ResultMapping>
               <ComplexTypeMapping TypeName="P2014_BD_GestionHotelModel.PrixTypeChambreHotel_Result">

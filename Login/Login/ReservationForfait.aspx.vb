@@ -22,8 +22,9 @@ Public Class ReservationForfait
         End Set
     End Property
 
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim MonCodeForfait As String = Request.QueryString("ID")
 
         If MonCodeForfait = "" Then
@@ -111,7 +112,7 @@ Public Class ReservationForfait
             Dim Message = Request.QueryString("m")
             If Message IsNot Nothing Then
                 ' Enlever la chaîne de requête de l'action
-                MonMessage = If(Message = "EmptyFields", "Les champs d'informations de carte de crédit sont manquants.", If(Message = "NoDates", "Vous n'avez pas spécifié une date de début.", If(Message = "NoChambre", "Il n'y a pas asser de chambres disponible pour la plage de dates sélectionnée.", If(Message = "ErreurReserv", "Une erreur s'est produite dans la réservation.", If(Message = "NoSelect", "Vous n'avez pas sélectionné de chambre(s).", If(Message = "ErreurClient", "Les informations clients sont incomplètes ou invalides.", If(Message = "ErreurChambre", "Une erreur s'est produite lors de l'enregistrement des chambre.", [String].Empty)))))))
+                MonMessage = If(Message = "EmptyFields", "Les champs d'informations de carte de crédit sont manquants.", If(Message = "NoDates", "Vous n'avez pas spécifié une date de début.", If(Message = "NoChambre", "Il n'y a pas asser de chambres disponible pour la plage de dates sélectionnée.", If(Message = "ErreurReserv", "Les informations de carte de crédit sont invalides.", If(Message = "NoSelect", "Vous n'avez pas sélectionné de chambre(s).", If(Message = "ErreurClient", "Les informations clients sont incomplètes ou invalides.", If(Message = "ErreurChambre", "Une erreur s'est produite lors de l'enregistrement des chambre.", [String].Empty)))))))
                 If MonMessage <> "" Then
                     MessagePlaceHolder.Visible = True
                 Else
@@ -294,9 +295,11 @@ Public Class ReservationForfait
         Dim ClasseGes As ClasseGestion
         'Si le client confirme, mail-to + redirect page de congratulation?
         ClasseGes = Session("MaReservation")
-
+        Session("MaReservation") = Nothing
+        Session("MesInfos") = Nothing
         'Session("MonCodeHotel") = ClasseGes.MaReservation.tblChambreReservationChambre.First.tblChambre.CodeHotel
 
+        Session("ReservationDone") = True
         Response.Redirect("~/PostReservation.aspx")
     End Sub
 
@@ -329,6 +332,7 @@ Public Class ReservationForfait
             Dim Adresse As String = txtAdresse.Text
             Dim CodeVille As String = cmbVille.SelectedValue.ToString()
 
+            'Enregistre le client
             Dim MonResult As Boolean
             MonResult = ClasseGes.EnregistrerClient(NomClient, PrenomClient, NoTelephone, Email, Adresse, CodeVille)
             If Not MonResult Then
@@ -383,7 +387,7 @@ Public Class ReservationForfait
         result = ClasseGes.EnregistrerChambresForfait(DateDebut, DateFin, CodeHotel, ForfaitSelection)
         If Not result Then
             Dim TempCodeForfait As String = Request.QueryString("ID")
-            Response.Redirect("~/Reservation?m=ErreurReserv&ID=" + TempCodeForfait)
+            Response.Redirect("~/ReservationForfait?m=ErreurReserv&ID=" + TempCodeForfait)
         End If
 
         Session("MaReservation") = ClasseGes
@@ -392,4 +396,5 @@ Public Class ReservationForfait
         'DetailReservation.Visible = True
         ConfirmerReservation()
     End Sub
+
 End Class
