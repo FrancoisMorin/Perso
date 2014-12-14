@@ -63,7 +63,7 @@
 
             <h2>Découvrez nos hôtels</h2>
             <p>
-                La chaîne d'hôtels Nouvhôtel offre de nombreuses destinations de rêve dans différent hôtels à travers le Canada.
+                Nouvhôtel offre de nombreuses destinations de rêve dans différent hôtels à travers le Canada.
             </p>
             <p>
                 <a class="btn btn-default" href="RechercheChambre.aspx">En savoir plus &raquo;</a>

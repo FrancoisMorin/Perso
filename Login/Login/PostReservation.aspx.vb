@@ -4,15 +4,21 @@
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
-
             CodeHotel = Session("MonCodeHotel")
+
+            If CodeHotel = "" Then
+                Response.Redirect("~/Default.aspx")
+            End If
+
+            Session("MonCodeHotel") = ""
 
             Dim MaBD As New P2014_BD_GestionHotelEntities
 
-            Dim NomHotel = From tabHotel In MaBD.tblHotel
+            Dim MonHotel = (From tabHotel In MaBD.tblHotel
                            Where tabHotel.CodeHotel = CodeHotel
-                           Select tabHotel.CodeHotel
+                           Select tabHotel).ToList.First
 
+            lblMessage.Text = "Votre réservation a été correctement enregistrée pour l'hotel " + MonHotel.NomHotel
         Catch ex As Exception
             Response.Redirect("~/Default.aspx")
         End Try

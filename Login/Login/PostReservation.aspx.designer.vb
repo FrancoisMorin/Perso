@@ -12,4 +12,13 @@ Option Explicit On
 
 
 Partial Public Class PostReservation
+
+    '''<summary>
+    '''Contrôle lblMessage.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents lblMessage As Global.System.Web.UI.WebControls.Label
 End Class

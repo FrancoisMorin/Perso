@@ -28,7 +28,7 @@
                 <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="Le champ mot de passe est requis." />
-                <asp:RegularExpressionValidator CssClass="text-danger" Display="Dynamic" ID="RegularExpressionValidator1" runat="server" ErrorMessage="Le mot de passe doit contenir au moins 8 caractères, un nombre et un caractère spécial." ControlToValidate="Password" ValidationExpression="^.*(?=.{8,})(?=.*[\d])(?=.*[\W]).*$">       
+                <asp:RegularExpressionValidator CssClass="text-danger" Display="Dynamic" ID="RegularExpressionValidator1" runat="server" ErrorMessage="Le mot de passe doit contenir 7 caractères sans majuscule, ne doit pas commencer pas un chiffre et ne doit pas contenir de caractère spécial." ControlToValidate="Password" ValidationExpression="\b[a-z](([0-9]|[a-z]){6})\b">       
                 </asp:RegularExpressionValidator>
             </div>
         </div>

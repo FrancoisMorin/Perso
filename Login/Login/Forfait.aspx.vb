@@ -62,7 +62,7 @@
         LabelPrixForfait.Text = MonForfait.PrixForfait.ToString("0.00 $")
         LabelDateDebut.Text = MonForfait.DateDebut
         LabelDateFin.Text = MonForfait.DateFin
-
+        LabelTypeChambre.Text = NomTypeChambre
 
         LabelTitre.Text = _Forfait.NomForfait
         LabelDescription.Text = _Forfait.DescForfait

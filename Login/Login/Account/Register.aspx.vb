@@ -79,15 +79,18 @@ Partial Public Class Register
         'Dim result = manager.Create(user, Password.Text)
         Dim result = manager.Create(user, Password.Text)
         If result.Succeeded Then
-            IdentityHelper.SignIn(manager, user, isPersistent:=False)
-
             ' Pour plus d'informations sur l'activation de la confirmation du compte et la réinitialisation du mot de passe, consultez http://go.microsoft.com/fwlink/?LinkID=320771
             ' Dim code = manager.GenerateEmailConfirmationToken(user.Id)
             ' Dim callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id)
             ' manager.SendEmail(user.Id, "Confirmez votre compte", "Confirmez votre compte en cliquant <a href=""" & callbackUrl & """>ici</a>.")
 
+
+            'IdentityHelper.SignIn(manager, user, False)
             'IdentityHelper.RedirectToReturnUrl(Request.QueryString("ReturnUrl"), Response)
-            Response.Redirect("~/Default.aspx")
+
+            'On peut pas connecter le user direct après la création de son compte
+            'parce que ça fait une erreur sur son ID qui a un format invalide.
+            Response.Redirect("~/Account/Login.aspx")
         Else
             ErrorMessage.Text = result.Errors.FirstOrDefault()
         End If

@@ -70,6 +70,7 @@
 
     End Sub
 
+#Region "Calendrier"
     Private Sub CalendrierDebut_DayRender(sender As Object, e As DayRenderEventArgs) Handles CalendrierDebut.DayRender
         If e.Day.Date.ToShortDateString() <= DateTime.Now.ToShortDateString Then
             e.Cell.BackColor = System.Drawing.ColorTranslator.FromHtml("#EBEBEB")
@@ -125,5 +126,7 @@
             btnExpandCalendarFin.Text = "+"
         End If
     End Sub
+
+#End Region
 
 End Class

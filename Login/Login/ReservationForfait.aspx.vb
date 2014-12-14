@@ -143,6 +143,7 @@ Public Class ReservationForfait
 
         'Enlever les date dans + que 2 ans
         'Pas trop nécessaire ici vu que les date du forfait vont déjà être limité
+
         'Dim DateDans2Ans As Date = DateTime.Now
         'DateDans2Ans = DateDans2Ans.AddYears(2)
 
@@ -297,7 +298,14 @@ Public Class ReservationForfait
         ClasseGes = Session("MaReservation")
         Session("MaReservation") = Nothing
         Session("MesInfos") = Nothing
-        'Session("MonCodeHotel") = ClasseGes.MaReservation.tblChambreReservationChambre.First.tblChambre.CodeHotel
+
+        Dim NoChambre As String
+        NoChambre = ClasseGes.MaReservation.tblChambreReservationChambre.First.NoSeqChambre
+        Dim Chambre = (From tabChambre In MaBD.tblChambre
+                      Where tabChambre.NoSeqChambre = NoChambre
+                      Select tabChambre).ToList.First
+
+        Session("MonCodeHotel") = Chambre.CodeHotel
 
         Session("ReservationDone") = True
         Response.Redirect("~/PostReservation.aspx")

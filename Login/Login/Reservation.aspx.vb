@@ -22,15 +22,6 @@ Public Class Reservation
         End Set
     End Property
 
-    Private Sub Reservation_PreLoad(sender As Object, e As EventArgs) Handles Me.PreLoad
-        'If User.Identity.IsAuthenticated Then
-        '    'Le user est connecté, passe à la réservation
-        'Else
-        '    Response.Redirect("~/Account/Login.aspx")
-        '    'bo tit poput javascrip
-        '    'Redirect vers login / inscription
-        'End If
-    End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
