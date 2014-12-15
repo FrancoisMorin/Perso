@@ -4,7 +4,7 @@
     <h2>Réservation avec forfait</h2>
     <asp:PlaceHolder runat="server" ID="MessagePlaceHolder" Visible="false">
         <div class="alert alert-danger">
-            <p class="text-danger"><strong><%: MonMessage%></strong></p>
+            <p><strong><%: MonMessage%></strong></p>
         </div>
     </asp:PlaceHolder>
 
@@ -106,7 +106,7 @@
                 <div class="panel-heading">Coordonnées client</div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-7">
+                        <div class="col-md-8">
                             <div class="alert alert-info">
                                 <p><strong>Astuce : </strong>Créez un compte en ligne pour effectuer vos réservations encore plus rapidement !</p>
                             </div>

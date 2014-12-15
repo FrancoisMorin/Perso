@@ -149,6 +149,15 @@ Partial Public Class Register
     Protected WithEvents txtCodePostal As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Contrôle RegularExpressionValidator2.
+    '''</summary>
+    '''<remarks>
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator2 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
     '''Contrôle txtNomEntreprise.
     '''</summary>
     '''<remarks>
