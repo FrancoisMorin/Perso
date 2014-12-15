@@ -1,4 +1,10 @@
-ï»¿Public Class Forfait
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Public Class Forfait
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -13,7 +19,7 @@
         If (Not IsPostBack) Then
             Dim CodeForfait As String = Request.QueryString("ID")
 
-            'Prend le forfait placÃ© dans l'URL si un forfait a Ã©tÃ© choisi
+            'Prend le forfait placé dans l'URL si un forfait a été choisi
             If CodeForfait = "" Then
                 Exit Sub
             Else
@@ -21,7 +27,7 @@
                                  Where tabForfait.CodeForfait = CodeForfait
                                  Select tabForfait
 
-                'Valide qu'un forfait a Ã©tÃ© trouvÃ©
+                'Valide qu'un forfait a été trouvé
                 If resForfait.ToList IsNot Nothing Then
                     ForfaitTrouve(resForfait.ToList.First)
                 Else
@@ -39,8 +45,8 @@
         AucunForfait.Visible = False
         btnReserver.HRef = "ReservationForfait.aspx?ID=" + MonForfait.CodeForfait
 
-        'Si on n'est pas dans les dates de disponibilitÃ© du forfait,
-        'le bouton de rÃ©servation est disabled
+        'Si on n'est pas dans les dates de disponibilité du forfait,
+        'le bouton de réservation est disabled
         If (DateTime.Now.ToShortDateString < MonForfait.DateDebut) Or (DateTime.Now.ToShortDateString > MonForfait.DateFin) Then
             btnReserver.Disabled = True
             btnReserver.Attributes.Add("class", "btn btn-success disabled")
@@ -50,7 +56,7 @@
         End If
 
 
-        'RÃ©cupÃ¨re le nom du type de chambre du forfait
+        'Récupère le nom du type de chambre du forfait
         Dim NomTypeChambre As String
         Dim resNomTypeChambre = From tabTypeChambre In BD.tblTypeChambre
                                 Where tabTypeChambre.CodeTypeChambre = MonForfait.CodeTypeChambre

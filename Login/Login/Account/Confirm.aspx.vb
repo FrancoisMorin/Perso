@@ -1,4 +1,10 @@
-ï»¿Imports System
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Imports System
 Imports System.Web
 Imports Microsoft.AspNet.Identity
 Imports Microsoft.AspNet.Identity.EntityFramework

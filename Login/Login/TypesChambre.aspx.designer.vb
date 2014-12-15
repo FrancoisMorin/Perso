@@ -1,10 +1,16 @@
-ï»¿'------------------------------------------------------------------------------
-' <gÃ©nÃ©rÃ© automatiquement>
-'     Ce code a Ã©tÃ© gÃ©nÃ©rÃ© par un outil.
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+'------------------------------------------------------------------------------
+' <généré automatiquement>
+'     Ce code a été généré par un outil.
 '
-'     Les modifications apportÃ©es Ã  ce fichier peuvent provoquer un comportement incorrect et seront perdues si
-'     le code est rÃ©gÃ©nÃ©rÃ©.
-' </gÃ©nÃ©rÃ© automatiquement>
+'     Les modifications apportées à ce fichier peuvent provoquer un comportement incorrect et seront perdues si
+'     le code est régénéré.
+' </généré automatiquement>
 '------------------------------------------------------------------------------
 
 Option Strict On
@@ -14,164 +20,164 @@ Option Explicit On
 Partial Public Class TypesChambre
 
     '''<summary>
-    '''ContrÃ´le Image1.
+    '''Contrôle Image1.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Image1 As Global.System.Web.UI.WebControls.Image
 
     '''<summary>
-    '''ContrÃ´le Image2.
+    '''Contrôle Image2.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Image2 As Global.System.Web.UI.WebControls.Image
 
     '''<summary>
-    '''ContrÃ´le Image3.
+    '''Contrôle Image3.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Image3 As Global.System.Web.UI.WebControls.Image
 
     '''<summary>
-    '''ContrÃ´le Image4.
+    '''Contrôle Image4.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Image4 As Global.System.Web.UI.WebControls.Image
 
     '''<summary>
-    '''ContrÃ´le Image5.
+    '''Contrôle Image5.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Image5 As Global.System.Web.UI.WebControls.Image
 
     '''<summary>
-    '''ContrÃ´le Image6.
+    '''Contrôle Image6.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Image6 As Global.System.Web.UI.WebControls.Image
 
     '''<summary>
-    '''ContrÃ´le Image7.
+    '''Contrôle Image7.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Image7 As Global.System.Web.UI.WebControls.Image
 
     '''<summary>
-    '''ContrÃ´le Image8.
+    '''Contrôle Image8.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Image8 As Global.System.Web.UI.WebControls.Image
 
     '''<summary>
-    '''ContrÃ´le Image9.
+    '''Contrôle Image9.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Image9 As Global.System.Web.UI.WebControls.Image
 
     '''<summary>
-    '''ContrÃ´le Image10.
+    '''Contrôle Image10.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Image10 As Global.System.Web.UI.WebControls.Image
 
     '''<summary>
-    '''ContrÃ´le Image11.
+    '''Contrôle Image11.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Image11 As Global.System.Web.UI.WebControls.Image
 
     '''<summary>
-    '''ContrÃ´le Image12.
+    '''Contrôle Image12.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Image12 As Global.System.Web.UI.WebControls.Image
 
     '''<summary>
-    '''ContrÃ´le Image13.
+    '''Contrôle Image13.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Image13 As Global.System.Web.UI.WebControls.Image
 
     '''<summary>
-    '''ContrÃ´le Image14.
+    '''Contrôle Image14.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Image14 As Global.System.Web.UI.WebControls.Image
 
     '''<summary>
-    '''ContrÃ´le Image15.
+    '''Contrôle Image15.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Image15 As Global.System.Web.UI.WebControls.Image
 
     '''<summary>
-    '''ContrÃ´le Image16.
+    '''Contrôle Image16.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Image16 As Global.System.Web.UI.WebControls.Image
 
     '''<summary>
-    '''ContrÃ´le Image17.
+    '''Contrôle Image17.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Image17 As Global.System.Web.UI.WebControls.Image
 
     '''<summary>
-    '''ContrÃ´le Image18.
+    '''Contrôle Image18.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Image18 As Global.System.Web.UI.WebControls.Image
 End Class

@@ -1,4 +1,10 @@
-ï»¿Public Class PostReservation
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Public Class PostReservation
     Inherits System.Web.UI.Page
     Dim CodeHotel As String
 
@@ -18,7 +24,7 @@
                            Where tabHotel.CodeHotel = CodeHotel
                            Select tabHotel).ToList.First
 
-            lblMessage.Text = "Votre rÃ©servation a Ã©tÃ© correctement enregistrÃ©e pour l'hotel " + MonHotel.NomHotel
+            lblMessage.Text = "Votre réservation a été correctement enregistrée pour l'hotel " + MonHotel.NomHotel
         Catch ex As Exception
             Response.Redirect("~/Default.aspx")
         End Try

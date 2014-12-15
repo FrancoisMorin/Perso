@@ -1,10 +1,16 @@
-ï»¿' La gÃ©nÃ©ration de code T4 est activÃ©e pour le modÃ¨le 'C:\Users\Utilisateur\Documents\GitHub\Perso\Login\Login\BD.edmx'. 
-' Pour activer la gÃ©nÃ©ration de code hÃ©ritÃ©e, dÃ©finissez la valeur de la propriÃ©tÃ©
-' du concepteur 'StratÃ©gie de gÃ©nÃ©ration de code' sur 'ObjectContext hÃ©ritÃ©'. Cette propriÃ©tÃ© est disponible dans la fenÃªtre PropriÃ©tÃ©s lorsque le modÃ¨le
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+' La génération de code T4 est activée pour le modèle 'C:\Users\Utilisateur\Documents\GitHub\Perso\Login\Login\BD.edmx'. 
+' Pour activer la génération de code héritée, définissez la valeur de la propriété
+' du concepteur 'Stratégie de génération de code' sur 'ObjectContext hérité'. Cette propriété est disponible dans la fenêtre Propriétés lorsque le modèle
 ' est ouvert dans le concepteur.
 
-' Si aucun contexte et classe d'entitÃ© n'a Ã©tÃ© gÃ©nÃ©rÃ©, c'est peut-Ãªtre parce que vous avez crÃ©Ã© un modÃ¨le vide, mais
-' que vous n'avez pas encore choisi la version d'Entity Framework Ã  utiliser. Pour gÃ©nÃ©rer une classe de contexte et des classes
-' d'entitÃ© pour le modÃ¨le, ouvrez le modÃ¨le dans le concepteur, cliquez avec le bouton droit sur l'aire de conception, puis
-' sÃ©lectionnez 'Mettre Ã  jour le modÃ¨le Ã  partir de la base de donnÃ©es...', 'GÃ©nÃ©rer une base de donnÃ©es Ã  partir du modÃ¨le...' ou 'Ajouter un Ã©lÃ©ment de gÃ©nÃ©ration
+' Si aucun contexte et classe d'entité n'a été généré, c'est peut-être parce que vous avez créé un modèle vide, mais
+' que vous n'avez pas encore choisi la version d'Entity Framework à utiliser. Pour générer une classe de contexte et des classes
+' d'entité pour le modèle, ouvrez le modèle dans le concepteur, cliquez avec le bouton droit sur l'aire de conception, puis
+' sélectionnez 'Mettre à jour le modèle à partir de la base de données...', 'Générer une base de données à partir du modèle...' ou 'Ajouter un élément de génération
 ' de code...'.

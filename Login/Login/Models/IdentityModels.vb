@@ -1,4 +1,10 @@
-ï»¿Imports Microsoft.AspNet.Identity
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Imports Microsoft.AspNet.Identity
 Imports Microsoft.AspNet.Identity.EntityFramework
 Imports Microsoft.AspNet.Identity.Owin
 Imports Microsoft.Owin.Security
@@ -6,7 +12,7 @@ Imports System
 Imports System.Threading.Tasks
 Imports System.Security.Claims
 
-' Vous pouvez ajouter des donnÃ©es de profil pour lâ€™utilisateur en ajoutant des propriÃ©tÃ©s Ã  votre classe dâ€™utilisateur. Pour plus dâ€™informations, consultez http://go.microsoft.com/fwlink/?LinkID=317594.
+' Vous pouvez ajouter des données de profil pour l’utilisateur en ajoutant des propriétés à votre classe d’utilisateur. Pour plus d’informations, consultez http://go.microsoft.com/fwlink/?LinkID=317594.
 Public Class ApplicationUser
     Inherits IdentityUser
 
@@ -107,9 +113,9 @@ Public Class ApplicationUser
     End Function
 
     Public Function GenerateUserIdentity(manager As ApplicationUserManager) As ClaimsIdentity
-        ' Notez que l'authenticationType doit correspondre Ã  celui dÃ©fini dans CookieAuthenticationOptions.AuthenticationType
+        ' Notez que l'authenticationType doit correspondre à celui défini dans CookieAuthenticationOptions.AuthenticationType
         Dim userIdentity = manager.CreateIdentity(Me, DefaultAuthenticationTypes.ApplicationCookie)
-        ' Ajouter des revendications utilisateur personnalisÃ©es ici
+        ' Ajouter des revendications utilisateur personnalisées ici
         Return userIdentity
     End Function
 End Class
@@ -141,7 +147,7 @@ End Class
 
 #Region "Helpers"
 Public Class IdentityHelper
-    'UtilisÃ© pour XSRF lors de la liaison de logins externes
+    'Utilisé pour XSRF lors de la liaison de logins externes
     Public Const XsrfKey As String = "xsrfKey"
 
     Public Shared Sub SignIn(manager As ApplicationUserManager, user As ApplicationUser, isPersistent As Boolean)

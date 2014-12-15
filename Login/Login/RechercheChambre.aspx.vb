@@ -1,4 +1,10 @@
-ï»¿Public Class RechercheChambre
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Public Class RechercheChambre
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -17,8 +23,8 @@
     End Sub
 
     Sub Clear()
-        txtDateDebut.Text = "SÃ©lectionnez une date de dÃ©but..."
-        txtDateFin.Text = "SÃ©lectionnez une date de fin..."
+        txtDateDebut.Text = "Sélectionnez une date de début..."
+        txtDateFin.Text = "Sélectionnez une date de fin..."
         txtVilleRecherche.Text = ""
         CalendrierDebut.SelectedDate = Nothing
         CalendrierFin.SelectedDate = Nothing
@@ -51,7 +57,7 @@
             ListeHotel.DataBind()
         End If
 
-        If (txtDateDebut.Text <> "SÃ©lectionnez une date de dÃ©but...") And (txtDateFin.Text <> "SÃ©lectionnez une date de fin...") Then
+        If (txtDateDebut.Text <> "Sélectionnez une date de début...") And (txtDateFin.Text <> "Sélectionnez une date de fin...") Then
             Dim Date1 As Date = CalendrierDebut.SelectedDate.ToShortDateString
             Dim Date2 As Date = CalendrierFin.SelectedDate.ToShortDateString
 
@@ -59,7 +65,7 @@
             ListeHotel.DataBind()
         End If
 
-        If (txtVilleRecherche.Text = "") And (txtDateDebut.Text = "SÃ©lectionnez une date de dÃ©but...") And (txtDateFin.Text = "SÃ©lectionnez une date de fin...") Then
+        If (txtVilleRecherche.Text = "") And (txtDateDebut.Text = "Sélectionnez une date de début...") And (txtDateFin.Text = "Sélectionnez une date de fin...") Then
             Dim res = From tabHotel In BD.tblHotel
                       Select tabHotel
 
@@ -88,7 +94,7 @@
     Private Sub CalendrierDebut_SelectionChanged(sender As Object, e As EventArgs) Handles CalendrierDebut.SelectionChanged
         If CalendrierDebut.SelectedDate >= CalendrierFin.SelectedDate Then
             CalendrierFin.SelectedDate = Nothing
-            txtDateFin.Text = "SÃ©lectionnez une date de fin..."
+            txtDateFin.Text = "Sélectionnez une date de fin..."
         End If
 
         txtDateDebut.Text = CalendrierDebut.SelectedDate.ToString("dd/MM/yyyy")

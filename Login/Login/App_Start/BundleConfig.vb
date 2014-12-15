@@ -1,4 +1,10 @@
-ï»¿Imports System.Collections.Generic
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Web
 Imports System.Web.Optimization
@@ -16,19 +22,19 @@ Public Class BundleConfig
                         "~/Scripts/WebForms/TreeView.js",
                         "~/Scripts/WebForms/WebParts.js"))
 
-        ' L'ordre est trÃ¨s important pour que ces fichiers fonctionnent, car ils ont des dÃ©pendances explicites
+        ' L'ordre est très important pour que ces fichiers fonctionnent, car ils ont des dépendances explicites
         bundles.Add(New ScriptBundle("~/bundles/MsAjaxJs").Include(
                 "~/Scripts/WebForms/MsAjax/MicrosoftAjax.js",
                 "~/Scripts/WebForms/MsAjax/MicrosoftAjaxApplicationServices.js",
                 "~/Scripts/WebForms/MsAjax/MicrosoftAjaxTimer.js",
                 "~/Scripts/WebForms/MsAjax/MicrosoftAjaxWebForms.js"))
 
-        ' La version Development de Modernizr vous permet de dÃ©velopper et dâ€™apprendre. Ensuite, lorsque vous Ãªtes
-        ' prÃªt pour une implÃ©mentation dans un environnement de production, utilisez lâ€™outil de gÃ©nÃ©ration que vous trouverez Ã  lâ€™adresse http://modernizr.com pour sÃ©lectionner uniquement les tests dont vous avez besoin
+        ' La version Development de Modernizr vous permet de développer et d’apprendre. Ensuite, lorsque vous êtes
+        ' prêt pour une implémentation dans un environnement de production, utilisez l’outil de génération que vous trouverez à l’adresse http://modernizr.com pour sélectionner uniquement les tests dont vous avez besoin
         bundles.Add(New ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"))
 
-        ' Affectez la valeur false Ã  EnableOptimizations pour le dÃ©bogage. Pour plus d'informations,
+        ' Affectez la valeur false à EnableOptimizations pour le débogage. Pour plus d'informations,
         ' consultez http://go.microsoft.com/fwlink/?LinkId=301862
         BundleTable.EnableOptimizations = True
 

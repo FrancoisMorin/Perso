@@ -1,4 +1,10 @@
-ï»¿Imports System
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Imports System
 Imports System.Collections.Generic
 Imports Microsoft.AspNet.Identity
 Imports Microsoft.AspNet.Identity.EntityFramework
@@ -36,7 +42,7 @@ Partial Public Class Manage
 
         
         If Not IsPostBack Then
-            ' DÃ©terminer les sections Ã  afficher
+            ' Déterminer les sections à afficher
             Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
             If HasPassword(manager) Then
                 changePasswordHolder.Visible = True
@@ -57,12 +63,12 @@ Partial Public Class Manage
             txtAdresse2.Text = usr.AdresseSecondaireClient
             txtEmail.Text = usr.UserName
 
-            ' Afficher le message de rÃ©ussite
+            ' Afficher le message de réussite
             Dim message = Request.QueryString("m")
             If message IsNot Nothing Then
-                ' Enlever la chaÃ®ne de requÃªte de l'action
+                ' Enlever la chaîne de requête de l'action
                 Form.Action = ResolveUrl("~/Account/Manage")
-                SuccessMessage = If(message = "ChangePwdSuccess", "Votre mot de passe a Ã©tÃ© modifiÃ©.", If(message = "ModifFail", "Cette adresse de mssagerie est dÃ©jÃ  utilisÃ©e.", If(message = "SetPwdSuccess", "Votre mot de passe a Ã©tÃ© dÃ©fini.", If(message = "RemoveLoginSuccess", "Le compte a Ã©tÃ© supprimÃ©.", [String].Empty))))
+                SuccessMessage = If(message = "ChangePwdSuccess", "Votre mot de passe a été modifié.", If(message = "ModifFail", "Cette adresse de mssagerie est déjà utilisée.", If(message = "SetPwdSuccess", "Votre mot de passe a été défini.", If(message = "RemoveLoginSuccess", "Le compte a été supprimé.", [String].Empty))))
                 SuccessMessagePlaceHolder.Visible = Not [String].IsNullOrEmpty(SuccessMessage)
             End If
         End If
@@ -84,7 +90,7 @@ Partial Public Class Manage
 
     Protected Sub SetPassword_Click(sender As Object, e As EventArgs)
         If IsValid Then
-            ' CrÃ©er les informations de connexion locale et associer le compte local Ã  l'utilisateur
+            ' Créer les informations de connexion locale et associer le compte local à l'utilisateur
             Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
             Dim result As IdentityResult = manager.AddPassword(User.Identity.GetUserId(), password.Text)
             If result.Succeeded Then
@@ -131,7 +137,7 @@ Partial Public Class Manage
         usr.AdresseClient = txtAdresse1.Text
         usr.AdresseSecondaireClient = txtAdresse2.Text
 
-        'Si le gars veut changer son email, faut vÃ©rifier si l'email existe dÃ©jÃ  parce que on veut garder l'email client unique.
+        'Si le gars veut changer son email, faut vérifier si l'email existe déjà parce que on veut garder l'email client unique.
         If usr.UserName <> txtEmail.Text Then
             Dim BD As New P2014_BD_GestionHotelEntities
             Dim res = From tabClient In BD.tblClient

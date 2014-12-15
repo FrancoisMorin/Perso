@@ -1,10 +1,16 @@
-ï»¿'------------------------------------------------------------------------------
-' <gÃ©nÃ©rÃ© automatiquement>
-'     Ce code a Ã©tÃ© gÃ©nÃ©rÃ© par un outil.
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+'------------------------------------------------------------------------------
+' <généré automatiquement>
+'     Ce code a été généré par un outil.
 '
-'     Les modifications apportÃ©es Ã  ce fichier peuvent provoquer un comportement incorrect et seront perdues si
-'     le code est rÃ©gÃ©nÃ©rÃ©.
-' </gÃ©nÃ©rÃ© automatiquement>
+'     Les modifications apportées à ce fichier peuvent provoquer un comportement incorrect et seront perdues si
+'     le code est régénéré.
+' </généré automatiquement>
 '------------------------------------------------------------------------------
 
 Option Strict On
@@ -14,83 +20,83 @@ Option Explicit On
 Partial Public Class RechercheSalle
 
     '''<summary>
-    '''ContrÃ´le Label1.
+    '''Contrôle Label1.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''ContrÃ´le txtHotelRecherche.
+    '''Contrôle txtHotelRecherche.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents txtHotelRecherche As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''ContrÃ´le btnRechercheHotel.
+    '''Contrôle btnRechercheHotel.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents btnRechercheHotel As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''ContrÃ´le Label2.
+    '''Contrôle Label2.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''ContrÃ´le txtVilleRecherche.
+    '''Contrôle txtVilleRecherche.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents txtVilleRecherche As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''ContrÃ´le btnRechercheVille.
+    '''Contrôle btnRechercheVille.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents btnRechercheVille As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''ContrÃ´le btnClear.
+    '''Contrôle btnClear.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents btnClear As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''ContrÃ´le ResultatRecherche.
+    '''Contrôle ResultatRecherche.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents ResultatRecherche As Global.System.Web.UI.WebControls.PlaceHolder
 
     '''<summary>
-    '''ContrÃ´le ListeHotels.
+    '''Contrôle ListeHotels.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents ListeHotels As Global.System.Web.UI.WebControls.ListView
 End Class

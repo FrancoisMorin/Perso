@@ -1,10 +1,16 @@
-ï»¿Imports System.Threading.Tasks
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Imports System.Threading.Tasks
 Imports Microsoft.AspNet.Identity
 Imports Microsoft.AspNet.Identity.EntityFramework
 Imports Microsoft.AspNet.Identity.Owin
 Imports Microsoft.Owin
 
-' Configurer l'application que le gestionnaire des utilisateurs a utilisÃ©e dans cette application. UserManager est dÃ©fini dans ASP.NET Identity et est utilisÃ© par l'application.
+' Configurer l'application que le gestionnaire des utilisateurs a utilisée dans cette application. UserManager est défini dans ASP.NET Identity et est utilisé par l'application.
 Public Class ApplicationUserManager
     Inherits UserManager(Of ApplicationUser)
     Public Sub New(store As MonStore(Of ApplicationUser))
@@ -14,7 +20,7 @@ Public Class ApplicationUserManager
     Public Overrides Function UpdateAsync(user As ApplicationUser) As Task(Of IdentityResult)
         Store.UpdateAsync(user)
 
-        Return Task.FromResult(New IdentityResult("Les informations ont Ã©tÃ© modifiÃ©es."))
+        Return Task.FromResult(New IdentityResult("Les informations ont été modifiées."))
     End Function
 
     Public Overrides Function ChangePasswordAsync(userId As String, currentPassword As String, newPassword As String) As Task(Of IdentityResult)
@@ -28,12 +34,12 @@ Public Class ApplicationUserManager
                 'Update la BD
                 Store.UpdateAsync(user)
             Else
-                'Le dude a pas Ã©crit le bon mot de passe actuel.
+                'Le dude a pas écrit le bon mot de passe actuel.
                 Return Task.FromResult(New IdentityResult("Mot de passe actuel incorrect."))
             End If
         End If
 
-        Return Task.FromResult(New IdentityResult("Le mot de passe a Ã©tÃ© modifiÃ©."))
+        Return Task.FromResult(New IdentityResult("Le mot de passe a été modifié."))
         'Return MyBase.ChangePasswordAsync(userId, currentPassword, newPassword)
     End Function
     Public Overrides Function FindAsync(userName As String, password As String) As Task(Of ApplicationUser)
@@ -62,7 +68,7 @@ Public Class ApplicationUserManager
             MonResult = IdentityResult.Success
             Return Task.FromResult(MonResult)
         Catch ex As Exception
-            Return Task.FromResult(New IdentityResult("Erreur lors de la crÃ©ation du compte."))
+            Return Task.FromResult(New IdentityResult("Erreur lors de la création du compte."))
         End Try
 
     End Function
@@ -82,8 +88,8 @@ Public Class ApplicationUserManager
           .RequireLowercase = True,
           .RequireUppercase = True
         }
-        ' Inscrire les fournisseurs d'authentification Ã  2 facteurs. Cette application utilise le tÃ©lÃ©phone et les e-mails comme procÃ©dure de rÃ©ception de code pour confirmer l'utilisateur. 
-        ' Pour plus d'informations sur l'utilisation de l'authentification Ã  2 facteurs, consultez http://go.microsoft.com/fwlink/?LinkID=391935
+        ' Inscrire les fournisseurs d'authentification à 2 facteurs. Cette application utilise le téléphone et les e-mails comme procédure de réception de code pour confirmer l'utilisateur. 
+        ' Pour plus d'informations sur l'utilisation de l'authentification à 2 facteurs, consultez http://go.microsoft.com/fwlink/?LinkID=391935
         ' Vous pouvez indiquer votre propre fournisseur et vous connecter ici.
         manager.RegisterTwoFactorProvider("PhoneCode", New PhoneNumberTokenProvider(Of ApplicationUser)() With {
           .MessageFormat = "Your security code is: {0}"

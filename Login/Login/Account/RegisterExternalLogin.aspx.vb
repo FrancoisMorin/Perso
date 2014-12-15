@@ -1,4 +1,10 @@
-ï»¿Imports System
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Imports System
 Imports System.Security.Claims
 Imports System.Web
 Imports Microsoft.AspNet.Identity
@@ -32,7 +38,7 @@ Partial Public Class RegisterExternalLogin
     End Sub
 
     Protected Sub Page_Load() Handles Me.Load
-        ' Traiter le rÃ©sultat Ã  partir d'un fournisseur d'authentification de la demande
+        ' Traiter le résultat à partir d'un fournisseur d'authentification de la demande
         ProviderName = IdentityHelper.GetProviderNameFromRequest(Request)
         If [String].IsNullOrEmpty(ProviderName) Then
             RedirectOnFail()
@@ -97,9 +103,9 @@ Partial Public Class RegisterExternalLogin
         End If
         IdentityHelper.SignIn(manager, user, False)
 
-        ' Pour plus d'informations sur l'activation de la confirmation du compte et la rÃ©initialisation du mot de passe, consultez http://go.microsoft.com/fwlink/?LinkID=320771
+        ' Pour plus d'informations sur l'activation de la confirmation du compte et la réinitialisation du mot de passe, consultez http://go.microsoft.com/fwlink/?LinkID=320771
         ' Dim code = manager.GenerateEmailConfirmationToken(user.Id)
-        ' Envoyer ce lien par e-mailÂ : IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id)
+        ' Envoyer ce lien par e-mail : IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id)
 
         IdentityHelper.RedirectToReturnUrl(Request.QueryString("ReturnUrl"), Response)
         Return

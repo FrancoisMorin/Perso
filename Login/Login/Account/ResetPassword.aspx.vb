@@ -1,4 +1,10 @@
-ï»¿Imports System
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Imports System
 Imports System.Linq
 Imports System.Web
 Imports Microsoft.AspNet.Identity
@@ -20,7 +26,7 @@ Partial Public Class ResetPassword
             Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
             Dim user = manager.FindByName(Email.Text)
             If user Is Nothing Then
-                ErrorMessage.Text = "Aucun utilisateur trouvÃ©"
+                ErrorMessage.Text = "Aucun utilisateur trouvé"
                 Return
             End If
             Dim result = manager.ResetPassword(user.Id, code, Password.Text)

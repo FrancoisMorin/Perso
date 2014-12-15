@@ -1,4 +1,10 @@
-ï»¿Imports Microsoft.AspNet.Identity
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Imports Microsoft.AspNet.Identity
 Imports Microsoft.AspNet.Identity.EntityFramework
 Imports Microsoft.AspNet.Identity.Owin
 Imports Owin
@@ -30,12 +36,12 @@ Public Class ReservationForfait
         If MonCodeForfait = "" Then
             Response.Redirect("~/Forfait.aspx")
         Else
-            'RÃ©cupÃ¨re le forfait avec le code passÃ© dans l'URL
+            'Récupère le forfait avec le code passé dans l'URL
             Dim resForfait = From tabForfait In MaBD.tblForfait
                              Where tabForfait.CodeForfait = MonCodeForfait
                              Select tabForfait
 
-            'VÃ©rifie que le code est valide
+            'Vérifie que le code est valide
             If resForfait.ToList IsNot Nothing Then
                 Dim MonForfait As tblForfait
                 MonForfait = resForfait.ToList.First
@@ -66,7 +72,7 @@ Public Class ReservationForfait
                 MonPanelClient.Visible = False
             End If
 
-            'Rempli la combobox d'hÃ´tel
+            'Rempli la combobox d'hôtel
             Dim resHotel = From tabHotel In MaBD.tblHotel
                            Select tabHotel
 
@@ -75,7 +81,7 @@ Public Class ReservationForfait
             cmbHotel.DataSource = resHotel.ToList
             cmbHotel.DataBind()
 
-            'Remplir les combobox. Par dÃ©faut sur canada, quebec, montreal
+            'Remplir les combobox. Par défaut sur canada, quebec, montreal
             VilleSelection = (From tabVille In MaBD.tblVille
                              Where tabVille.CodeVille = "MRL"
                              Select tabVille).ToList.First
@@ -111,8 +117,8 @@ Public Class ReservationForfait
             'Affichage de message d'erreur
             Dim Message = Request.QueryString("m")
             If Message IsNot Nothing Then
-                ' Enlever la chaÃ®ne de requÃªte de l'action
-                MonMessage = If(Message = "EmptyFields", "Les champs d'informations de carte de crÃ©dit sont manquants.", If(Message = "NoDates", "Vous n'avez pas spÃ©cifiÃ© une date de dÃ©but.", If(Message = "NoChambre", "Il n'y a pas asser de chambres disponible pour la plage de dates sÃ©lectionnÃ©e.", If(Message = "ErreurReserv", "Les informations de carte de crÃ©dit sont invalides.", If(Message = "NoSelect", "Vous n'avez pas sÃ©lectionnÃ© de chambre(s).", If(Message = "ErreurClient", "Les informations clients sont incomplÃ¨tes ou invalides.", If(Message = "ErreurChambre", "Une erreur s'est produite lors de l'enregistrement des chambre.", [String].Empty)))))))
+                ' Enlever la chaîne de requête de l'action
+                MonMessage = If(Message = "EmptyFields", "Les champs d'informations de carte de crédit sont manquants.", If(Message = "NoDates", "Vous n'avez pas spécifié une date de début.", If(Message = "NoChambre", "Il n'y a pas asser de chambres disponible pour la plage de dates sélectionnée.", If(Message = "ErreurReserv", "Les informations de carte de crédit sont invalides.", If(Message = "NoSelect", "Vous n'avez pas sélectionné de chambre(s).", If(Message = "ErreurClient", "Les informations clients sont incomplètes ou invalides.", If(Message = "ErreurChambre", "Une erreur s'est produite lors de l'enregistrement des chambre.", [String].Empty)))))))
                 If MonMessage <> "" Then
                     MessagePlaceHolder.Visible = True
                 Else
@@ -130,7 +136,7 @@ Public Class ReservationForfait
             e.Day.IsSelectable = False
         End If
 
-        'Enlever les dates avant et aprÃ¨s les dates limite du forfait
+        'Enlever les dates avant et après les dates limite du forfait
         If e.Day.Date.ToShortDateString() <= ForfaitSelection.DateDebut Then
             e.Cell.BackColor = System.Drawing.ColorTranslator.FromHtml("#EBEBEB")
             e.Day.IsSelectable = False
@@ -142,7 +148,7 @@ Public Class ReservationForfait
         End If
 
         'Enlever les date dans + que 2 ans
-        'Pas trop nÃ©cessaire ici vu que les date du forfait vont dÃ©jÃ  Ãªtre limitÃ©
+        'Pas trop nécessaire ici vu que les date du forfait vont déjà être limité
 
         'Dim DateDans2Ans As Date = DateTime.Now
         'DateDans2Ans = DateDans2Ans.AddYears(2)
@@ -156,13 +162,13 @@ Public Class ReservationForfait
     Private Sub CalendrierDebut_SelectionChanged(sender As Object, e As EventArgs) Handles CalendrierDebut.SelectionChanged
         If CalendrierDebut.SelectedDate >= CalendrierFin.SelectedDate Then
             CalendrierFin.SelectedDate = Nothing
-            txtDateFin.Text = "SÃ©lectionnez une date de fin..."
+            txtDateFin.Text = "Sélectionnez une date de fin..."
         End If
 
         txtDateDebut.Text = CalendrierDebut.SelectedDate.ToString("dd/MM/yyyy")
         CalendrierDebut.Visible = False
 
-        'Faire sÃ©lectionner la date de fin dÃ©pendant du nombre de nuits du forfait.
+        'Faire sélectionner la date de fin dépendant du nombre de nuits du forfait.
         CalendrierFin.SelectedDate = CalendrierDebut.SelectedDate.AddDays(ForfaitSelection.NbNuit)
         txtDateFin.Text = CalendrierFin.SelectedDate.ToString("dd/MM/yyyy")
 
@@ -266,7 +272,7 @@ Public Class ReservationForfait
         btnCalculer.Enabled = False
 
         'Rempli les controles du modal
-        'Afficher les info de la rÃ©servation.
+        'Afficher les info de la réservation.
         Dim Reserv As New tblReservationChambre
         Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
         Dim appUser = manager.FindById(User.Identity.GetUserId)
@@ -285,7 +291,7 @@ Public Class ReservationForfait
         lblPrixTotal.Text = Math.Round(Prix).ToString + " $"
         lblTypeCarte.Text = Reserv.TypeCarteCredit
 
-        'Cacher les 4 premier caractÃ¨res du No. de carte de crÃ©dit
+        'Cacher les 4 premier caractères du No. de carte de crédit
         lblNoCarte.Text = Reserv.NoCarteCredit
 
         'Affc=iche le modal de confirmation
@@ -313,7 +319,7 @@ Public Class ReservationForfait
 
     Sub Annuler()
         Dim ClasseGes As ClasseGestion
-        'Si le client refuse, supprime la rÃ©servation de la bd + redirect accueil
+        'Si le client refuse, supprime la réservation de la bd + redirect accueil
         ClasseGes = Session("MaReservation")
 
         Dim MaBD As New P2014_BD_GestionHotelEntities
@@ -330,9 +336,9 @@ Public Class ReservationForfait
         Dim appUser = manager.FindById(User.Identity.GetUserId)
         Dim ClasseGes As New ClasseGestion
 
-        'VÃ©rifie si la rÃ©servation se fait avec un compte client
+        'Vérifie si la réservation se fait avec un compte client
         If appUser Is Nothing Then
-            'VÃ©rifie les champs du client et crÃ©e le client
+            'Vérifie les champs du client et crée le client
             Dim NomClient As String = txtNom.Text
             Dim PrenomClient As String = txtPrenom.Text
             Dim NoTelephone As String = txtNoTelephone.Text
@@ -349,7 +355,7 @@ Public Class ReservationForfait
             End If
         End If
 
-        'RÃ©cupere les infos de la rÃ©servation
+        'Récupere les infos de la réservation
         Dim txtDebut As String = txtDateDebut.Text
         Dim txtFin As String = txtDateFin.Text
         Dim TypeCarte As String = cmbTypeCarte.SelectedValue.ToString
@@ -360,18 +366,18 @@ Public Class ReservationForfait
         Dim DateDebut As String = ""
         Dim DateFin As String = ""
 
-        'VÃ©rifie si les dates ont Ã©tÃ© selectionnÃ©.
-        If txtDebut <> "SÃ©lectionnez une date de dÃ©but..." And txtDateFin.Text <> "SÃ©lectionnez une date de fin..." Then
+        'Vérifie si les dates ont été selectionné.
+        If txtDebut <> "Sélectionnez une date de début..." And txtDateFin.Text <> "Sélectionnez une date de fin..." Then
             DateDebut = CalendrierDebut.SelectedDate.ToString("yyyy-MM-dd")
             DateFin = CalendrierFin.SelectedDate.ToString("yyyy-MM-dd")
         Else
-            'Les dates n'ont pas Ã©tÃ© selectionnÃ©.
+            'Les dates n'ont pas été selectionné.
             Dim TempCodeForfait As String = Request.QueryString("ID")
             Response.Redirect("~/ReservationForfait?m=NoDates&ID=" + TempCodeForfait)
         End If
 
-        'Valide si les champs ont Ã©tÃ© rempli
-        'On peut pas utiliser les asp:Validator Ã  cause des update panels.
+        'Valide si les champs ont été rempli
+        'On peut pas utiliser les asp:Validator à cause des update panels.
         If NoCarte = "" Or DateExp = "" Or NomDetenteur = "" Then
             Dim TempCodeForfait As String = Request.QueryString("ID")
             Response.Redirect("~/ReservationForfait?m=EmptyFields&ID=" + TempCodeForfait)
@@ -379,11 +385,11 @@ Public Class ReservationForfait
 
         Dim CodeHotel As String = cmbHotel.SelectedValue
 
-        'La rÃ©servation se fait avec seulement 1 chambre d'un type.
-        'C'est donc beaucoup plus simple, mais on peut pas rÃ©utiliser les
-        'fonctions de ClasseGes qui existent dÃ©jÃ  :(
+        'La réservation se fait avec seulement 1 chambre d'un type.
+        'C'est donc beaucoup plus simple, mais on peut pas réutiliser les
+        'fonctions de ClasseGes qui existent déjà :(
 
-        'CrÃ©er tblReservationChambre
+        'Créer tblReservationChambre
         Dim result As Boolean
         result = ClasseGes.CreerReservation(appUser, cmbTypeCarte.Text, txtNoCarteCredit.Text, txtDateExpiration.Text, txtNomDetenteurCarte.Text)
         If Not result Then

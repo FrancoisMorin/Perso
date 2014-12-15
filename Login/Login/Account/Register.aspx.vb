@@ -1,4 +1,10 @@
-ï»¿Imports System
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Imports System
 Imports System.Linq
 Imports System.Web
 Imports System.Web.UI
@@ -17,7 +23,7 @@ Partial Public Class Register
     Private Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         If (Not IsPostBack) Then
 
-            'Remplir les combobox. Par dÃ©faut sur canada, quebec, montreal
+            'Remplir les combobox. Par défaut sur canada, quebec, montreal
             VilleSelection = (From tabVille In MaBD.tblVille
                              Where tabVille.CodeVille = "MRL"
                              Select tabVille).ToList.First
@@ -69,7 +75,7 @@ Partial Public Class Register
                   Select tabClient
 
         If res.ToList.Count <> 0 Then
-            ErrorMessage.Text = "Cette adresse de messagerie est dÃ©jÃ  utilisÃ©e."
+            ErrorMessage.Text = "Cette adresse de messagerie est déjà utilisée."
             Exit Sub
         End If
 
@@ -79,7 +85,7 @@ Partial Public Class Register
         'Dim result = manager.Create(user, Password.Text)
         Dim result = manager.Create(user, Password.Text)
         If result.Succeeded Then
-            ' Pour plus d'informations sur l'activation de la confirmation du compte et la rÃ©initialisation du mot de passe, consultez http://go.microsoft.com/fwlink/?LinkID=320771
+            ' Pour plus d'informations sur l'activation de la confirmation du compte et la réinitialisation du mot de passe, consultez http://go.microsoft.com/fwlink/?LinkID=320771
             ' Dim code = manager.GenerateEmailConfirmationToken(user.Id)
             ' Dim callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id)
             ' manager.SendEmail(user.Id, "Confirmez votre compte", "Confirmez votre compte en cliquant <a href=""" & callbackUrl & """>ici</a>.")
@@ -88,8 +94,8 @@ Partial Public Class Register
             'IdentityHelper.SignIn(manager, user, False)
             'IdentityHelper.RedirectToReturnUrl(Request.QueryString("ReturnUrl"), Response)
 
-            'On peut pas connecter le user direct aprÃ¨s la crÃ©ation de son compte
-            'parce que Ã§a fait une erreur sur son ID qui a un format invalide.
+            'On peut pas connecter le user direct après la création de son compte
+            'parce que ça fait une erreur sur son ID qui a un format invalide.
             Response.Redirect("~/Account/Login.aspx")
         Else
             ErrorMessage.Text = result.Errors.FirstOrDefault()
@@ -159,7 +165,7 @@ Partial Public Class Register
 
     Private Sub Page_PreLoad(sender As Object, e As EventArgs) Handles Me.PreLoad
         If User.Identity.IsAuthenticated Then
-            'Le user est connectÃ©, redirect Ã  l'accueil
+            'Le user est connecté, redirect à l'accueil
             Response.Redirect("~/Default.aspx")
         End If
     End Sub

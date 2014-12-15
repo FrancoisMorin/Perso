@@ -1,4 +1,10 @@
-ï»¿Public Class ClasseGestion
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Public Class ClasseGestion
     Dim BD As P2014_BD_GestionHotelEntities
 
     Public MaReservation As tblReservationChambre
@@ -62,7 +68,7 @@
 
     Public Function AjoutDetailReservation(ByRef _CodeTypeChambre As String, ByRef _NbChambre As Integer) As Boolean
 
-        'Recherche si le type de chambre a dÃ©jÃ  Ã©tÃ© ajoutÃ©.
+        'Recherche si le type de chambre a déjà été ajouté.
         'Si oui, ajuste le nombre de chambre.
         For Each Detail As DetailsReservation In ListeDetailsReservation
             If Detail.TypeChambre = _CodeTypeChambre Then
@@ -76,7 +82,7 @@
             End If
         Next
 
-        'Le type de chambre n'a pas encore Ã©tÃ© ajoutÃ©, crÃ©e le dans la liste
+        'Le type de chambre n'a pas encore été ajouté, crée le dans la liste
         Dim NewDetail As DetailsReservation
         NewDetail.TypeChambre = _CodeTypeChambre
         NewDetail.NombreChambre = _NbChambre
@@ -92,7 +98,7 @@
         For Each Detail As DetailsReservation In ListeDetailsReservation
             NbChambre += Detail.NombreChambre
         Next
-        'Si aucune chambre n'a Ã©tÃ© selectionnÃ©, message d'erreur.
+        'Si aucune chambre n'a été selectionné, message d'erreur.
         If NbChambre = 0 Then
             BD.tblReservationChambre.Remove(MaReservation)
             BD.SaveChanges()
@@ -116,7 +122,7 @@
             i = 0
             For Each Chambre As VerificationDispo_Result In ListeChambreDispo
 
-                'Si on a rÃ©servÃ© le nombre de chambres (du type de chambre) qu'on voulait, sors du for.
+                'Si on a réservé le nombre de chambres (du type de chambre) qu'on voulait, sors du for.
                 If i = Detail.NombreChambre Then
                     Exit For
                 End If
@@ -145,7 +151,7 @@
         Next
 
         'Si le nombre de chambre de la liste de disponible est plus petit que le nombre qu'il voulait,
-        'Ã‡a veut dire qu'il n'y a pas asser de chambre dispo.
+        'Ça veut dire qu'il n'y a pas asser de chambre dispo.
         If ListeChambreReservation.Count < CompteurChambre Then
             BD.tblReservationChambre.Remove(MaReservation)
             BD.SaveChanges()
@@ -162,7 +168,7 @@
             MaReservation = New tblReservationChambre
             MaReservation.TypeCarteCredit = _TypeCarte
 
-            'Valider le numÃ©ro de carte de crÃ©dit
+            'Valider le numéro de carte de crédit
             _NoCarteCredit.Trim(" ")
             Dim regex As Regex = New Regex("^\d{15,16}")
             Dim match As Match = regex.Match(_NoCarteCredit)
@@ -183,10 +189,10 @@
 
             MaReservation.NomCarteCredit = _NomDetenteur
             MaReservation.ModePaiement = "Carte credit"
-            MaReservation.StatutPaiement = "Non payÃ©"
+            MaReservation.StatutPaiement = "Non payé"
             MaReservation.StatutReservChambre = "En attente"
 
-            'Si le user n'est pas connectÃ©, il faut utiliser le client qui vient d'Ãªtre crÃ©Ã©e
+            'Si le user n'est pas connecté, il faut utiliser le client qui vient d'être créée
             If _MonUser Is Nothing Then
                 MaReservation.NoSeqClient = MonClient.NoSeqClient
             Else
@@ -224,7 +230,7 @@
                 BD.SaveChanges()
             Next
 
-            'Maintenant qu'on a le prix total, multiplier par le nombre de nuits et l'ajouter Ã  la rÃ©servation.
+            'Maintenant qu'on a le prix total, multiplier par le nombre de nuits et l'ajouter à la réservation.
             Dim NbNuit As Integer = _DateFin.Subtract(_DateDebut).TotalDays
             MaReservation.PrixReservChambre = PrixReservation * NbNuit
             BD.SaveChanges()
@@ -239,15 +245,15 @@
 
     Function EnregistrerClient(ByRef _Nom As String, ByRef _Prenom As String, ByRef _NoTelephone As String, ByRef _Email As String, ByRef _Adresse As String, ByRef _CodeVille As String) As Boolean
         If _Nom = "" Or _Prenom = "" Or _NoTelephone = "" Or _Email = "" Or _Adresse = "" Or _CodeVille = "" Then
-            'Les infos de bases nÃ©cessaires n'ont pas toutes Ã©tÃ© remplies.
+            'Les infos de bases nécessaires n'ont pas toutes été remplies.
             Return False
         End If
 
         Try
             BD = New P2014_BD_GestionHotelEntities
-            'CrÃ©e le client
+            'Crée le client
             MonClient = New tblClient
-            'Rempli les info nÃ©cessaire
+            'Rempli les info nécessaire
             MonClient.NomClient = _Nom
             MonClient.PrenomClient = _Prenom
 
@@ -275,7 +281,7 @@
             MonClient.AdresseClient = _Adresse.Trim(" ")
             MonClient.CodeVille = _CodeVille
 
-            'On veut garder la rÃ©servation simple, donc les informations non-obligatoires seront vide.
+            'On veut garder la réservation simple, donc les informations non-obligatoires seront vide.
             MonClient.NoCellulaire = ""
             MonClient.AdresseSecondaireClient = ""
             MonClient.MdpClient = ""
@@ -297,7 +303,7 @@
         For Each ChambreReserv As tblChambreReservationChambre In ListeChambreReservation
             BD.tblChambreReservationChambre.Remove(ChambreReserv)
         Next
-        'Supprimer la rÃ©servation
+        'Supprimer la réservation
         BD.tblReservationChambre.Remove(MaReservation)
         BD.SaveChanges()
     End Sub
@@ -309,7 +315,7 @@
                      Where tabForfait.CodeForfait = MonForfait.CodeForfait
                      Select tabForfait).ToList.First
 
-        'CrÃ©er la liste de ChambreRÃ©servationChambre
+        'Créer la liste de ChambreRéservationChambre
 
         Dim TypeChambre As String = MonForfait.CodeTypeChambre
         Dim CodeHotel As String = _CodeHotel
@@ -321,8 +327,8 @@
 
         ListeChambreDispo = res.ToList
 
-        'Pour l'instant c'est dit que un forfait est une rÃ©servation 
-        'd'UNE seule chambre avec des activitÃ©. On garde la possibilitÃ©
+        'Pour l'instant c'est dit que un forfait est une réservation 
+        'd'UNE seule chambre avec des activité. On garde la possibilité
         'd'avoir plusieurs chambres dans un forfait plus tard.
         Dim NbChambre As Integer = 1
         Dim Compteur As Integer = 0
@@ -348,7 +354,7 @@
             Compteur = Compteur + 1
         Next
 
-        'VÃ©rification du nombre de chambre disponible trouvÃ©
+        'Vérification du nombre de chambre disponible trouvé
         'Encore, pas trop important ici mais on garde pour plus tard.
         If ListeChambreReservation.Count < NbChambre Then
             BD.tblReservationChambre.Remove(MaReservation)
@@ -356,7 +362,7 @@
             Return False
         End If
 
-        'Fixe le prix de la rÃ©servation
+        'Fixe le prix de la réservation
         MaReservation.PrixReservChambre = Forfait.PrixForfait
 
         'Entre les chambres dans la BD

@@ -1,8 +1,14 @@
-ï»¿#If _MyType <> "Empty" Then
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+#If _MyType <> "Empty" Then
 
 Namespace My
     ''' <summary>
-    ''' Module utilisÃ© pour dÃ©finir les propriÃ©tÃ©s qui sont disponibles dans My Namespace pour les projets Web.
+    ''' Module utilisé pour définir les propriétés qui sont disponibles dans My Namespace pour les projets Web.
     ''' </summary>
     ''' <remarks></remarks>
     <Global.Microsoft.VisualBasic.HideModuleName()> _
@@ -11,7 +17,7 @@ Namespace My
         Private s_User As New ThreadSafeObjectProvider(Of Global.Microsoft.VisualBasic.ApplicationServices.WebUser)
         Private s_Log As New ThreadSafeObjectProvider(Of Global.Microsoft.VisualBasic.Logging.AspLog)
         ''' <summary>
-        ''' Retourne les informations relatives Ã  l'ordinateur hÃ´te.
+        ''' Retourne les informations relatives à l'ordinateur hôte.
         ''' </summary>
         <Global.System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")> _
         Friend ReadOnly Property Computer() As Global.Microsoft.VisualBasic.Devices.ServerComputer

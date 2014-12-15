@@ -158,7 +158,9 @@
     <div class="panel panel-default">
         <div class="panel-heading">Détails du séjour</div>
         <div class="panel-body">
-            <div class="row">
+            <div class="well well-sm">
+<fieldset><legend>Informations</legend></fieldset>
+<div class="row">
                 <div class="col-md-4">
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
@@ -206,6 +208,10 @@
                     </asp:UpdatePanel>
                 </div>
             </div>
+            </div>
+                    
+
+            
 
             <section id="info">
                 <div class="row">

@@ -1,4 +1,10 @@
-ï»¿Imports Microsoft.AspNet.Identity
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Imports Microsoft.AspNet.Identity
 Imports System.Threading.Tasks
 
 Public Class MonStore(Of TUser As ApplicationUser)
@@ -169,29 +175,29 @@ Public Class MonStore(Of TUser As ApplicationUser)
 
 
 #Region "IDisposable Support"
-    Private disposedValue As Boolean ' Pour dÃ©tecter les appels redondants
+    Private disposedValue As Boolean ' Pour détecter les appels redondants
 
     ' IDisposable
     Protected Overridable Sub Dispose(disposing As Boolean)
         If Not Me.disposedValue Then
             If disposing Then
-                ' TODO: supprimez l'Ã©tat managÃ© (objets managÃ©s).
+                ' TODO: supprimez l'état managé (objets managés).
             End If
 
-            ' TODO: libÃ©rez les ressources non managÃ©es (objets non managÃ©s) et substituez la mÃ©thode Finalize() ci-dessous.
-            ' TODO: dÃ©finissez les champs volumineux Ã  null.
+            ' TODO: libérez les ressources non managées (objets non managés) et substituez la méthode Finalize() ci-dessous.
+            ' TODO: définissez les champs volumineux à null.
         End If
         Me.disposedValue = True
     End Sub
 
-    ' TODO: substituez Finalize() uniquement si Dispose(ByVal disposing As Boolean) ci-dessus comporte du code permettant de libÃ©rer des ressources non managÃ©es.
+    ' TODO: substituez Finalize() uniquement si Dispose(ByVal disposing As Boolean) ci-dessus comporte du code permettant de libérer des ressources non managées.
     'Protected Overrides Sub Finalize()
     '    ' Ne modifiez pas ce code. Ajoutez du code de nettoyage dans Dispose(ByVal disposing As Boolean) ci-dessus.
     '    Dispose(False)
     '    MyBase.Finalize()
     'End Sub
 
-    ' Ce code a Ã©tÃ© ajoutÃ© par Visual Basic pour permettre l'implÃ©mentation correcte du modÃ¨le pouvant Ãªtre supprimÃ©.
+    ' Ce code a été ajouté par Visual Basic pour permettre l'implémentation correcte du modèle pouvant être supprimé.
     Public Sub Dispose() Implements IDisposable.Dispose
         ' Ne modifiez pas ce code. Ajoutez du code de nettoyage dans Dispose(disposing As Boolean) ci-dessus.
         Dispose(True)

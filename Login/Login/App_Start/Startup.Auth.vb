@@ -1,4 +1,10 @@
-ï»¿Imports System
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Imports System
 Imports Microsoft.AspNet.Identity
 Imports Microsoft.AspNet.Identity.EntityFramework
 Imports Microsoft.AspNet.Identity.Owin
@@ -12,11 +18,11 @@ Partial Public Class Startup
 
     ' Pour plus d'informations sur la configuration de l'authentification, consultez http://go.microsoft.com/fwlink/?LinkId=301883
     Public Sub ConfigureAuth(app As IAppBuilder)
-        ' Configurer le contexte de base de donnÃ©es et le gestionnaire des utilisateurs pour utiliser une seule instance par demande
+        ' Configurer le contexte de base de données et le gestionnaire des utilisateurs pour utiliser une seule instance par demande
         app.CreatePerOwinContext(AddressOf ApplicationDbContext.Create)
         app.CreatePerOwinContext(Of ApplicationUserManager)(AddressOf ApplicationUserManager.Create)
 
-        ' Laisser l'application utiliser un cookie pour stocker les informations de l'utilisateur connectÃ©
+        ' Laisser l'application utiliser un cookie pour stocker les informations de l'utilisateur connecté
         app.UseCookieAuthentication(New CookieAuthenticationOptions() With {
             .AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
             .Provider = New CookieAuthenticationProvider() With {
@@ -27,7 +33,7 @@ Partial Public Class Startup
         ' Utilisez un cookie pour stocker temporairement des informations sur une connexion utilisateur avec un fournisseur de connexion tiers
         app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie)
 
-        ' DÃ©commenter les lignes suivantes pour activer la connexion avec des fournisseurs de connexion tiers
+        ' Décommenter les lignes suivantes pour activer la connexion avec des fournisseurs de connexion tiers
         'app.UseMicrosoftAccountAuthentication(
         '    clientId:= "",
         '    clientSecret:= "")

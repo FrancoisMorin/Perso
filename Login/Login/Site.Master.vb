@@ -1,19 +1,25 @@
-ï»¿Public Class SiteMaster
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Public Class SiteMaster
     Inherits MasterPage
     Private Const AntiXsrfTokenKey As String = "__AntiXsrfToken"
     Private Const AntiXsrfUserNameKey As String = "__AntiXsrfUserName"
     Private _antiXsrfTokenValue As String
 
     Protected Sub Page_Init(sender As Object, e As EventArgs)
-        ' Le code ci-dessous vous aide Ã  vous protÃ©ger des attaques XSRF
+        ' Le code ci-dessous vous aide à vous protéger des attaques XSRF
         Dim requestCookie = Request.Cookies(AntiXsrfTokenKey)
         Dim requestCookieGuidValue As Guid
         If requestCookie IsNot Nothing AndAlso Guid.TryParse(requestCookie.Value, requestCookieGuidValue) Then
-            ' Utiliser le jeton Anti-XSRF Ã  partir du cookie
+            ' Utiliser le jeton Anti-XSRF à partir du cookie
             _antiXsrfTokenValue = requestCookie.Value
             Page.ViewStateUserKey = _antiXsrfTokenValue
         Else
-            ' GÃ©nÃ©rer un nouveau jeton Anti-XSRF et l'enregistrer dans le cookie
+            ' Générer un nouveau jeton Anti-XSRF et l'enregistrer dans le cookie
             _antiXsrfTokenValue = Guid.NewGuid().ToString("N")
             Page.ViewStateUserKey = _antiXsrfTokenValue
 
@@ -32,13 +38,13 @@
 
     Protected Sub master_Page_PreLoad(sender As Object, e As EventArgs)
         If Not IsPostBack Then
-            ' DÃ©finir un jeton Anti-XSRF
+            ' Définir un jeton Anti-XSRF
             ViewState(AntiXsrfTokenKey) = Page.ViewStateUserKey
             ViewState(AntiXsrfUserNameKey) = If(Context.User.Identity.Name, [String].Empty)
         Else
             ' Valider le jeton Anti-XSRF
             If DirectCast(ViewState(AntiXsrfTokenKey), String) <> _antiXsrfTokenValue OrElse DirectCast(ViewState(AntiXsrfUserNameKey), String) <> (If(Context.User.Identity.Name, [String].Empty)) Then
-                Throw New InvalidOperationException("Ã‰chec de la validation du jeton Anti-XSRF.")
+                Throw New InvalidOperationException("Échec de la validation du jeton Anti-XSRF.")
             End If
         End If
     End Sub

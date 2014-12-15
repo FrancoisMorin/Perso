@@ -220,6 +220,7 @@
     <Content Include="Images\SliderForfait\Forfaitforsai.jpg" />
     <Content Include="Images\SliderForfait\Forfaitforski.jpg" />
     <Content Include="Images\SliderForfait\Forfaitfortou.jpg" />
+    <Content Include="Images\Slider\granderoue.jpg" />
     <Content Include="Images\TypeChambre\LUX\ChambreLUX.jpg" />
     <Content Include="Images\TypeChambre\LUX\DoucheLUX.jpg" />
     <Content Include="Images\TypeChambre\LUX\Lit2LUX.jpg" />
@@ -259,7 +260,6 @@
     <Content Include="Images\Accueil\AccueilHotel.jpg" />
     <Content Include="Images\Accueil\AccueilLobby.jpg" />
     <Content Include="Images\Slider\chaise.jpg" />
-    <Content Include="Images\Slider\granderoue.jpg" />
     <Content Include="Images\Slider\pewpew.jpg" />
     <Content Include="Images\TypeChambre\STD\BainSTD.jpg" />
     <Content Include="Images\TypeChambre\STD\ChambreSTD.jpg" />

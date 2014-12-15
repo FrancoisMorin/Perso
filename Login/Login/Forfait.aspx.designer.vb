@@ -1,10 +1,16 @@
-ï»¿'------------------------------------------------------------------------------
-' <gÃ©nÃ©rÃ© automatiquement>
-'     Ce code a Ã©tÃ© gÃ©nÃ©rÃ© par un outil.
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+'------------------------------------------------------------------------------
+' <généré automatiquement>
+'     Ce code a été généré par un outil.
 '
-'     Les modifications apportÃ©es Ã  ce fichier peuvent provoquer un comportement incorrect et seront perdues si
-'     le code est rÃ©gÃ©nÃ©rÃ©.
-' </gÃ©nÃ©rÃ© automatiquement>
+'     Les modifications apportées à ce fichier peuvent provoquer un comportement incorrect et seront perdues si
+'     le code est régénéré.
+' </généré automatiquement>
 '------------------------------------------------------------------------------
 
 Option Strict On
@@ -14,101 +20,101 @@ Option Explicit On
 Partial Public Class Forfait
 
     '''<summary>
-    '''ContrÃ´le ListeForfait.
+    '''Contrôle ListeForfait.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents ListeForfait As Global.System.Web.UI.WebControls.ListView
 
     '''<summary>
-    '''ContrÃ´le InformationForfait.
+    '''Contrôle InformationForfait.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents InformationForfait As Global.System.Web.UI.WebControls.PlaceHolder
 
     '''<summary>
-    '''ContrÃ´le LabelTitre.
+    '''Contrôle LabelTitre.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents LabelTitre As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''ContrÃ´le LabelTypeChambre.
+    '''Contrôle LabelTypeChambre.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents LabelTypeChambre As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''ContrÃ´le LabelNbNuit.
+    '''Contrôle LabelNbNuit.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents LabelNbNuit As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''ContrÃ´le LabelPrixForfait.
+    '''Contrôle LabelPrixForfait.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents LabelPrixForfait As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''ContrÃ´le LabelDateDebut.
+    '''Contrôle LabelDateDebut.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents LabelDateDebut As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''ContrÃ´le LabelDateFin.
+    '''Contrôle LabelDateFin.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents LabelDateFin As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''ContrÃ´le LabelDescription.
+    '''Contrôle LabelDescription.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents LabelDescription As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''ContrÃ´le btnReserver.
+    '''Contrôle btnReserver.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents btnReserver As Global.System.Web.UI.HtmlControls.HtmlAnchor
 
     '''<summary>
-    '''ContrÃ´le AucunForfait.
+    '''Contrôle AucunForfait.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents AucunForfait As Global.System.Web.UI.WebControls.PlaceHolder
 End Class

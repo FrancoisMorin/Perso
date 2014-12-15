@@ -1,10 +1,16 @@
-ï»¿'------------------------------------------------------------------------------
-' <gÃ©nÃ©rÃ© automatiquement>
-'     Ce code a Ã©tÃ© gÃ©nÃ©rÃ© par un outil.
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+'------------------------------------------------------------------------------
+' <généré automatiquement>
+'     Ce code a été généré par un outil.
 '
-'     Les modifications apportÃ©es Ã  ce fichier peuvent provoquer un comportement incorrect et seront perdues si
-'     le code est rÃ©gÃ©nÃ©rÃ©.
-' </gÃ©nÃ©rÃ© automatiquement>
+'     Les modifications apportées à ce fichier peuvent provoquer un comportement incorrect et seront perdues si
+'     le code est régénéré.
+' </généré automatiquement>
 '------------------------------------------------------------------------------
 
 Option Strict On
@@ -14,155 +20,155 @@ Option Explicit On
 Partial Public Class Register
 
     '''<summary>
-    '''ContrÃ´le ErrorMessage.
+    '''Contrôle ErrorMessage.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents ErrorMessage As Global.System.Web.UI.WebControls.Literal
 
     '''<summary>
-    '''ContrÃ´le Email.
+    '''Contrôle Email.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Email As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''ContrÃ´le Password.
+    '''Contrôle Password.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents Password As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''ContrÃ´le RegularExpressionValidator1.
+    '''Contrôle RegularExpressionValidator1.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents RegularExpressionValidator1 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
-    '''ContrÃ´le ConfirmPassword.
+    '''Contrôle ConfirmPassword.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents ConfirmPassword As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''ContrÃ´le txtNom.
+    '''Contrôle txtNom.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents txtNom As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''ContrÃ´le txtPrenom.
+    '''Contrôle txtPrenom.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents txtPrenom As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''ContrÃ´le txtNoTelephone.
+    '''Contrôle txtNoTelephone.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents txtNoTelephone As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''ContrÃ´le txtNoCellulaire.
+    '''Contrôle txtNoCellulaire.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents txtNoCellulaire As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''ContrÃ´le cmbPays.
+    '''Contrôle cmbPays.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents cmbPays As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''ContrÃ´le cmbProvince.
+    '''Contrôle cmbProvince.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents cmbProvince As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''ContrÃ´le cmbVille.
+    '''Contrôle cmbVille.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents cmbVille As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''ContrÃ´le txtAdresse1.
+    '''Contrôle txtAdresse1.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents txtAdresse1 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''ContrÃ´le txtAdresse2.
+    '''Contrôle txtAdresse2.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents txtAdresse2 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''ContrÃ´le txtCodePostal.
+    '''Contrôle txtCodePostal.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents txtCodePostal As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''ContrÃ´le RegularExpressionValidator2.
+    '''Contrôle RegularExpressionValidator2.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents RegularExpressionValidator2 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
-    '''ContrÃ´le txtNomEntreprise.
+    '''Contrôle txtNomEntreprise.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents txtNomEntreprise As Global.System.Web.UI.WebControls.TextBox
 End Class

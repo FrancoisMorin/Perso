@@ -1,10 +1,16 @@
-ï»¿'------------------------------------------------------------------------------
-' <gÃ©nÃ©rÃ© automatiquement>
-'     Ce code a Ã©tÃ© gÃ©nÃ©rÃ© par un outil.
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+'------------------------------------------------------------------------------
+' <généré automatiquement>
+'     Ce code a été généré par un outil.
 '
-'     Les modifications apportÃ©es Ã  ce fichier peuvent provoquer un comportement incorrect et seront perdues si
-'     le code est rÃ©gÃ©nÃ©rÃ©.
-' </gÃ©nÃ©rÃ© automatiquement>
+'     Les modifications apportées à ce fichier peuvent provoquer un comportement incorrect et seront perdues si
+'     le code est régénéré.
+' </généré automatiquement>
 '------------------------------------------------------------------------------
 
 Option Strict On
@@ -14,11 +20,11 @@ Option Explicit On
 Partial Public Class PostReservation
 
     '''<summary>
-    '''ContrÃ´le lblMessage.
+    '''Contrôle lblMessage.
     '''</summary>
     '''<remarks>
-    '''Champ gÃ©nÃ©rÃ© automatiquement.
-    '''Pour modifier, dÃ©placez la dÃ©claration de champ du fichier de concepteur dans le fichier code-behind.
+    '''Champ généré automatiquement.
+    '''Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
     '''</remarks>
     Protected WithEvents lblMessage As Global.System.Web.UI.WebControls.Label
 End Class

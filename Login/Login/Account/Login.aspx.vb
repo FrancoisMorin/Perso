@@ -1,4 +1,10 @@
-ï»¿Imports System.Web
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Imports System.Web
 Imports System.Web.UI
 Imports Microsoft.AspNet.Identity
 Imports Microsoft.AspNet.Identity.EntityFramework
@@ -10,7 +16,7 @@ Partial Public Class Login
     Inherits Page
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         RegisterHyperLink.NavigateUrl = "Register"
-        ' Activez ceci une fois que vous avez activÃ© la confirmation du compte pour la fonctionnalitÃ© de rÃ©initialisation du mot de passe
+        ' Activez ceci une fois que vous avez activé la confirmation du compte pour la fonctionnalité de réinitialisation du mot de passe
         ' ForgotPasswordHyperLink.NavigateUrl = "Forgot"
         'OpenAuthLogin.ReturnUrl = Request.QueryString("ReturnUrl")
         Dim returnUrl = HttpUtility.UrlEncode(Request.QueryString("ReturnUrl"))
@@ -36,7 +42,7 @@ Partial Public Class Login
 
     Private Sub Page_PreLoad(sender As Object, e As EventArgs) Handles Me.PreLoad
         If User.Identity.IsAuthenticated Then
-            'Le user est connectÃ©, redirect Ã  l'accueil
+            'Le user est connecté, redirect à l'accueil
             Response.Redirect("~/Default.aspx")
         End If
     End Sub

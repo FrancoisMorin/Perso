@@ -1,4 +1,10 @@
-ï»¿Imports System
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Imports System
 Imports System.Web
 Imports Microsoft.AspNet.Identity
 Imports Microsoft.AspNet.Identity.EntityFramework
@@ -19,15 +25,15 @@ Partial Public Class ForgotPassword
             Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
             Dim user As ApplicationUser = manager.FindByName(Email.Text)
             If user Is Nothing OrElse Not manager.IsEmailConfirmed(user.Id) Then
-                FailureText.Text = "L'utilisateur n'existe pas ou n'est pas confirmÃ©."
+                FailureText.Text = "L'utilisateur n'existe pas ou n'est pas confirmé."
                 ErrorMessage.Visible = True
                 Return
             End If
-            ' Pour plus d'informations sur l'activation de la confirmation du compte et la rÃ©initialisation du mot de passe, consultez  http://go.microsoft.com/fwlink/?LinkID=320771
-            ' Envoyer le courrier Ã©lectronique avec le code et la redirection pour rÃ©initialiser la page du mot de passe
+            ' Pour plus d'informations sur l'activation de la confirmation du compte et la réinitialisation du mot de passe, consultez  http://go.microsoft.com/fwlink/?LinkID=320771
+            ' Envoyer le courrier électronique avec le code et la redirection pour réinitialiser la page du mot de passe
             ' Dim code = manager.GeneratePasswordResetToken(user.Id)
             ' Dim callbackUrl = IdentityHelper.GetResetPasswordRedirectUrl(code)
-            ' manager.SendEmail(user.Id, "RÃ©initialiser le mot de passe", "RÃ©initialisez votre mot de passe en cliquant <a href=""" & callbackUrl & """>ici</a>.")
+            ' manager.SendEmail(user.Id, "Réinitialiser le mot de passe", "Réinitialisez votre mot de passe en cliquant <a href=""" & callbackUrl & """>ici</a>.")
         End If
     End Sub
 End Class

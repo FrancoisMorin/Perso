@@ -1,4 +1,10 @@
-ï»¿Imports System
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Imports System
 Imports System.Collections.Generic
 Imports System.Globalization
 Imports System.Linq
@@ -17,7 +23,7 @@ Partial Public Class OpenAuthProviders
             ' Demande de reconnexion au fournisseur de connexion externe
             Dim redirectUrl As String = ResolveUrl([String].Format(CultureInfo.InvariantCulture, "~/Account/RegisterExternalLogin?{0}={1}&returnUrl={2}", IdentityHelper.ProviderNameKey, provider, ReturnUrl))
             Dim properties As AuthenticationProperties = New AuthenticationProperties() With {.RedirectUri = redirectUrl}
-            ' Ajouter une vÃ©rification xsrf lors de la liaison de comptes
+            ' Ajouter une vérification xsrf lors de la liaison de comptes
             If (Context.User.Identity.IsAuthenticated) Then
                 properties.Dictionary.Item(IdentityHelper.XsrfKey) = Context.User.Identity.GetUserId()
             End If

@@ -1,4 +1,10 @@
-ï»¿Imports Microsoft.AspNet.FriendlyUrls.Resolvers
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Imports Microsoft.AspNet.FriendlyUrls.Resolvers
 
 Public Class ViewSwitcher
     Inherits System.Web.UI.UserControl
@@ -34,14 +40,14 @@ Public Class ViewSwitcher
     Private m_SwitchUrl As String
 
     Protected Sub Page_Load(sender As Object, e As EventArgs)
-        ' DÃ©terminer la vue actuelle
+        ' Déterminer la vue actuelle
         Dim isMobile = WebFormsFriendlyUrlResolver.IsMobileView(New HttpContextWrapper(Context))
         CurrentView = If(isMobile, "Mobile", "Desktop")
 
-        ' DÃ©terminer l'autre vue
+        ' Déterminer l'autre vue
         AlternateView = If(isMobile, "Desktop", "Mobile")
 
-        ' CrÃ©er l'URL de basculement Ã  partir du chemin, par ex. ~/__FriendlyUrls_SwitchView/Mobile?ReturnUrl=/Page
+        ' Créer l'URL de basculement à partir du chemin, par ex. ~/__FriendlyUrls_SwitchView/Mobile?ReturnUrl=/Page
         Dim url = GetRouteUrl("AspNet.FriendlyUrls.SwitchView", New With { _
             Key .view = AlternateView _
         })

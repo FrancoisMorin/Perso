@@ -23,17 +23,12 @@
 
     <div class="banner">
         <ul>
-            <li style="background-image: url('Images/Slider/borddeplage.jpg');">
-                <div class="backgrounddivh1">
-                    <h1 style="padding-left:2%;">Nouvhôtel</h1>
-                </div>
-            </li>
             <li style="background-image: url('Images/Slider/piscine.jpg');">
                 <div class="backgrounddivh1">
                     <h1 style="padding-left:2%;">Nouvhôtel</h1>
                 </div>
             </li>
-            <li style="background-image: url('Images/Slider/chaise.jpg');">
+            <li style="background-image: url('Images/Slider/granderoue.jpg');">
                 <div class="backgrounddivh1">
                     <h1 style="padding-left:2%;">Nouvhôtel</h1>
                 </div>
@@ -43,7 +38,12 @@
                     <h1 style="padding-left:2%;">Nouvhôtel</h1>
                 </div>
             </li>
-            <li style="background-image: url('Images/Slider/granderoue.jpg');">
+            <li style="background-image: url('Images/Slider/borddeplage.jpg');">
+                <div class="backgrounddivh1">
+                    <h1 style="padding-left:2%;">Nouvhôtel</h1>
+                </div>
+            </li>
+            <li style="background-image: url('Images/Slider/chaise.jpg');">
                 <div class="backgrounddivh1">
                     <h1>Nouvhôtel</h1>
                 </div>
@@ -99,7 +99,7 @@
                 Réserver une chambre en ligne n'a jamais été aussi facile ! Créer un compte en quelques clics et commencez à planifier votre prochain séjour.
             </p>
             <p>
-                <a class="btn btn-primary btn-lg" href="~\Account\Register.aspx">En savoir plus &raquo;</a>
+                <a class="btn btn-primary btn-lg" href="Account\Register.aspx">En savoir plus &raquo;</a>
             </p>
 
         </div>

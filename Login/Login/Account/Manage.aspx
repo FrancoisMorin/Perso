@@ -149,7 +149,7 @@
 
                 <asp:PlaceHolder runat="server" ID="changePasswordHolder" Visible="false">
                     <div class="form-horizontal">
-                        <h4>Changer la forme du mot de passe</h4>
+                        <h4>Changer le mot de passe</h4>
                         <hr />
                         <asp:ValidationSummary runat="server" ShowModelStateErrors="true" CssClass="text-danger" />
                         <div class="form-group">
@@ -168,7 +168,8 @@
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="NewPassword"
                                     CssClass="text-danger" Display="Dynamic" ErrorMessage="Le nouveau mot de passe est requis."
                                     ValidationGroup="ChangePassword" />
-                                <asp:RegularExpressionValidator CssClass="text-danger" Display="Dynamic" ID="RegularExpressionValidator1" runat="server" ErrorMessage="Le mot de passe doit contenir au moins 8 caractères, un nombre et un caractère spécial." ControlToValidate="NewPassword" ValidationExpression="^.*(?=.{8,})(?=.*[\d])(?=.*[\W]).*$"/>       
+                                <asp:RegularExpressionValidator CssClass="text-danger" Display="Dynamic" ID="RegularExpressionValidator1" runat="server" ErrorMessage="Le mot de passe doit contenir 7 caractères sans majuscule, ne doit pas commencer pas un chiffre et ne doit pas contenir de caractère spécial." ControlToValidate="NewPassword" ValidationExpression="\b[a-z](([0-9]|[a-z]){6})\b">       
+                                </asp:RegularExpressionValidator>     
                             </div>
                         </div>
                         <div class="form-group">
