@@ -1,10 +1,15 @@
-ï»¿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Contact.aspx.vb" Inherits="Login.Contact" %>
+<%-- **************************************************************************************** 
+Créée le : 10 novembre 2014
+Par : François Morin
+Date de dernière modification : 2014-12-15 12:28:48 
+****************************************************************************************************** --%>
+<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Contact.aspx.vb" Inherits="Login.Contact" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="row">
         <div class="col-md-10">
-            <h2>Cliquer sur un hÃ´tel pour voir sa localisation et ses coordonnÃ©es</h2>
+            <h2>Cliquer sur un hôtel pour voir sa localisation et ses coordonnées</h2>
             <hr />
         </div>
     </div>

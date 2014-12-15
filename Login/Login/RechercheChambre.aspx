@@ -1,11 +1,16 @@
-ï»¿<%@ Page Title="Nos hÃ´tels" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="RechercheChambre.aspx.vb" Inherits="Login.RechercheChambre" %>
+<%-- **************************************************************************************** 
+Créée le : 10 novembre 2014
+Par : François Morin
+Date de dernière modification : 2014-12-15 12:28:48 
+****************************************************************************************************** --%>
+<%@ Page Title="Nos hôtels" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="RechercheChambre.aspx.vb" Inherits="Login.RechercheChambre" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Rechercher un hÃ´tel</h2>
+    <h2>Rechercher un hôtel</h2>
     <br />
 
     <div class="panel panel-default">
-        <div class="panel-heading">Informations du sÃ©jour</div>
+        <div class="panel-heading">Informations du séjour</div>
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-4">
@@ -13,13 +18,13 @@
                         <ContentTemplate>
                             <div class="form-group">
                                 <div class="col-md-10 input-group">
-                                    <asp:TextBox Enabled="false" ID="txtDateDebut" runat="server" CssClass="form-control" Width="99%" Text="SÃ©lectionnez une date de dÃ©but..." />
+                                    <asp:TextBox Enabled="false" ID="txtDateDebut" runat="server" CssClass="form-control" Width="99%" Text="Sélectionnez une date de début..." />
                                     <span class="input-group-btn" style="float: left;">
                                         <asp:Button ID="btnExpandCalendarDebut" CssClass="btn btn-success" runat="server" Text="+" Width="30px" />
                                     </span>
                                 </div>
 
-                                <asp:Calendar ID="CalendrierDebut" runat="server" DayNameFormat="FirstLetter" Font-Names="Arial" Font-Size="11px" NextMonthText="Â»" PrevMonthText="Â«" SelectionMode="Day" CssClass="myCalendar" BorderStyle="None" CellPadding="1" Visible="False">
+                                <asp:Calendar ID="CalendrierDebut" runat="server" DayNameFormat="FirstLetter" Font-Names="Arial" Font-Size="11px" NextMonthText="»" PrevMonthText="«" SelectionMode="Day" CssClass="myCalendar" BorderStyle="None" CellPadding="1" Visible="False">
                                     <OtherMonthDayStyle ForeColor="Gray" />
                                     <DayStyle CssClass="myCalendarDay" />
                                     <SelectedDayStyle Font-Bold="True" Font-Size="12px" BackColor="#75baf7" />
@@ -36,13 +41,13 @@
                         <ContentTemplate>
                             <div class="form-group">
                                 <div class="col-md-10 input-group">
-                                    <asp:TextBox Enabled="false" ID="txtDateFin" runat="server" CssClass="form-control" Width="99%" Text="SÃ©lectionnez une date de fin..." />
+                                    <asp:TextBox Enabled="false" ID="txtDateFin" runat="server" CssClass="form-control" Width="99%" Text="Sélectionnez une date de fin..." />
                                     <span class="input-group-btn" style="float: left;">
                                         <asp:Button ID="btnExpandCalendarFin" Enabled="false" CssClass="btn btn-success disabled" runat="server" Text="+" Width="30px" />
                                     </span>
                                 </div>
 
-                                <asp:Calendar ID="CalendrierFin" runat="server" DayNameFormat="FirstLetter" Font-Names="Arial" Font-Size="11px" NextMonthText="Â»" PrevMonthText="Â«" SelectionMode="Day" CssClass="myCalendar" BorderStyle="None" CellPadding="1" Visible="False">
+                                <asp:Calendar ID="CalendrierFin" runat="server" DayNameFormat="FirstLetter" Font-Names="Arial" Font-Size="11px" NextMonthText="»" PrevMonthText="«" SelectionMode="Day" CssClass="myCalendar" BorderStyle="None" CellPadding="1" Visible="False">
                                     <OtherMonthDayStyle ForeColor="Gray" />
                                     <DayStyle CssClass="myCalendarDay" />
                                     <SelectedDayStyle Font-Bold="True" Font-Size="12px" BackColor="#75baf7" />
@@ -87,7 +92,7 @@
                 <LayoutTemplate>
                     <div class="list-group">
                         <div class="well">
-                            <a href="#" class="list-group-item active">RÃ©sultats de la recherche</a>
+                            <a href="#" class="list-group-item active">Résultats de la recherche</a>
                             <asp:PlaceHolder ID="itemPlaceHolder" runat="server" />
                         </div>
                     </div>
@@ -104,7 +109,7 @@
                                 <div class="col-md-10">
                                     <ul>
                                         <li><strong>Nombre de chambres: </strong><%# Eval("NbChambre")%></li>
-                                        <li><strong>Nombre d'Ã©toiles: </strong><%# Eval("NbEtoiles")%></li>
+                                        <li><strong>Nombre d'étoiles: </strong><%# Eval("NbEtoiles")%></li>
                                         <li><strong>Services: </strong><%# Eval("TypeService")%></li>
                                     </ul>
                                 </div>                                
@@ -114,15 +119,15 @@
                                 <fieldset><legend>Pour nous rejoindre</legend></fieldset>
                                 <div class="col-md-10">
                                     <ul>
-                                        <li><strong>No. tÃ©lÃ©phone: </strong><%# Eval("NoTelephoneHotel")%></li>
-                                        <li><strong>No. tÃ©lÃ©copieur: </strong><%# Eval("NoTelecopieurHotel")%></li>
+                                        <li><strong>No. téléphone: </strong><%# Eval("NoTelephoneHotel")%></li>
+                                        <li><strong>No. télécopieur: </strong><%# Eval("NoTelecopieurHotel")%></li>
                                     </ul>
                                 </div>   
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <a href="Reservation.aspx?ID=<%# Eval("CodeHotel") %>" class="btn btn-success">RÃ©server &raquo;</a>
+                                    <a href="Reservation.aspx?ID=<%# Eval("CodeHotel") %>" class="btn btn-success">Réserver &raquo;</a>
                                 </div>
                             </div>
 

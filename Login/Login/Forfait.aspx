@@ -1,4 +1,9 @@
-ï»¿<%@ Page Title="Forfaits" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Forfait.aspx.vb" Inherits="Login.Forfait" %>
+<%-- **************************************************************************************** 
+Créée le : 10 novembre 2014
+Par : François Morin
+Date de dernière modification : 2014-12-15 12:28:48 
+****************************************************************************************************** --%>
+<%@ Page Title="Forfaits" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Forfait.aspx.vb" Inherits="Login.Forfait" %>
 
 <asp:Content ID="Content3" runat="server" ContentPlaceHolderID="UpperSlider">
     <div class="row">
@@ -47,7 +52,7 @@
                                             <h1><%# Eval("NomForfait")%></h1>
                                         </div>
                                         <div class="row">
-                                            <a href="Forfait.aspx?ID=<%# Eval("CodeForfait") %>" class="btn">DÃ©tails &raquo;</a>
+                                            <a href="Forfait.aspx?ID=<%# Eval("CodeForfait") %>" class="btn">Détails &raquo;</a>
                                         </div>
                                     </div>
                                 </div>
@@ -86,7 +91,7 @@
                             </div>
                             <div class="col-md-4">
                                 <ul>
-                                    <li><strong>DisponibilitÃ© de l'offre  </strong></li>
+                                    <li><strong>Disponibilité de l'offre  </strong></li>
                                     <li><strong>Du : </strong>
                                         <asp:Label ID="LabelDateDebut" runat="server" Text="DateDebut" /></li>
                                     <li><strong>Au : </strong>
@@ -102,7 +107,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <a runat="server" id="btnReserver" href="#" style="padding-left: 2%;" class="btn btn-success">RÃ©server &raquo;</a>
+                                <a runat="server" id="btnReserver" href="#" style="padding-left: 2%;" class="btn btn-success">Réserver &raquo;</a>
                             </div>
                         </div>
                     </div>

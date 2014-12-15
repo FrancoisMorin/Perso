@@ -1,4 +1,9 @@
-Ôªø<%@ Page Title="Se connecter" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Login.aspx.vb" Inherits="Login.Login" Async="true" %>
+<%-- **************************************************************************************** 
+CrÈÈe le : 10 novembre 2014
+Par : FranÁois Morin
+Date de derniËre modification : 2014-12-15 12:28:48 
+****************************************************************************************************** --%>
+<%@ Page Title="Se connecter" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Login.aspx.vb" Inherits="Login.Login" Async="true" %>
 
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 
@@ -9,7 +14,7 @@
         <div class="col-md-8">
             <section id="loginForm">
                 <div class="form-horizontal">
-                    <h4>Connectez-vous √† votre compte en ligne.</h4>
+                    <h4>Connectez-vous ‡ votre compte en ligne.</h4>
                     <hr />
                     <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                         <p class="text-danger">
@@ -21,7 +26,7 @@
                         <div class="col-md-10">
                             <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
-                                CssClass="text-danger" ErrorMessage="Le champ d‚Äôadresse de messagerie est obligatoire." />
+                                CssClass="text-danger" ErrorMessage="Le champ díadresse de messagerie est obligatoire." />
                         </div>
                     </div>
                     <div class="form-group">
@@ -41,8 +46,8 @@
                     <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Inscrire comme nouvel utilisateur</asp:HyperLink>
                 </p>
                 <p>
-                    <%-- Activez ceci une fois que vous avez activ√© la confirmation de votre compte pour la fonctionnalit√© de r√©initialisation du mot de passe
-                    <asp:HyperLink runat="server" ID="ForgotPasswordHyperLink" ViewStateMode="Disabled">Vous avez oubli√© votre mot de passe ? </asp:HyperLink>
+                    <%-- Activez ceci une fois que vous avez activÈ la confirmation de votre compte pour la fonctionnalitÈ de rÈinitialisation du mot de passe
+                    <asp:HyperLink runat="server" ID="ForgotPasswordHyperLink" ViewStateMode="Disabled">Vous avez oubliÈ votre mot de passe ? </asp:HyperLink>
                     --%>
                 </p>
             </section>
@@ -50,14 +55,14 @@
 
         <div class="col-md-4">
             <section id="socialLoginForm">
-                <h4>Inscrivez-vous d√®s aujourd'hui</h4>
+                <h4>Inscrivez-vous dËs aujourd'hui</h4>
                 <hr />
                 <p>
                     Utiliser votre compte en ligne pour
-                   r√©server une chambre en quelques clics.
-                    Si vous avez d√©j√† r√©serv√© dans l'un
-                    de nos h√¥tel, vous pouvez utiliser votre
-                    compte client qui existe d√©j√†.     
+                   rÈserver une chambre en quelques clics.
+                    Si vous avez dÈj‡ rÈservÈ dans l'un
+                    de nos hÙtel, vous pouvez utiliser votre
+                    compte client qui existe dÈj‡.     
                 </p>
             </section>
         </div>

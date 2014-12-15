@@ -1,4 +1,9 @@
-ï»¿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="RegisterExternalLogin.aspx.vb" Inherits="Login.RegisterExternalLogin" Async="true" %>
+<%-- **************************************************************************************** 
+Créée le : 10 novembre 2014
+Par : François Morin
+Date de dernière modification : 2014-12-15 12:28:48 
+****************************************************************************************************** --%>
+<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="RegisterExternalLogin.aspx.vb" Inherits="Login.RegisterExternalLogin" Async="true" %>
 
 <%@ Import Namespace="Login" %>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
@@ -10,7 +15,7 @@
             <hr />
             <asp:ValidationSummary runat="server" ShowModelStateErrors="true" CssClass="text-danger" />
             <p class="text-info">
-                Vous avez Ã©tÃ© authentifiÃ© auprÃ¨s de <strong><%: ProviderName %></strong>. Veuillez entrer une adresse de messagerie ci-dessous pour le site actuel
+                Vous avez été authentifié auprès de <strong><%: ProviderName %></strong>. Veuillez entrer une adresse de messagerie ci-dessous pour le site actuel
                 et cliquer sur le bouton Connexion.
             </p>
 
@@ -19,7 +24,7 @@
                 <div class="col-md-10">
                     <asp:TextBox runat="server" ID="email" CssClass="form-control" TextMode="Email" />
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="email"
-                        Display="Dynamic" CssClass="text-danger" ErrorMessage="Une adresse de messagerie est nÃ©cessaire" />
+                        Display="Dynamic" CssClass="text-danger" ErrorMessage="Une adresse de messagerie est nécessaire" />
                     <asp:ModelErrorMessage runat="server" ModelStateKey="email" CssClass="text-error" />
                 </div>
             </div>

@@ -1,4 +1,9 @@
-ï»¿<%@ Page Title="Nos Salles" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="RechercheSalle.aspx.vb" Inherits="Login.RechercheSalle" %>
+<%-- **************************************************************************************** 
+Créée le : 10 novembre 2014
+Par : François Morin
+Date de dernière modification : 2014-12-15 12:28:48 
+****************************************************************************************************** --%>
+<%@ Page Title="Nos Salles" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="RechercheSalle.aspx.vb" Inherits="Login.RechercheSalle" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -9,7 +14,7 @@
     <div class="row">
         <div class="well">
             <h2>Nos salles</h2>
-            <p><strong>Consultez nos salles en ligne pour commencer la planification de vos Ã©vÃ¨nements. Contactez nous par tÃ©lÃ©phone pour effectuer une rÃ©servation.</strong></p>
+            <p><strong>Consultez nos salles en ligne pour commencer la planification de vos évènements. Contactez nous par téléphone pour effectuer une réservation.</strong></p>
         </div>
     </div>
 
@@ -21,7 +26,7 @@
 
                     <div class="col-md-5">
                         <div class="form-group">
-                            <asp:Label ID="Label1" runat="server" AssociatedControlID="txtHotelRecherche" Text="Entrez un nom d'hÃ´tel" />
+                            <asp:Label ID="Label1" runat="server" AssociatedControlID="txtHotelRecherche" Text="Entrez un nom d'hôtel" />
                             <div class="col-md-8 input-group">
                                 <asp:TextBox runat="server" ID="txtHotelRecherche" CssClass="form-control" Width="80%" Text="" />
                                 <span class="input-group-btn" style="float: left;">

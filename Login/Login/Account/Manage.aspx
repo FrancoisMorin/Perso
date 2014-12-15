@@ -1,4 +1,9 @@
-ï»¿<%@ Page Title="GÃ©rer le compte" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Manage.aspx.vb" Inherits="Login.Manage" %>
+<%-- **************************************************************************************** 
+Créée le : 10 novembre 2014
+Par : François Morin
+Date de dernière modification : 2014-12-15 12:28:48 
+****************************************************************************************************** --%>
+<%@ Page Title="Gérer le compte" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Manage.aspx.vb" Inherits="Login.Manage" %>
 
 <%@ Import Namespace="Login" %>
 <%@ Import Namespace="Microsoft.AspNet.Identity" %>
@@ -18,7 +23,7 @@
 
             <section id="informationsForm">
                 <asp:PlaceHolder runat="server" ID="modifInfo" Visible="true">
-                    <p>Vous Ãªtes connectÃ© en tant que <strong><%: User.Identity.GetUserName() %></strong>.</p>
+                    <p>Vous êtes connecté en tant que <strong><%: User.Identity.GetUserName() %></strong>.</p>
                     <div class="form-horizontal">
                         <h4>Modifier les informations du compte</h4>
                         <hr />
@@ -40,23 +45,23 @@
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="txtPrenom" CssClass="form-control" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPrenom"
-                                    CssClass="text-danger" ErrorMessage="Le champ de prÃ©nom est obligatoire." />
+                                    CssClass="text-danger" ErrorMessage="Le champ de prénom est obligatoire." />
                             </div>
                         </div>
 
                         <%--Telephone--%>
                         <div class="form-group">
-                            <asp:Label runat="server" ID="Label3" AssociatedControlID="txtNoTelephone" CssClass="col-md-2 control-label">NumÃ©ro de tÃ©lÃ©phone</asp:Label>
+                            <asp:Label runat="server" ID="Label3" AssociatedControlID="txtNoTelephone" CssClass="col-md-2 control-label">Numéro de téléphone</asp:Label>
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="txtNoTelephone" CssClass="form-control" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNoTelephone"
-                                    CssClass="text-danger" ErrorMessage="Le champ de numÃ©ro de tÃ©lÃ©phone est obligatoire." />
+                                    CssClass="text-danger" ErrorMessage="Le champ de numéro de téléphone est obligatoire." />
                             </div>
                         </div>
 
                         <%--Cellulaire--%>
                         <div class="form-group">
-                            <asp:Label runat="server" ID="Label4" AssociatedControlID="txtCellulaire" CssClass="col-md-2 control-label">NumÃ©ro de cellulaire</asp:Label>
+                            <asp:Label runat="server" ID="Label4" AssociatedControlID="txtCellulaire" CssClass="col-md-2 control-label">Numéro de cellulaire</asp:Label>
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="txtCellulaire" CssClass="form-control" />
                             </div>
@@ -106,11 +111,11 @@
             <section id="passwordForm">
                 <asp:PlaceHolder runat="server" ID="setPassword" Visible="false">
                     <p>
-                        Vous ne possÃ©dez pas de mot de passe local pour ce site. Ajoutez un mot de passe
+                        Vous ne possédez pas de mot de passe local pour ce site. Ajoutez un mot de passe
                         local pour pouvoir vous connecter sans ID de connexion externe.
                     </p>
                     <div class="form-horizontal">
-                        <h4>Formulaire de dÃ©finition de mot de passe</h4>
+                        <h4>Formulaire de définition de mot de passe</h4>
                         <hr />
                         <asp:ValidationSummary runat="server" ShowModelStateErrors="true" CssClass="text-danger" />
                         <div class="form-group">
@@ -126,7 +131,7 @@
                         </div>
 
                         <div class="form-group">
-                            <asp:Label runat="server" AssociatedControlID="confirmPassword" CssClass="col-md-2 control-label">Confirmer le mot de passeÂ </asp:Label>
+                            <asp:Label runat="server" AssociatedControlID="confirmPassword" CssClass="col-md-2 control-label">Confirmer le mot de passe </asp:Label>
                             <div class="col-md-10">
                                 <asp:TextBox runat="server" ID="confirmPassword" TextMode="Password" CssClass="form-control" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="confirmPassword"
@@ -141,7 +146,7 @@
 
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <asp:Button runat="server" Text="DÃ©finir le mot de passe" ValidationGroup="SetPassword" OnClick="SetPassword_Click" CssClass="btn btn-default" />
+                                <asp:Button runat="server" Text="Définir le mot de passe" ValidationGroup="SetPassword" OnClick="SetPassword_Click" CssClass="btn btn-default" />
                             </div>
                         </div>
                     </div>
@@ -168,7 +173,7 @@
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="NewPassword"
                                     CssClass="text-danger" Display="Dynamic" ErrorMessage="Le nouveau mot de passe est requis."
                                     ValidationGroup="ChangePassword" />
-                                <asp:RegularExpressionValidator CssClass="text-danger" Display="Dynamic" ID="RegularExpressionValidator1" runat="server" ErrorMessage="Le mot de passe doit contenir 7 caractÃ¨res sans majuscule, ne doit pas commencer pas un chiffre et ne doit pas contenir de caractÃ¨re spÃ©cial." ControlToValidate="NewPassword" ValidationExpression="\b[a-z](([0-9]|[a-z]){6})\b">       
+                                <asp:RegularExpressionValidator CssClass="text-danger" Display="Dynamic" ID="RegularExpressionValidator1" runat="server" ErrorMessage="Le mot de passe doit contenir 7 caractères sans majuscule, ne doit pas commencer pas un chiffre et ne doit pas contenir de caractère spécial." ControlToValidate="NewPassword" ValidationExpression="\b[a-z](([0-9]|[a-z]){6})\b">       
                                 </asp:RegularExpressionValidator>     
                             </div>
                         </div>

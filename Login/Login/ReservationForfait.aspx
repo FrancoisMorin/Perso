@@ -1,7 +1,12 @@
-ï»¿<%@ Page Title="RÃ©servation forfait" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="ReservationForfait.aspx.vb" Inherits="Login.ReservationForfait" %>
+<%-- **************************************************************************************** 
+Créée le : 10 novembre 2014
+Par : François Morin
+Date de dernière modification : 2014-12-15 12:28:48 
+****************************************************************************************************** --%>
+<%@ Page Title="Réservation forfait" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="ReservationForfait.aspx.vb" Inherits="Login.ReservationForfait" %>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>RÃ©servation avec forfait</h2>
+    <h2>Réservation avec forfait</h2>
     <asp:PlaceHolder runat="server" ID="MessagePlaceHolder" Visible="false">
         <div class="alert alert-danger">
             <p><strong><%: MonMessage%></strong></p>
@@ -13,22 +18,22 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Confirmer la rÃ©servation</h4>
+                    <h4 class="modal-title" id="myModalLabel">Confirmer la réservation</h4>
                 </div>
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <asp:Label runat="server" ID="MonLabel1" CssClass="control-label"><strong>Date d'arrivÃ© : </strong>
+                        <asp:Label runat="server" ID="MonLabel1" CssClass="control-label"><strong>Date d'arrivé : </strong>
                             <asp:Label ID="lblDateDebut" runat="server" CssClass="control-label" /></asp:Label>
                     </div>
 
                     <div class="form-group">
-                        <asp:Label runat="server" ID="MonLabel2" CssClass="control-label"><strong>Date de dÃ©part : </strong>
+                        <asp:Label runat="server" ID="MonLabel2" CssClass="control-label"><strong>Date de départ : </strong>
                             <asp:Label runat="server" ID="lblDateFin" CssClass="control-label" /></asp:Label>
                     </div>
 
                     <div class="form-group">
-                        <asp:Label runat="server" ID="MonLabel3" CssClass="control-label"><strong>RÃ©servation au nom de : </strong>
+                        <asp:Label runat="server" ID="MonLabel3" CssClass="control-label"><strong>Réservation au nom de : </strong>
                             <asp:Label runat="server" ID="lblNomReserv" CssClass="control-label" /></asp:Label>
                     </div>
 
@@ -43,13 +48,13 @@
                     </div>
 
                     <div class="form-group">
-                        <asp:Label runat="server" ID="MonLabel6" CssClass="control-label"><strong>NumÃ©ro carte de crÃ©dit : </strong>
+                        <asp:Label runat="server" ID="MonLabel6" CssClass="control-label"><strong>Numéro carte de crédit : </strong>
                             <asp:Label runat="server" ID="lblNoCarte" CssClass="control-label" /></asp:Label>
                     </div>
 
                     <div class="form-group">
                         <p>
-                            <strong>Un email vous sera envoyÃ© avec toutes les informations de votre rÃ©servation.</strong>
+                            <strong>Un email vous sera envoyé avec toutes les informations de votre réservation.</strong>
                         </p>
                     </div>
 
@@ -67,7 +72,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">DÃ©tails forfait</div>
+                <div class="panel-heading">Détails forfait</div>
                 <div class="panel-body">
 
                     <h3><asp:Label ID="LabelNomForfait" runat="server" Text="NomForfait" /></h3>
@@ -103,12 +108,12 @@
     <asp:Panel ID="MonPanelClient" runat="server" Visible="false">
         <asp:PlaceHolder runat="server" ID="MonPlaceHolder" Visible="true">
             <div class="panel panel-default">
-                <div class="panel-heading">CoordonnÃ©es client</div>
+                <div class="panel-heading">Coordonnées client</div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-8">
                             <div class="alert alert-info">
-                                <p><strong>Astuce : </strong>CrÃ©ez un compte en ligne pour effectuer vos rÃ©servations encore plus rapidement !</p>
+                                <p><strong>Astuce : </strong>Créez un compte en ligne pour effectuer vos réservations encore plus rapidement !</p>
                             </div>
                         </div>
                     </div>
@@ -132,7 +137,7 @@
 
                                 <%--Champ Prenom --%>
                                 <div class="form-group">
-                                    <asp:Label runat="server" ID="Label6" AssociatedControlID="txtPrenom" CssClass="col-md-3 control-label">PrÃ©nom</asp:Label>
+                                    <asp:Label runat="server" ID="Label6" AssociatedControlID="txtPrenom" CssClass="col-md-3 control-label">Prénom</asp:Label>
                                     <div class="col-md-6">
                                         <asp:TextBox runat="server" ID="txtPrenom" CssClass="form-control" />
                                     </div>
@@ -140,7 +145,7 @@
 
                                 <%-- Champ NoTelephone --%>
                                 <div class="form-group">
-                                    <asp:Label runat="server" ID="Label7" AssociatedControlID="txtNoTelephone" CssClass="col-md-3 control-label">NumÃ©ro de tÃ©lÃ©phone</asp:Label>
+                                    <asp:Label runat="server" ID="Label7" AssociatedControlID="txtNoTelephone" CssClass="col-md-3 control-label">Numéro de téléphone</asp:Label>
                                     <div class="col-md-6">
                                         <asp:TextBox runat="server" ID="txtNoTelephone" CssClass="form-control" />
                                     </div>
@@ -199,7 +204,7 @@
 
     <asp:PlaceHolder ID="InforReserv" runat="server" Visible="true">
         <div class="panel panel-default">
-            <div class="panel-heading">DÃ©tails du sÃ©jour</div>
+            <div class="panel-heading">Détails du séjour</div>
             <div class="panel-body">
                 <div class="well well-sm">
                     <fieldset><legend>Informations</legend></fieldset>
@@ -210,12 +215,12 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="btn-group btn-group-justified">
-                                                <asp:TextBox Enabled="false" ID="txtDateDebut" runat="server" CssClass="form-control" Text="SÃ©lectionnez une date de dÃ©but..." />
+                                                <asp:TextBox Enabled="false" ID="txtDateDebut" runat="server" CssClass="form-control" Text="Sélectionnez une date de début..." />
                                                 <asp:Button ID="btnExpandCalendarDebut" CssClass="btn btn-success" runat="server" Text="+" Width="30px" />
                                             </span>
                                         </div>
 
-                                        <asp:Calendar ID="CalendrierDebut" runat="server" DayNameFormat="FirstLetter" Font-Names="Arial" Font-Size="11px" NextMonthText="Â»" PrevMonthText="Â«" SelectionMode="Day" CssClass="myCalendar" BorderStyle="None" CellPadding="1" Visible="False">
+                                        <asp:Calendar ID="CalendrierDebut" runat="server" DayNameFormat="FirstLetter" Font-Names="Arial" Font-Size="11px" NextMonthText="»" PrevMonthText="«" SelectionMode="Day" CssClass="myCalendar" BorderStyle="None" CellPadding="1" Visible="False">
                                             <OtherMonthDayStyle ForeColor="Gray" />
                                             <DayStyle CssClass="myCalendarDay" />
                                             <SelectedDayStyle Font-Bold="True" Font-Size="12px" BackColor="#75baf7" />
@@ -233,12 +238,12 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="btn-group btn-group-justified">
-                                                <asp:TextBox Enabled="false" ID="txtDateFin" runat="server" CssClass="form-control" Text="SÃ©lectionnez une date de fin..." />
+                                                <asp:TextBox Enabled="false" ID="txtDateFin" runat="server" CssClass="form-control" Text="Sélectionnez une date de fin..." />
                                                 <asp:Button ID="btnExpandCalendarFin" Enabled="false" CssClass="btn btn-success disabled" runat="server" Text="+" Width="30px" />
                                             </span>
                                         </div>
 
-                                        <asp:Calendar ID="CalendrierFin" runat="server" DayNameFormat="FirstLetter" Font-Names="Arial" Font-Size="11px" NextMonthText="Â»" PrevMonthText="Â«" SelectionMode="Day" CssClass="myCalendar" BorderStyle="None" CellPadding="1" Visible="False">
+                                        <asp:Calendar ID="CalendrierFin" runat="server" DayNameFormat="FirstLetter" Font-Names="Arial" Font-Size="11px" NextMonthText="»" PrevMonthText="«" SelectionMode="Day" CssClass="myCalendar" BorderStyle="None" CellPadding="1" Visible="False">
                                             <OtherMonthDayStyle ForeColor="Gray" />
                                             <DayStyle CssClass="myCalendarDay" />
                                             <SelectedDayStyle Font-Bold="True" Font-Size="12px" BackColor="#75baf7" />
@@ -260,7 +265,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <fieldset class="form-horizontal">
-                                <legend>Informations de carte de crÃ©dit</legend>
+                                <legend>Informations de carte de crédit</legend>
 
                                 <div class="form-group">
                                     <asp:Label runat="server" ID="Label1" AssociatedControlID="cmbTypeCarte" CssClass="col-md-4">Type de carte</asp:Label>
@@ -275,7 +280,7 @@
 
                                 <div class="form-group">
                                     <div class="col-md-10">
-                                        <asp:Label runat="server" ID="Label2" AssociatedControlID="cmbTypeCarte" CssClass="control-label">NumÃ©ro carte de crÃ©dit</asp:Label>
+                                        <asp:Label runat="server" ID="Label2" AssociatedControlID="cmbTypeCarte" CssClass="control-label">Numéro carte de crédit</asp:Label>
                                         <asp:TextBox runat="server" ID="txtNoCarteCredit" CssClass="form-control" />
                                     </div>
                                 </div>
@@ -289,7 +294,7 @@
 
                                 <div class="form-group">
                                     <div class="col-md-10">
-                                        <asp:Label runat="server" ID="Label4" AssociatedControlID="txtNomDetenteurCarte" CssClass="control-label">Nom dÃ©tenteur</asp:Label>
+                                        <asp:Label runat="server" ID="Label4" AssociatedControlID="txtNomDetenteurCarte" CssClass="control-label">Nom détenteur</asp:Label>
                                         <asp:TextBox runat="server" ID="txtNomDetenteurCarte" CssClass="form-control" />
                                     </div>
                                 </div>

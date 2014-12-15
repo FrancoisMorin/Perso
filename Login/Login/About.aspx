@@ -1,17 +1,22 @@
-ï»¿<%@ Page Title="Contact" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.vb" Inherits="Login.About" %>
+<%-- **************************************************************************************** 
+Créée le : 10 novembre 2014
+Par : François Morin
+Date de dernière modification : 2014-12-15 12:28:48 
+****************************************************************************************************** --%>
+<%@ Page Title="Contact" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.vb" Inherits="Login.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="row">
         <div class="col-md-8">
-            <h1>Ã€ propos de NouvhÃ´tel</h1>
+            <h1>À propos de Nouvhôtel</h1>
             <hr />
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12">
-            <h2>NouvhÃ´tel : lâ€™histoire dâ€™une rÃ©ussite dans lâ€™industrie canadienne de la gestion hÃ´teliÃ¨re</h2>
+            <h2>Nouvhôtel : l’histoire d’une réussite dans l’industrie canadienne de la gestion hôtelière</h2>
         </div>
         
         <br />
@@ -22,9 +27,9 @@
 
         <div class="col-md-7">
             <blockquote class="pull-left">
-                Lors de sa fondation Ã  Richmond, en Colombie-Britannique, en 1962, NouvhÃ´tel ne comptait Ã  son actif quâ€™un seul hÃ´tel-motel de 62 chambres. Aujourdâ€™hui, câ€™est la plus importante sociÃ©tÃ© de gestion dâ€™hÃ´tels de premiÃ¨re classe au Canada.
-                Notre entreprise se targue maintenant dâ€™un portefeuille de plus de 40 hÃ´tels urbains, aÃ©roportuaires et de villÃ©giature et est considÃ©rÃ©e comme Ã©tant la marque de choix par les propriÃ©taires et clients avertis, un employeur exemplaire pour plus de 6 000 personnes et 
-                une sociÃ©tÃ© vivement consciente de ses responsabilitÃ©s sociales, d'un ocÃ©an Ã  l'autre.
+                Lors de sa fondation à Richmond, en Colombie-Britannique, en 1962, Nouvhôtel ne comptait à son actif qu’un seul hôtel-motel de 62 chambres. Aujourd’hui, c’est la plus importante société de gestion d’hôtels de première classe au Canada.
+                Notre entreprise se targue maintenant d’un portefeuille de plus de 40 hôtels urbains, aéroportuaires et de villégiature et est considérée comme étant la marque de choix par les propriétaires et clients avertis, un employeur exemplaire pour plus de 6 000 personnes et 
+                une société vivement consciente de ses responsabilités sociales, d'un océan à l'autre.
             </blockquote>
         </div>
 
@@ -41,9 +46,9 @@
 
         <div class="col-md-7">
             <blockquote class="pull-left">
-                Le leadership et la vision sont des traits qui marquent lâ€™histoire de la sociÃ©tÃ©. AprÃ¨s Ãªtre devenue la principale entreprise hÃ´teliÃ¨re de la Colombie-Britannique en 1970, NouvhÃ´tel a entrepris un ambitieux projet dâ€™expansion vers lâ€™est du pays.
-                En 1975, elle a inaugurÃ© le NouvhÃ´tel Chelsea au centre-ville de Toronto. Comptant 1 590 chambres, cet hÃ´tel est non seulement le plus vaste de NouvhÃ´tel, mais aussi de lâ€™ensemble du Canada. Delta a ajoutÃ© des hÃ´tels Ã  son portefeuille pendant les annÃ©es 80, notamment au Canada
-                Atlantique et au QuÃ©bec. MalgrÃ© un changement de main en 1987, le rythme rapide des projets dâ€™expansion et de revitalisation sâ€™est maintenu tout au long des annÃ©es 90.
+                Le leadership et la vision sont des traits qui marquent l’histoire de la société. Après être devenue la principale entreprise hôtelière de la Colombie-Britannique en 1970, Nouvhôtel a entrepris un ambitieux projet d’expansion vers l’est du pays.
+                En 1975, elle a inauguré le Nouvhôtel Chelsea au centre-ville de Toronto. Comptant 1 590 chambres, cet hôtel est non seulement le plus vaste de Nouvhôtel, mais aussi de l’ensemble du Canada. Delta a ajouté des hôtels à son portefeuille pendant les années 80, notamment au Canada
+                Atlantique et au Québec. Malgré un changement de main en 1987, le rythme rapide des projets d’expansion et de revitalisation s’est maintenu tout au long des années 90.
             </blockquote>
         </div>
 
@@ -57,7 +62,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h2>Au-delÃ  des salaires et des avantages sociaux</h2>
+            <h2>Au-delà des salaires et des avantages sociaux</h2>
         </div>
         
         <br />
@@ -68,10 +73,10 @@
 
         <div class="col-md-7">
             <blockquote class="pull-left">
-                Reconnue pour les garanties progressives quâ€™elle fait Ã  ses employÃ©s, NouvhÃ´tel continue dâ€™afficher lâ€™un des taux de roulement les plus faibles de lâ€™industrie hÃ´teliÃ¨re. Nous offrons Ã©galement un programme dâ€™assistance aux employÃ©s et
-                aux familles, ainsi que dâ€™innombrables possibilitÃ©s de carriÃ¨re. Le prestigieux Institut national de la qualitÃ© (INQ) a aussi confÃ©rÃ© deux Prix Canada pour lâ€™excellence Ã  NouvhÃ´tel, soit lâ€™un dans la catÃ©gorie QualitÃ© (2000) et lâ€™autre dans la catÃ©gorie Milieu
-                de travail sain (2004). Câ€™Ã©tait la premiÃ¨re fois de lâ€™histoire de lâ€™INQ quâ€™une entreprise hÃ´teliÃ¨re mÃ©ritait ces honneurs. Comparable au Malcolm Baldridge National Quality Award des Ã‰tats-Unis, le prix de lâ€™INQ est le plus important Ã  Ãªtre remis aux organismes 
-                canadiens qui excellent dans les domaines du leadership, du rendement, de la planification et des activitÃ©s axÃ©es sur les clients, les employÃ©s et les fournisseurs.
+                Reconnue pour les garanties progressives qu’elle fait à ses employés, Nouvhôtel continue d’afficher l’un des taux de roulement les plus faibles de l’industrie hôtelière. Nous offrons également un programme d’assistance aux employés et
+                aux familles, ainsi que d’innombrables possibilités de carrière. Le prestigieux Institut national de la qualité (INQ) a aussi conféré deux Prix Canada pour l’excellence à Nouvhôtel, soit l’un dans la catégorie Qualité (2000) et l’autre dans la catégorie Milieu
+                de travail sain (2004). C’était la première fois de l’histoire de l’INQ qu’une entreprise hôtelière méritait ces honneurs. Comparable au Malcolm Baldridge National Quality Award des États-Unis, le prix de l’INQ est le plus important à être remis aux organismes 
+                canadiens qui excellent dans les domaines du leadership, du rendement, de la planification et des activités axées sur les clients, les employés et les fournisseurs.
             </blockquote>
         </div>
     </div>

@@ -1,4 +1,9 @@
-ï»¿<%@ Page Title="Mot de passe oubliÃ©" Language="vb" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Forgot.aspx.vb" Inherits="Login.ForgotPassword" Async="true" %>
+<%-- **************************************************************************************** 
+Créée le : 10 novembre 2014
+Par : François Morin
+Date de dernière modification : 2014-12-15 12:28:48 
+****************************************************************************************************** --%>
+<%@ Page Title="Mot de passe oublié" Language="vb" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Forgot.aspx.vb" Inherits="Login.ForgotPassword" Async="true" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <h2><%: Title %>.</h2>
@@ -7,7 +12,7 @@
         <div class="col-md-8">
             <section id="loginForm">
                 <div class="form-horizontal">
-                    <h4>Vous avez oubliÃ© votre mot de passe ?</h4>
+                    <h4>Vous avez oublié votre mot de passe ?</h4>
                     <hr />
                       <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                         <p class="text-danger">
@@ -19,7 +24,7 @@
                         <div class="col-md-10">
                             <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
-                                CssClass="text-danger" ErrorMessage="Le champ dâ€™adresse de messagerie est obligatoire." />
+                                CssClass="text-danger" ErrorMessage="Le champ d’adresse de messagerie est obligatoire." />
                         </div>
                     </div>
                     <div class="form-group">

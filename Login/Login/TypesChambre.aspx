@@ -1,4 +1,9 @@
-ï»¿<%@ Page Title="Types de chambre" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="TypesChambre.aspx.vb" Inherits="Login.TypesChambre" %>
+<%-- **************************************************************************************** 
+Créée le : 10 novembre 2014
+Par : François Morin
+Date de dernière modification : 2014-12-15 12:28:48 
+****************************************************************************************************** --%>
+<%@ Page Title="Types de chambre" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="TypesChambre.aspx.vb" Inherits="Login.TypesChambre" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -8,8 +13,8 @@
 
     <div class="jumbotron backgradient">
         <h2><strong>Nos types de chambre</strong></h2>
-        <p>Trouvez le type de chambre qui convient le mieux pour votre sÃ©jour. Nos type de chambre sont standard dans tous nos hÃ´tels ce qui vous permettra d'avoir la mÃªme expÃ©rience partout.</p>
-        <p><a href="RechercheChambre.aspx" class="btn btn-primary btn-lg">RÃ©server &raquo;</a></p>
+        <p>Trouvez le type de chambre qui convient le mieux pour votre séjour. Nos type de chambre sont standard dans tous nos hôtels ce qui vous permettra d'avoir la même expérience partout.</p>
+        <p><a href="RechercheChambre.aspx" class="btn btn-primary btn-lg">Réserver &raquo;</a></p>
     </div>
 
     <%-- Panel Chambre Standard --%>
@@ -20,7 +25,7 @@
             <div class="row">
                 <div class="col-md-10">
                     <h1 class="gradient">Standard</h1>
-                    <p>Retrouvez le confort dÃ©sirÃ© pour un prix plus qu'abordable.</p>
+                    <p>Retrouvez le confort désiré pour un prix plus qu'abordable.</p>
                 </div>
             </div>
 
@@ -38,17 +43,17 @@
                 <div class="col-md-5">
                     <div class="col-md-10">
                         <ul>
-                            <li><strong>Dimensions :</strong> Environ 375 pieds carrÃ©es / 35 mÃ¨tres carrÃ©es</li>
-                            <li><strong>Orientation :</strong> VariÃ©e</li>
-                            <li><strong>Emplacement :</strong> Dans tout l'hÃ´tel</li>
+                            <li><strong>Dimensions :</strong> Environ 375 pieds carrées / 35 mètres carrées</li>
+                            <li><strong>Orientation :</strong> Variée</li>
+                            <li><strong>Emplacement :</strong> Dans tout l'hôtel</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-5">
                     <div class="col-md-10">
                         <ul>
-                            <li><strong>Nombre de lits : </strong>De 1 Ã  2</li>
-                            <li><strong>Ce type de chambre est disponible dans tous les hÃ´tels de la chaÃ®ne.</strong></li>
+                            <li><strong>Nombre de lits : </strong>De 1 à 2</li>
+                            <li><strong>Ce type de chambre est disponible dans tous les hôtels de la chaîne.</strong></li>
                         </ul>
                     </div>
                 </div>
@@ -70,17 +75,17 @@
                     <div class="col-md-10">
                         <ul>
                             <li>Peignoir</li>
-                            <li>2 tÃ©lÃ©phones</li>
-                            <li>TÃ©lÃ©vision LCD</li>
+                            <li>2 téléphones</li>
+                            <li>Télévision LCD</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-5">
                     <div class="col-md-10">
                         <ul>
-                            <li>Mini rÃ©frigÃ©rateur</li>
-                            <li>AccÃ¨s Internet haute vitesse sans-fil</li>
-                            <li>DÃ©jeuner servi au lit</li>
+                            <li>Mini réfrigérateur</li>
+                            <li>Accès Internet haute vitesse sans-fil</li>
+                            <li>Déjeuner servi au lit</li>
                         </ul>
                     </div>
 
@@ -125,7 +130,7 @@
                             <br />
                             <div class="row">
                                 <div class="col-md-4" style="overflow:hidden;">
-                                    <a href="Images/TypeChambre/STD/EvierSTD.jpg" data-lightbox="Standard" data-title="Ã‰vier standard">
+                                    <a href="Images/TypeChambre/STD/EvierSTD.jpg" data-lightbox="Standard" data-title="Évier standard">
                                         <asp:Image ID="Image4" runat="server" ImageUrl="~\Images\TypeChambre\STD\EvierSTD.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>
                                 </div>
@@ -159,7 +164,7 @@
             <div class="row">
                 <div class="col-md-10">
                     <h1 class="gradient">Deluxe</h1>
-                    <p>Confort supÃ©rieur pour la meilleure expÃ©rience possible.</p>
+                    <p>Confort supérieur pour la meilleure expérience possible.</p>
                 </div>
             </div>
 
@@ -177,17 +182,17 @@
                 <div class="col-md-5">
                     <div class="col-md-10">
                         <ul>
-                            <li><strong>Dimensions :</strong> Environ 487 pieds carrÃ©es / 45 mÃ¨tres carrÃ©es</li>
-                            <li><strong>Orientation :</strong> VariÃ©e</li>
-                            <li><strong>Emplacement :</strong> Dans tout l'hÃ´tel</li>
+                            <li><strong>Dimensions :</strong> Environ 487 pieds carrées / 45 mètres carrées</li>
+                            <li><strong>Orientation :</strong> Variée</li>
+                            <li><strong>Emplacement :</strong> Dans tout l'hôtel</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-5">
                     <div class="col-md-10">
                         <ul>
-                            <li><strong>Nombre de lits : </strong>De 1 Ã  2</li>
-                            <li><strong>Ce type de chambre est disponible dans tous les hÃ´tels de la chaÃ®ne.</strong></li>
+                            <li><strong>Nombre de lits : </strong>De 1 à 2</li>
+                            <li><strong>Ce type de chambre est disponible dans tous les hôtels de la chaîne.</strong></li>
                         </ul>
                     </div>
                 </div>
@@ -209,8 +214,8 @@
                     <div class="col-md-10">
                         <ul>
                             <li>Ordinateur</li>
-                            <li>2 tÃ©lÃ©phones</li>
-                            <li>TÃ©lÃ©vision LCD</li>
+                            <li>2 téléphones</li>
+                            <li>Télévision LCD</li>
                             <li>Foyer au gas</li>
                         </ul>
                     </div>
@@ -218,10 +223,10 @@
                 <div class="col-md-5">
                     <div class="col-md-10">
                         <ul>
-                            <li>Mini rÃ©frigÃ©rateur</li>
-                            <li>AccÃ¨s Internet haute vitesse sans-fil</li>
+                            <li>Mini réfrigérateur</li>
+                            <li>Accès Internet haute vitesse sans-fil</li>
                             <li>Bain tourbillon</li>
-                            <li>CafÃ© gratuit servi aux chambres</li>
+                            <li>Café gratuit servi aux chambres</li>
                         </ul>
                     </div>
                 </div>
@@ -299,7 +304,7 @@
             <div class="row">
                 <div class="col-md-10">
                     <h1 class="gradient">Suite</h1>
-                    <p>Grand espaces pour vous offrir une expÃ©rience mÃ©morable.</p>
+                    <p>Grand espaces pour vous offrir une expérience mémorable.</p>
                 </div>
             </div>
 
@@ -317,17 +322,17 @@
                 <div class="col-md-5">
                     <div class="col-md-10">
                         <ul>
-                            <li><strong>Dimensions :</strong> Environ 450-500 pieds carrÃ©es / 41-46 mÃ¨tres carrÃ©es</li>
+                            <li><strong>Dimensions :</strong> Environ 450-500 pieds carrées / 41-46 mètres carrées</li>
                             <li><strong>Orientation :</strong> Vue exceptionnelle</li>
-                            <li><strong>Emplacement :</strong> 2e et 3e Ã©tage</li>
+                            <li><strong>Emplacement :</strong> 2e et 3e étage</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-5">
                     <div class="col-md-10">
                         <ul>
-                            <li><strong>Nombre de lits : </strong>De 1 Ã  5</li>
-                            <li><strong>Consulter nos hÃ´tels pour savoir si il est possible de rÃ©server une suite</strong></li>
+                            <li><strong>Nombre de lits : </strong>De 1 à 5</li>
+                            <li><strong>Consulter nos hôtels pour savoir si il est possible de réserver une suite</strong></li>
                         </ul>
                     </div>
                 </div>
@@ -349,10 +354,10 @@
                     <div class="col-md-10">
                         <ul>
                             <li>Ordinateur</li>
-                            <li>2 tÃ©lÃ©phones</li>
-                            <li>TÃ©lÃ©vision ACL de 37 po</li>
+                            <li>2 téléphones</li>
+                            <li>Télévision ACL de 37 po</li>
                             <li>Foyer au gas</li>
-                            <li>AccÃ¨s terrace</li>
+                            <li>Accès terrace</li>
                             <li>Articles de toilette</li>
                         </ul>
                     </div>
@@ -361,11 +366,11 @@
                     <div class="col-md-10">
                         <ul>
                             <li>Coffre fort</li>
-                            <li>Mini-rÃ©frigÃ©rateur</li>
-                            <li>AccÃ¨s Internet haute vitesse sans-fil</li>
+                            <li>Mini-réfrigérateur</li>
+                            <li>Accès Internet haute vitesse sans-fil</li>
                             <li>Bain tourbillon</li>
                             <li>Douche de plein-pied</li>
-                            <li>CafÃ© gratuit servi aux chambres</li>
+                            <li>Café gratuit servi aux chambres</li>
                         </ul>
                     </div>
                 </div>
@@ -414,7 +419,7 @@
                                     </a>
                                 </div>
                                 <div class="col-md-4" style="overflow:hidden;">
-                                    <a href="Images/TypeChambre/SUI/EvierSUI.jpg" data-lightbox="Suite" data-title="Ã‰vier suite">
+                                    <a href="Images/TypeChambre/SUI/EvierSUI.jpg" data-lightbox="Suite" data-title="Évier suite">
                                         <asp:Image ID="Image17" runat="server" ImageUrl="~\Images\TypeChambre\SUI\EvierSUI.jpg" CssClass="clickimage" Width="300" Height="144" BorderStyle="None" />
                                     </a>
                                 </div>

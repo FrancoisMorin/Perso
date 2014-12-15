@@ -1,4 +1,9 @@
-ï»¿<%@ Page Title="S'inscrire" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Register.aspx.vb" Inherits="Login.Register" %>
+<%-- **************************************************************************************** 
+Créée le : 10 novembre 2014
+Par : François Morin
+Date de dernière modification : 2014-12-15 12:28:48 
+****************************************************************************************************** --%>
+<%@ Page Title="S'inscrire" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Register.aspx.vb" Inherits="Login.Register" %>
 
 <%@ Import Namespace="Login" %>
 <%@ Import Namespace="Microsoft.AspNet.Identity" %>
@@ -9,7 +14,7 @@
     </p>
 
     <div class="form-horizontal">
-        <h4>CrÃ©er un compte.</h4>
+        <h4>Créer un compte.</h4>
         <hr />
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
         <div class="form-group">
@@ -17,7 +22,7 @@
             <div class="col-md-5">
                 <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
-                    CssClass="text-danger" ErrorMessage="Le champ dâ€™adresse de messagerie est obligatoire." />
+                    CssClass="text-danger" ErrorMessage="Le champ d’adresse de messagerie est obligatoire." />
             </div>
         </div>
         
@@ -28,14 +33,14 @@
                 <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
                     CssClass="text-danger" Display="Dynamic" ErrorMessage="Le champ mot de passe est requis." />
-                <asp:RegularExpressionValidator CssClass="text-danger" Display="Dynamic" ID="RegularExpressionValidator1" runat="server" ErrorMessage="Le mot de passe doit contenir 7 caractÃ¨res sans majuscule, ne doit pas commencer pas un chiffre et ne doit pas contenir de caractÃ¨re spÃ©cial." ControlToValidate="Password" ValidationExpression="\b[a-z](([0-9]|[a-z]){6})\b">       
+                <asp:RegularExpressionValidator CssClass="text-danger" Display="Dynamic" ID="RegularExpressionValidator1" runat="server" ErrorMessage="Le mot de passe doit contenir 7 caractères sans majuscule, ne doit pas commencer pas un chiffre et ne doit pas contenir de caractère spécial." ControlToValidate="Password" ValidationExpression="\b[a-z](([0-9]|[a-z]){6})\b">       
                 </asp:RegularExpressionValidator>
             </div>
         </div>
 
         <%-- Champ validation --%>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-2 control-label">Confirmer le mot de passeÂ </asp:Label>
+            <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-2 control-label">Confirmer le mot de passe </asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="ConfirmPassword" TextMode="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword"
@@ -53,38 +58,38 @@
                 <asp:TextBox runat="server" ID="txtNom" CssClass="form-control" />
                 <asp:RequiredFieldValidator Display="Dynamic" runat="server" ControlToValidate="txtNom"
                     CssClass="text-danger" ErrorMessage="Le champ de nom est obligatoire." />
-                <asp:RegularExpressionValidator CssClass="text-danger" Display="Dynamic" ID="RegularExpressionValidator3" runat="server" ErrorMessage="Le nom ne doit pas contenir plus de 20 caractÃ¨res." ControlToValidate="txtNom" ValidationExpression="\b\w{1,20}\b">       
+                <asp:RegularExpressionValidator CssClass="text-danger" Display="Dynamic" ID="RegularExpressionValidator3" runat="server" ErrorMessage="Le nom ne doit pas contenir plus de 20 caractères." ControlToValidate="txtNom" ValidationExpression="\b\w{1,20}\b">       
                 </asp:RegularExpressionValidator>
             </div>
         </div>
 
         <%-- Champ Prenom --%>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="txtPrenom" CssClass="col-md-2 control-label">PrÃ©nom</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="txtPrenom" CssClass="col-md-2 control-label">Prénom</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="txtPrenom" CssClass="form-control" />
                 <asp:RequiredFieldValidator Display="Dynamic" runat="server" ControlToValidate="txtPrenom"
-                    CssClass="text-danger" ErrorMessage="Le champ de prÃ©nom est obligatoire." />
-                <asp:RegularExpressionValidator CssClass="text-danger" Display="Dynamic" ID="RegularExpressionValidator4" runat="server" ErrorMessage="Le prÃ©nom ne doit pas contenir plus de 20 caractÃ¨res." ControlToValidate="txtPrenom" ValidationExpression="\b\w{1,20}\b">       
+                    CssClass="text-danger" ErrorMessage="Le champ de prénom est obligatoire." />
+                <asp:RegularExpressionValidator CssClass="text-danger" Display="Dynamic" ID="RegularExpressionValidator4" runat="server" ErrorMessage="Le prénom ne doit pas contenir plus de 20 caractères." ControlToValidate="txtPrenom" ValidationExpression="\b\w{1,20}\b">       
                 </asp:RegularExpressionValidator>
             </div>
         </div>
 
         <%-- Champ NoTelephone --%>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="txtNoTelephone" CssClass="col-md-2 control-label">NumÃ©ro de tÃ©lÃ©phone</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="txtNoTelephone" CssClass="col-md-2 control-label">Numéro de téléphone</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="txtNoTelephone" CssClass="form-control"/>
                 <asp:RequiredFieldValidator Display="Dynamic" runat="server" ControlToValidate="txtNoTelephone"
-                    CssClass="text-danger" ErrorMessage="Le champ de numÃ©ro de tÃ©lÃ©phone est obligatoire." />
-                <asp:RegularExpressionValidator CssClass="text-danger" Display="Dynamic" ID="RegularExpressionValidator5" runat="server" ErrorMessage="Le format du numÃ©ro de tÃ©lÃ©phone est invalide." ControlToValidate="txtNoTelephone" ValidationExpression="\b\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})\b">       
+                    CssClass="text-danger" ErrorMessage="Le champ de numéro de téléphone est obligatoire." />
+                <asp:RegularExpressionValidator CssClass="text-danger" Display="Dynamic" ID="RegularExpressionValidator5" runat="server" ErrorMessage="Le format du numéro de téléphone est invalide." ControlToValidate="txtNoTelephone" ValidationExpression="\b\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})\b">       
                 </asp:RegularExpressionValidator>
             </div>
         </div>
 
         <%-- Champ NoCellulaire --%>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="txtNoCellulaire" CssClass="col-md-2 control-label">NumÃ©ro de cellulaire</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="txtNoCellulaire" CssClass="col-md-2 control-label">Numéro de cellulaire</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="txtNoCellulaire" CssClass="form-control" />
             </div>

@@ -1,4 +1,9 @@
-ï»¿<%@ Page Title="Accueil" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.vb" Inherits="Login._Default" %>
+<%-- **************************************************************************************** 
+Créée le : 10 novembre 2014
+Par : François Morin
+Date de dernière modification : 2014-12-15 12:28:48 
+****************************************************************************************************** --%>
+<%@ Page Title="Accueil" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.vb" Inherits="Login._Default" %>
 
 <asp:Content style="width: 100%;" runat="server" ContentPlaceHolderID="slidercontent">
     <script src="//code.jquery.com/jquery-latest.min.js"></script>
@@ -25,27 +30,27 @@
         <ul>
             <li style="background-image: url('Images/Slider/piscine.jpg');">
                 <div class="backgrounddivh1">
-                    <h1 style="padding-left:2%;">NouvhÃ´tel</h1>
+                    <h1 style="padding-left:2%;">Nouvhôtel</h1>
                 </div>
             </li>
             <li style="background-image: url('Images/Slider/granderoue.jpg');">
                 <div class="backgrounddivh1">
-                    <h1 style="padding-left:2%;">NouvhÃ´tel</h1>
+                    <h1 style="padding-left:2%;">Nouvhôtel</h1>
                 </div>
             </li>
             <li style="background-image: url('Images/Slider/pewpew.jpg');">
                 <div class="backgrounddivh1">
-                    <h1 style="padding-left:2%;">NouvhÃ´tel</h1>
+                    <h1 style="padding-left:2%;">Nouvhôtel</h1>
                 </div>
             </li>
             <li style="background-image: url('Images/Slider/borddeplage.jpg');">
                 <div class="backgrounddivh1">
-                    <h1 style="padding-left:2%;">NouvhÃ´tel</h1>
+                    <h1 style="padding-left:2%;">Nouvhôtel</h1>
                 </div>
             </li>
             <li style="background-image: url('Images/Slider/chaise.jpg');">
                 <div class="backgrounddivh1">
-                    <h1>NouvhÃ´tel</h1>
+                    <h1>Nouvhôtel</h1>
                 </div>
             </li>
         </ul>
@@ -61,9 +66,9 @@
 
             <asp:Image ID="Image1" runat="server" ImageUrl="~\Images\Accueil\AccueilHotel.jpg" Width="300" Height="144" BorderStyle="None" />
 
-            <h2>DÃ©couvrez nos hÃ´tels</h2>
+            <h2>Découvrez nos hôtels</h2>
             <p>
-                NouvhÃ´tel offre de nombreuses destinations de rÃªve dans diffÃ©rent hÃ´tels Ã  travers le Canada.
+                Nouvhôtel offre de nombreuses destinations de rêve dans différent hôtels à travers le Canada.
             </p>
             <p>
                 <a class="btn btn-default" href="RechercheChambre.aspx">En savoir plus &raquo;</a>
@@ -73,7 +78,7 @@
             <asp:Image ID="Image2" runat="server" ImageUrl="~\Images\Accueil\AccueilChambre.jpg" Width="300" Height="144" BorderStyle="None" />
             <h2>Visitez nos chambre</h2>
             <p>
-                DÃ©couvrez l'ameublement, les types de lits et les services offerts aux chambres, et ce, dans tout nos hÃ´tels.
+                Découvrez l'ameublement, les types de lits et les services offerts aux chambres, et ce, dans tout nos hôtels.
             </p>
             <p>
                 <a class="btn btn-default" href="TypesChambre.aspx">En savoir plus &raquo;</a>
@@ -82,9 +87,9 @@
 
         <div class="col-md-offset-1 col-md-3">
             <asp:Image ID="Image3" runat="server" ImageUrl="~\Images\Accueil\AccueilLobby.jpg" Width="300" Height="144" BorderStyle="None" />
-            <h2>RÃ©servez dÃ¨s aujourd'hui</h2>
+            <h2>Réservez dès aujourd'hui</h2>
             <p>
-                RÃ©servez une chambre en ligne ou par tÃ©lÃ©phone. Disponible Ã  toute heure 7 jours sur 7.
+                Réservez une chambre en ligne ou par téléphone. Disponible à toute heure 7 jours sur 7.
             </p>
             <p>
                 <a class="btn btn-default" href="Contact.aspx">En savoir plus &raquo;</a>
@@ -96,7 +101,7 @@
         <div class="jumbotron">
             <h2>S'inscrire</h2>
             <p>
-                RÃ©server une chambre en ligne n'a jamais Ã©tÃ© aussi facile ! CrÃ©er un compte en quelques clics et commencez Ã  planifier votre prochain sÃ©jour.
+                Réserver une chambre en ligne n'a jamais été aussi facile ! Créer un compte en quelques clics et commencez à planifier votre prochain séjour.
             </p>
             <p>
                 <a class="btn btn-primary btn-lg" href="Account\Register.aspx">En savoir plus &raquo;</a>

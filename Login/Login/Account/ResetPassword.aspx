@@ -1,4 +1,9 @@
-ï»¿<%@ Page Title="RÃ©initialiser le mot de passe" Language="vb" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ResetPassword.aspx.vb" Inherits="Login.ResetPassword" Async="true" %>
+<%-- **************************************************************************************** 
+Créée le : 10 novembre 2014
+Par : François Morin
+Date de dernière modification : 2014-12-15 12:28:48 
+****************************************************************************************************** --%>
+<%@ Page Title="Réinitialiser le mot de passe" Language="vb" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ResetPassword.aspx.vb" Inherits="Login.ResetPassword" Async="true" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <h2><%: Title %>.</h2>
@@ -15,7 +20,7 @@
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
-                    CssClass="text-danger" ErrorMessage="Le champ dâ€™adresse de messagerie est obligatoire." />
+                    CssClass="text-danger" ErrorMessage="Le champ d’adresse de messagerie est obligatoire." />
             </div>
         </div>
         <div class="form-group">
@@ -38,7 +43,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <asp:Button runat="server" OnClick="Reset_Click" Text="RÃ©initialiser" CssClass="btn btn-default" />
+                <asp:Button runat="server" OnClick="Reset_Click" Text="Réinitialiser" CssClass="btn btn-default" />
             </div>
         </div>
     </div>
